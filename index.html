@@ -71,7 +71,7 @@
             padding: 20px;
             box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
             margin: auto;
-            width: fit-content;
+            max-width: 90%; /* Ajustar ancho en móviles */
             position: relative;
             z-index: 3; /* Asegura que el contenido esté encima */
             opacity: 0;
@@ -109,6 +109,8 @@
             align-items: center;
             flex-direction: column;
             animation: fadeIn 2s forwards; /* Animación de Fade In */
+            padding: 20px; /* Espaciado interno */
+            box-sizing: border-box; /* Incluye padding en el ancho y alto */
         }
         @keyframes fadeIn {
             from {
@@ -246,7 +248,5 @@
                 menuButton.textContent = '✔'; // Cambiar a check
                 setTimeout(() => {
                     menuButton.textContent = '☰'; // Volver a tres rayas después de 1 segundo
-                }, 1000);
-            } else {
-                menu.classList.remove('show');
-                menuButton.textContent = '
+               
+
