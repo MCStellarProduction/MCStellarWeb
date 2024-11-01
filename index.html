@@ -3,38 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MCStellar Production</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>McStellar Production</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f3f3f3;
+        }
+
+        .container {
+            background: linear-gradient(90deg, #FF416C, #FF4B2B);
+            padding: 30px;
+            width: 80%;
+            max-width: 600px;
+            border-radius: 10px;
+            text-align: center;
+            color: #fff;
+        }
+
+        .logo {
+            font-size: 36px;
+            font-weight: bold;
+            color: #F1C40F;
+            margin: 0;
+        }
+
+        .subtitle {
+            font-size: 12px;
+            letter-spacing: 3px;
+            color: #FFC107;
+        }
+
+        .description {
+            background-color: #ffffff;
+            color: #333;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+            font-size: 14px;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .button-events {
+            background-color: #FFA07A;
+        }
+
+        .button-contact {
+            background-color: #C71585;
+        }
+
+        .logo img {
+            max-width: 50px;
+            margin-top: 10px;
+        }
+    </style>
 </head>
-<body onload="hideLoader()">
-    <div id="loader" class="loader">Cargando...</div>
+<body>
     <div class="container">
-        <header>
-            <h1 class="title">MCStellar Production</h1>
-            <div class="bubble description">
-                <p>MCStellar es una compañia de edicion de video y creador de eventos minecraft. Hacemos trabajos de eventos minecraft con animaciones y muchos aspectos a tu gusto. Esperamos trabajar contigo pronto...</p>
-            </div>
-        </header>
-        <div class="auth-container">
-            <div class="bubble form-container">
-                <form id="login-form" class="form">
-                    <h2>Iniciar Sesión</h2>
-                    <input type="email" placeholder="Correo Electrónico" required>
-                    <input type="password" placeholder="Contraseña" required>
-                    <button type="submit">Iniciar Sesión</button>
-                </form>
-            </div>
-            <div class="bubble form-container">
-                <form id="register-form" class="form">
-                    <h2>Registro</h2>
-                    <input type="text" placeholder="Nombre" required>
-                    <input type="email" placeholder="Correo Electrónico" required>
-                    <input type="password" placeholder="Contraseña" required>
-                    <button type="submit">Registrar</button>
-                </form>
-            </div>
+        <h1 class="logo">McStellar Production</h1>
+        <p class="subtitle">PRODUCTION</p>
+        <div class="description">
+            Somos una compañía de edición de video y creación de eventos en Minecraft. Nosotros podemos editar videos a nivel profesional. Contáctanos.
+        </div>
+        <div class="buttons">
+            <a href="#" class="button button-events">VER EVENTOS</a>
+            <a href="#" class="button button-contact">CONTACTARNOS!!</a>
         </div>
     </div>
-    <script src="script.js"></script>
 </body>
 </html>
