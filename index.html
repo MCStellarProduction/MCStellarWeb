@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>McStellar Production</title>
+    <title>Fondo Estrellas Interactivo</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
             margin: 0;
+            overflow: hidden;
+            background-color: #f2a71b;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #f2a71b;
         }
 
         .container {
@@ -23,6 +23,8 @@
             border-radius: 10px;
             text-align: center;
             color: #fff;
+            position: relative;
+            z-index: 1;
         }
 
         .logo {
@@ -73,13 +75,19 @@
             background-color: #C71585;
         }
 
-        .logo img {
-            max-width: 50px;
-            margin-top: 10px;
+        /* Estilos para las estrellas */
+        .star {
+            position: absolute;
+            background-color: white;
+            border-radius: 50%;
+            opacity: 0.8;
+            pointer-events: auto;
+            transition: transform 0.5s ease;
         }
     </style>
 </head>
 <body>
+
     <div class="container">
         <h1 class="logo">McStellar Production</h1>
         <p class="subtitle">PRODUCTION</p>
@@ -91,5 +99,49 @@
             <a href="#" class="button button-contact">CONTACTARNOS!!</a>
         </div>
     </div>
+
+    <script>
+        // Configuración de las estrellas
+        const starCount = 50; // Número de estrellas
+        const starSize = { min: 2, max: 5 }; // Tamaño de las estrellas
+        const speed = 2; // Velocidad de animación de las estrellas
+
+        // Crear las estrellas
+        for (let i = 0; i < starCount; i++) {
+            const star = document.createElement("div");
+            star.classList.add("star");
+            document.body.appendChild(star);
+
+            // Posición inicial y tamaño aleatorio
+            star.style.width = `${Math.random() * (starSize.max - starSize.min) + starSize.min}px`;
+            star.style.height = star.style.width;
+            star.style.left = `${Math.random() * 100}vw`;
+            star.style.top = `${Math.random() * 100}vh`;
+
+            // Movimiento aleatorio de la estrella
+            animateStar(star);
+
+            // Agregar evento para mover la estrella al hacer clic
+            star.addEventListener("click", () => {
+                star.style.transform = `translate(${Math.random() * 100 - 50}px, ${Math.random() * 100 - 50}px)`;
+            });
+        }
+
+        // Función para animar las estrellas
+        function animateStar(star) {
+            const toLeft = Math.random() > 0.5;
+            const duration = Math.random() * 5 + 5;
+
+            function move() {
+                star.style.transitionDuration = `${duration}s`;
+                star.style.left = toLeft ? "100vw" : "-10vw";
+                star.style.top = `${Math.random() * 100}vh`;
+            }
+
+            star.addEventListener("transitionend", move);
+            move();
+        }
+    </script>
+
 </body>
 </html>
