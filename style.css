@@ -1,8 +1,8 @@
 button {
-  button_radius: 0.75em;
+  button_radius: 15em;
   button_color: #e8e8e8;
   button_outline_color: #000000;
-  font-size: 17px;
+  font-size: 90px;
   font-weight: bold;
   border: none;
   cursor: pointer;
