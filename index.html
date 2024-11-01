@@ -11,7 +11,6 @@
             padding: 0;
             overflow: hidden;
             position: relative;
-            transition: background-color 0.5s;
         }
         .loading-screen {
             display: flex;
@@ -27,8 +26,6 @@
             font-size: 24px;
             flex-direction: column;
             z-index: 100;
-            opacity: 1;
-            transition: opacity 0.5s;
         }
         .loading-screen .loader {
             width: 60px;
@@ -58,10 +55,6 @@
             width: 0;
             animation: loading 3s forwards;
         }
-        @keyframes loading {
-            0% { width: 0; }
-            100% { width: 100%; }
-        }
         .menu {
             position: absolute;
             left: 20px;
@@ -76,11 +69,6 @@
             padding: 10px 20px;
             cursor: pointer;
             font-size: 18px;
-            transition: background 0.3s, transform 0.2s;
-        }
-        .menu-button:hover {
-            background: #e68a00;
-            transform: scale(1.05);
         }
         .menu-list {
             display: none;
@@ -92,14 +80,9 @@
             padding: 10px;
             margin-top: 5px;
             z-index: 11;
-            opacity: 0;
-            transform: translateY(-10px);
-            transition: opacity 0.3s, transform 0.3s;
         }
         .menu-list.show {
             display: block;
-            opacity: 1;
-            transform: translateY(0);
         }
         .menu-list button {
             background: white;
@@ -110,12 +93,6 @@
             cursor: pointer;
             margin: 5px 0;
             width: 100%;
-            transition: background 0.3s, transform 0.2s;
-        }
-        .menu-list button:hover {
-            background: #ff9800;
-            color: white;
-            transform: scale(1.05);
         }
         .content {
             border-radius: 15px;
@@ -127,9 +104,6 @@
             position: relative;
             z-index: 3;
             display: none;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.5s, transform 0.5s;
         }
         h1 {
             background: linear-gradient(90deg, #ff9800, #9c27b0);
@@ -139,11 +113,6 @@
             font-size: 3em;
             text-align: center;
             margin: 0;
-            animation: fadeIn 1s ease;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
         }
         .overlay {
             display: none;
@@ -157,9 +126,6 @@
             justify-content: center;
             align-items: center;
             flex-direction: column;
-            animation: fadeIn 0.5s forwards;
-            padding: 20px;
-            box-sizing: border-box;
         }
         .dark-mode {
             background-color: #121212;
@@ -173,7 +139,6 @@
             color: #ff9800;
             font-size: 18px;
             z-index: 5;
-            animation: fadeIn 2s ease;
         }
         .background-circle {
             position: absolute;
@@ -243,4 +208,44 @@
 
         function showLoadingScreen() {
             document.getElementById('loadingScreen').style.display = 'flex';
-            setTimeout(() =>
+            setTimeout(() => {
+                document.getElementById('loadingScreen').style.display = 'none';
+                showContent();
+            }, 3000); // Cambia el tiempo según lo necesites
+        }
+
+        function showContent() {
+            const content = document.getElementById('content');
+            content.style.display = 'block';
+        }
+
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+        }
+
+        function closeOverlay() {
+            document.getElementById('configOverlay').style.display = 'none';
+        }
+
+        function showConfig() {
+            document.getElementById('configOverlay').style.display = 'flex';
+        }
+
+        function showLogin() {
+            alert("Función de inicio de sesión aún no implementada.");
+        }
+
+        function showStellarClient() {
+            alert("Función de Stellar Client aún no implementada.");
+        }
+
+        function showEvents() {
+            alert("Función de eventos aún no implementada.");
+        }
+
+        function showContact() {
+            alert("Función de contacto aún no implementada.");
+        }
+    </script>
+</body>
+</html>
