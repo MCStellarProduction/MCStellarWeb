@@ -9,22 +9,24 @@
         body {
             font-family: 'Sans-serif', Arial, sans-serif;
             margin: 0;
-            background-color: #f2a71b;
             overflow: hidden;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
+            background-color: #f2a71b;
             position: relative;
+            transition: background-color 0.3s ease;
         }
 
-        /* Fondo de estrellas */
+        /* Fondo de estrellas más grandes */
         .star {
             position: absolute;
             background-color: #ffffff;
             border-radius: 50%;
             opacity: 0.8;
             animation: moveStar 10s linear infinite;
+            z-index: 0;
         }
 
         @keyframes moveStar {
@@ -71,6 +73,7 @@
             font-size: 14px;
             border: 2px solid #ffffff;
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         /* Animación Fade-In para los botones */
@@ -107,7 +110,7 @@
             background-color: #C71585;
         }
 
-        /* Estilos para el botón de menú */
+        /* Menú y ventana de configuración */
         .menu-button {
             margin-top: 20px;
             background-color: #4CAF50;
@@ -119,59 +122,85 @@
             cursor: pointer;
         }
 
-        /* Menú desplegable */
-        .dropdown-menu {
-            position: absolute;
-            top: 100%;
-            right: 10%;
-            background-color: #ffffff;
+        /* Modal de configuración */
+        .modal {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
             color: #333;
-            width: 150px;
-            padding: 10px;
-            border-radius: 5px;
+            width: 300px;
+            padding: 20px;
+            border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(-10px);
-            transition: opacity 0.3s ease, transform 0.3s ease;
+            display: none;
+            transition: all 0.3s ease;
+            z-index: 10;
         }
 
-        .dropdown-menu.active {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
+        .modal h2 {
+            margin: 0;
+            font-size: 20px;
+            color: #333;
         }
 
-        .dropdown-option {
-            padding: 10px;
+        .modal-option {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+            align-items: center;
+        }
+
+        .modal-option label {
             font-size: 14px;
             color: #333;
-            text-align: left;
-            cursor: pointer;
-            transition: background 0.2s ease;
         }
 
-        .dropdown-option:hover {
-            background-color: #eee;
+        .modal input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            accent-color: #4CAF50;
+            cursor: pointer;
+        }
+
+        .modal.active {
+            display: block;
+        }
+
+        /* Modo oscuro */
+        .dark-mode {
+            background-color: #333;
+            color: #fff;
+        }
+
+        .dark-mode .description {
+            background-color: #444;
+            color: #ccc;
+            border-color: #555;
+        }
+
+        /* Modo escritorio */
+        .desktop-mode .container {
+            max-width: 800px;
         }
     </style>
 </head>
 <body>
 
-    <!-- Fondo de estrellas -->
+    <!-- Fondo de estrellas más grandes -->
     <script>
-        // Generador de estrellas en movimiento
         function createStars() {
-            const numStars = 50;
+            const numStars = 30;
             for (let i = 0; i < numStars; i++) {
                 const star = document.createElement("div");
                 star.classList.add("star");
-                star.style.width = Math.random() * 3 + "px";
-                star.style.height = star.style.width;
+                const size = Math.random() * 5 + 3 + "px";
+                star.style.width = size;
+                star.style.height = size;
                 star.style.top = Math.random() * 100 + "vh";
                 star.style.left = Math.random() * 100 + "vw";
                 star.style.animationDuration = Math.random() * 10 + 5 + "s";
-                star.style.animationDelay = Math.random() * 10 + "s";
                 document.body.appendChild(star);
             }
         }
@@ -190,20 +219,48 @@
         </div>
 
         <!-- Botón para abrir el menú -->
-        <button class="menu-button" onclick="toggleMenu()">Menú</button>
+        <button class="menu-button" onclick="toggleModal()">Configuración</button>
+    </div>
 
-        <!-- Menú desplegable -->
-        <div id="dropdownMenu" class="dropdown-menu">
-            <div class="dropdown-option">Configuración</div>
-            <div class="dropdown-option">Idioma</div>
+    <!-- Modal de configuración -->
+    <div id="configModal" class="modal">
+        <h2>Configuración</h2>
+        <div class="modal-option">
+            <label for="darkModeToggle">Modo Oscuro</label>
+            <input type="checkbox" id="darkModeToggle" onchange="toggleDarkMode()">
+        </div>
+        <div class="modal-option">
+            <label for="desktopModeToggle">Modo Escritorio</label>
+            <input type="checkbox" id="desktopModeToggle" onchange="toggleDesktopMode()">
+        </div>
+        <div class="modal-option">
+            <label for="disableAnimationsToggle">Deshabilitar Animaciones</label>
+            <input type="checkbox" id="disableAnimationsToggle" onchange="toggleAnimations()">
         </div>
     </div>
 
     <script>
-        // Función para alternar el menú
-        function toggleMenu() {
-            const menu = document.getElementById("dropdownMenu");
-            menu.classList.toggle("active");
+        // Abrir/cerrar el modal
+        function toggleModal() {
+            document.getElementById("configModal").classList.toggle("active");
+        }
+
+        // Función de Modo Oscuro
+        function toggleDarkMode() {
+            document.body.classList.toggle("dark-mode");
+        }
+
+        // Función de Modo Escritorio
+        function toggleDesktopMode() {
+            document.body.classList.toggle("desktop-mode");
+        }
+
+        // Función para deshabilitar animaciones
+        function toggleAnimations() {
+            const disableAnimations = document.getElementById("disableAnimationsToggle").checked;
+            document.querySelectorAll('*').forEach(element => {
+                element.style.animation = disableAnimations ? 'none' : '';
+            });
         }
     </script>
 
