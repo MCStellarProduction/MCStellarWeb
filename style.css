@@ -72,8 +72,8 @@ button::after {
   position: absolute;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
+  right: 50;
+  bottom: 50;
   background: var(--button_color);
   color: var(--button_outline_color);
   display: flex;
