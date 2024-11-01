@@ -91,6 +91,8 @@
             position: relative;
             z-index: 3; /* Asegura que el contenido esté encima */
             display: none; /* Oculta el contenido al inicio */
+            opacity: 0;
+            transition: opacity 0.5s; /* Transición de opacidad */
         }
         h1 {
             background: linear-gradient(90deg, #ff9800, #9c27b0);
@@ -133,6 +135,65 @@
             font-size: 18px; /* Tamaño de texto */
             z-index: 5; /* Capa encima de todo */
         }
+        .background-circle {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.5; /* Transparencia de los círculos */
+            z-index: 0; /* Envía los círculos al fondo */
+            animation: moveCircle 10s linear infinite; /* Movimiento */
+        }
+        @keyframes moveCircle {
+            from {
+                transform: translate(0, 0);
+            }
+            to {
+                transform: translate(100px, 100px);
+            }
+        }
+        .circle {
+            background: radial-gradient(circle, #9c27b0, #ff9800);
+        }
+        .circle-1 {
+            width: 150px; /* Tamaño ajustado */
+            height: 150px; /* Tamaño ajustado */
+            top: -50px;
+            left: -100px;
+        }
+        .circle-2 {
+            width: 200px; /* Tamaño ajustado */
+            height: 200px; /* Tamaño ajustado */
+            top: 200px;
+            left: 50px;
+            animation-delay: 2s; /* Diferente tiempo de movimiento */
+        }
+        .circle-3 {
+            width: 100px; /* Tamaño ajustado */
+            height: 100px; /* Tamaño ajustado */
+            bottom: -50px;
+            right: 100px;
+            animation-delay: 4s; /* Diferente tiempo de movimiento */
+        }
+        .circle-4 {
+            width: 150px; /* Tamaño ajustado */
+            height: 150px; /* Tamaño ajustado */
+            top: 300px;
+            right: -50px;
+            animation-delay: 1s; /* Diferente tiempo de movimiento */
+        }
+        .circle-5 {
+            width: 120px; /* Tamaño ajustado */
+            height: 120px; /* Tamaño ajustado */
+            bottom: 100px;
+            left: 150px;
+            animation-delay: 3s; /* Diferente tiempo de movimiento */
+        }
+        /* Estilos responsivos */
+        @media (max-width: 600px) {
+            .circle {
+                width: 80px; /* Tamaño más pequeño en móviles */
+                height: 80px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -141,7 +202,7 @@
         <div class="loader"></div>
     </div>
 
-    <div class="menu">
+    <div class="menu" id="menu">
         <button class="menu-button" id="menuButton" onclick="toggleMenu()">☰</button>
         <div class="menu-list" id="menuList">
             <button onclick="showConfig()">Configuración</button>
@@ -167,35 +228,12 @@
 
     <div class="beta-text">- BETA_TEST MCSTELLAR WEB -</div>
 
+    <div class="background-circle circle circle-1"></div>
+    <div class="background-circle circle circle-2"></div>
+    <div class="background-circle circle circle-3"></div>
+    <div class="background-circle circle circle-4"></div>
+    <div class="background-circle circle circle-5"></div>
+
     <script>
         function showLoadingScreen() {
-            document.getElementById('loadingScreen').style.display = 'flex';
-            setTimeout(() => {
-                document.getElementById('loadingScreen').style.display = 'none';
-                document.getElementById('menu').style.display = 'block';
-                document.getElementById('content').style.display = 'block';
-            }, 3000); // Carga por 3 segundos
-        }
-
-        function toggleMenu() {
-            const menu = document.getElementById('menuList');
-            menu.classList.toggle('show');
-        }
-
-        function showConfig() {
-            document.getElementById('configOverlay').style.display = 'flex';
-        }
-
-        function closeOverlay() {
-            document.getElementById('configOverlay').style.display = 'none';
-        }
-
-        function toggleDarkMode() {
-            document.body.classList.toggle('dark-mode');
-        }
-
-        // Iniciar la pantalla de carga
-        showLoadingScreen();
-    </script>
-</body>
-</html>
+            document
