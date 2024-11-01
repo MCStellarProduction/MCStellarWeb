@@ -23,7 +23,7 @@ body {
     border-radius: 15px;
     padding: 20px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    width: 300px;
+    width: 400px;
     text-align: center;
 }
 
@@ -32,11 +32,19 @@ body {
     background: linear-gradient(90deg, orange, purple);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    font-size: 24px;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.bubble {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    padding: 15px;
+    margin: 10px 0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .description {
-    margin: 15px 0;
     color: #333;
 }
 
@@ -44,8 +52,13 @@ body {
     margin-top: 20px;
 }
 
+.form-container {
+    margin: 10px 0;
+}
+
 .form {
-    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
 }
 
 input {
@@ -69,4 +82,3 @@ button {
 button:hover {
     background-color: darkorange;
 }
-
