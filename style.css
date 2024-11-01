@@ -9,7 +9,6 @@ button {
   border-radius: var(--button_radius);
   background: var(--button_outline_color);
 }
-
 .button_top {
   display: block;
   box-sizing: border-box;
@@ -21,11 +20,9 @@ button {
   transform: translateY(-0.2em);
   transition: transform 0.1s ease;
 }
-
 button:hover .button_top {
   transform: translateY(-0.33em);
 }
-
 button:active .button_top {
   transform: translateY(0);
 }
