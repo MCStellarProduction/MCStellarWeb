@@ -1,5 +1,5 @@
 body{
-  display: flew;
+  display: flex;
   justify-content: center;
   aling-items: center;
   min-height: 100vh;
