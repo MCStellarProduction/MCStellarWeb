@@ -11,7 +11,7 @@
             padding: 0;
             overflow: hidden;
             position: relative;
-            transition: background-color 0.5s; /* Transición para el modo oscuro */
+            transition: background-color 0.5s;
         }
         .loading-screen {
             display: flex;
@@ -22,11 +22,11 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to bottom, #9c27b0, #2196f3); /* Degradado de morado a azul */
+            background: linear-gradient(to bottom, #9c27b0, #2196f3);
             color: white;
             font-size: 24px;
             flex-direction: column;
-            z-index: 100; /* Capa superior */
+            z-index: 100;
         }
         .loading-screen .loader {
             border: 8px solid white;
@@ -34,7 +34,7 @@
             border-radius: 50%;
             width: 50px;
             height: 50px;
-            animation: spin 1s linear infinite; /* Animación de giro */
+            animation: spin 1s linear infinite;
             margin-top: 20px;
         }
         @keyframes spin {
@@ -45,8 +45,8 @@
             position: absolute;
             left: 20px;
             top: 20px;
-            z-index: 10; /* Capa máxima */
-            display: none; /* Oculta el menú al inicio */
+            z-index: 10;
+            display: none;
         }
         .menu-button {
             background: #ff9800;
@@ -61,25 +61,25 @@
             display: none;
             position: absolute;
             background: white;
-            border: 2px solid #ff9800; /* Borde de color */
+            border: 2px solid #ff9800;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
             padding: 10px;
             margin-top: 5px;
-            z-index: 11; /* Asegura que esté encima del menú */
+            z-index: 11;
         }
         .menu-list.show {
             display: block;
         }
         .menu-list button {
             background: white;
-            border: 2px solid #ff9800; /* Borde de color */
+            border: 2px solid #ff9800;
             border-radius: 5px;
             color: #ff9800;
             padding: 10px;
             cursor: pointer;
             margin: 5px 0;
-            width: 100%; /* Botones al ancho completo */
+            width: 100%;
         }
         .content {
             border-radius: 15px;
@@ -87,20 +87,20 @@
             padding: 20px;
             box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
             margin: auto;
-            max-width: 90%; /* Ajustar ancho en móviles */
+            max-width: 90%;
             position: relative;
-            z-index: 3; /* Asegura que el contenido esté encima */
-            display: none; /* Oculta el contenido al inicio */
+            z-index: 3;
+            display: none;
             opacity: 0;
-            transition: opacity 0.5s; /* Transición de opacidad */
+            transition: opacity 0.5s;
         }
         h1 {
             background: linear-gradient(90deg, #ff9800, #9c27b0);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             font-weight: bold;
-            font-size: 3em; /* Tamaño de texto aumentado */
-            text-align: center; /* Texto centrado */
+            font-size: 3em;
+            text-align: center;
             margin: 0;
         }
         .overlay {
@@ -110,37 +110,37 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(255, 255, 255, 0.9); /* Fondo blanco con opacidad */
-            z-index: 20; /* Capa encima de todo */
+            background: rgba(255, 255, 255, 0.9);
+            z-index: 20;
             justify-content: center;
             align-items: center;
             flex-direction: column;
-            animation: fadeIn 2s forwards; /* Animación de Fade In */
-            padding: 20px; /* Espaciado interno */
-            box-sizing: border-box; /* Incluye padding en el ancho y alto */
+            animation: fadeIn 2s forwards;
+            padding: 20px;
+            box-sizing: border-box;
         }
         .dark-mode {
-            background-color: #121212; /* Fondo oscuro */
-            color: white; /* Color de texto claro */
+            background-color: #121212;
+            color: white;
         }
         .dark-mode .overlay {
-            background: rgba(50, 50, 50, 0.9); /* Fondo gris oscuro para el overlay */
+            background: rgba(50, 50, 50, 0.9);
         }
         .beta-text {
             position: fixed;
             bottom: 10px;
             left: 50%;
             transform: translateX(-50%);
-            color: #ff9800; /* Color de texto */
-            font-size: 18px; /* Tamaño de texto */
-            z-index: 5; /* Capa encima de todo */
+            color: #ff9800;
+            font-size: 18px;
+            z-index: 5;
         }
         .background-circle {
             position: absolute;
             border-radius: 50%;
-            opacity: 0.5; /* Transparencia de los círculos */
-            z-index: 0; /* Envía los círculos al fondo */
-            animation: moveCircle 10s linear infinite; /* Movimiento */
+            opacity: 0.5;
+            z-index: 0;
+            animation: moveCircle 10s linear infinite;
         }
         @keyframes moveCircle {
             from {
@@ -153,46 +153,13 @@
         .circle {
             background: radial-gradient(circle, #9c27b0, #ff9800);
         }
-        .circle-1 {
-            width: 150px; /* Tamaño ajustado */
-            height: 150px; /* Tamaño ajustado */
-            top: -50px;
-            left: -100px;
-        }
-        .circle-2 {
-            width: 200px; /* Tamaño ajustado */
-            height: 200px; /* Tamaño ajustado */
-            top: 200px;
-            left: 50px;
-            animation-delay: 2s; /* Diferente tiempo de movimiento */
-        }
-        .circle-3 {
-            width: 100px; /* Tamaño ajustado */
-            height: 100px; /* Tamaño ajustado */
-            bottom: -50px;
-            right: 100px;
-            animation-delay: 4s; /* Diferente tiempo de movimiento */
-        }
-        .circle-4 {
-            width: 150px; /* Tamaño ajustado */
-            height: 150px; /* Tamaño ajustado */
-            top: 300px;
-            right: -50px;
-            animation-delay: 1s; /* Diferente tiempo de movimiento */
-        }
-        .circle-5 {
-            width: 120px; /* Tamaño ajustado */
-            height: 120px; /* Tamaño ajustado */
-            bottom: 100px;
-            left: 150px;
-            animation-delay: 3s; /* Diferente tiempo de movimiento */
-        }
-        /* Estilos responsivos */
+        .circle-1 { width: 150px; height: 150px; top: -50px; left: -100px; }
+        .circle-2 { width: 200px; height: 200px; top: 200px; left: 50px; animation-delay: 2s; }
+        .circle-3 { width: 100px; height: 100px; bottom: -50px; right: 100px; animation-delay: 4s; }
+        .circle-4 { width: 150px; height: 150px; top: 300px; right: -50px; animation-delay: 1s; }
+        .circle-5 { width: 120px; height: 120px; bottom: 100px; left: 150px; animation-delay: 3s; }
         @media (max-width: 600px) {
-            .circle {
-                width: 80px; /* Tamaño más pequeño en móviles */
-                height: 80px;
-            }
+            .circle { width: 80px; height: 80px; }
         }
     </style>
 </head>
@@ -235,5 +202,46 @@
     <div class="background-circle circle circle-5"></div>
 
     <script>
+        // Función para mostrar el menú
+        function toggleMenu() {
+            const menuList = document.getElementById('menuList');
+            menuList.classList.toggle('show');
+        }
+
+        // Función para mostrar la pantalla de carga y luego el contenido
         function showLoadingScreen() {
-            document
+            document.getElementById('loadingScreen').style.display = 'flex';
+            setTimeout(() => {
+                document.getElementById('loadingScreen').style.display = 'none';
+                showContent();
+            }, 3000); // Cambiar a 3000ms para simular carga
+        }
+
+        // Función para mostrar el contenido principal
+        function showContent() {
+            const content = document.getElementById('content');
+            content.style.display = 'block';
+            content.style.opacity = '1';
+            document.getElementById('menu').style.display = 'block'; // Muestra el menú
+        }
+
+        // Función para mostrar la configuración
+        function showConfig() {
+            document.getElementById('configOverlay').style.display = 'flex';
+        }
+
+        // Función para cerrar el overlay de configuración
+        function closeOverlay() {
+            document.getElementById('configOverlay').style.display = 'none';
+        }
+
+        // Función para activar el modo oscuro
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+        }
+
+        // Inicia la pantalla de carga al cargar el documento
+        window.onload = showLoadingScreen;
+    </script>
+</body>
+</html>
