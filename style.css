@@ -1,1 +1,44 @@
+.button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px; /* Aumentar el radio para un diseño más redondeado */
+    cursor: pointer;
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px; /* Aumentar el tamaño de la fuente */
+    position: relative; /* Para el efecto de sombra */
+    overflow: hidden; /* Para el efecto de fondo animado */
+    transition: color 0.3s ease;
+}
+
+.button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%; /* Aumentar el tamaño del pseudo-elemento para el efecto de fondo */
+    height: 300%;
+    background-color: rgba(255, 255, 255, 0.3); /* Color del fondo */
+    border-radius: 50%; /* Hacerlo circular */
+    transform: translate(-50%, -50%) scale(0); /* Comenzar en escala 0 */
+    transition: transform 0.5s ease; /* Efecto de transición */
+    z-index: 0; /* Colocar detrás del texto */
+}
+
+.button:hover::before {
+    transform: translate(-50%, -50%) scale(1); /* Expandir al hacer hover */
+}
+
+.button:hover {
+    color: #000; /* Cambiar el color del texto al hacer hover */
+}
+
+.button-events {
+    background-color: #FFA07A;
+}
+
+.button-contact {
+    background-color: #C71585;
+}
 
