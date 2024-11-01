@@ -41,4 +41,60 @@
 .button-contact {
     background-color: #C71585;
 }
+/* Ajustes para móviles */
+@media (max-width: 600px) {
+    .container {
+        padding: 20px;
+    }
+
+    .logo {
+        font-size: 28px;
+    }
+
+    .subtitle {
+        font-size: 12px;
+    }
+
+    .description {
+        font-size: 12px;
+    }
+
+    .buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .button {
+        width: 100%;
+        padding: 15px;
+        font-size: 16px;
+    }
+
+    .section img {
+        max-width: 90%;
+    }
+
+    .section-text {
+        font-size: 16px;
+        padding: 15px;
+    }
+
+    .modal {
+        width: 90%;
+        padding: 15px;
+    }
+
+    .modal-option {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .modal-option label {
+        margin-bottom: 5px;
+    }
+
+    .modal input[type="checkbox"] {
+        margin-left: 10px;
+    }
+}
 
