@@ -47,15 +47,20 @@
             top: 20px;
             z-index: 10;
             display: none;
+            transition: opacity 0.5s;
         }
         .menu-button {
             background: #ff9800;
             color: white;
             border: none;
             border-radius: 25px;
-            padding: 10px;
+            padding: 10px 20px;
             cursor: pointer;
             font-size: 18px;
+            transition: background 0.3s;
+        }
+        .menu-button:hover {
+            background: #e68a00;
         }
         .menu-list {
             display: none;
@@ -67,9 +72,14 @@
             padding: 10px;
             margin-top: 5px;
             z-index: 11;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: opacity 0.3s, transform 0.3s;
         }
         .menu-list.show {
             display: block;
+            opacity: 1;
+            transform: translateY(0);
         }
         .menu-list button {
             background: white;
@@ -80,6 +90,12 @@
             cursor: pointer;
             margin: 5px 0;
             width: 100%;
+            transition: background 0.3s, transform 0.2s;
+        }
+        .menu-list button:hover {
+            background: #ff9800;
+            color: white;
+            transform: translateY(-2px);
         }
         .content {
             border-radius: 15px;
@@ -115,7 +131,7 @@
             justify-content: center;
             align-items: center;
             flex-direction: column;
-            animation: fadeIn 2s forwards;
+            animation: fadeIn 0.5s forwards;
             padding: 20px;
             box-sizing: border-box;
         }
@@ -202,46 +218,36 @@
     <div class="background-circle circle circle-5"></div>
 
     <script>
-        // Función para mostrar el menú
         function toggleMenu() {
             const menuList = document.getElementById('menuList');
             menuList.classList.toggle('show');
         }
 
-        // Función para mostrar la pantalla de carga y luego el contenido
         function showLoadingScreen() {
             document.getElementById('loadingScreen').style.display = 'flex';
             setTimeout(() => {
                 document.getElementById('loadingScreen').style.display = 'none';
                 showContent();
-            }, 3000); // Cambiar a 3000ms para simular carga
+            }, 3000);
         }
 
-        // Función para mostrar el contenido principal
         function showContent() {
             const content = document.getElementById('content');
             content.style.display = 'block';
             content.style.opacity = '1';
-            document.getElementById('menu').style.display = 'block'; // Muestra el menú
+            document.getElementById('menu').style.display = 'block';
         }
 
-        // Función para mostrar la configuración
         function showConfig() {
             document.getElementById('configOverlay').style.display = 'flex';
         }
 
-        // Función para cerrar el overlay de configuración
         function closeOverlay() {
             document.getElementById('configOverlay').style.display = 'none';
         }
 
-        // Función para activar el modo oscuro
         function toggleDarkMode() {
             document.body.classList.toggle('dark-mode');
         }
 
-        // Inicia la pantalla de carga al cargar el documento
-        window.onload = showLoadingScreen;
-    </script>
-</body>
-</html>
+        window.onload = showLoadingScreen
