@@ -180,8 +180,8 @@
     </div>
 
     <div class="content" id="content">
-        <h1>MCStellar Production</h1>
-        <p>¡Bienvenido a MCStellar Production! Somos una compañía de producción de video y creadores de eventos en Minecraft.</p>
+        <h1 id="pageTitle">MCStellar Production</h1>
+        <p id="welcomeText">¡Bienvenido a MCStellar Production! Somos una compañía de producción de video y creadores de eventos en Minecraft.</p>
     </div>
 
     <div class="overlay" id="configOverlay">
@@ -189,6 +189,14 @@
         <label>
             <input type="checkbox" id="darkModeToggle" onchange="toggleDarkMode()"> Modo Oscuro
         </label>
+        <label for="languageSelect">Idioma:</label>
+        <select id="languageSelect" onchange="changeLanguage()">
+            <option value="es">Español</option>
+            <option value="en">Inglés</option>
+            <option value="fr">Francés</option>
+            <option value="ja">Japonés</option>
+            <option value="ru">Ruso</option>
+        </select>
         <button onclick="closeOverlay()">Cerrar</button>
     </div>
 
@@ -211,7 +219,7 @@
             setTimeout(() => {
                 document.getElementById('loadingScreen').style.display = 'none';
                 showContent();
-            }, 3000); // Cambia el tiempo según lo necesites
+            }, 3000);
         }
 
         function showContent() {
@@ -246,6 +254,9 @@
         function showContact() {
             alert("Función de contacto aún no implementada.");
         }
-    </script>
-</body>
-</html>
+
+        function changeLanguage() {
+            const language = document.getElementById('languageSelect').value;
+            const translations = {
+                es: {
+                    title: "
