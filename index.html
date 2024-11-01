@@ -28,6 +28,7 @@
             padding: 10px;
             cursor: pointer;
             font-size: 18px;
+            transition: transform 0.3s;
         }
         .menu-list {
             display: none;
@@ -201,7 +202,7 @@
 </head>
 <body>
     <div class="menu">
-        <button class="menu-button" onclick="toggleMenu()">☰</button>
+        <button class="menu-button" id="menuButton" onclick="toggleMenu()">☰</button>
         <div class="menu-list" id="menuList">
             <button onclick="showConfig()">Configuración</button>
             <button onclick="showLogin()">Iniciar Sesión</button>
@@ -233,31 +234,19 @@
     <div class="background-circle circle circle-5"></div>
 
     <script>
+        let menuOpen = false;
+
         function toggleMenu() {
             const menu = document.getElementById('menuList');
-            menu.classList.toggle('show');
-        }
+            const menuButton = document.getElementById('menuButton');
+            menuOpen = !menuOpen;
 
-        function showConfig() {
-            document.getElementById('configOverlay').style.display = 'flex';
-        }
-
-        function closeOverlay() {
-            document.getElementById('configOverlay').style.display = 'none';
-        }
-
-        function toggleDarkMode() {
-            document.body.classList.toggle('dark-mode');
-        }
-
-        function showLogin() {
-            alert('Iniciar Sesión no implementada.');
-        }
-
-        function showStellarClient() {
-            alert('Stellar Client no implementado.');
-        }
-
-        function showEvents() {
-            alert('Eventos no implementado.');
-       
+            if (menuOpen) {
+                menu.classList.add('show');
+                menuButton.textContent = '✔'; // Cambiar a check
+                setTimeout(() => {
+                    menuButton.textContent = '☰'; // Volver a tres rayas después de 1 segundo
+                }, 1000);
+            } else {
+                menu.classList.remove('show');
+                menuButton.textContent = '
