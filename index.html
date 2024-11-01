@@ -27,6 +27,8 @@
             font-size: 24px;
             flex-direction: column;
             z-index: 100;
+            opacity: 1;
+            transition: opacity 0.5s;
         }
         .loading-screen .loader {
             width: 60px;
@@ -40,6 +42,25 @@
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
+        }
+        .progress-bar {
+            width: 80%;
+            height: 10px;
+            background: linear-gradient(to right, #ff9800, #ffeb3b);
+            border-radius: 5px;
+            position: relative;
+            overflow: hidden;
+            margin-top: 20px;
+        }
+        .progress {
+            height: 100%;
+            background: #fff;
+            width: 0;
+            animation: loading 3s forwards;
+        }
+        @keyframes loading {
+            0% { width: 0; }
+            100% { width: 100%; }
         }
         .menu {
             position: absolute;
@@ -163,6 +184,9 @@
     <div class="loading-screen" id="loadingScreen">
         Cargando...
         <div class="loader"></div>
+        <div class="progress-bar">
+            <div class="progress"></div>
+        </div>
     </div>
 
     <div class="menu" id="menu">
