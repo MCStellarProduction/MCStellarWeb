@@ -3,247 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
     <title>MCStellar Production</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-            position: relative;
-            transition: background-color 0.3s, color 0.3s;
-        }
-        .menu {
-            position: absolute;
-            left: 20px;
-            top: 20px;
-            z-index: 10;
-        }
-        .menu-button {
-            background: #ff9800;
-            color: white;
-            border: none;
-            border-radius: 25px;
-            padding: 10px 20px;
-            cursor: pointer;
-            font-size: 18px;
-            transition: background 0.3s;
-        }
-        .menu-button:hover {
-            background: #e68a00;
-        }
-        .menu-list {
-            display: none;
-            position: absolute;
-            background: white;
-            border: 2px solid #ff9800;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-            padding: 10px;
-            margin-top: 5px;
-            z-index: 11;
-            opacity: 0;
-            transform: translateY(-10px);
-            transition: opacity 0.3s, transform 0.3s;
-        }
-        .menu-list.show {
-            display: block;
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .menu-list button {
-            background: white;
-            border: 2px solid #ff9800;
-            border-radius: 5px;
-            color: #ff9800;
-            padding: 10px;
-            cursor: pointer;
-            margin: 5px 0;
-            width: 100%;
-            transition: background 0.3s, color 0.3s;
-        }
-        .menu-list button:hover {
-            background: #ff9800;
-            color: white;
-        }
-        .content {
-            border-radius: 15px;
-            background-color: white;
-            padding: 20px;
-            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
-            margin: auto;
-            max-width: 90%;
-            position: relative;
-            z-index: 3;
-            display: block;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.5s, transform 0.5s;
-        }
-        .content.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        h1 {
-            background: linear-gradient(90deg, #ff9800, #9c27b0);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-weight: bold;
-            font-size: 3em;
-            text-align: center;
-            margin: 0;
-        }
-        .overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.9);
-            z-index: 20;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-        .overlay.show {
-            display: flex;
-            opacity: 1;
-        }
-        .dark-mode {
-            background-color: #121212;
-            color: white;
-        }
-        .beta-text {
-            position: fixed;
-            bottom: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: #ff9800;
-            font-size: 18px;
-            z-index: 5;
-        }
-        .background-circle {
-            position: absolute;
-            border-radius: 50%;
-            opacity: 0.5;
-            z-index: 0;
-        }
-        .circle {
-            background: radial-gradient(circle, #9c27b0, #ff9800);
-        }
-        .circle-1 { width: 150px; height: 150px; top: -50px; left: -100px; }
-        .circle-2 { width: 200px; height: 200px; top: 200px; left: 50px; }
-        .circle-3 { width: 100px; height: 100px; bottom: -50px; right: 100px; }
-        .circle-4 { width: 150px; height: 150px; top: 300px; right: -50px; }
-        .circle-5 { width: 120px; height: 120px; bottom: 100px; left: 150px; }
-        @media (max-width: 600px) {
-            .circle { width: 80px; height: 80px; }
-        }
-    </style>
 </head>
 <body>
-    <div class="menu" id="menu">
-        <button class="menu-button" id="menuButton" onclick="toggleMenu()">☰</button>
-        <div class="menu-list" id="menuList">
-            <button id="configButton" onclick="showConfig()">Configuración</button>
-            <button id="loginButton" onclick="showLogin()">Iniciar Sesión</button>
-            <button id="stellarButton" onclick="showStellarClient()">Stellar Client</button>
-            <button id="eventsButton" onclick="showEvents()">Eventos</button>
-            <button id="productsButton" onclick="showProducts()">Ver Productos</button>
-            <button id="contactButton" onclick="showContact()">Contáctanos</button>
-        </div>
+    <div class="loader" id="loader"></div>
+    <div class="container" id="main-content" style="display:none;">
+        <header>
+            <h1>MCStellar Production</h1>
+            <p>MCStellar es una compañia de edicion de video y creador de eventos minecraft. Hacemos trabajos de eventos minecraft con animaciones y muchos aspectos a tu gusto. Esperamos trabajar contigo pronto...</p>
+        </header>
+        <section>
+            <h2>Registro e Inicio de Sesión</h2>
+            <form id="registration-form">
+                <input type="text" placeholder="Nombre de usuario" required>
+                <input type="email" placeholder="Correo electrónico" required>
+                <input type="password" placeholder="Contraseña" required>
+                <button type="submit">Registrar</button>
+            </form>
+            <form id="login-form">
+                <input type="text" placeholder="Nombre de usuario" required>
+                <input type="password" placeholder="Contraseña" required>
+                <button type="submit">Iniciar Sesión</button>
+            </form>
+        </section>
     </div>
-
-    <div class="content show" id="content">
-        <h1 id="pageTitle">MCStellar Production</h1>
-        <p id="welcomeText">¡Bienvenido a MCStellar Production! Somos una compañía de producción de video y creadores de eventos en Minecraft.</p>
-    </div>
-
-    <div class="overlay" id="configOverlay">
-        <h2>Configuración</h2>
-        <label>
-            <input type="checkbox" id="darkModeToggle" onchange="toggleDarkMode()"> Modo Oscuro
-        </label>
-        <label for="languageSelect">Idioma:</label>
-        <select id="languageSelect" onchange="changeLanguage()">
-            <option value="es">Español</option>
-            <option value="en">Inglés</option>
-            <option value="fr">Francés</option>
-            <option value="ja">Japonés</option>
-            <option value="ru">Ruso</option>
-        </select>
-        <button onclick="closeOverlay()">Cerrar</button>
-    </div>
-
-    <div class="beta-text">- BETA_TEST MCSTELLAR WEB -</div>
-
-    <div class="background-circle circle circle-1"></div>
-    <div class="background-circle circle circle-2"></div>
-    <div class="background-circle circle circle-3"></div>
-    <div class="background-circle circle circle-4"></div>
-    <div class="background-circle circle circle-5"></div>
-
     <script>
-        function toggleMenu() {
-            const menuList = document.getElementById('menuList');
-            menuList.classList.toggle('show');
-        }
-
-        function toggleDarkMode() {
-            document.body.classList.toggle('dark-mode');
-        }
-
-        function closeOverlay() {
-            document.getElementById('configOverlay').classList.remove('show');
-        }
-
-        function showConfig() {
-            document.getElementById('configOverlay').classList.add('show');
-        }
-
-        function showLogin() {
-            alert("Función de inicio de sesión aún no implementada.");
-        }
-
-        function showStellarClient() {
-            alert("Función de Stellar Client aún no implementada.");
-        }
-
-        function showEvents() {
-            alert("Función de eventos aún no implementada.");
-        }
-
-        function showContact() {
-            alert("Función de contacto aún no implementada.");
-        }
-
-        function showProducts() {
-            alert("Función de ver productos aún no implementada.");
-        }
-
-        function changeLanguage() {
-            const language = document.getElementById('languageSelect').value;
-            const translations = {
-                es: {
-                    title: "MCStellar Production",
-                    welcome: "¡Bienvenido a MCStellar Production! Somos una compañía de producción de video y creadores de eventos en Minecraft.",
-                    config: "Configuración",
-                    login: "Iniciar Sesión",
-                    stellar: "Stellar Client",
-                    events: "Eventos",
-                    products: "Ver Productos",
-                    contact: "Contáctanos"
-                },
-                en: {
-                    title: "MCStellar Production",
-                    welcome: "Welcome to MCStellar Production! We are a video production company and event creators in Minecraft.",
-                    config: "Settings",
-                    login: "Login",
-                    stellar: "Stellar Client",
-                    events: "Events",
-                    products: "View Products",
-                    contact: "Contact Us"
-                },
+        window.onload = () => {
+            document.getElementById("loader").style.display = "none";
+            document.getElementById("main-content").style.display = "block";
+        };
+    </script>
+</body>
+</html>
