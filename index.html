@@ -11,12 +11,14 @@
             padding: 0;
             overflow: hidden;
             position: relative;
+            transition: background-color 0.3s, color 0.3s;
         }
         .menu {
             position: absolute;
             left: 20px;
             top: 20px;
             z-index: 10;
+            transition: transform 0.3s;
         }
         .menu-button {
             background: #ff9800;
@@ -26,6 +28,10 @@
             padding: 10px 20px;
             cursor: pointer;
             font-size: 18px;
+            transition: background 0.3s;
+        }
+        .menu-button:hover {
+            background: #e68a00;
         }
         .menu-list {
             display: none;
@@ -37,9 +43,14 @@
             padding: 10px;
             margin-top: 5px;
             z-index: 11;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: opacity 0.3s, transform 0.3s;
         }
         .menu-list.show {
             display: block;
+            opacity: 1;
+            transform: translateY(0);
         }
         .menu-list button {
             background: white;
@@ -50,6 +61,11 @@
             cursor: pointer;
             margin: 5px 0;
             width: 100%;
+            transition: background 0.3s, color 0.3s;
+        }
+        .menu-list button:hover {
+            background: #ff9800;
+            color: white;
         }
         .content {
             border-radius: 15px;
@@ -61,6 +77,13 @@
             position: relative;
             z-index: 3;
             display: block;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s, transform 0.5s;
+        }
+        .content.show {
+            opacity: 1;
+            transform: translateY(0);
         }
         h1 {
             background: linear-gradient(90deg, #ff9800, #9c27b0);
@@ -83,6 +106,12 @@
             justify-content: center;
             align-items: center;
             flex-direction: column;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .overlay.show {
+            display: flex;
+            opacity: 1;
         }
         .dark-mode {
             background-color: #121212;
@@ -120,15 +149,16 @@
     <div class="menu" id="menu">
         <button class="menu-button" id="menuButton" onclick="toggleMenu()">☰</button>
         <div class="menu-list" id="menuList">
-            <button onclick="showConfig()">Configuración</button>
-            <button onclick="showLogin()">Iniciar Sesión</button>
-            <button onclick="showStellarClient()">Stellar Client</button>
-            <button onclick="showEvents()">Eventos</button>
-            <button onclick="showContact()">Contáctanos</button>
+            <button id="configButton" onclick="showConfig()">Configuración</button>
+            <button id="loginButton" onclick="showLogin()">Iniciar Sesión</button>
+            <button id="stellarButton" onclick="showStellarClient()">Stellar Client</button>
+            <button id="eventsButton" onclick="showEvents()">Eventos</button>
+            <button id="productsButton" onclick="showProducts()">Ver Productos</button>
+            <button id="contactButton" onclick="showContact()">Contáctanos</button>
         </div>
     </div>
 
-    <div class="content" id="content">
+    <div class="content show" id="content">
         <h1 id="pageTitle">MCStellar Production</h1>
         <p id="welcomeText">¡Bienvenido a MCStellar Production! Somos una compañía de producción de video y creadores de eventos en Minecraft.</p>
     </div>
@@ -168,11 +198,11 @@
         }
 
         function closeOverlay() {
-            document.getElementById('configOverlay').style.display = 'none';
+            document.getElementById('configOverlay').classList.remove('show');
         }
 
         function showConfig() {
-            document.getElementById('configOverlay').style.display = 'flex';
+            document.getElementById('configOverlay').classList.add('show');
         }
 
         function showLogin() {
@@ -191,33 +221,25 @@
             alert("Función de contacto aún no implementada.");
         }
 
+        function showProducts() {
+            alert("Función de ver productos aún no implementada.");
+        }
+
         function changeLanguage() {
             const language = document.getElementById('languageSelect').value;
             const translations = {
                 es: {
                     title: "MCStellar Production",
-                    welcome: "¡Bienvenido a MCStellar Production! Somos una compañía de producción de video y creadores de eventos en Minecraft."
+                    welcome: "¡Bienvenido a MCStellar Production! Somos una compañía de producción de video y creadores de eventos en Minecraft.",
+                    config: "Configuración",
+                    login: "Iniciar Sesión",
+                    stellar: "Stellar Client",
+                    events: "Eventos",
+                    products: "Ver Productos",
+                    contact: "Contáctanos"
                 },
                 en: {
                     title: "MCStellar Production",
-                    welcome: "Welcome to MCStellar Production! We are a video production company and event creators in Minecraft."
-                },
-                fr: {
-                    title: "MCStellar Production",
-                    welcome: "Bienvenue à MCStellar Production! Nous sommes une société de production vidéo et créateurs d'événements dans Minecraft."
-                },
-                ja: {
-                    title: "MCStellar Production",
-                    welcome: "MCStellar Productionへようこそ！私たちはMinecraftのビデオ制作会社であり、イベントクリエイターです。"
-                },
-                ru: {
-                    title: "MCStellar Production",
-                    welcome: "Добро пожаловать в MCStellar Production! Мы компания по производству видео и создатели событий в Minecraft."
-                }
-            };
-            document.getElementById('pageTitle').innerText = translations[language].title;
-            document.getElementById('welcomeText').innerText = translations[language].welcome;
-        }
-    </script>
-</body>
-</html>
+                    welcome: "Welcome to MCStellar Production! We are a video production company and event creators in Minecraft.",
+                    config: "Settings",
+                    login:
