@@ -199,6 +199,28 @@
         .modal.active {
             display: block;
         }
+
+        /* Ajustes para móviles */
+        @media (max-width: 600px) {
+            .buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .button {
+                width: 100%;
+                padding: 15px;
+                font-size: 16px;
+            }
+
+            .section img {
+                max-width: 100%;
+            }
+
+            .section-text {
+                font-size: 16px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -228,7 +250,7 @@
     </div>
 
     <div class="section">
-        <img src="https://drive.google.com/file/d/1St9DL9z2VeaK3hvNguA7onk6eyTI4bCT/view?usp=drivesdk" alt="RedAguilar, Sharingel">
+        <img src="https://drive.google.com/uc?id=1St9DL9z2VeaK3hvNguA7onk6eyTI4bCT" alt="Ilustración de evento en Minecraft">
         <div class="section-text">
             Organizamos eventos en Minecraft personalizados para crear experiencias únicas y memorables.
         </div>
@@ -252,29 +274,3 @@
     </div>
 
     <script>
-        // Abrir/cerrar el modal
-        function toggleModal() {
-            document.getElementById("configModal").classList.toggle("active");
-        }
-
-        // Función de Modo Oscuro
-        function toggleDarkMode() {
-            document.body.classList.toggle("dark-mode");
-        }
-
-        // Función de Modo Escritorio
-        function toggleDesktopMode() {
-            document.body.classList.toggle("desktop-mode");
-        }
-
-        // Función para deshabilitar animaciones
-        function toggleAnimations() {
-            const disableAnimations = document.getElementById("disableAnimationsToggle").checked;
-            document.querySelectorAll('*').forEach(element => {
-                element.style.animation = disableAnimations ? 'none' : '';
-            });
-        }
-    </script>
-
-</body>
-</html>
