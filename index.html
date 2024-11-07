@@ -86,13 +86,13 @@
         /* Estilo para la sección de servicios */
         .services {
             display: flex;
+            flex-wrap: wrap;
             justify-content: space-between;
-            flex-wrap: wrap; /* Permite que los elementos se ajusten en filas */
             margin-top: 5px;
         }
 
         .service {
-            width: 30%; /* Ajustamos el tamaño para pantallas grandes */
+            width: 48%; /* Los servicios ocupan la mitad de la pantalla */
             background-color: white;
             padding: 60px;
             border-radius: 8px;
@@ -122,7 +122,7 @@
         .balloons {
             display: flex;
             flex-wrap: wrap;
-            justify-content: space-around;
+            justify-content: space-between;
             margin-top: 10px;
             padding: 0 10px;
         }
@@ -132,10 +132,9 @@
             color: white;
             border-radius: 50px;
             padding: 20px 30px;
-            margin: 20px;
+            margin: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            width: 25%; /* Usar un porcentaje para que el ancho se ajuste */
-            max-width: 120px; /* Limitar el tamaño máximo para evitar que se desborde */
+            width: 48%; /* Los globos ocupan el 50% de la pantalla */
             text-align: center;
             font-size: 1.2rem;
             transition: transform 0.3s ease-in-out;
@@ -172,13 +171,13 @@
             }
 
             .service {
-                width: 80%; /* Asegura que los servicios ocupen más espacio en pantallas pequeñas */
+                width: 80%; /* Los servicios ocupan más espacio en pantallas pequeñas */
                 margin-bottom: 30px;
             }
 
             .balloon {
-                width: 45%; /* Ajustamos el tamaño de los globos en pantallas más pequeñas */
-                margin: 20px 0;
+                width: 48%; /* Los globos ocupan la mitad de la pantalla en pantallas pequeñas */
+                margin: 10px;
                 padding: 15px;
             }
         }
@@ -190,12 +189,12 @@
             }
 
             .service {
-                width: 90%; /* Los servicios ocupan casi todo el ancho en pantallas muy pequeñas */
+                width: 90%; /* Los servicios ocupan casi todo el ancho en pantallas más pequeñas */
                 margin-bottom: 20px;
             }
 
             .balloon {
-                width: 100%; /* Los globos ocupan el 100% del ancho disponible */
+                width: 90%; /* Los globos ocupan el 90% del ancho disponible */
                 margin: 10px 0;
                 padding: 12px;
             }
