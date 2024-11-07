@@ -6,7 +6,7 @@
     <title>MCStellarWeb [BETATEST]</title>
     <style>
         /* Reset de estilos básicos */
-        {
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -23,7 +23,7 @@
         /* Contenedor principal */
         .container {
             width: 100%;
-            max-width: 2900px;
+            max-width: 1200px; /* Limitamos el ancho máximo para pantallas grandes */
             margin: 0 auto;
             padding: 60px;
         }
@@ -65,7 +65,9 @@
         /* Estilo para el banner */
         .banner {
             position: relative;
-            background: <img src="minecraftredsurvival.png">;
+            background-image: url('minecraftredsurvival.png');
+            background-size: cover;
+            background-position: center;
             height: 20vh;
             display: flex;
             justify-content: center;
@@ -85,16 +87,18 @@
         .services {
             display: flex;
             justify-content: space-between;
+            flex-wrap: wrap; /* Permite que los elementos se ajusten en filas */
             margin-top: 5px;
         }
 
         .service {
-            width: 20%;
+            width: 30%; /* Ajustamos el tamaño para pantallas grandes */
             background-color: white;
             padding: 60px;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease-in-out;
+            margin-bottom: 30px; /* Para que no se superpongan */
         }
 
         .service:hover {
@@ -128,9 +132,10 @@
             color: white;
             border-radius: 50px;
             padding: 20px 30px;
-            margin: 30px;
+            margin: 20px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            width: 20px;
+            width: 25%; /* Usar un porcentaje para que el ancho se ajuste */
+            max-width: 120px; /* Limitar el tamaño máximo para evitar que se desborde */
             text-align: center;
             font-size: 1.2rem;
             transition: transform 0.3s ease-in-out;
@@ -167,13 +172,14 @@
             }
 
             .service {
-                width: 100%;
-                margin-bottom: 80px;
+                width: 80%; /* Asegura que los servicios ocupen más espacio en pantallas pequeñas */
+                margin-bottom: 30px;
             }
 
             .balloon {
-                width: 90px;
-                margin: 50px;
+                width: 45%; /* Ajustamos el tamaño de los globos en pantallas más pequeñas */
+                margin: 20px 0;
+                padding: 15px;
             }
         }
 
@@ -184,14 +190,14 @@
             }
 
             .service {
-                width: 100%;
-                margin-bottom: 120px;
+                width: 90%; /* Los servicios ocupan casi todo el ancho en pantallas muy pequeñas */
+                margin-bottom: 20px;
             }
-            
+
             .balloon {
-                width: 100%;
+                width: 100%; /* Los globos ocupan el 100% del ancho disponible */
                 margin: 10px 0;
-                padding: 15px;
+                padding: 12px;
             }
 
             .balloons {
@@ -239,24 +245,29 @@
     <!-- Sección de globos de texto -->
     <section class="balloons">
         <div class="balloon">
-        <a href="https://mcstellarproduction.github.io/stellarclient/">
-            <p>Stellar Client</p>
+            <a href="https://mcstellarproduction.github.io/stellarclient/">
+                <p>Stellar Client</p>
+            </a>
         </div>
         <div class="balloon">
-        <a href="https://www.youtube.com/@mcstellarofficial">
-            <p>Youtube</p>
+            <a href="https://www.youtube.com/@mcstellarofficial">
+                <p>Youtube</p>
+            </a>
         </div>
         <div class="balloon">
-        <a href="https://discord.gg/7peCEVcsVB">
-            <p>Discord</p>
+            <a href="https://discord.gg/7peCEVcsVB">
+                <p>Discord</p>
+            </a>
         </div>
         <div class="balloon">
-        <a href="https://www.youtube.com/watch?v=vOdckl9YBPw">
-            <p>Último Video</p>
+            <a href="https://www.youtube.com/watch?v=vOdckl9YBPw">
+                <p>Último Video</p>
+            </a>
         </div>
         <div class="balloon">
-        <a href="https://mcstellarproduction.github.io/stellarclient/">
-            <p>Eventos Minecraft</p>
+            <a href="https://mcstellarproduction.github.io/stellarclient/">
+                <p>Eventos Minecraft</p>
+            </a>
         </div>
     </section>
 
