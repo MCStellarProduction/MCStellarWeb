@@ -4,39 +4,157 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MCStellar [BETATEST]</title>
-    <link rel="icon" href="mcstellaricon.png" type="image/x-icon">
+    <style>
+        /* Reset de estilos básicos */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Fondo y color de la página */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Contenedor principal */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Estilo para el encabezado */
+        header {
+            background-color: #222;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+        }
+
+        header nav {
+            margin-top: 10px;
+        }
+
+        header nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        header nav a:hover {
+            color: #ff7f50;
+        }
+
+        /* Estilo para el banner */
+        .banner {
+            position: relative;
+            background: url('https://via.placeholder.com/1600x600') no-repeat center center/cover;
+            height: 60vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+
+        .banner h2 {
+            font-size: 3rem;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        /* Estilo para la sección de servicios */
+        .services {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+        }
+
+        .service {
+            width: 30%;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .service:hover {
+            transform: translateY(-10px);
+        }
+
+        .service h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .service p {
+            font-size: 1rem;
+            color: #555;
+        }
+
+        /* Estilo para el pie de página */
+        footer {
+            background-color: #222;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+        }
+    </style>
 </head>
 <body>
     <header>
-        <nav>
-            <ul>
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#servicios">Servicios</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#contacto">Contacto</a></li>
-            </ul>
-        </nav>
+        <div class="container">
+            <h1>MCStellar Production</h1>
+            <nav>
+                <a href="#home">Inicio</a>
+                <a href="#about">Sobre nosotros</a>
+                <a href="#services">Servicios</a>
+                <a href="#contact">Contacto</a>
+            </nav>
+        </div>
     </header>
-    <section id="inicio">
-        <div class="intro">
-            <h1>Bienvenidos a MCStellar</h1>
-            <p>Transformamos ideas en experiencias sonoras únicas.</p>
-            <p>Tu música, nuestra pasión.</p>
+
+    <section class="banner">
+        <div class="container">
+            <h2>Diseñamos experiencias únicas</h2>
         </div>
     </section>
-    <section id="servicios">
-        <h2>Servicios</h2>
-        <div class="service-box">
-            <h3>Producción Musical</h3>
-            <p>Desde la creación hasta la postproducción, damos vida a tu música.</p>
-        </div>
-        <div class="service-box">
-            <h3>Mezcla y Masterización</h3>
-            <p>El toque profesional para que tu música suene como debe.</p>
+
+    <section class="services" id="services">
+        <div class="container">
+            <div class="service">
+                <h3>Diseño Gráfico</h3>
+                <p>Ofrecemos soluciones visuales creativas para tu marca o proyecto. Desde logotipos hasta identidades visuales completas.</p>
+            </div>
+            <div class="service">
+                <h3>Desarrollo Web</h3>
+                <p>Creación de sitios web modernos, responsivos y optimizados para ofrecer la mejor experiencia al usuario.</p>
+            </div>
+            <div class="service">
+                <h3>Consultoría Creativa</h3>
+                <p>Ayudamos a tu marca a encontrar el camino creativo para destacarse en el mercado competitivo.</p>
+            </div>
         </div>
     </section>
+
     <footer>
-        <p>&copy; 2024 MCStellar. Todos los derechos reservados.</p>
+        <p>&copy; 2024 MCStellar - Todos los derechos reservados.</p>
     </footer>
 </body>
 </html>
