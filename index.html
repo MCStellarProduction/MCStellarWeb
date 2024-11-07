@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MCStellar [BETATEST]</title>
+    <title>MCStellarWeb [BETATEST]</title>
     <style>
         /* Reset de estilos básicos */
         * {
@@ -103,6 +103,37 @@
             color: #555;
         }
 
+        /* Estilo para los globos de texto */
+        .balloons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin-top: 50px;
+            padding: 0 10px;
+        }
+
+        .balloon {
+            background-color: #ff7f50;
+            color: white;
+            border-radius: 50px;
+            padding: 20px 30px;
+            margin: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 250px;
+            text-align: center;
+            font-size: 1.2rem;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .balloon:hover {
+            transform: translateY(-10px);
+        }
+
+        .balloon p {
+            font-size: 1rem;
+            color: white;
+        }
+
         /* Estilo para el pie de página */
         footer {
             background-color: #222;
@@ -115,12 +146,42 @@
         footer p {
             font-size: 0.9rem;
         }
+
+        /* Responsividad para pantallas pequeñas */
+        @media (max-width: 768px) {
+            .services {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .service {
+                width: 80%;
+                margin-bottom: 20px;
+            }
+
+            .balloon {
+                width: 200px;
+                margin: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .balloon {
+                width: 100%;
+                margin: 10px 0;
+                padding: 15px;
+            }
+
+            .balloons {
+                padding: 0 5px;
+            }
+        }
     </style>
 </head>
 <body>
     <header>
         <div class="container">
-            <h1>MCStellar Production</h1>
+            <h1>Eufonía Studio</h1>
             <nav>
                 <a href="#home">Inicio</a>
                 <a href="#about">Sobre nosotros</a>
@@ -153,8 +214,27 @@
         </div>
     </section>
 
+    <!-- Sección de globos de texto -->
+    <section class="balloons">
+        <div class="balloon">
+            <p>Innovación constante</p>
+        </div>
+        <div class="balloon">
+            <p>Diseños creativos</p>
+        </div>
+        <div class="balloon">
+            <p>Soluciones efectivas</p>
+        </div>
+        <div class="balloon">
+            <p>Impacto visual</p>
+        </div>
+        <div class="balloon">
+            <p>Desarrollo web ágil</p>
+        </div>
+    </section>
+
     <footer>
-        <p>&copy; 2024 MCStellar - Todos los derechos reservados.</p>
+        <p>&copy; 2024 MCStellar Production - Todos los derechos reservados.</p>
     </footer>
 </body>
 </html>
