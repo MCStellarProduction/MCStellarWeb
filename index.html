@@ -165,42 +165,61 @@
 
         /* Responsividad para pantallas pequeñas */
         @media (max-width: 768px) {
-            .services {
-                flex-direction: column;
-                align-items: center;
+            body {
+                font-size: 14px; /* Reducimos el tamaño de texto en pantallas pequeñas */
             }
 
-            .service {
-                width: 80%; /* Los servicios ocupan más espacio en pantallas pequeñas */
-                margin-bottom: 30px;
+            header h3 {
+                font-size: 2rem; /* Reducimos el tamaño del encabezado */
+            }
+
+            .service h3 {
+                font-size: 1.5rem; /* Reducimos el tamaño de los títulos de servicios */
+            }
+
+            .service p {
+                font-size: 0.9rem; /* Reducimos el tamaño del texto en los servicios */
             }
 
             .balloon {
                 width: 48%; /* Los globos ocupan la mitad de la pantalla en pantallas pequeñas */
-                margin: 10px;
+                margin: 5px;
                 padding: 15px;
+                font-size: 1rem; /* Reducimos el tamaño de fuente de los globos */
+            }
+
+            footer {
+                padding: 15px 0; /* Reducimos el relleno del pie de página */
             }
         }
 
         @media (max-width: 480px) {
-            .services {
-                flex-direction: column;
-                align-items: center;
+            body {
+                font-size: 13px; /* Aún más pequeño en pantallas muy pequeñas */
+            }
+
+            .container {
+                padding: 40px 10px; /* Reducimos el relleno de los contenedores */
+            }
+
+            header h3 {
+                font-size: 1.5rem; /* Reducimos aún más el tamaño del encabezado */
             }
 
             .service {
-                width: 90%; /* Los servicios ocupan casi todo el ancho en pantallas más pequeñas */
-                margin-bottom: 20px;
+                width: 90%; /* Los servicios ocupan casi todo el ancho en pantallas pequeñas */
+                margin-bottom: 15px;
             }
 
             .balloon {
-                width: 90%; /* Los globos ocupan el 90% del ancho disponible */
-                margin: 10px 0;
+                width: 90%; /* Los globos ocupan más espacio en pantallas muy pequeñas */
+                margin: 5px 0;
                 padding: 12px;
+                font-size: 0.9rem; /* Reducimos aún más el tamaño de los textos en los globos */
             }
 
-            .balloons {
-                padding: 0 5px;
+            footer {
+                padding: 10px 0; /* Reducimos aún más el relleno del pie de página */
             }
         }
     </style>
@@ -241,7 +260,6 @@
         </div>
     </section>
 
-    <!-- Sección de globos de texto -->
     <section class="balloons">
         <div class="balloon">
             <a href="https://mcstellarproduction.github.io/stellarclient/">
