@@ -36,30 +36,42 @@
             text-align: center;
         }
 
-        header h3 {
-            font-size: 2.5rem;
-            background: linear-gradient(to right, #ff7f50, #8a2be2); /* Gradiente de naranja a morado */
-            -webkit-background-clip: text;
-            color: transparent;
+        /* Reemplazamos el título con una imagen */
+        header img {
+            max-width: 100%; /* Hace que la imagen sea responsiva */
+            height: auto;
         }
 
+        /* Estilo para la navegación en forma de lista centrada */
         header nav {
-            margin-top: 10px;
+            margin-top: 20px;
         }
 
-        header nav a {
+        header nav ul {
+            list-style-type: none; /* Quitamos los puntos de la lista */
+            display: flex;
+            justify-content: center; /* Centra los elementos en el contenedor */
+            gap: 20px; /* Espaciado entre los elementos */
+        }
+
+        header nav ul li {
+            display: inline; /* Los elementos de lista se muestran en línea */
+        }
+
+        header nav ul li a {
             color: #e0e0e0; /* Color claro para los enlaces */
-            margin: 0 20px;
-            text-decoration: none;
             font-weight: bold;
+            text-decoration: none;
             text-transform: uppercase;
-            transition: all 0.3s ease-in-out;
+            padding: 10px 20px;
+            background-color: #333; /* Fondo oscuro en los botones */
+            border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
-        header nav a:hover {
-            background: linear-gradient(to right, #ff7f50, #8a2be2); /* Gradiente de naranja a morado */
-            -webkit-background-clip: text;
-            color: transparent;
+        header nav ul li a:hover {
+            background-color: #ff7f50; /* Fondo naranja en hover */
+            color: #fff; /* Texto blanco en hover */
         }
 
         /* Estilo para el banner */
@@ -228,12 +240,15 @@
 <body>
     <header>
         <div class="container">
-            <h3>MCStellar Production</h3>
+            <!-- Imagen personalizada como título -->
+            <img src="mcstellar_logo.png" alt="MCStellar Production Logo"> <!-- Reemplaza con tu imagen personalizada -->
             <nav>
-                <a href="#home">Inicio</a>
-                <a href="#about">Sobre nosotros</a>
-                <a href="#services">Servicios</a>
-                <a href="#contact">Contacto</a>
+                <ul>
+                    <li><a href="#home">Inicio</a></li>
+                    <li><a href="#about">Sobre nosotros</a></li>
+                    <li><a href="#services">Servicios</a></li>
+                    <li><a href="#contact">Contacto</a></li>
+                </ul>
             </nav>
         </div>
     </header>
