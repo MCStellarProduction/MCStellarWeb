@@ -135,7 +135,7 @@
         .balloons {
             display: flex;
             flex-wrap: wrap;
-            justify-content: space-between;
+            justify-content: space-around; /* Espaciado igual entre los globos */
             margin-top: 10px;
             padding: 0 10px;
         }
@@ -147,7 +147,7 @@
             padding: 20px 30px;
             margin: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            width: 48%; /* Los globos ocupan el 50% de la pantalla */
+            width: 200px; /* Ancho fijo para los globos */
             text-align: center;
             font-size: 1.2rem;
             transition: transform 0.3s ease-in-out;
@@ -195,7 +195,7 @@
             }
 
             .balloon {
-                width: 48%; /* Los globos ocupan la mitad de la pantalla en pantallas pequeñas */
+                width: 45%; /* Los globos ocupan la mitad de la pantalla en pantallas pequeñas */
                 margin: 5px;
                 padding: 15px;
                 font-size: 1rem; /* Reducimos el tamaño de fuente de los globos */
