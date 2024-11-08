@@ -53,6 +53,7 @@
             display: flex;
             justify-content: center; /* Centra los elementos en el contenedor */
             gap: 20px; /* Espaciado entre los elementos */
+            flex-wrap: wrap; /* Permite que los elementos se ajusten en varias filas si es necesario */
         }
 
         header nav ul li {
@@ -188,12 +189,18 @@
                 font-size: 2rem; /* Reducimos el tamaño del encabezado */
             }
 
+            header nav ul {
+                flex-direction: column; /* Los botones se apilan en una columna */
+                gap: 15px; /* Más espacio entre los botones */
+            }
+
             .service {
                 width: 48%; /* Los servicios ocupan la mitad de la pantalla */
+                margin-bottom: 20px; /* Más espacio entre los servicios */
             }
 
             .balloon {
-                width: 45%; /* Los globos ocupan el 45% en pantallas más pequeñas */
+                width: 48%; /* Los globos ocupan el 48% en pantallas más pequeñas */
                 margin: 5px;
                 padding: 15px;
                 font-size: 1rem; /* Reducimos el tamaño de fuente de los globos */
@@ -239,7 +246,7 @@
     <header>
         <div class="container">
             <!-- Imagen personalizada como título -->
-            <img src="mcstellartitle.png" alt="MCStellar Production Logo"> <!-- Reemplaza con tu imagen personalizada -->
+            <img src="mcstellartitle.png" alt="MCStellar Production Logo">
             <nav>
                 <ul>
                     <li><a href="#home">Inicio</a></li>
