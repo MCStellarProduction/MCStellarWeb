@@ -28,7 +28,7 @@
         .menu {
             position: fixed;
             top: 0;
-            left: -250px;
+            left: -250px; /* Inicia oculto a la izquierda */
             width: 250px;
             height: 100%;
             background-color: rgba(0, 0, 0, 0.9);
@@ -36,6 +36,7 @@
             transition: left 0.3s ease;
             z-index: 1000;
             padding-top: 50px;
+            display: none; /* Ocultar el menú por defecto en móviles */
         }
 
         .menu a {
@@ -109,18 +110,13 @@
         @media (max-width: 768px) {
             .menu {
                 width: 100%;
+                left: -100%; /* Lo mantiene oculto por defecto */
+                display: block; /* Asegura que el menú esté bloqueado y oculto */
             }
-        }
 
-        /* Fondo oscuro claro */
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #2e2e2e;
-            color: #fff;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            position: relative;
+            .menu.show {
+                left: 0; /* Desliza hacia la izquierda */
+            }
         }
 
         /* Sección con fondo oscuro y sombra */
@@ -263,20 +259,13 @@
     </div>
 
     <script>
-        // Interacción del botón hamburguesa
+        // Función para activar el menú
         const hamburgerBtn = document.getElementById('hamburgerBtn');
         const menu = document.getElementById('menu');
 
         hamburgerBtn.addEventListener('click', function() {
-            this.classList.toggle('check');
-            if (this.classList.contains('check')) {
-                menu.style.left = '0';
-                setTimeout(() => {
-                    this.classList.remove('check');
-                }, 2000); // Restablecer a las tres rayas después de 2 segundos
-            } else {
-                menu.style.left = '-250px';
-            }
+            this.classList.toggle('open');
+            menu.classList.toggle('show');
         });
     </script>
 
