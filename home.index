@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MCStellar Production</title>
+    <style>
+        /* Reset de estilos por defecto */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Fondo oscuro y tipografía profesional */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #fff;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Diseño de contenedor principal */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Encabezado de la página */
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            color: #00bfff;
+            border-bottom: 3px solid #00bfff;
+            padding-bottom: 10px;
+        }
+
+        /* Sección con animaciones */
+        section {
+            margin-bottom: 50px;
+            padding: 20px;
+            border-radius: 15px;
+            background-color: #222;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.5s ease-out;
+        }
+
+        section.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        h2 {
+            font-size: 2rem;
+            color: #00bfff;
+            margin-bottom: 20px;
+        }
+
+        .card {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .card .item {
+            background-color: #333;
+            border-radius: 10px;
+            width: 300px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .card .item:hover {
+            transform: scale(1.05);
+        }
+
+        .card .item img {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        .card .item h3 {
+            margin-top: 15px;
+            font-size: 1.5rem;
+            color: #fff;
+        }
+
+        .card .item p {
+            color: #ddd;
+        }
+
+        .video-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .video-container iframe {
+            width: 100%;
+            height: 315px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Responsividad */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+
+            .card .item {
+                width: 100%;
+            }
+
+            .video-container iframe {
+                width: 100%;
+                height: 200px;
+            }
+        }
+
+        /* Animaciones al hacer scroll */
+        @keyframes slideIn {
+            0% { opacity: 0; transform: translateY(50px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Encabezado -->
+        <header>
+            <h1>MCStellar Production</h1>
+        </header>
+
+        <!-- Sección de Novedades -->
+        <section id="novedades" class="active">
+            <h2>Novedades</h2>
+            <div class="card">
+                <div class="item">
+                    <img src="https://via.placeholder.com/300" alt="Novedad 1">
+                    <h3>Novedad 1</h3>
+                    <p>Descripción breve de la novedad 1. Lorem ipsum dolor sit amet.</p>
+                </div>
+                <div class="item">
+                    <img src="https://via.placeholder.com/300" alt="Novedad 2">
+                    <h3>Novedad 2</h3>
+                    <p>Descripción breve de la novedad 2. Lorem ipsum dolor sit amet.</p>
+                </div>
+                <!-- Agrega más novedades según sea necesario -->
+            </div>
+        </section>
+
+        <!-- Sección de Videos Recientes -->
+        <section id="videos-recientes" class="active">
+            <h2>Videos Recientes</h2>
+            <div class="video-container">
+                <!-- Aquí se cargarían los videos desde YouTube -->
+                <iframe src="https://www.youtube.com/embed/latest-video-id" title="Video 1" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/latest-video-id" title="Video 2" allowfullscreen></iframe>
+                <!-- Agregar más videos si es necesario -->
+            </div>
+        </section>
+
+        <!-- Sección de Eventos Minecraft -->
+        <section id="eventos-minecraft" class="active">
+            <h2>Eventos Minecraft</h2>
+            <div class="card">
+                <div class="item">
+                    <img src="https://via.placeholder.com/300" alt="Evento 1">
+                    <h3>Evento Minecraft 1</h3>
+                    <p>Descripción del evento 1. Fecha: 10/11/2024. ¡No te lo pierdas!</p>
+                </div>
+                <div class="item">
+                    <img src="https://via.placeholder.com/300" alt="Evento 2">
+                    <h3>Evento Minecraft 2</h3>
+                    <p>Descripción del evento 2. Fecha: 15/11/2024. ¡Ven a participar!</p>
+                </div>
+                <!-- Agregar más eventos según sea necesario -->
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Función para activar animaciones cuando se hace scroll
+        document.addEventListener("scroll", function() {
+            const sections = document.querySelectorAll('section');
+            sections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                if (sectionTop < windowHeight - 100) {
+                    section.classList.add('active');
+                }
+            });
+        });
+
+        // Si el navegador soporta Intersection Observer, usaremos una alternativa más eficiente
+        if ('IntersectionObserver' in window) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, {
+                threshold: 0.5
+            });
+
+            document.querySelectorAll('section').forEach(section => {
+                observer.observe(section);
+            });
+        }
+    </script>
+
+</body>
+</html>
