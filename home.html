@@ -16,20 +16,12 @@
         /* Fondo oscuro claro */
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #2e2e2e; /* Fondo de tono oscuro claro */
+            background-color: #2e2e2e;
             color: #fff;
             line-height: 1.6;
             margin: 0;
             padding: 0;
             position: relative;
-        }
-
-        /* Diseño de contenedor principal */
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 20px;
         }
 
         /* Menú deslizable a la izquierda */
@@ -41,7 +33,7 @@
             height: 100%;
             background-color: rgba(0, 0, 0, 0.9);
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
-            transition: left 0.5s ease;
+            transition: left 0.3s ease;
             z-index: 1000;
             padding-top: 50px;
         }
@@ -77,10 +69,7 @@
             color: #fff;
             cursor: pointer;
             z-index: 2000;
-        }
-
-        .hamburger:checked + .menu {
-            left: 0;
+            transition: transform 0.3s ease;
         }
 
         .hamburger .bar {
@@ -92,16 +81,35 @@
             transition: 0.3s ease;
         }
 
-        .hamburger:checked .bar:nth-child(1) {
-            transform: rotate(-45deg) translate(-5px, 6px);
+        .hamburger.open .bar:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
         }
 
-        .hamburger:checked .bar:nth-child(2) {
+        .hamburger.open .bar:nth-child(2) {
             opacity: 0;
         }
 
-        .hamburger:checked .bar:nth-child(3) {
-            transform: rotate(45deg) translate(-5px, -6px);
+        .hamburger.open .bar:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        .hamburger.check .bar:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger.check .bar:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.check .bar:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        /* Pantalla completa en móvil */
+        @media (max-width: 768px) {
+            .menu {
+                width: 100%;
+            }
         }
 
         /* Fondo oscuro claro */
@@ -183,46 +191,19 @@
             color: #bbb;
         }
 
-        /* Estilos para pantalla pequeña */
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 2.5rem;
-            }
-
-            .card .item {
-                width: 100%;
-            }
-
-            .video-container iframe {
-                width: 100%;
-                height: 200px;
-            }
-
-            h2 {
-                font-size: 2rem;
-            }
-        }
-
-        /* Animación al hacer scroll */
-        @keyframes slideIn {
-            0% { opacity: 0; transform: translateY(50px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-
     </style>
 </head>
 <body>
 
     <!-- Botón hamburguesa -->
-    <label for="hamburger" class="hamburger">
-        <input type="checkbox" id="hamburger">
+    <button class="hamburger" id="hamburgerBtn">
         <span class="bar"></span>
         <span class="bar"></span>
         <span class="bar"></span>
-    </label>
+    </button>
 
     <!-- Menú deslizable -->
-    <div class="menu">
+    <div class="menu" id="menu">
         <a href="#home">Home</a>
         <a href="#informacion">Información</a>
         <a href="#configuracion">Configuración</a>
@@ -282,34 +263,21 @@
     </div>
 
     <script>
-        // Función para activar animaciones cuando se hace scroll
-        document.addEventListener("scroll", function() {
-            const sections = document.querySelectorAll('section');
-            sections.forEach(section => {
-                const sectionTop = section.getBoundingClientRect().top;
-                const windowHeight = window.innerHeight;
-                if (sectionTop < windowHeight - 100) {
-                    section.classList.add('active');
-                }
-            });
+        // Interacción del botón hamburguesa
+        const hamburgerBtn = document.getElementById('hamburgerBtn');
+        const menu = document.getElementById('menu');
+
+        hamburgerBtn.addEventListener('click', function() {
+            this.classList.toggle('check');
+            if (this.classList.contains('check')) {
+                menu.style.left = '0';
+                setTimeout(() => {
+                    this.classList.remove('check');
+                }, 2000); // Restablecer a las tres rayas después de 2 segundos
+            } else {
+                menu.style.left = '-250px';
+            }
         });
-
-        // Si el navegador soporta Intersection Observer, usaremos una alternativa más eficiente
-        if ('IntersectionObserver' in window) {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('active');
-                    }
-                });
-            }, {
-                threshold: 0.5
-            });
-
-            document.querySelectorAll('section').forEach(section => {
-                observer.observe(section);
-            });
-        }
     </script>
 
 </body>
