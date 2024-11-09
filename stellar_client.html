@@ -42,6 +42,69 @@
       transition: all 0.3s ease;
     }
 
+    /* Estilo del botón hamburguesa */
+    .hamburger {
+      display: none;
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 1001;
+      cursor: pointer;
+    }
+
+    .hamburger .bar {
+      width: 30px;
+      height: 5px;
+      background-color: #fff;
+      margin: 6px auto;
+      transition: 0.3s;
+    }
+
+    .hamburger.open .bar:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .hamburger.open .bar:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.open .bar:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+    /* Estilo para el menú lateral */
+    .menu {
+      position: fixed;
+      top: 0;
+      left: -250px; /* Oculto por defecto */
+      width: 250px;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+      transition: left 0.3s ease;
+      z-index: 1000;
+      display: none; /* Ocultar menú por defecto */
+    }
+
+    .menu.show {
+      left: 0; /* Mostrar menú cuando se activa */
+      display: block;
+    }
+
+    .menu a {
+      display: block;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+      font-size: 1.5rem;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+
+    .menu a:hover {
+      background-color: #ff7f50;
+    }
+
     /* Estilo para el contenedor de idiomas */
     .language-selector-container {
       width: 100%;
@@ -227,6 +290,21 @@
 </head>
 <body>
 
+  <!-- Botón Hamburguesa -->
+  <div class="hamburger" id="hamburgerBtn">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+  </div>
+
+  <!-- Menú Lateral -->
+  <div class="menu" id="menu">
+    <a href="#">Inicio</a>
+    <a href="#">Instancias</a>
+    <a href="#">Eventos</a>
+    <a href="#">Contacto</a>
+  </div>
+
   <!-- Bloque superior -->
   <div class="header" id="header-text">
     Stellar Client • Instancias
@@ -290,6 +368,12 @@
       document.getElementById('event-status').textContent = translations[language].eventStatus;
       document.getElementById('event-description').textContent = translations[language].eventDescription;
     }
+
+    // Función para abrir/cerrar el menú hamburguesa
+    document.getElementById('hamburgerBtn').addEventListener('click', function() {
+      this.classList.toggle('open');
+      document.getElementById('menu').classList.toggle('show');
+    });
   </script>
 
 </body>
