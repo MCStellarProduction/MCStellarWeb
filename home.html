@@ -31,25 +31,25 @@
             padding: 40px 20px;
         }
 
-        /* Encabezado */
+        /* Encabezado con imagen custom */
         header {
             text-align: center;
             margin-bottom: 30px;
-            padding: 30px 20px;
+            padding: 0;
             background-color: rgba(0, 0, 0, 0.6); /* Fondo oscuro translúcido */
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
         }
 
         header h1 {
-            font-size: 3rem;
-            background: linear-gradient(135deg, #ff7e5f, #feb47b, #9b59b6); /* Gradiente Naranja a Morado */
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+            display: block;
+            width: 100%;
+            height: 0;
+            padding-top: 56.25%; /* Proporción 16:9 */
+            background-image: url('https://via.placeholder.com/1200x675'); /* Reemplazar con la URL de tu imagen personalizada */
+            background-size: cover;
+            background-position: center;
+            border-radius: 10px;
         }
 
         /* Sección con fondo oscuro y sombra */
@@ -78,7 +78,6 @@
             margin-bottom: 20px;
             text-transform: uppercase;
             letter-spacing: 1px;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
             padding-bottom: 10px;
             border-bottom: 2px solid #feb47b; /* Línea debajo del título */
         }
@@ -172,9 +171,9 @@
 <body>
 
     <div class="container">
-        <!-- Encabezado -->
+        <!-- Encabezado con imagen custom -->
         <header>
-            <h1>MCStellar Production</h1>
+            <h1></h1> <!-- Este encabezado ahora es una imagen de fondo -->
         </header>
 
         <!-- Sección de Novedades -->
