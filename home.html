@@ -13,14 +13,15 @@
             box-sizing: border-box;
         }
 
-        /* Fondo oscuro y tipografía profesional */
+        /* Fondo con gradiente de Naranja a Morado y tipografía moderna */
         body {
-            font-family: Arial, sans-serif;
-            background-color: #121212;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #ff7e5f, #feb47b, #9b59b6); /* Gradiente de Naranja a Morado */
             color: #fff;
             line-height: 1.6;
-            margin: 0;
             padding: 0;
+            margin: 0;
+            background-attachment: fixed;
         }
 
         /* Diseño de contenedor principal */
@@ -28,20 +29,23 @@
             width: 100%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 40px 20px;
         }
 
-        /* Encabezado de la página */
+        /* Encabezado con gradiente */
         header {
             text-align: center;
             margin-bottom: 30px;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            border-radius: 10px;
         }
 
         header h1 {
             font-size: 3rem;
-            color: #00bfff;
-            border-bottom: 3px solid #00bfff;
-            padding-bottom: 10px;
+            color: #fff;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+            letter-spacing: 2px;
         }
 
         /* Sección con animaciones */
@@ -49,8 +53,8 @@
             margin-bottom: 50px;
             padding: 20px;
             border-radius: 15px;
-            background-color: #222;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            background-color: rgba(0, 0, 0, 0.5);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
             opacity: 0;
             transform: translateY(50px);
             transition: all 0.5s ease-out;
@@ -62,15 +66,16 @@
         }
 
         h2 {
-            font-size: 2rem;
-            color: #00bfff;
+            font-size: 2.5rem;
+            color: #ffcc00; /* Color dorado para resaltar */
             margin-bottom: 20px;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
         }
 
         .card {
             display: flex;
             flex-wrap: wrap;
-            gap: 20px;
+            gap: 30px;
             justify-content: center;
         }
 
@@ -79,12 +84,13 @@
             border-radius: 10px;
             width: 300px;
             padding: 20px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
             transition: transform 0.3s ease;
         }
 
         .card .item:hover {
             transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
         }
 
         .card .item img {
@@ -94,8 +100,9 @@
 
         .card .item h3 {
             margin-top: 15px;
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             color: #fff;
+            text-transform: uppercase;
         }
 
         .card .item p {
@@ -113,7 +120,12 @@
             width: 100%;
             height: 315px;
             border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s ease;
+        }
+
+        .video-container iframe:hover {
+            transform: scale(1.05);
         }
 
         /* Responsividad */
@@ -129,6 +141,10 @@
             .video-container iframe {
                 width: 100%;
                 height: 200px;
+            }
+
+            h2 {
+                font-size: 2rem;
             }
         }
 
@@ -162,7 +178,6 @@
                     <h3>Novedad 2</h3>
                     <p>Descripción breve de la novedad 2. Lorem ipsum dolor sit amet.</p>
                 </div>
-                <!-- Agrega más novedades según sea necesario -->
             </div>
         </section>
 
@@ -170,10 +185,8 @@
         <section id="videos-recientes" class="active">
             <h2>Videos Recientes</h2>
             <div class="video-container">
-                <!-- Aquí se cargarían los videos desde YouTube -->
                 <iframe src="https://www.youtube.com/embed/latest-video-id" title="Video 1" allowfullscreen></iframe>
                 <iframe src="https://www.youtube.com/embed/latest-video-id" title="Video 2" allowfullscreen></iframe>
-                <!-- Agregar más videos si es necesario -->
             </div>
         </section>
 
@@ -191,7 +204,6 @@
                     <h3>Evento Minecraft 2</h3>
                     <p>Descripción del evento 2. Fecha: 15/11/2024. ¡Ven a participar!</p>
                 </div>
-                <!-- Agregar más eventos según sea necesario -->
             </div>
         </section>
     </div>
