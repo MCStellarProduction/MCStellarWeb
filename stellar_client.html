@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stellar Client - Instancias</title>
+  <style>
+    /* Reset CSS */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #121212; /* Fondo oscuro */
+      color: #f0f0f0;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      height: 100vh;
+      flex-direction: column;
+    }
+
+    /* Estilo del bloque superior */
+    .header {
+      width: 100%;
+      height: 60px;
+      background-color: #1A1A1A;
+      color: #f0f0f0;
+      text-align: center;
+      font-size: 18px;
+      font-weight: bold;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+
+    /* Estilo para el contenedor de idiomas */
+    .language-selector-container {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin-top: 70px; /* Para separarlo del encabezado */
+      padding-bottom: 20px;
+    }
+
+    .language-selector {
+      background-color: #1A1A1A;
+      color: #f0f0f0;
+      border: 1px solid #444;
+      border-radius: 5px;
+      padding: 5px;
+      font-size: 14px;
+      cursor: pointer;
+      width: 200px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .language-selector select {
+      background-color: #1A1A1A;
+      color: #f0f0f0;
+      border: none;
+      font-size: 14px;
+      outline: none;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    /* Estilo para los cuadros con imágenes */
+    .container {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 100px; /* Para que no se superponga con el bloque superior */
+      width: 100%;
+      padding: 0 10px;
+    }
+
+    .box {
+      background-color: #2C2C2C;
+      border-radius: 10px;
+      overflow: hidden;
+      width: 200px; /* Ancho por defecto */
+      height: 300px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6); /* Sombra más intensa */
+      border: 2px solid #444; /* Añadir un borde más grueso */
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      margin-bottom: 20px;
+    }
+
+    .box:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7); /* Aumentar la sombra al hacer hover */
+    }
+
+    .box img {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      border-bottom: 1px solid #444;
+    }
+
+    .box-content {
+      padding: 10px;
+    }
+
+    .box-content h3 {
+      font-weight: bold;
+      font-size: 18px;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+
+    .box-content p {
+      font-size: 14px;
+      color: #888;
+    }
+
+    .event-description {
+      font-size: 12px;
+      color: #bbb;
+      margin-top: 10px;
+    }
+
+    /* Estilo de los detalles del evento */
+    .event-details {
+      font-size: 12px;
+      color: #28a745; /* Color verde para "Activo" */
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* Estilo del texto pequeño */
+    .event-details span {
+      font-size: 10px;
+      color: #888;
+    }
+
+    /* Media Queries para dispositivos móviles */
+    @media (max-width: 768px) {
+      .header {
+        font-size: 16px; /* Reducir tamaño del texto en la cabecera en móviles */
+        height: 50px;
+      }
+
+      /* Ajustes en la disposición de los cuadros */
+      .container {
+        justify-content: space-around;
+        margin-top: 90px; /* Para que no se superponga con el bloque superior */
+      }
+
+      .box {
+        width: 100%; /* Los cuadros ocupan el 100% del ancho */
+        max-width: 300px;
+        height: auto;
+        margin-bottom: 20px;
+      }
+
+      .box img {
+        height: 120px; /* Reducir altura de las imágenes en móviles */
+      }
+
+      /* Cambiar el tamaño de la descripción y detalles en móviles */
+      .box-content h3 {
+        font-size: 16px;
+      }
+
+      .box-content p {
+        font-size: 12px;
+      }
+
+      .event-description {
+        font-size: 10px;
+      }
+
+      .event-details {
+        font-size: 10px;
+      }
+
+      .language-selector {
+        width: 100%;
+        padding: 10px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .box {
+        width: 100%;
+        margin-bottom: 10px; /* Reducir espacio entre cuadros en pantallas más pequeñas */
+      }
+
+      .header {
+        font-size: 14px;
+        height: 45px;
+      }
+
+      .language-selector {
+        padding: 6px;
+        font-size: 12px;
+      }
+    }
+
+    /* Cambiar el ancho de las cajas en pantallas más grandes (mayores a 768px) */
+    @media (min-width: 769px) {
+      .box {
+        width: 300px; /* Aumentar el ancho de los cuadros en pantallas grandes */
+      }
+    }
+
+    /* Ajustar el ancho de los cuadros en pantallas muy grandes (mayores a 1200px) */
+    @media (min-width: 1200px) {
+      .box {
+        width: 350px; /* Aumentar aún más el ancho de los cuadros en pantallas más grandes */
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Bloque superior -->
+  <div class="header" id="header-text">
+    Stellar Client • Instancias
+  </div>
+
+  <!-- Contenedor de idioma -->
+  <div class="language-selector-container">
+    <div class="language-selector">
+      <select name="language" id="language-select" onchange="changeLanguage()">
+        <option value="en">English (US)</option>
+        <option value="es">Español (LAT)</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Contenedor de cuadros -->
+  <div class="container" id="container">
+    <!-- Cuadro 1 -->
+    <div class="box">
+      <img src="minecraftredsurvival.png" alt="Evento 1">
+      <a href="https://mcstellarproduction.github.io/activeeventstellar.github.io/">
+        <div class="box-content">
+          <h3 id="event-title">REDSURVIVAL</h3>
+          <p class="event-details">
+            <span id="event-date">📅 ?/?/??</span>
+            <span id="event-status">⛔ NO DISPONIBLE</span>
+          </p>
+          <p class="event-description" id="event-description">
+            ⭐ Es un servidor survival con gran dificultad que va a tener mini eventos y eventos grandes cada día y con muchas sorpresas detrás!!
+          </p>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <script>
+    // Objeto con las traducciones
+    const translations = {
+      en: {
+        header: "Stellar Client • Instances",
+        eventTitle: "REDSURVIVAL",
+        eventDate: "📅 ?/?/??",
+        eventStatus: "⛔ UNAVAILABLE",
+        eventDescription: "⭐ It is a survival server with high difficulty, featuring mini-events and big events every day, with many surprises behind the scenes!"
+      },
+      es: {
+        header: "Stellar Client • Instancias",
+        eventTitle: "REDSURVIVAL",
+        eventDate: "📅 ?/?/??",
+        eventStatus: "⛔ NO DISPONIBLE",
+        eventDescription: "⭐ Es un servidor survival con gran dificultad que va a tener mini eventos y eventos grandes cada día y con muchas sorpresas detrás!!"
+      }
+    };
+
+    // Función para cambiar el idioma
+    function changeLanguage() {
+      const language = document.getElementById('language-select').value;
+      document.getElementById('header-text').textContent = translations[language].header;
+      document.getElementById('event-title').textContent = translations[language].eventTitle;
+      document.getElementById('event-date').textContent = translations[language].eventDate;
+      document.getElementById('event-status').textContent = translations[language].eventStatus;
+      document.getElementById('event-description').textContent = translations[language].eventDescription;
+    }
+  </script>
+
+</body>
+</html>
