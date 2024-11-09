@@ -258,59 +258,107 @@
         </div>
     </header>
 
-    <section class="banner">
-        <div class="container">
-            <h1>MCStellar Web Official</h1>
-        </div>
-    </section>
+    <div class="banner">
+        <h1>MCStellar Web - En construcción</h1>
+    </div>
 
-    <section class="services" id="services">
-        <div class="container">
+    <div class="container">
+        <section id="services" class="services">
             <div class="service">
-                <h3>Edición de Videos</h3>
-                <p>Editamos videos de la mejor calidad y lo ponemos en nuestro canal si es lo que usted desea. ¡Usted se puede convertir en nuestro colaborador si así lo desea!</p>
+                <h3>Servicios de Desarrollo Web</h3>
+                <p>Desarrollamos sitios web profesionales con las últimas tecnologías.</p>
             </div>
             <div class="service">
-                <h3>Creación de Eventos Minecraft</h3>
-                <p>Creamos Eventos de Minecraft con Datapacks, Plugins y Texture Packs personalizados para el usuario.</p>
+                <h3>Optimización de SEO</h3>
+                <p>Mejoramos el rendimiento de tu web en los motores de búsqueda.</p>
             </div>
             <div class="service">
-                <h3>Creadores del MCStellar</h3>
-                <p>MCStellar Production fue creado y progresado por RedAguilar y Sharingel. RedAguilar es el editor y programador de MCStellar, mientras Sharingel es el constructor de mapas de Minecraft y organizador de eventos.</p>
+                <h3>Diseño Gráfico</h3>
+                <p>Creamos diseños únicos para tu marca, desde logotipos hasta imágenes publicitarias.</p>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="balloons">
-        <div class="balloon">
-            <a href="https://mcstellarproduction.github.io/mcstellarweb/stellar_client">
-                <p>Stellar Client</p>
-            </a>
-        </div>
-        <div class="balloon">
-            <a href="https://www.youtube.com/@mcstellarofficial">
-                <p>Youtube</p>
-            </a>
-        </div>
-        <div class="balloon">
-            <a href="https://discord.gg/7peCEVcsVB">
-                <p>Discord</p>
-            </a>
-        </div>
-        <div class="balloon">
-            <a href="https://www.youtube.com/watch?v=vOdckl9YBPw">
-                <p>Último Video</p>
-            </a>
-        </div>
-        <div class="balloon">
-            <a href="https://mcstellarproduction.github.io/mcstellarweb/stellar_client">
-                <p>Eventos Minecraft</p>
-            </a>
-        </div>
-    </section>
+        <section class="balloons">
+            <div class="balloon">
+                <p>Desarrollamos proyectos a medida para ti.</p>
+            </div>
+            <div class="balloon">
+                <p>Diseñamos soluciones personalizadas para tu negocio.</p>
+            </div>
+            <div class="balloon">
+                <p>Potenciamos tu presencia online con SEO efectivo.</p>
+            </div>
+        </section>
 
-    <footer>
-        <h1>® 2024 MCStellar Production - Todos los derechos reservados.</h1>
-    </footer>
+        <footer>
+            <p>&copy; 2024 MCStellar Web. Todos los derechos reservados.</p>
+        </footer>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js"></script>
+    <script>
+        // Configuración de Firebase
+        const firebaseConfig = {
+            apiKey: "YOUR_API_KEY",
+            authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_PROJECT_ID.appspot.com",
+            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+            appId: "YOUR_APP_ID"
+        };
+
+        const app = firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+
+        // Función de registro
+        function signup() {
+            const email = document.getElementById("signup-email").value;
+            const password = document.getElementById("signup-password").value;
+
+            auth.createUserWithEmailAndPassword(email, password)
+                .then((userCredential) => {
+                    alert("Usuario registrado exitosamente!");
+                })
+                .catch((error) => {
+                    document.getElementById("signup-error").textContent = error.message;
+                });
+        }
+
+        // Función de inicio de sesión
+        function login() {
+            const email = document.getElementById("login-email").value;
+            const password = document.getElementById("login-password").value;
+
+            auth.signInWithEmailAndPassword(email, password)
+                .then((userCredential) => {
+                    alert("Bienvenido de nuevo!");
+                })
+                .catch((error) => {
+                    document.getElementById("login-error").textContent = error.message;
+                });
+        }
+
+        // Detecta el estado de autenticación
+        auth.onAuthStateChanged((user) => {
+            if (user) {
+                alert(`Bienvenido, ${user.email}`);
+            } else {
+                alert("No estás autenticado.");
+            }
+        });
+
+        // Función de cierre de sesión
+        function logout() {
+            auth.signOut()
+                .then(() => {
+                    alert("Has cerrado sesión correctamente.");
+                })
+                .catch((error) => {
+                    console.error("Error al cerrar sesión", error);
+                });
+        }
+    </script>
 </body>
 </html>
