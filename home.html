@@ -39,6 +39,12 @@
             display: none; /* Ocultar el menú por defecto en móviles */
         }
 
+        /* Cuando se hace click en el botón, el menú debe estar visible */
+        .menu.show {
+            left: 0;
+            display: block;
+        }
+
         .menu a {
             display: block;
             color: #fff;
@@ -94,24 +100,24 @@
             transform: rotate(-45deg) translate(5px, -5px);
         }
 
-        .hamburger.check .bar:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 5px);
-        }
-
-        .hamburger.check .bar:nth-child(2) {
-            opacity: 0;
-        }
-
-        .hamburger.check .bar:nth-child(3) {
-            transform: rotate(-45deg) translate(5px, -5px);
-        }
-
         /* Pantalla completa en móvil */
         @media (max-width: 768px) {
             .menu {
                 width: 100%;
                 left: -100%; /* Lo mantiene oculto por defecto */
                 display: block; /* Asegura que el menú esté bloqueado y oculto */
+            }
+
+            .menu.show {
+                left: 0; /* Desliza hacia la izquierda */
+            }
+        }
+
+        /* En PC */
+        @media (min-width: 769px) {
+            .menu {
+                width: 250px;
+                left: -250px; /* Lo mantiene oculto por defecto */
             }
 
             .menu.show {
