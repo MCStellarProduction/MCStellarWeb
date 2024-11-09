@@ -13,15 +13,14 @@
             box-sizing: border-box;
         }
 
-        /* Fondo con gradiente de Naranja a Morado y tipografía moderna */
+        /* Fondo oscuro con detalles sutiles */
         body {
             font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #ff7e5f, #feb47b, #9b59b6); /* Gradiente de Naranja a Morado */
+            background-color: #121212; /* Fondo oscuro */
             color: #fff;
             line-height: 1.6;
-            padding: 0;
             margin: 0;
-            background-attachment: fixed;
+            padding: 0;
         }
 
         /* Diseño de contenedor principal */
@@ -32,29 +31,31 @@
             padding: 40px 20px;
         }
 
-        /* Encabezado con gradiente */
+        /* Encabezado */
         header {
             text-align: center;
             margin-bottom: 30px;
-            background: rgba(0, 0, 0, 0.3);
-            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente */
+            padding: 30px 20px;
             border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
         }
 
         header h1 {
             font-size: 3rem;
             color: #fff;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
-            letter-spacing: 2px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
         }
 
-        /* Sección con animaciones */
+        /* Sección con fondo oscuro y sombra */
         section {
             margin-bottom: 50px;
-            padding: 20px;
+            padding: 30px 20px;
             border-radius: 15px;
-            background-color: rgba(0, 0, 0, 0.5);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            background-color: rgba(0, 0, 0, 0.7);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
             opacity: 0;
             transform: translateY(50px);
             transition: all 0.5s ease-out;
@@ -67,11 +68,14 @@
 
         h2 {
             font-size: 2.5rem;
-            color: #ffcc00; /* Color dorado para resaltar */
+            color: #f9a825; /* Amarillo similar a Star+ */
             margin-bottom: 20px;
-            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
         }
 
+        /* Tarjetas de contenido */
         .card {
             display: flex;
             flex-wrap: wrap;
@@ -80,12 +84,12 @@
         }
 
         .card .item {
-            background-color: #333;
-            border-radius: 10px;
+            background-color: #1e1e1e;
+            border-radius: 12px;
             width: 300px;
             padding: 20px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-            transition: transform 0.3s ease;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .card .item:hover {
@@ -95,7 +99,7 @@
 
         .card .item img {
             width: 100%;
-            border-radius: 8px;
+            border-radius: 10px;
         }
 
         .card .item h3 {
@@ -106,9 +110,10 @@
         }
 
         .card .item p {
-            color: #ddd;
+            color: #bbb;
         }
 
+        /* Contenedor de videos */
         .video-container {
             display: flex;
             flex-wrap: wrap;
@@ -120,7 +125,7 @@
             width: 100%;
             height: 315px;
             border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
             transition: transform 0.3s ease;
         }
 
@@ -128,7 +133,7 @@
             transform: scale(1.05);
         }
 
-        /* Responsividad */
+        /* Estilos para pantalla pequeña */
         @media (max-width: 768px) {
             header h1 {
                 font-size: 2.5rem;
@@ -148,7 +153,7 @@
             }
         }
 
-        /* Animaciones al hacer scroll */
+        /* Animación al hacer scroll */
         @keyframes slideIn {
             0% { opacity: 0; transform: translateY(50px); }
             100% { opacity: 1; transform: translateY(0); }
