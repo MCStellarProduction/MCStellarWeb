@@ -13,10 +13,10 @@
             box-sizing: border-box;
         }
 
-        /* Fondo oscuro con detalles sutiles */
+        /* Fondo oscuro claro */
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #121212; /* Fondo oscuro */
+            background-color: #2e2e2e; /* Fondo de tono oscuro claro */
             color: #fff;
             line-height: 1.6;
             margin: 0;
@@ -35,15 +35,18 @@
         header {
             text-align: center;
             margin-bottom: 30px;
-            background-color: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente */
             padding: 30px 20px;
+            background-color: rgba(0, 0, 0, 0.6); /* Fondo oscuro translúcido */
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
         }
 
         header h1 {
             font-size: 3rem;
-            color: #fff;
+            background: linear-gradient(135deg, #ff7e5f, #feb47b, #9b59b6); /* Gradiente Naranja a Morado */
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
             letter-spacing: 3px;
             text-transform: uppercase;
             text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
@@ -54,7 +57,7 @@
             margin-bottom: 50px;
             padding: 30px 20px;
             border-radius: 15px;
-            background-color: rgba(0, 0, 0, 0.7);
+            background-color: rgba(0, 0, 0, 0.7); /* Fondo oscuro */
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
             opacity: 0;
             transform: translateY(50px);
@@ -68,11 +71,16 @@
 
         h2 {
             font-size: 2.5rem;
-            color: #f9a825; /* Amarillo similar a Star+ */
+            background: linear-gradient(135deg, #ff7e5f, #feb47b, #9b59b6); /* Gradiente en título */
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
             margin-bottom: 20px;
             text-transform: uppercase;
             letter-spacing: 1px;
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+            padding-bottom: 10px;
+            border-bottom: 2px solid #feb47b; /* Línea debajo del título */
         }
 
         /* Tarjetas de contenido */
