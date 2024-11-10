@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCStellar Production - Stellar Client</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #1c1c1c, #000);
+            color: white;
+        }
+        
+        .menu {
+            position: relative;
+            background-color: #333;
+            padding: 10px;
+        }
+        
+        .menu-icon {
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: 50px;
+            left: 0;
+            background-color: #444;
+            border-radius: 5px;
+            z-index: 10;
+        }
+        
+        .dropdown a {
+            display: block;
+            padding: 10px;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .dropdown a:hover {
+            background-color: #555;
+        }
+        
+        main {
+            padding: 20px;
+        }
+        
+        .client-banner {
+            width: 100%;
+            height: auto;
+        }
+        
+        .client-box {
+            margin: 10px 0;
+            padding: 10px;
+            background-color: rgba(0, 0, 0, 0.8);
+            border-radius: 10px;
+        }
+        
+        h1, h2 {
+            color: #ff7e5f;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="menu">
+        <div class="menu-icon" onclick="toggleMenu()">☰</div>
+        <div class="dropdown">
+            <a href="index.html">Inicio</a>
+            <a href="novedades.html">Novedades</a>
+            <a href="sobre_nosotros.html">Sobre Nosotros</a>
+            <a href="eventos_mc.html">Eventos Minecraft</a>
+            <a href="https://youtube.com" target="_blank">YouTube</a>
+        </div>
+    </div>
+
+    <main>
+        <div class="client-banner">
+            <h1>Stellar Client • Instancias disponibles</h1>
+        </div>
+
+        <div class="client-box">
+            <img src="event-gif.gif" alt="Evento GIF" class="client-banner">
+            <h2>Título del Evento</h2>
+            <p>Descripción del evento.</p>
+            <button onclick="window.open('custom-link.html', '_blank')">Más Información</button>
+        </div>
+    </main>
+
+    <script>
+        function toggleMenu() {
+            const dropdown = document.querySelector('.dropdown');
+            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+        }
+    </script>
+</body>
+</html>
