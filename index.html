@@ -3,241 +3,241 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MCStellarWeb [BETATEST]</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MCStellar Production</title>
     <style>
-        /* Reset de estilos básicos */
+        /* Reset básico */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        /* Fondo y color de la página */
         body {
-            font-family: Arial, sans-serif;
-            background-color: #121212; /* Fondo oscuro */
-            color: #e0e0e0; /* Texto en color claro */
+            font-family: 'Arial', sans-serif;
+            background-color: #1f1f1f;
+            color: #fff;
             line-height: 1.6;
         }
 
-        /* Contenedor principal */
-        .container {
-            width: 100%; /* Ocupa todo el ancho de la pantalla */
-            max-width: 1200px; /* Máximo ancho para pantallas grandes */
-            margin: 0 auto;
-            padding: 60px;
-        }
-
-        /* Estilo para el encabezado */
+        /* Encabezado */
         header {
-            background-color: #1f1f1f; /* Fondo oscuro en el encabezado */
-            color: white;
-            padding: 60px;
+            background: #222;
+            padding: 30px;
             text-align: center;
-            width: 100%; /* Aseguramos que el header ocupe todo el ancho */
-            position: relative;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 10;
         }
 
-        /* Reemplazamos el título con una imagen */
-        header img {
-            max-width: 100%; /* Hace que la imagen sea responsiva */
-            height: auto;
+        header h1 {
+            font-size: 3rem;
+            color: #ffcc00;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin: 0;
+            padding: 0;
         }
 
-        /* Estilo para la navegación en forma de lista centrada */
-        header nav {
+        /* Barra de navegación */
+        nav {
             margin-top: 20px;
         }
 
-        header nav ul {
-            list-style-type: none; /* Quitamos los puntos de la lista */
-            display: flex;
-            justify-content: center; /* Centra los elementos en el contenedor */
-            gap: 20px; /* Espaciado entre los elementos */
-            flex-wrap: wrap; /* Permite que los elementos se ajusten en varias filas si es necesario */
-        }
-
-        header nav ul li {
-            display: inline; /* Los elementos de lista se muestran en línea */
-        }
-
-        header nav ul li a {
-            color: #e0e0e0; /* Color claro para los enlaces */
-            font-weight: bold;
-            text-decoration: none;
-            text-transform: uppercase;
-            padding: 10px 20px;
-            background-color: #333; /* Fondo oscuro en los botones */
-            border-radius: 5px;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-
-        header nav ul li a:hover {
-            background-color: #ff7f50; /* Fondo naranja en hover */
-            color: #fff; /* Texto blanco en hover */
-        }
-
-        /* Menú hamburguesa */
-        .hamburger {
-            display: none;
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            z-index: 1000;
-            cursor: pointer;
-        }
-
-        .hamburger .bar {
-            width: 30px;
-            height: 5px;
-            background-color: #fff;
-            margin: 6px auto;
-            transition: 0.3s;
-        }
-
-        .hamburger.open .bar:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 5px);
-        }
-
-        .hamburger.open .bar:nth-child(2) {
-            opacity: 0;
-        }
-
-        .hamburger.open .bar:nth-child(3) {
-            transform: rotate(-45deg) translate(5px, -5px);
-        }
-
-        /* Menú lateral */
-        .menu {
-            position: fixed;
-            top: 0;
-            left: -250px; /* Oculto por defecto */
-            width: 250px;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
-            transition: left 0.3s ease;
-            z-index: 999;
-            padding-top: 60px;
-            display: none; /* Ocultar el menú por defecto */
-        }
-
-        .menu.show {
-            left: 0; /* Mostrar menú cuando se activa */
-            display: block;
-        }
-
-        .menu a {
-            display: block;
-            color: #fff;
-            padding: 20px;
-            text-align: center;
-            font-size: 1.5rem;
-            text-decoration: none;
-            transition: background-color 0.3s ease;
-        }
-
-        .menu a:hover {
-            background-color: #ff7f50;
-        }
-
-        /* Estilo para el banner */
-        .banner {
-            position: relative;
-            background-image: url('minecraftredsurvival.png');
-            background-size: cover;
-            background-position: center;
-            height: 20vh;
+        nav ul {
+            list-style: none;
             display: flex;
             justify-content: center;
-            align-items: center;
-            color: #e0e0e0; /* Texto en color claro */
-            width: 100%; /* Asegura que el banner ocupe todo el ancho */
+            gap: 30px;
         }
 
-        .banner h1 {
-            font-size: 1rem;
+        nav ul li {
+            padding: 10px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            font-size: 1.2rem;
+            text-decoration: none;
             text-transform: uppercase;
-            background: linear-gradient(to right, #ff7f50, #8a2be2); /* Gradiente de naranja a morado */
-            -webkit-background-clip: text;
-            color: transparent;
+            padding: 8px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease-in-out;
         }
 
-        /* Estilo para el pie de página */
+        nav ul li a:hover {
+            background-color: #ffcc00;
+            color: #1f1f1f;
+        }
+
+        /* Sección principal */
+        .main-section {
+            padding: 150px 20px 50px;  /* Ajuste para el header fijo */
+            text-align: center;
+            background: linear-gradient(to bottom right, #3e3e3e, #555);
+            min-height: 100vh;
+        }
+
+        .main-section h2 {
+            font-size: 2.5rem;
+            color: #ffcc00;
+            margin-bottom: 20px;
+        }
+
+        .main-section p {
+            font-size: 1.2rem;
+            color: #ddd;
+            margin-bottom: 40px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Botones */
+        .main-section .cta-btns {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .cta-btns a {
+            background-color: #ffcc00;
+            color: #1f1f1f;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .cta-btns a:hover {
+            background-color: #e5a800;
+        }
+
+        /* Sección de Información */
+        .info-section {
+            background-color: #222;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .info-section h3 {
+            font-size: 2rem;
+            color: #ffcc00;
+            margin-bottom: 20px;
+        }
+
+        .info-section p {
+            font-size: 1rem;
+            color: #bbb;
+            line-height: 1.8;
+            margin-bottom: 40px;
+        }
+
+        /* Footer */
         footer {
-            background-color: #1f1f1f; /* Fondo oscuro para el pie de página */
-            color: white;
+            background-color: #111;
             padding: 20px 0;
             text-align: center;
-            margin-top: 50px;
         }
 
         footer p {
-            font-size: 0.9rem;
+            color: #bbb;
+            font-size: 1rem;
         }
 
-        /* Hacer el botón hamburguesa visible en pantallas pequeñas */
+        footer a {
+            color: #ffcc00;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        footer a:hover {
+            color: #e5a800;
+        }
+
+        /* Animaciones */
+        .fade-in {
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        /* Responsividad */
         @media (max-width: 768px) {
-            .hamburger {
-                display: block;
+            .cta-btns {
+                flex-direction: column;
+                gap: 20px;
             }
 
-            /* Ocultar navegación principal en móvil */
-            header nav {
-                display: none;
+            .main-section h2 {
+                font-size: 2rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
             }
         }
+
     </style>
 </head>
 <body>
-    <!-- Botón Hamburguesa -->
-    <div class="hamburger" id="hamburgerBtn">
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-    </div>
 
-    <!-- Menú lateral -->
-    <div class="menu" id="menu">
-        <a href="#home">Inicio</a>
-        <a href="#about">Sobre nosotros</a>
-        <a href="#services">Servicios</a>
-        <a href="#contact">Contacto</a>
-    </div>
-
-    <header>
-        <div class="container">
-            <!-- Imagen personalizada como título -->
-            <img src="mcstellartitle.png" alt="MCStellar Production Logo">
-            <nav>
-                <ul>
-                    <li><a href="#home">Inicio</a></li>
-                    <li><a href="#about">Sobre nosotros</a></li>
-                    <li><a href="#services">Servicios</a></li>
-                    <li><a href="#contact">Contacto</a></li>
-                </ul>
-            </nav>
-        </div>
+    <!-- Encabezado -->
+    <header class="fade-in">
+        <h1>MCStellar Production</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Inicio</a></li>
+                <li><a href="#about">Sobre Nosotros</a></li>
+                <li><a href="#services">Servicios</a></li>
+                <li><a href="#contact">Contacto</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <section class="banner">
-        <div class="container">
-            <h1>MCStellar Web Official</h1>
+    <!-- Sección Principal -->
+    <section class="main-section fade-in" id="home">
+        <h2>Bienvenidos a MCStellar Production</h2>
+        <p>Transformamos tus ideas en experiencias visuales impactantes. Nos especializamos en producción audiovisual, diseño creativo y más. ¡Descubre lo que podemos hacer por ti!</p>
+        <div class="cta-btns">
+            <a href="#about">Conoce más</a>
+            <a href="#contact">Contáctanos</a>
         </div>
     </section>
 
+    <!-- Sección de Información -->
+    <section class="info-section fade-in" id="about">
+        <h3>Quiénes Somos</h3>
+        <p>En MCStellar Production, nos dedicamos a crear contenido visual de alta calidad que cautive a tu audiencia. Con años de experiencia en la industria, tenemos el conocimiento y las herramientas necesarias para llevar tu proyecto al siguiente nivel. Desde la producción de videos hasta el diseño gráfico, nuestra misión es hacer que tu visión se haga realidad.</p>
+    </section>
+
+    <!-- Sección de Servicios -->
+    <section class="info-section fade-in" id="services">
+        <h3>Servicios</h3>
+        <p>Ofrecemos una amplia gama de servicios, incluyendo:</p>
+        <ul>
+            <li>Producción de Videos</li>
+            <li>Diseño Gráfico y Animación</li>
+            <li>Desarrollo Web</li>
+            <li>Consultoría Creativa</li>
+        </ul>
+    </section>
+
+    <!-- Footer -->
     <footer>
-        <h1>® 2024 MCStellar Production - Todos los derechos reservados.</h1>
+        <p>&copy; 2024 MCStellar Production | Todos los derechos reservados | <a href="#contact">Contáctanos</a></p>
     </footer>
 
-    <script>
-        // Función para activar el menú hamburguesa
-        const hamburgerBtn = document.getElementById('hamburgerBtn');
-        const menu = document.getElementById('menu');
-        hamburgerBtn.addEventListener('click', () => {
-            hamburgerBtn.classList.toggle('open');
-            menu.classList.toggle('show');
-        });
-    </script>
 </body>
 </html>
