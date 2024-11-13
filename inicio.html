@@ -302,10 +302,12 @@
       });
     }
 
-    // Cuando la página se carga, elimina la pantalla de carga y aplica los estilos
+    // Cuando la página se carga, elimina la pantalla de carga después de 3 segundos y aplica los estilos
     window.onload = function() {
       applyTextStyles();
-      document.getElementById("loading-screen").style.display = 'none';
+      setTimeout(function() {
+        document.getElementById("loading-screen").style.display = 'none';
+      }, 3000);  // 3 segundos
     };
 
     // Redirigir a otra página después de un clic
