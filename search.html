@@ -292,7 +292,7 @@
   <section id="novedades">
     <h1>NOVEDADES</h1>
     <div class="section-card">
-      <img src="presentationgif.gif" alt="Imagen de Novedad">
+      <img src="presentationgif.gif" alt="Imagen de Novedad" id="protectedImage">
       <div class="content">
         <h3 class="gradient-text">We're just getting started!!</h3>
         <p class="description" id="description"><span class="gradient-text"><b>MCStellar Production</b></span> is just getting started and the <b>public</b> will be able to see it on our <b>social networks</b>. The <span class="gradient-text"><b>MCStellar Website</b></span> is the official social network of <span class="gradient-text"><b>MCStellar Production</b></span> so we hope you enjoy it.</p>
@@ -304,7 +304,7 @@
   <section id="videos">
     <h1>VDIEOS RECIENTES</h1>
     <div class="section-card" onclick="window.location.href='https://www.youtube.com/watch?v=vOdckl9YBPw'">
-      <img src="mcstellar_thebegginig_banner.jpg" alt="Video Reciente">
+      <img src="mcstellar_thebegginig_banner.jpg" alt="Video Reciente" id="protectedImage">
       <div class="content">
         <h3 class="gradient-text">The Beginning</h3>
         <p class="description">This is the presentation video of this new company that is starting out</p>
@@ -316,7 +316,7 @@
   <section id="eventos">
     <h1>PROXIMOS EVENTOS</h1>
     <div class="section-card">
-      <img src="redsurvivalbanner.jpg" alt="Evento Reciente">
+      <img src="redsurvivalbanner.jpg" alt="Evento Reciente" id="protectedImage">
       <div class="content">
         <h3 class="gradient-text">RedSurvival</h3>
         <p class="description">More information in the <span class="gradient-text">Stellar Client</span>...</p>
@@ -386,6 +386,21 @@
       }, 3000);
       applyTextStyles(); // Aplicar estilos de texto
     }
+
+    <script>
+    // Prevenir el menú contextual (como el clic derecho) en dispositivos móviles
+    const img = document.getElementById('protectedImage');
+
+    // Prevenir el menú contextual en desktop y móvil
+    img.addEventListener('contextmenu', function(event) {
+      event.preventDefault(); // Previene el menú contextual
+    });
+
+    // Prevenir el toque largo en móviles (típico de dispositivos táctiles)
+    img.addEventListener('touchstart', function(event) {
+      event.preventDefault(); // Previene las acciones por defecto en móviles (como mantener presionado)
+    });
+  </script>
   </script>
 
 </body>
