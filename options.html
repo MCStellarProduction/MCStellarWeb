@@ -268,67 +268,86 @@
     }
 
     .config-box {
-      background-color: #e0f7fa;  /* Tonalidad clara */
+      background-color: #ffffff;
       padding: 20px;
-      border-radius: 15px;
-      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
+      box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
       width: 300px;
       text-align: center;
+      transition: all 0.3s ease;
     }
 
     .config-box h2 {
       font-size: 24px;
       margin-bottom: 20px;
+      color: #333;
     }
 
-    /* Estilos para el cuadro de selección de idioma */
+    /* Estilo del selector de idioma */
     .language-selector {
       width: 100%;
-      padding: 10px;
+      padding: 12px;
       background-color: #ffffff;
       border: 2px solid #ccc;
-      border-radius: 5px;
+      border-radius: 6px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       cursor: pointer;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .language-selector:hover {
+      border-color: #009688;
     }
 
     .language-selector span {
       font-size: 18px;
+      color: #333;
     }
 
     .language-selector i {
       font-size: 18px;
-      transition: transform 0.3s;
+      color: #333;
+      transition: transform 0.3s ease;
     }
 
     .language-selector.open i {
       transform: rotate(180deg);
     }
 
-    /* Estilos para el dropdown */
+    /* Estilo del menú desplegable */
     .dropdown-options {
       display: none;
       background-color: #ffffff;
-      border-radius: 5px;
-      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+      border-radius: 6px;
+      box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
       margin-top: 10px;
       position: absolute;
-      width: 300px;
+      width: 100%;
       z-index: 10;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-in-out;
     }
 
     .dropdown-options a {
       display: block;
-      padding: 10px;
+      padding: 12px;
       color: #333;
       text-decoration: none;
       font-size: 16px;
+      border-bottom: 1px solid #eee;
+      transition: background-color 0.3s ease;
     }
 
     .dropdown-options a:hover {
-      background-color: #e0f7fa;
+      background-color: #f1f1f1;
+    }
+
+    .dropdown-options a:last-child {
+      border-bottom: none;
     }
   </style>
 </head>
@@ -344,7 +363,7 @@
   <!-- Cuadro de configuración -->
   <div class="config-box">
     <h2>Configuración</h2>
-    <div class="language-selector">
+    <div class="language-selector" id="languageSelector">
       <span id="languageText">English (US)</span>
       <i id="arrow" class="fas fa-chevron-down"></i>
     </div>
@@ -376,6 +395,7 @@
 
   <script>
     // Función para cargar el idioma al inicio
+    // Función para cargar el idioma al inicio
     function loadLanguage() {
       const lang = localStorage.getItem('language') || 'en'; // Si no se encuentra un idioma guardado, usamos 'en' por defecto
       setLanguage(lang);
@@ -385,6 +405,7 @@
     function changeLanguage(lang) {
       localStorage.setItem('language', lang);
       setLanguage(lang);
+      closeDropdown();  // Cierra el desplegable después de cambiar el idioma
     }
 
     // Función que actualiza el texto de la página en función del idioma
@@ -410,12 +431,33 @@
     }
 
     // Función para mostrar/ocultar las opciones del dropdown
-    document.querySelector('.language-selector').addEventListener('click', function() {
+    document.getElementById('languageSelector').addEventListener('click', function() {
       const dropdown = document.getElementById('dropdownOptions');
       const arrow = document.getElementById('arrow');
-      dropdown.style.display = (dropdown.style.display === 'block') ? 'none' : 'block';
-      this.classList.toggle('open');
+      if (dropdown.style.maxHeight) {
+        closeDropdown();
+      } else {
+        openDropdown();
+      }
     });
+
+    // Función para abrir el dropdown
+    function openDropdown() {
+      const dropdown = document.getElementById('dropdownOptions');
+      const arrow = document.getElementById('arrow');
+      dropdown.style.display = 'block';
+      setTimeout(() => {
+        dropdown.style.maxHeight = dropdown.scrollHeight + "px"; // Animación de apertura
+      }, 10);
+      document.getElementById('languageSelector').classList.add('open');
+    }
+
+    // Función para cerrar el dropdown
+    function closeDropdown() {
+      const dropdown = document.getElementById('dropdownOptions');
+      dropdown.style.maxHeight = '0';
+      document.getElementById('languageSelector').classList.remove('open');
+    }
 
     // Cargar el idioma preferido al cargar la página
     loadLanguage();
