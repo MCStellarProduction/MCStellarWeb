@@ -360,78 +360,7 @@
       document.getElementById("loading-screen").style.display = 'none';
       applyTextStyles();
     }, 4000); // 4 segundos
-
-    function loadLanguage() {
-      const lang = localStorage.getItem('language') || 'en'; // Si no se encuentra un idioma guardado, usamos 'en' por defecto
-      setLanguage(lang);
-
-
-    function loadLanguage() {
-      const lang = localStorage.getItem('language') || 'en'; // Si no se encuentra un idioma guardado, usamos 'en' por defecto
-      setLanguage(lang);
-    }
-
-    // Función para cambiar el idioma
-    function changeLanguage(lang) {
-      localStorage.setItem('language', lang);
-      setLanguage(lang);
-      closeDropdown();  // Cierra el desplegable después de cambiar el idioma
-    }
-
-    // Función que actualiza el texto de la página en función del idioma
-    function setLanguage(lang) {
-      const languageText = document.getElementById('languageText');
-      if (lang === 'es') {
-        languageText.textContent = 'Español (Latinoamericano)';
-        translatePageToSpanish();
-      } else {
-        languageText.textContent = 'English (US)';
-        translatePageToEnglish();
-      }
-    }
-
-    // Función que traduce los textos al español
-    function translatePageToSpanish() {
-      document.querySelector('h2').textContent = 'Configuración';
-    }
-
-    // Función que traduce los textos al inglés
-    function translatePageToEnglish() {
-      document.querySelector('h2').textContent = 'Configuration';
-    }
-
-    // Función para mostrar/ocultar las opciones del dropdown
-    document.getElementById('languageSelector').addEventListener('click', function() {
-      const dropdown = document.getElementById('dropdownOptions');
-      const arrow = document.getElementById('arrow');
-      if (dropdown.style.maxHeight) {
-        closeDropdown();
-      } else {
-        openDropdown();
-      }
-    });
-
-    // Función para abrir el dropdown
-    function openDropdown() {
-      const dropdown = document.getElementById('dropdownOptions');
-      const arrow = document.getElementById('arrow');
-      dropdown.style.display = 'block';
-      setTimeout(() => {
-        dropdown.style.maxHeight = dropdown.scrollHeight + "px"; // Animación de apertura
-      }, 10);
-      document.getElementById('languageSelector').classList.add('open');
-    }
-
-    // Función para cerrar el dropdown
-    function closeDropdown() {
-      const dropdown = document.getElementById('dropdownOptions');
-      dropdown.style.maxHeight = '0';
-      document.getElementById('languageSelector').classList.remove('open');
-    }
-
-    // Cargar el idioma preferido al cargar la página
-    loadLanguage();
-
+    
     // Función para aplicar los estilos de texto
     function applyTextStyles() {
       let elements = document.querySelectorAll("#description");
