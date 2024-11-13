@@ -186,18 +186,26 @@
       width: 50px;
       height: 50px;
       border-radius: 50%;
-      background-color: #fff;
-      color: #333;
+      background-color: transparent;
+      color: #fff;
       font-size: 24px;
       display: flex;
       justify-content: center;
       align-items: center;
       cursor: pointer;
-      transition: background-color 0.3s;
+      transition: background-color 0.3s, transform 0.3s ease-in-out;
     }
 
     .button:hover {
       background-color: #9b4d96;
+      transform: scale(1.2);
+    }
+
+    .button i {
+      transition: color 0.3s;
+    }
+
+    .button:hover i {
       color: #fff;
     }
 
@@ -292,6 +300,7 @@
       }, 1000); // Redirige después de la animación
     }
 
+    // Función para aplicar estilos de texto
     function applyTextStyles() {
       let elements = document.querySelectorAll("#description");
       elements.forEach(element => {
@@ -310,6 +319,5 @@
       }, 3000);  // 3 segundos
     };
   </script>
-
 </body>
 </html>
