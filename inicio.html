@@ -2,10 +2,12 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimal-ui">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>MCStellar Production</title>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
   <style>
+    /* Deshabilitar el movimiento horizontal */
     body {
       font-family: 'Arial', sans-serif;
       background-color: #f5f5f5;
@@ -17,6 +19,7 @@
       justify-content: flex-start;
       min-height: 100vh;
       padding-bottom: 80px;
+      overflow-x: hidden; /* Deshabilita el movimiento horizontal */
     }
 
     header {
@@ -71,7 +74,7 @@
     .banner-container {
       position: relative;
       width: 100%;
-      height: 50%; /* 50% para que el GIF cubra la mitad superior */
+      height: 50%;
       overflow: hidden;
       border-radius: 15px;
     }
@@ -86,7 +89,7 @@
 
     .content {
       padding: 20px;
-      height: 50%; /* La otra mitad para el texto */
+      height: 50%;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -197,11 +200,9 @@
     <div class="section-title">MCStellar Production</div>
     <div class="card">
       <div class="card-content">
-        <!-- GIF de presentación en la mitad superior -->
         <div class="banner-container">
           <img src="https://via.placeholder.com/1200x600?text=GIF+de+Presentación" alt="GIF de Presentación" class="banner">
         </div>
-        <!-- Texto de presentación en la mitad inferior -->
         <div class="content">
           <h2>Bienvenidos a MCStellar Production</h2>
           <p id="description">Somos una compañía especializada en la <b>edición de videos</b> y la <i>creación de eventos</i> dentro del universo Minecraft. Nuestro objetivo es ofrecer experiencias únicas y memorables para nuestra comunidad de jugadores y creadores de contenido. Ya sea creando eventos épicos, personalizando servidores o realizando ediciones de alta calidad, MCStellar Production está aquí para llevar tus proyectos a un nivel profesional.</p>
@@ -229,24 +230,16 @@
   </footer>
 
   <script>
-    // Función para aplicar estilos a los textos que usan los delimitadores
     function applyTextStyles() {
-      let elements = document.querySelectorAll("#description"); // Aplica solo a los textos con este id
-
+      let elements = document.querySelectorAll("#description");
       elements.forEach(element => {
         let html = element.innerHTML;
-
-        // Reemplazar **{texto}** por negrita
         html = html.replace(/\*\*{(.*?)\}\*/g, '<b>$1</b>');
-
-        // Reemplazar '{texto}' por cursiva
         html = html.replace(/{(.*?)}/g, '<i>$1</i>');
-
         element.innerHTML = html;
       });
     }
 
-    // Llamar la función al cargar la página
     window.onload = function() {
       applyTextStyles();
     };
