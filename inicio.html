@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <title>MCStellar Production</title>
   <style>
-    /* General styling */
     body {
       font-family: 'Arial', sans-serif;
       background-color: #f5f5f5;
@@ -16,7 +15,7 @@
       align-items: center;
       justify-content: flex-start;
       min-height: 100vh;
-      padding-bottom: 80px; /* Espacio para la barra de navegación fija */
+      padding-bottom: 80px;
     }
 
     header {
@@ -27,7 +26,7 @@
 
     header img {
       width: 100%;
-      height: auto;  /* Mantiene la relación 16:9 */
+      height: auto;
     }
 
     section {
@@ -43,7 +42,6 @@
       text-align: center;
     }
 
-    /* Card styles */
     .card {
       background-color: #fff;
       border-radius: 15px;
@@ -62,7 +60,6 @@
       color: #555;
     }
 
-    /* Video Section */
     .video-container {
       display: flex;
       flex-wrap: wrap;
@@ -89,7 +86,6 @@
       background-color: #f7f7f7;
     }
 
-    /* Footer styling */
     footer {
       position: fixed;
       bottom: 0;
@@ -99,7 +95,7 @@
       justify-content: center;
       align-items: center;
       z-index: 1000;
-      background-color: #ee8000; /* Fondo naranja */
+      background-color: #ee8000;
     }
 
     .button-container {
@@ -110,7 +106,7 @@
       justify-content: space-around;
       border-radius: 10px;
       box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px, rgba(245, 73, 144, 0.5) 5px 10px 15px;
-      background-color: #ee8000; /* Fondo naranja */
+      background-color: #ee8000;
     }
 
     .button {
@@ -136,72 +132,79 @@
       font-size: 20px;
     }
 
-    /* Responsive adjustments */
     @media (max-width: 768px) {
       .button-container {
-        width: 300px; /* Mayor ancho para la barra */
-        height: 70px; /* Barra más alta */
+        width: 300px;
+        height: 70px;
       }
 
       .button {
-        width: 60px; /* Botones más grandes */
-        height: 60px; /* Botones más grandes */
+        width: 60px;
+        height: 60px;
       }
 
       .icon {
-        font-size: 25px; /* Iconos más grandes */
+        font-size: 25px;
       }
     }
 
     @media (max-width: 480px) {
       .button-container {
-        width: 350px; /* Barra más ancha para pantallas pequeñas */
-        height: 80px; /* Barra aún más alta */
+        width: 350px;
+        height: 80px;
       }
 
       .button {
-        width: 70px; /* Botones aún más grandes */
-        height: 70px; /* Botones aún más grandes */
+        width: 70px;
+        height: 70px;
       }
 
       .icon {
-        font-size: 30px; /* Iconos más grandes */
+        font-size: 30px;
       }
     }
 
-    /* Banners */
     .banner {
+      position: relative;
       width: 100%;
-      height: 50%; /* Altura proporcional al ancho con relación 2:1 */
+      padding-top: 50%; /* Esto crea la relación de aspecto 2:1 (ancho:alto) */
       background-size: cover;
       background-position: center;
       border-radius: 15px;
       margin-bottom: 20px;
     }
+
+    .banner img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* Asegura que la imagen cubra todo el espacio sin distorsionarse */
+      border-radius: 15px;
+    }
   </style>
 </head>
 <body>
 
-  <!-- Header -->
   <header>
     <img src="https://via.placeholder.com/1600x900" alt="MCStellar Production">
   </header>
 
-  <!-- Novedades Section -->
   <section>
     <div class="section-title">Novedades</div>
     <div class="card">
-      <div class="banner" style="background-image: url('https://via.placeholder.com/1200x400');"></div>
+      <div class="banner" style="background-image: url('https://via.placeholder.com/1200x600');">
+        <img src="https://via.placeholder.com/1200x600" alt="Imagen de Novedades">
+      </div>
       <h2>¡Nuevo Proyecto de Minecraft!</h2>
       <p>Descubre nuestro nuevo proyecto en el mundo de Minecraft, donde estamos creando un mapa épico con nuevos desafíos y mucho más. ¡No te lo puedes perder!</p>
     </div>
   </section>
 
-  <!-- Videos Recientes Section -->
   <section>
     <div class="section-title">Videos Recientes</div>
     <div class="video-container">
-      <!-- Aquí irán los videos del canal @mcstellarofficial -->
       <div class="video-card">
         <img src="https://via.placeholder.com/300x170" alt="Video Thumbnail">
         <div class="video-title">Título del Video 1</div>
@@ -217,17 +220,17 @@
     </div>
   </section>
 
-  <!-- Eventos Minecraft Section -->
   <section>
     <div class="section-title">Eventos Minecraft</div>
     <div class="card">
-      <div class="banner" style="background-image: url('https://via.placeholder.com/1200x400');"></div>
+      <div class="banner" style="background-image: url('https://via.placeholder.com/1200x600');">
+        <img src="https://via.placeholder.com/1200x600" alt="Imagen de Evento">
+      </div>
       <h2>Próximo Evento: Competencia de PvP</h2>
       <p>Únete a nosotros en la próxima competencia de PvP. ¡Lucharás por increíbles premios y mucha diversión! Inscripciones abiertas ahora mismo.</p>
     </div>
   </section>
 
-  <!-- Footer with Buttons -->
   <footer>
     <div class="button-container">
       <a href="https://www.mcstellar.lat/inicio" class="button">
