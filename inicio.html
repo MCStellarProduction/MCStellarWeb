@@ -268,7 +268,7 @@
 
   <!-- Presentación de la Compañía -->
   <header>
-    <img src="mcstellaricon.png" alt="MCStellar Production">
+    <img src="mcstellaricon.png" alt="MCStellar Production" id="protectedImage">
   </header>
 
   <section>
@@ -276,7 +276,7 @@
     <div class="card">
       <div class="card-content">
         <div class="banner-container">
-          <img src="presentationgif.gif" alt="GIF de Presentación" class="banner">
+          <img src="presentationgif.gif" alt="GIF de Presentación" class="banner" id="protectedImage">
         </div>
         <div class="content">
           <h2><span class="gradient-text">!! Welcome to the MCStellar Production ¡¡</span></h2>
@@ -334,6 +334,19 @@
         window.location.href = url;
       }, 1000);
     }
+
+    // Prevenir el menú contextual (como el clic derecho) en dispositivos móviles
+    const img = document.getElementById('protectedImage');
+
+    // Prevenir el menú contextual en desktop y móvil
+    img.addEventListener('contextmenu', function(event) {
+      event.preventDefault(); // Previene el menú contextual
+    });
+
+    // Prevenir el toque largo en móviles (típico de dispositivos táctiles)
+    img.addEventListener('touchstart', function(event) {
+      event.preventDefault(); // Previene las acciones por defecto en móviles (como mantener presionado)
+    });
   </script>
 
 </body>
