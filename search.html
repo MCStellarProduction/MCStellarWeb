@@ -22,6 +22,41 @@
       overflow-x: hidden; /* Deshabilita el movimiento horizontal */
     }
 
+    /* Barra de navegación */
+    nav {
+      width: 100%;
+      background-color: #333;
+      position: fixed;
+      top: 0;
+      left: 0;
+      padding: 10px 0;
+      z-index: 1000;
+    }
+
+    nav ul {
+      display: flex;
+      justify-content: center;
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li {
+      margin: 0 20px;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.2em;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #ee8000;
+    }
+
     /* Pantalla de Carga */
     .loading-screen {
       position: fixed;
@@ -79,6 +114,7 @@
       width: 90%;
       max-width: 1200px;
       margin: 40px 0;
+      padding-top: 60px; /* Para dar espacio por la barra de navegación */
     }
 
     .section-title {
@@ -200,6 +236,15 @@
 </head>
 <body>
 
+  <!-- Barra de navegación -->
+  <nav>
+    <ul>
+      <li><a href="#novedades">Novedades</a></li>
+      <li><a href="#videos">Videos Recientes</a></li>
+      <li><a href="#eventos">Próximos Eventos</a></li>
+    </ul>
+  </nav>
+
   <!-- Pantalla de Carga -->
   <div class="loading-screen" id="loading-screen">
     <svg viewBox="25 25 50 50" class="container">
@@ -207,7 +252,7 @@
     </svg>
   </div>
 
-  <section>
+  <section id="novedades">
     <!-- Sección de Novedades -->
     <div class="section-title">Novedades</div>
     <div class="novedad-card">
@@ -224,7 +269,9 @@
         <p>Participa en el nuevo evento PvP que hemos preparado. Con nuevas recompensas y desafíos para todos.</p>
       </div>
     </div>
+  </section>
 
+  <section id="videos">
     <!-- Sección de Videos Recientes -->
     <div class="section-title">Videos Recientes</div>
     <div class="video-card" onclick="startVideoCheck(this, 'https://www.youtube.com/watch?v=dQw4w9WgXcQ')">
@@ -234,37 +281,36 @@
     </div>
     <div class="video-card" onclick="startVideoCheck(this, 'https://www.youtube.com/watch?v=dQw4w9WgXcQ')">
       <img src="https://via.placeholder.com/600x300" alt="Video Reciente">
-      <div class="video-title">Minecraft: Aventura en el Nether</div>
+      <div class="video-title">Nuevo Tutorial: Redstone Fácil</div>
       <div class="check-animation">✔</div>
     </div>
+  </section>
 
+  <section id="eventos">
     <!-- Sección de Próximos Eventos -->
     <div class="section-title">Próximos Eventos</div>
     <div class="event-card">
       <img src="https://via.placeholder.com/600x300" alt="Evento Minecraft">
       <div class="event-info">
-        <h3 class="gradient-text">Evento de Construcción Colaborativa</h3>
-        <p>Únete a nuestra construcción colaborativa, donde todos los jugadores pueden aportar sus ideas y crear algo increíble.</p>
+        <h3 class="gradient-text">Evento PvP de Minecraft</h3>
+        <p>Únete a nuestro evento de PvP el próximo fin de semana. ¡Gana premios épicos!</p>
       </div>
     </div>
   </section>
 
   <script>
-    // Función para manejar la animación de check y redirección
-    function startVideoCheck(videoElement, url) {
-      videoElement.classList.add('clicked');
-      setTimeout(() => {
-        window.location.href = url;
-      }, 1000); // Redirige después de 1 segundo
+    // Función para animación de video
+    function startVideoCheck(element, videoUrl) {
+      element.classList.add('clicked');
+      setTimeout(function() {
+        window.location.href = videoUrl; // Redirige al link después de la animación
+      }, 1000);
     }
 
-    // Función para ocultar la pantalla de carga después de 3 segundos
-    window.onload = function() {
-      setTimeout(function() {
-        document.getElementById("loading-screen").style.display = 'none';
-      }, 3000);  // 3 segundos
-    };
+    // Mostrar la pantalla de carga durante 3 segundos
+    setTimeout(function() {
+      document.getElementById('loading-screen').style.display = 'none';
+    }, 3000);
   </script>
-
 </body>
 </html>
