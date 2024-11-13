@@ -302,6 +302,15 @@
        applyTextStyles(); // Aplicar estilos de texto
      }
 
+     function redirectToPage(event, url) {
+     event.preventDefault(); 
+     const button = event.currentTarget;
+     button.style.pointerEvents = 'none';
+     setTimeout(() => {
+       window.location.href = url;
+     }, 1000);
+     }
+
      // Prevenir el menú contextual (como el clic derecho) en dispositivos móviles
      const img = document.getElementById('protectedImage');
 
