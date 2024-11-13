@@ -356,6 +356,11 @@
   </div>
 
   <script>
+    setTimeout(function() {
+      document.getElementById("loading-screen").style.display = 'none';
+      applyTextStyles();
+    }, 4000); // 4 segundos
+    
     function loadLanguage() {
       const lang = localStorage.getItem('language') || 'en'; // Si no se encuentra un idioma guardado, usamos 'en' por defecto
       setLanguage(lang);
