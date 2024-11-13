@@ -17,8 +17,8 @@
       align-items: center;
       justify-content: flex-start;
       min-height: 100vh;
-      padding-bottom: 80px;
       overflow-x: hidden;
+      padding-bottom: 80px;
     }
 
     /* Barra de navegación */
@@ -56,46 +56,154 @@
       color: #ee8000;
     }
 
-    section {
-      width: 90%;
-      max-width: 1200px;
-      margin: 40px 0;
+    /* Sección de Novedades */
+    #novedades {
+      width: 100%;
+      height: 400px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       padding-top: 80px;
     }
 
-    .section-title {
-      font-weight: bold;
-      font-size: 1.5em;
-      margin-bottom: 20px;
+    .novedad-container {
+      display: flex;
+      transition: transform 1s ease;
+      width: 500%;
+      /* 5 cuadros por pantalla (5 * 100%) */
+    }
+
+    .novedad-card {
+      width: 20%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
       text-align: center;
-    }
-
-    /* Cuadros de video */
-    .video-card {
-      background-color: #fff;
-      border-radius: 15px;
-      overflow: hidden;
-      margin-bottom: 20px;
-      cursor: pointer;
-      transition: transform 0.3s ease;
-      position: relative;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-
-    .video-card img {
-      width: 100%;
-      height: auto;
-      border-radius: 15px 15px 0 0;
-    }
-
-    .video-card .video-title {
-      padding: 10px;
+      padding: 20px;
+      color: white;
+      font-size: 1.5em;
       font-weight: bold;
-      background-color: #ee8000;
-      color: #fff;
-      border-radius: 0 0 15px 15px;
+      position: relative;
+      opacity: 0;
+      animation: fadeIn 1s forwards;
     }
 
+    .novedad-card p {
+      margin-top: 10px;
+      font-size: 1.1em;
+    }
+
+    .novedad-card .title {
+      font-size: 2em;
+      font-weight: bold;
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    /* Animación del cambio de cuadros */
+    .novedad-card.enter {
+      animation: slideIn 1s forwards;
+    }
+
+    .novedad-card.leave {
+      animation: slideOut 1s forwards;
+    }
+
+    @keyframes slideIn {
+      0% {
+        transform: translateX(100%);
+      }
+      100% {
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes slideOut {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-100%);
+      }
+    }
+
+    /* Barra de navegación inferior */
+    footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      padding: 5px 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      background-color: #ee8000;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .button-container {
+      display: flex;
+      width: 250px;
+      height: 50px;
+      justify-content: space-between;
+      border-radius: 10px;
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px, rgba(245, 73, 144, 0.5) 5px 10px 15px;
+      background-color: #ee8000;
+    }
+
+    .button {
+      outline: 0 !important;
+      border: 0 !important;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: transparent;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 20px;
+      transition: all 0.3s ease-in-out;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .button:hover {
+      animation: growAndChangeColor 1s forwards;
+    }
+
+    @keyframes growAndChangeColor {
+      0% {
+        transform: scale(1);
+        background: #ee8000;
+      }
+      50% {
+        transform: scale(1.3);
+        background: linear-gradient(45deg, #ee8000, #9b4d96);
+      }
+      100% {
+        transform: scale(1.2);
+        background: linear-gradient(45deg, #ee8000, #9b4d96);
+      }
+    }
+
+    .icon {
+      font-size: 20px;
+    }
+
+    /* Estilos de la pantalla de carga */
     .loading-screen {
       position: fixed;
       top: 0;
@@ -184,70 +292,6 @@
       }
     }
 
-    /* Barra de navegación del footer */
-    footer {
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      padding: 5px 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
-      background-color: #ee8000;
-      transition: all 0.3s ease-in-out;
-    }
-
-    .button-container {
-      display: flex;
-      width: 250px;
-      height: 50px;
-      justify-content: space-between;
-      border-radius: 10px;
-      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px, rgba(245, 73, 144, 0.5) 5px 10px 15px;
-      background-color: #ee8000;
-    }
-
-    .button {
-      outline: 0 !important;
-      border: 0 !important;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background-color: transparent;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-      font-size: 20px;
-      transition: all 0.3s ease-in-out;
-      cursor: pointer;
-      position: relative;
-    }
-
-    .button:hover {
-      animation: growAndChangeColor 1s forwards;
-    }
-
-    @keyframes growAndChangeColor {
-      0% {
-        transform: scale(1);
-        background: #ee8000;
-      }
-      50% {
-        transform: scale(1.3);
-        background: linear-gradient(45deg, #ee8000, #9b4d96);
-      }
-      100% {
-        transform: scale(1.2);
-        background: linear-gradient(45deg, #ee8000, #9b4d96);
-      }
-    }
-
-    .icon {
-      font-size: 20px;
-    }
-
     /* Estilos para pantallas pequeñas (móviles) */
     @media (max-width: 768px) {
       .button-container {
@@ -265,15 +309,6 @@
       }
     }
 
-      .section-card {
-        padding: 15px;
-      }
-
-      .video-card {
-        flex-direction: column;
-        align-items: center;
-      }
-    }
     @media (max-width: 480px) {
       .button-container {
         width: 300px;
@@ -302,22 +337,36 @@
     </ul>
   </nav>
 
-  <!-- Secciones principales -->
+  <!-- Sección de Novedades -->
   <section id="novedades">
-    <div class="section-title">Novedades</div>
-    <div class="section-card">
-      <div class="novedad-card">
-        <img src="https://via.placeholder.com/100" alt="Imagen de novedad" class="novedad-image">
-        <div class="novedad-text">
-          <h4>Novedad 1</h4>
-          <p>Descripción de la novedad que aparece en la página.</p>
-        </div>
+    <div class="section-title" id="description">**Novedades**</div>
+    <div class="novedad-container" id="novedad-container">
+      <div class="novedad-card" style="background-image: url('https://via.placeholder.com/800x400/ff7f7f/333333?text=Novedad+1');">
+        <div class="title">Novedad 1</div>
+        <p>Descripción de la novedad 1.</p>
+      </div>
+      <div class="novedad-card" style="background-image: url('https://via.placeholder.com/800x400/7f7fff/333333?text=Novedad+2');">
+        <div class="title">Novedad 2</div>
+        <p>Descripción de la novedad 2.</p>
+      </div>
+      <div class="novedad-card" style="background-image: url('https://via.placeholder.com/800x400/7fff7f/333333?text=Novedad+3');">
+        <div class="title">Novedad 3</div>
+        <p>Descripción de la novedad 3.</p>
+      </div>
+      <div class="novedad-card" style="background-image: url('https://via.placeholder.com/800x400/ff7fff/333333?text=Novedad+4');">
+        <div class="title">Novedad 4</div>
+        <p>Descripción de la novedad 4.</p>
+      </div>
+      <div class="novedad-card" style="background-image: url('https://via.placeholder.com/800x400/ffff7f/333333?text=Novedad+5');">
+        <div class="title">Novedad 5</div>
+        <p>Descripción de la novedad 5.</p>
       </div>
     </div>
   </section>
 
+  <!-- Sección de Videos -->
   <section id="videos">
-    <div class="section-title">Videos Recientes</div>
+    <div class="section-title" id="description">**Videos Recientes**</div>
     <div class="video-card" onclick="playVideo(event, 'https://www.youtube.com/watch?v=dQw4w9WgXcQ')">
       <img src="https://via.placeholder.com/400x200" alt="Video reciente">
       <div class="video-title">Título del Video 1</div>
@@ -330,14 +379,16 @@
     </div>
   </section>
 
+  <!-- Pantalla de carga -->
   <div class="loading-screen" id="loading-screen">
     <svg viewBox="25 25 50 50" class="container">
       <circle cx="50" cy="50" r="20" class="loader"></circle>
     </svg>
   </div>
 
+  <!-- Sección de Eventos -->
   <section id="eventos">
-    <div class="section-title"><span class="gradient-text">Próximos Eventos</span></div>
+    <div class="section-title" id="description"><span class="gradient-text">**Próximos Eventos**</span></div>
   </section>
 
   <!-- Barra de navegación inferior -->
@@ -359,18 +410,7 @@
   </footer>
 
   <script>
-    // Función para redirigir después de la animación del "check"
-    function playVideo(event, url) {
-      event.preventDefault();
-      const checkmark = event.currentTarget.querySelector('.checkmark');
-      checkmark.classList.add('show');
-      checkmark.classList.add('animate');
-      
-      setTimeout(function() {
-        window.location.href = url;
-      }, 1000); // Redirige después de la animación
-    }
-
+    // Aplicar estilos de texto
     function applyTextStyles() {
       let elements = document.querySelectorAll("#description");
       elements.forEach(element => {
@@ -382,13 +422,40 @@
       });
     }
 
+    // Sección de novedades con animación
+    let currentIndex = 0;
+    const novedades = document.querySelectorAll('.novedad-card');
+    const novedadContainer = document.getElementById('novedad-container');
+
+    function changeNovedad() {
+      // Desactivar la novedad actual
+      novedades[currentIndex].classList.remove('enter');
+      novedades[currentIndex].classList.add('leave');
+
+      // Actualizar el índice
+      currentIndex = (currentIndex + 1) % novedades.length;
+
+      // Activar la nueva novedad
+      novedades[currentIndex].classList.remove('leave');
+      novedades[currentIndex].classList.add('enter');
+
+      // Desplazar el contenedor
+      novedadContainer.style.transform = `translateX(-${100 * currentIndex}%)`;
+    }
+
+    // Cambiar cada 5 segundos
+    setInterval(changeNovedad, 5000);
+
+    // Inicializar
+    changeNovedad();
+
+    // Función de carga
     window.onload = function() {
-      applyTextStyles();
       setTimeout(function() {
         document.getElementById("loading-screen").style.display = 'none';
+        applyTextStyles(); // Llamar a la función para aplicar estilos de texto
       }, 3000);  // 3 segundos
     };
   </script>
-
 </body>
 </html>
