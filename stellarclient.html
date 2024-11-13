@@ -412,43 +412,42 @@
 
     // Función para ocultar la pantalla de carga
     window.onload = function() {
-      setTimeout(function() {
-        document.querySelector('.loading-screen').style.display = 'none';
-      }, 3000);
+        setTimeout(function() {
+          document.querySelector('.loading-screen').style.display = 'none';
+        }, 3000);
     }
 
     // Función para aplicar los estilos de texto
     function applyTextStyles() {
-      let elements = document.querySelectorAll(".description");
-      elements.forEach(element => {
-        let html = element.innerHTML;
-        html = html.replace(/\*\*{(.*?)\}\*/g, '<b>$1</b>');  // **{texto}** → texto en negrita
-        html = html.replace(/{(.*?)}/g, '<i>$1</i>');  // {texto} → texto en cursiva
-        html = html.replace(/#{(.*?)#}/g, '<span class="gradient-text">$1</span>');  // #{texto}# → texto con gradiente
-        element.innerHTML = html;
-      });
-    }
+     let elements = document.querySelectorAll(".description");
+     elements.forEach(element => {
+      let html = element.innerHTML;
+      html = html.replace(/\*\*{(.*?)\}\*/g, '<b>$1</b>');  // **{texto}** → texto en negrita
+      html = html.replace(/{(.*?)}/g, '<i>$1</i>');  // {texto} → texto en cursiva
+      html = html.replace(/#{(.*?)#}/g, '<span class="gradient-text">$1</span>');  // #{texto}# → texto con gradiente
+      element.innerHTML = html;
+     });
 
-    // Llamar a la función de estilos cuando la página cargue
-    window.onload = function() {
-      setTimeout(function() {
-        document.querySelector('.loading-screen').style.display = 'none';
-      }, 3000);
-      applyTextStyles(); // Aplicar estilos de texto
-    }
+      // Llamar a la función de estilos cuando la página cargue
+     window.onload = function() {
+       setTimeout(function() {
+       document.querySelector('.loading-screen').style.display = 'none';
+       }, 3000);
+       applyTextStyles(); // Aplicar estilos de texto
+     }
 
-    // Prevenir el menú contextual (como el clic derecho) en dispositivos móviles
-    const img = document.getElementById('protectedImage');
+     // Prevenir el menú contextual (como el clic derecho) en dispositivos móviles
+     const img = document.getElementById('protectedImage');
 
-    // Prevenir el menú contextual en desktop y móvil
-    img.addEventListener('contextmenu', function(event) {
-      event.preventDefault(); // Previene el menú contextual
-    });
+     // Prevenir el menú contextual en desktop y móvil
+     img.addEventListener('contextmenu', function(event) {
+       event.preventDefault(); // Previene el menú contextual
+     });
 
-    // Prevenir el toque largo en móviles (típico de dispositivos táctiles)
-    img.addEventListener('touchstart', function(event) {
-      event.preventDefault(); // Previene las acciones por defecto en móviles (como mantener presionado)
-    });
+     // Prevenir el toque largo en móviles (típico de dispositivos táctiles)
+     img.addEventListener('touchstart', function(event) {
+       event.preventDefault(); // Previene las acciones por defecto en móviles (como mantener presionado)
+     });
   </script>
 
 </body>
