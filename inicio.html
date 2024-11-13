@@ -305,6 +305,11 @@
   </footer>
 
   <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      document.getElementById("loading-screen").style.display = 'none';
+      applyTextStyles();
+    });
+
     function loadLanguage() {
       const lang = localStorage.getItem('language') || 'en'; // Si no se encuentra un idioma guardado, usamos 'en' por defecto
       setLanguage(lang);
