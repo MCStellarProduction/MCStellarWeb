@@ -96,17 +96,17 @@
       position: fixed;
       bottom: 0;
       width: 100%;
-      padding: 20px 0;
-      background-color: #106ee8;
+      padding: 10px 0;
       display: flex;
       justify-content: center;
       align-items: center;
       z-index: 1000;
+      background-color: transparent; /* Sin fondo */
     }
 
     .button-container {
       display: flex;
-      background-color: #ee8000;
+      background-color: transparent; /* Sin fondo */
       width: 250px;
       height: 40px;
       align-items: center;
@@ -150,23 +150,33 @@
       }
 
       .button-container {
-        width: 200px;
+        width: 300px; /* Mayor ancho para la barra */
+        height: 60px; /* Barra más grande */
+      }
+
+      .button {
+        width: 60px; /* Botones más grandes */
+        height: 60px; /* Botones más grandes */
+      }
+
+      .icon {
+        font-size: 25px; /* Iconos más grandes */
       }
     }
 
     @media (max-width: 480px) {
       .button-container {
-        width: 180px;
-        height: 35px;
+        width: 200px; /* Ajustamos el ancho para pantallas más pequeñas */
+        height: 70px; /* Aumentamos la altura de la barra */
       }
 
       .button {
-        width: 35px;
-        height: 35px;
+        width: 70px; /* Botones aún más grandes */
+        height: 70px; /* Botones aún más grandes */
       }
 
       .icon {
-        font-size: 18px;
+        font-size: 30px; /* Iconos más grandes */
       }
     }
 
