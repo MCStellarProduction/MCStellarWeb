@@ -356,10 +356,119 @@
   </div>
 
   <script>
-        setTimeout(function() {
+    setTimeout(function() {
       document.getElementById("loading-screen").style.display = 'none';
       applyTextStyles();
     }, 4000); // 4 segundos
+
+    function loadLanguage() {
+      const lang = localStorage.getItem('language') || 'en'; // Si no se encuentra un idioma guardado, usamos 'en' por defecto
+      setLanguage(lang);
+    }
+
+    // Función para cambiar el idioma
+    function changeLanguage(lang) {
+      localStorage.setItem('language', lang);
+      setLanguage(lang);
+      closeDropdown();  // Cierra el desplegable después de cambiar el idioma
+    }
+
+    // Función que actualiza el texto de la página en función del idioma
+    function setLanguage(lang) {
+      const languageText = document.getElementById('languageText');
+      if (lang === 'es') {
+        languageText.textContent = 'Español (Latinoamericano)';
+        translatePageToSpanish();
+      } else {
+        languageText.textContent = 'English (US)';
+        translatePageToEnglish();
+      }
+    }
+
+    // Función que traduce los textos al español
+    function translatePageToSpanish() {
+      document.querySelector('h2').textContent = 'Configuración';
+    }
+
+    // Función que traduce los textos al inglés
+    function translatePageToEnglish() {
+      document.querySelector('h2').textContent = 'Configuration';
+    }
+
+    // Función para mostrar/ocultar las opciones del dropdown
+    document.getElementById('languageSelector').addEventListener('click', function() {
+      const dropdown = document.getElementById('dropdownOptions');
+      const arrow = document.getElementById('arrow');
+      if (dropdown.style.maxHeight) {
+        closeDropdown();
+      } else {
+        openDropdown();
+      }
+    });
+
+    // Función para abrir el dropdown
+    function openDropdown() {
+      const dropdown = document.getElementById('dropdownOptions');
+      const arrow = document.getElementById('arrow');
+      dropdown.style.display = 'block';
+      setTimeout(() => {
+        dropdown.style.maxHeight = dropdown.scrollHeight + "px"; // Animación de apertura
+      }, 10);
+      document.getElementById('languageSelector').classList.add('open');
+    }
+
+    // Función para cerrar el dropdown
+    function closeDropdown() {
+      const dropdown = document.getElementById('dropdownOptions');
+      dropdown.style.maxHeight = '0';
+      document.getElementById('languageSelector').classList.remove('open');
+    }
+
+    // Cargar el idioma preferido al cargar la página
+    loadLanguage();
+
+    // Función para aplicar los estilos de texto
+    function applyTextStyles() {
+      let elements = document.querySelectorAll("#description");
+      elements.forEach(element => {
+        let html = element.innerHTML;
+        html = html.replace(/\*\*{(.*?)\}\*/g, '<b>$1</b>');
+        html = html.replace(/{(.*?)}/g, '<i>$1</i>');
+        html = html.replace(/#{(.*?)#}/g, '<span class="gradient-text">$1</span>'); // Gradiente Naranja a Morado
+        element.innerHTML = html;
+      });
+    }
+
+    // Cuando la página se carga, elimina la pantalla de carga después de 3 segundos y aplica los estilo
+    window.onload = function() {
+      applyTextStyles();
+      setTimeout(function() {
+        document.getElementById("loading-screen").style.display = 'none';
+      }, 1000);  // 1 segundo
+    };
+
+    // Redirigir a otra página después de un clic
+    function redirectToPage(event, url) {
+      event.preventDefault(); 
+      const button = event.currentTarget;
+      button.style.pointerEvents = 'none';
+      setTimeout(() => {
+        window.location.href = url;
+      }, 1000);
+    }
+
+    // Prevenir el menú contextual (como el clic derecho) en dispositivos móviles
+    const img = document.getElementById('protectedImage');
+
+    // Prevenir el menú contextual en desktop y móvil
+    img.addEventListener('contextmenu', function(event) {
+      event.preventDefault(); // Previene el menú contextual
+    });
+
+    // Prevenir el toque largo en móviles (típico de dispositivos táctiles)
+    img.addEventListener('touchstart', function(event) {
+      event.preventDefault(); // Previene las acciones por defecto en móviles (como mantener presionado)
+    });
 
     function loadLanguage() {
       const lang = localStorage.getItem('language') || 'en'; // Si no se encuentra un idioma guardado, usamos 'en' por defecto
