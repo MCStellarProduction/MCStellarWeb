@@ -7,7 +7,6 @@
   <title>MCStellar Production</title>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
   <style>
-    /* Deshabilitar el movimiento horizontal */
     body {
       font-family: 'Arial', sans-serif;
       background-color: #f5f5f5;
@@ -19,7 +18,7 @@
       justify-content: flex-start;
       min-height: 100vh;
       padding-bottom: 80px;
-      overflow-x: hidden; /* Deshabilita el movimiento horizontal */
+      overflow-x: hidden;
     }
 
     /* Barra de navegación */
@@ -29,7 +28,7 @@
       position: fixed;
       top: 0;
       left: 0;
-      padding: 10px 0;
+      padding: 20px 0;
       z-index: 1000;
     }
 
@@ -42,13 +41,13 @@
     }
 
     nav ul li {
-      margin: 0 20px;
+      margin: 0 10px;
     }
 
     nav ul li a {
       color: #fff;
       text-decoration: none;
-      font-size: 1.2em;
+      font-size: 1.5em;
       font-weight: bold;
       transition: color 0.3s;
     }
@@ -57,12 +56,11 @@
       color: #ee8000;
     }
 
-    /* Sección Principal */
     section {
       width: 90%;
       max-width: 1200px;
       margin: 40px 0;
-      padding-top: 60px; /* Para dar espacio por la barra de navegación */
+      padding-top: 80px;
     }
 
     .section-title {
@@ -72,52 +70,16 @@
       text-align: center;
     }
 
-    /* Estilo para los cuadros de cada sección */
-    .section-card {
-      background-color: #fff;
-      border-radius: 15px;
-      padding: 20px;
-      margin-bottom: 20px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease;
-    }
-
-    .section-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    }
-
-    /* Cuadro de Novedades */
-    .novedad-card {
-      display: flex;
-      align-items: center;
-      background-color: #fff;
-      border-radius: 15px;
-      margin-bottom: 20px;
-      padding: 20px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-
-    .novedad-image {
-      width: 100px;
-      height: 100px;
-      border-radius: 15px;
-      object-fit: cover;
-      margin-right: 20px;
-    }
-
-    .novedad-text {
-      flex: 1;
-    }
-
-    /* Videos Recientes */
+    /* Cuadros de video */
     .video-card {
       background-color: #fff;
       border-radius: 15px;
       overflow: hidden;
       margin-bottom: 20px;
-      transition: transform 0.3s ease;
       cursor: pointer;
+      transition: transform 0.3s ease;
+      position: relative;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
 
     .video-card img {
@@ -134,32 +96,41 @@
       border-radius: 0 0 15px 15px;
     }
 
-    /* Próximos Eventos */
-    .event-card {
-      display: flex;
-      background-color: #fff;
-      border-radius: 15px;
-      overflow: hidden;
-      margin-bottom: 20px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Animación de check */
+    .checkmark {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 50px;
+      color: #00cc00;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.5s ease;
     }
 
-    .event-card img {
-      width: 50%;
-      height: 100%;
-      object-fit: cover;
+    .checkmark.show {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1.5);
     }
 
-    .event-card .event-info {
-      padding: 20px;
-      width: 50%;
+    .checkmark.animate {
+      animation: checkmarkAnimation 1s forwards;
     }
 
-    /* Gradiente en el texto */
-    .gradient-text {
-      background: linear-gradient(45deg, #ee8000, #9b4d96);
-      -webkit-background-clip: text;
-      color: transparent;
+    @keyframes checkmarkAnimation {
+      0% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0;
+      }
+      50% {
+        transform: translate(-50%, -50%) scale(1.2);
+        opacity: 1;
+      }
+      100% {
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 0;
+      }
     }
 
     /* Barra de navegación del footer */
@@ -229,12 +200,12 @@
     /* Estilos para pantallas pequeñas (móviles) */
     @media (max-width: 768px) {
       footer {
-        height: 50px; /* Barra más delgada en móviles */
+        height: 50px;
       }
 
       .button-container {
         width: 90%;
-        height: 40px; /* Botones más pequeños */
+        height: 40px;
       }
 
       .button {
@@ -247,24 +218,9 @@
         padding: 15px;
       }
 
-      .novedad-card,
-      .video-card,
-      .event-card {
+      .video-card {
         flex-direction: column;
         align-items: center;
-      }
-
-      .novedad-image,
-      .event-card img {
-        width: 100px;
-        height: 100px;
-        margin-bottom: 10px;
-      }
-
-      .novedad-text,
-      .event-info {
-        padding: 10px;
-        text-align: center;
       }
     }
   </style>
@@ -291,74 +247,58 @@
           <p>Descripción de la novedad que aparece en la página.</p>
         </div>
       </div>
-      <div class="novedad-card">
-        <img src="https://via.placeholder.com/100" alt="Imagen de novedad" class="novedad-image">
-        <div class="novedad-text">
-          <h4>Novedad 2</h4>
-          <p>Descripción de la novedad que aparece en la página.</p>
-        </div>
-      </div>
     </div>
   </section>
 
   <section id="videos">
     <div class="section-title">Videos Recientes</div>
-    <div class="video-card">
+    <div class="video-card" onclick="playVideo(event, 'https://www.youtube.com/watch?v=dQw4w9WgXcQ')">
       <img src="https://via.placeholder.com/400x200" alt="Video reciente">
       <div class="video-title">Título del Video 1</div>
+      <div class="checkmark">✔</div>
     </div>
-    <div class="video-card">
+    <div class="video-card" onclick="playVideo(event, 'https://www.youtube.com/watch?v=dQw4w9WgXcQ')">
       <img src="https://via.placeholder.com/400x200" alt="Video reciente">
       <div class="video-title">Título del Video 2</div>
+      <div class="checkmark">✔</div>
     </div>
   </section>
 
   <section id="eventos">
     <div class="section-title">Próximos Eventos</div>
-    <div class="event-card">
-      <img src="https://via.placeholder.com/200x200" alt="Evento 1">
-      <div class="event-info">
-        <h4>Evento 1</h4>
-        <p>Detalles sobre el evento que sucederá pronto.</p>
-      </div>
-    </div>
-    <div class="event-card">
-      <img src="https://via.placeholder.com/200x200" alt="Evento 2">
-      <div class="event-info">
-        <h4>Evento 2</h4>
-        <p>Detalles sobre el evento que sucederá pronto.</p>
-      </div>
-    </div>
   </section>
 
   <!-- Barra de navegación inferior -->
   <footer>
     <div class="button-container">
-      <a href="https://www.mcstellar.lat/inicio" class="button" id="homeButton" onclick="redirectToPage(event, 'https://www.mcstellar.lat/inicio')">
+      <a href="https://www.mcstellar.lat/inicio" class="button">
         <i class="fas fa-home icon"></i>
       </a>
-      <a href="https://www.mcstellar.lat/search" class="button" id="searchButton" onclick="redirectToPage(event, 'https://www.mcstellar.lat/search')">
+      <a href="https://www.mcstellar.lat/search" class="button">
         <i class="fas fa-search icon"></i>
       </a>
-      <a href="https://www.ejemplo3.com" class="button" id="starButton" onclick="redirectToPage(event, 'https://www.ejemplo3.com')">
+      <a href="https://www.ejemplo3.com" class="button">
         <i class="fas fa-star icon"></i>
       </a>
-      <a href="https://www.ejemplo4.com" class="button" id="moreButton" onclick="redirectToPage(event, 'https://www.ejemplo4.com')">
+      <a href="https://www.ejemplo4.com" class="button">
         <i class="fas fa-ellipsis-h icon"></i>
       </a>
     </div>
   </footer>
 
   <script>
-    // Función para redirigir
-    function redirectToPage(event, url) {
+    // Función para redirigir después de la animación del "check"
+    function playVideo(event, url) {
       event.preventDefault();
-      const button = event.target.closest('.button');
-      button.style.animation = 'growAndChangeColor 1s forwards';
+      const checkmark = event.currentTarget.querySelector('.checkmark');
+      checkmark.classList.add('show');
+      checkmark.classList.add('animate');
+      
       setTimeout(function() {
         window.location.href = url;
-      }, 1000);
+      }, 1000); // Redirige después de la animación
     }
   </script>
+
 </body>
 </html>
