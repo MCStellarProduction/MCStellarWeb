@@ -7,9 +7,9 @@
   <title>MCStellar Production</title>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
   <style>
+    /* Estilos Generales */
     body {
       font-family: 'Arial', sans-serif;
-      background-color: #f5f5f5;
       margin: 0;
       padding: 0;
       display: flex;
@@ -17,6 +17,7 @@
       align-items: center;
       justify-content: flex-start;
       min-height: 100vh;
+      background-color: #f5f5f5;
       overflow-x: hidden;
       padding-bottom: 80px;
     }
@@ -72,7 +73,6 @@
       display: flex;
       transition: transform 1s ease;
       width: 500%;
-      /* 5 cuadros por pantalla (5 * 100%) */
     }
 
     .novedad-card {
@@ -113,14 +113,6 @@
     }
 
     /* Animación del cambio de cuadros */
-    .novedad-card.enter {
-      animation: slideIn 1s forwards;
-    }
-
-    .novedad-card.leave {
-      animation: slideOut 1s forwards;
-    }
-
     @keyframes slideIn {
       0% {
         transform: translateX(100%);
@@ -252,43 +244,6 @@
 
       100% {
         stroke-dashoffset: -125px;
-      }
-    }
-
-    /* Animación de check */
-    .checkmark {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 50px;
-      color: #00cc00;
-      opacity: 0;
-      pointer-events: none;
-      transition: all 0.5s ease;
-    }
-
-    .checkmark.show {
-      opacity: 1;
-      transform: translate(-50%, -50%) scale(1.5);
-    }
-
-    .checkmark.animate {
-      animation: checkmarkAnimation 1s forwards;
-    }
-
-    @keyframes checkmarkAnimation {
-      0% {
-        transform: translate(-50%, -50%) scale(1);
-        opacity: 0;
-      }
-      50% {
-        transform: translate(-50%, -50%) scale(1.2);
-        opacity: 1;
-      }
-      100% {
-        transform: translate(-50%, -50%) scale(0);
-        opacity: 0;
       }
     }
 
