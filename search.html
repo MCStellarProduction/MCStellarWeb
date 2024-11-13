@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimal-ui">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>MCStellar Production</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <style>
+    /* Deshabilitar el movimiento horizontal */
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      padding-bottom: 80px;
+      overflow-x: hidden; /* Deshabilita el movimiento horizontal */
+    }
+
+    /* Pantalla de Carga */
+    .loading-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    .container {
+      width: 3.25em;
+      transform-origin: center;
+      animation: rotate4 2s linear infinite;
+    }
+
+    .loader {
+      fill: none;
+      stroke: #ee8000;
+      stroke-width: 10;
+      stroke-dasharray: 2, 200;
+      stroke-dashoffset: 0;
+      stroke-linecap: round;
+      animation: dash4 1.5s ease-in-out infinite;
+    }
+
+    @keyframes rotate4 {
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes dash4 {
+      0% {
+        stroke-dasharray: 1, 200;
+        stroke-dashoffset: 0;
+      }
+
+      50% {
+        stroke-dasharray: 90, 200;
+        stroke-dashoffset: -35px;
+      }
+
+      100% {
+        stroke-dashoffset: -125px;
+      }
+    }
+
+    /* Sección Principal */
+    section {
+      width: 90%;
+      max-width: 1200px;
+      margin: 40px 0;
+    }
+
+    .section-title {
+      font-weight: bold;
+      font-size: 1.5em;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    /* Novedades */
+    .novedad-card {
+      display: flex;
+      align-items: center;
+      background-color: #fff;
+      border-radius: 15px;
+      margin-bottom: 20px;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .novedad-image {
+      width: 100px;
+      height: 100px;
+      border-radius: 15px;
+      object-fit: cover;
+      margin-right: 20px;
+    }
+
+    .novedad-text {
+      flex: 1;
+    }
+
+    /* Videos Recientes */
+    .video-card {
+      background-color: #fff;
+      border-radius: 15px;
+      overflow: hidden;
+      margin-bottom: 20px;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+
+    .video-card img {
+      width: 100%;
+      height: auto;
+      border-radius: 15px 15px 0 0;
+    }
+
+    .video-card .video-title {
+      padding: 10px;
+      font-weight: bold;
+      background-color: #ee8000;
+      color: #fff;
+      border-radius: 0 0 15px 15px;
+    }
+
+    /* Animación Check de Video */
+    .check-animation {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 50px;
+      color: green;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .video-card.clicked {
+      transform: scale(1.05);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .video-card.clicked .check-animation {
+      opacity: 1;
+      animation: checkAnimation 1s forwards;
+    }
+
+    @keyframes checkAnimation {
+      0% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+      }
+      100% {
+        opacity: 0;
+        transform: translate(-50%, -150%) scale(2);
+      }
+    }
+
+    /* Próximos Eventos */
+    .event-card {
+      display: flex;
+      background-color: #fff;
+      border-radius: 15px;
+      overflow: hidden;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .event-card img {
+      width: 50%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .event-card .event-info {
+      padding: 20px;
+      width: 50%;
+    }
+
+    /* Gradiente en el texto */
+    .gradient-text {
+      background: linear-gradient(45deg, #ee8000, #9b4d96);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Pantalla de Carga -->
+  <div class="loading-screen" id="loading-screen">
+    <svg viewBox="25 25 50 50" class="container">
+      <circle cx="50" cy="50" r="20" class="loader"></circle>
+    </svg>
+  </div>
+
+  <section>
+    <!-- Sección de Novedades -->
+    <div class="section-title">Novedades</div>
+    <div class="novedad-card">
+      <img src="https://via.placeholder.com/100" alt="Novedad" class="novedad-image">
+      <div class="novedad-text">
+        <h3 class="gradient-text">Nueva Actualización en Minecraft</h3>
+        <p>Descubre las novedades más recientes en Minecraft, que incluyen nuevas características y mejoras para personalizar tu experiencia.</p>
+      </div>
+    </div>
+    <div class="novedad-card">
+      <img src="https://via.placeholder.com/100" alt="Novedad" class="novedad-image">
+      <div class="novedad-text">
+        <h3 class="gradient-text">Evento de PvP en Minecraft</h3>
+        <p>Participa en el nuevo evento PvP que hemos preparado. Con nuevas recompensas y desafíos para todos.</p>
+      </div>
+    </div>
+
+    <!-- Sección de Videos Recientes -->
+    <div class="section-title">Videos Recientes</div>
+    <div class="video-card" onclick="startVideoCheck(this, 'https://www.youtube.com/watch?v=dQw4w9WgXcQ')">
+      <img src="https://via.placeholder.com/600x300" alt="Video Reciente">
+      <div class="video-title">Video de Minecraft: Construcción Épica</div>
+      <div class="check-animation">✔</div>
+    </div>
+    <div class="video-card" onclick="startVideoCheck(this, 'https://www.youtube.com/watch?v=dQw4w9WgXcQ')">
+      <img src="https://via.placeholder.com/600x300" alt="Video Reciente">
+      <div class="video-title">Minecraft: Aventura en el Nether</div>
+      <div class="check-animation">✔</div>
+    </div>
+
+    <!-- Sección de Próximos Eventos -->
+    <div class="section-title">Próximos Eventos</div>
+    <div class="event-card">
+      <img src="https://via.placeholder.com/600x300" alt="Evento Minecraft">
+      <div class="event-info">
+        <h3 class="gradient-text">Evento de Construcción Colaborativa</h3>
+        <p>Únete a nuestra construcción colaborativa, donde todos los jugadores pueden aportar sus ideas y crear algo increíble.</p>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Función para manejar la animación de check y redirección
+    function startVideoCheck(videoElement, url) {
+      videoElement.classList.add('clicked');
+      setTimeout(() => {
+        window.location.href = url;
+      }, 1000); // Redirige después de 1 segundo
+    }
+
+    // Función para ocultar la pantalla de carga después de 3 segundos
+    window.onload = function() {
+      setTimeout(function() {
+        document.getElementById("loading-screen").style.display = 'none';
+      }, 3000);  // 3 segundos
+    };
+  </script>
+
+</body>
+</html>
