@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimal-ui">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>MCStellar Production</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <style>
+    /* Deshabilitar el movimiento horizontal */
+    body {
+      user-select: none;
+      font-family: 'Arial', sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      padding-bottom: 80px;
+      overflow-x: hidden; /* Deshabilita el movimiento horizontal */
+    }
+
+    img {
+      -webkit-user-drag: none;
+      user-drag: none;
+      user-select: none;
+    }
+
+    /* Pantalla de Carga */
+    .loading-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    .container {
+      width: 3.25em;
+      transform-origin: center;
+      animation: rotate4 2s linear infinite;
+    }
+
+    .loader {
+      fill: none;
+      stroke: #ee8000;
+      stroke-width: 10;
+      stroke-dasharray: 2, 200;
+      stroke-dashoffset: 0;
+      stroke-linecap: round;
+      animation: dash4 1.5s ease-in-out infinite;
+    }
+
+    @keyframes rotate4 {
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes dash4 {
+      0% {
+        stroke-dasharray: 1, 200;
+        stroke-dashoffset: 0;
+      }
+
+      50% {
+        stroke-dasharray: 90, 200;
+        stroke-dashoffset: -35px;
+      }
+
+      100% {
+        stroke-dashoffset: -125px;
+      }
+    }
+
+    /* Estilos Generales */
+    header {
+      width: 100%;
+      text-align: center;
+      padding: 20px;
+    }
+
+    header img {
+      width: 100%;
+      height: auto;
+    }
+
+    section {
+      width: 90%;
+      max-width: 1200px;
+      margin: 40px 0;
+    }
+
+    .section-title {
+      font-weight: bold;
+      font-size: 1.5em;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .card {
+      background-color: #fff;
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+    }
+
+    .card h2 {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      font-size: 1em;
+      color: #555;
+    }
+
+    .card-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+    }
+
+    .banner-container {
+      position: relative;
+      width: 100%;
+      height: 50%;
+      overflow: hidden;
+      border-radius: 15px;
+    }
+
+    .banner {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+    }
+
+    .content {
+      padding: 20px;
+      height: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      padding: 5px 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      background-color: #ee8000;
+    }
+
+    .button-container {
+      display: flex;
+      width: 250px;
+      height: 50px;
+      justify-content: space-between;
+      border-radius: 10px;
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px, rgba(245, 73, 144, 0.5) 5px 10px 15px;
+      background-color: #ee8000;
+    }
+
+    .button {
+      outline: 0 !important;
+      border: 0 !important;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: transparent;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 20px;
+      transition: all 0.3s ease-in-out;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .button:hover {
+      animation: growAndChangeColor 1s forwards;
+    }
+
+    @keyframes growAndChangeColor {
+      0% {
+        transform: scale(1);
+        background: #ee8000;
+      }
+      50% {
+        transform: scale(1.3);
+        background: linear-gradient(45deg, #ee8000, #9b4d96);
+      }
+      100% {
+        transform: scale(1.2);
+        background: linear-gradient(45deg, #ee8000, #9b4d96);
+      }
+    }
+
+    .icon {
+      font-size: 20px;
+    }
+
+    /* Gradiente en el texto */
+    .gradient-text {
+      background: linear-gradient(45deg, #ee8000, #9b4d96);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    @media (max-width: 768px) {
+      .button-container {
+        width: 250px;
+        height: 50px;
+      }
+
+      .button {
+        width: 45px;
+        height: 45px;
+      }
+
+      .icon {
+        font-size: 22px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .button-container {
+        width: 300px;
+        height: 60px;
+      }
+
+      .button {
+        width: 50px;
+        height: 50px;
+      }
+
+      .icon {
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Pantalla de Carga -->
+  <div class="loading-screen" id="loading-screen">
+    <svg viewBox="25 25 50 50" class="container">
+      <circle cx="50" cy="50" r="20" class="loader"></circle>
+    </svg>
+  </div>
+
+  <div
+  class="w-[300px] px-4 py-5 bg-white flex flex-col gap-3 rounded-md shadow-[0px_0px_15px_rgba(0,0,0,0.09)]"
+>
+  <legend class="text-xl font-semibold mb-3 select-none">Choose One</legend>
+  <label
+    for="html"
+    name="status"
+    class="font-medium h-14 relative hover:bg-zinc-100 flex items-center px-3 gap-3 rounded-lg has-[:checked]:text-blue-500 has-[:checked]:bg-blue-50 has-[:checked]:ring-blue-300 has-[:checked]:ring-1 select-none"
+  >
+    <div class="w-5 fill-blue-500">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        fill="currentColor"
+        version="1.1"
+        viewBox="0 0 512 512"
+        xml:space="preserve"
+      >
+        <g id="c133de6af664cd4f011a55de6b0011b2">
+          <path
+            display="inline"
+            d="M30.713,0.501L71.717,460.42l184.006,51.078l184.515-51.15L481.287,0.501H30.713z M395.754,109.646   l-2.567,28.596l-1.128,12.681h-0.187H256h-0.197h-79.599l5.155,57.761h74.444H256h115.723h15.201l-1.377,15.146l-13.255,148.506   l-0.849,9.523L256,413.854v0.012l-0.259,0.072l-115.547-32.078l-7.903-88.566h26.098h30.526l4.016,44.986l62.82,16.965l0.052-0.014   v-0.006l62.916-16.977l6.542-73.158H256h-0.197H129.771l-13.863-155.444l-1.351-15.131h141.247H256h141.104L395.754,109.646z"
+          ></path>
+        </g>
+      </svg>
+    </div>
+    Español ( Latinoamerica )
+    <input
+      checked=""
+      type="radio"
+      name="status"
+      class="peer/html w-4 h-4 absolute accent-current right-3"
+      id="html"
+    />
+  </label>
+  <label
+    for="css"
+    class="font-medium h-14 relative hover:bg-zinc-100 flex items-center px-3 gap-3 rounded-lg has-[:checked]:text-blue-500 has-[:checked]:bg-blue-50 has-[:checked]:ring-blue-300 has-[:checked]:ring-1 select-none"
+  >
+    <div class="w-5">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="currentColor"
+        viewBox="0 0 24 24"
+        role="img"
+      >
+        <path
+          d="M1.5 0h21l-1.91 21.563L11.977 24l-8.565-2.438L1.5 0zm17.09 4.413L5.41 4.41l.213 2.622 10.125.002-.255 2.716h-6.64l.24 2.573h6.182l-.366 3.523-2.91.804-2.956-.81-.188-2.11h-2.61l.29 3.855L12 19.288l5.373-1.53L18.59 4.414z"
+        ></path>
+      </svg>
+    </div>
+    English ( US )
+    <input
+      type="radio"
+      name="status"
+      class="w-4 h-4 absolute accent-current right-3"
+      id="css"
+    />
+  </label>
+  </div>
+
+  <footer>
+    <div class="button-container">
+      <a href="https://www.mcstellar.lat/inicio" class="button" id="homeButton" onclick="redirectToPage(event, 'https://www.mcstellar.lat/inicio')">
+        <i class="fas fa-home icon"></i>
+      </a>
+      <a href="https://www.mcstellar.lat/search" class="button" id="searchButton" onclick="redirectToPage(event, 'https://www.mcstellar.lat/search')">
+        <i class="fas fa-search icon"></i>
+      </a>
+      <a href="https://www.mcstellar.lat/stellarclient" class="button" id="starButton" onclick="redirectToPage(event, 'https://www.mcstellar.lat/stellarclient')">
+        <i class="fas fa-star icon"></i>
+      </a>
+      <a href="https://www.ejemplo4.com" class="button" id="moreButton" onclick="redirectToPage(event, 'https://www.ejemplo4.com')">
+        <i class="fas fa-ellipsis-h icon"></i>
+      </a>
+    </div>
+  </footer>
+
+  <script>
+    // Función para aplicar los estilos de texto
+    function applyTextStyles() {
+      let elements = document.querySelectorAll("#description");
+      elements.forEach(element => {
+        let html = element.innerHTML;
+        html = html.replace(/\*\*{(.*?)\}\*/g, '<b>$1</b>');
+        html = html.replace(/{(.*?)}/g, '<i>$1</i>');
+        html = html.replace(/#{(.*?)#}/g, '<span class="gradient-text">$1</span>'); // Gradiente Naranja a Morado
+        element.innerHTML = html;
+      });
+    }
+
+    // Cuando la página se carga, elimina la pantalla de carga después de 3 segundos y aplica los estilos
+    window.onload = function() {
+      applyTextStyles();
+      setTimeout(function() {
+        document.getElementById("loading-screen").style.display = 'none';
+      }, 3000);  // 3 segundos
+    };
+
+    // Redirigir a otra página después de un clic
+    function redirectToPage(event, url) {
+      event.preventDefault(); 
+      const button = event.currentTarget;
+      button.style.pointerEvents = 'none';
+      setTimeout(() => {
+        window.location.href = url;
+      }, 1000);
+    }
+
+    // Prevenir el menú contextual (como el clic derecho) en dispositivos móviles
+    const img = document.getElementById('protectedImage');
+
+    // Prevenir el menú contextual en desktop y móvil
+    img.addEventListener('contextmenu', function(event) {
+      event.preventDefault(); // Previene el menú contextual
+    });
+
+    // Prevenir el toque largo en móviles (típico de dispositivos táctiles)
+    img.addEventListener('touchstart', function(event) {
+      event.preventDefault(); // Previene las acciones por defecto en móviles (como mantener presionado)
+    });
+  </script>
+
+</body>
+</html>
