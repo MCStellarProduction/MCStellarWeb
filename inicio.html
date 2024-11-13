@@ -204,7 +204,7 @@
         <!-- Texto de presentación en la mitad inferior -->
         <div class="content">
           <h2>Bienvenidos a MCStellar Production</h2>
-          <p>Somos una compañía especializada en la **edición de videos** y la **creación de eventos** dentro del universo Minecraft. Nuestro objetivo es ofrecer experiencias únicas y memorables para nuestra comunidad de jugadores y creadores de contenido. Ya sea creando eventos épicos, personalizando servidores o realizando ediciones de alta calidad, MCStellar Production está aquí para llevar tus proyectos a un nivel profesional.</p>
+          <p id="description">Somos una compañía especializada en la <b>edición de videos</b> y la <i>creación de eventos</i> dentro del universo Minecraft. Nuestro objetivo es ofrecer experiencias únicas y memorables para nuestra comunidad de jugadores y creadores de contenido. Ya sea creando eventos épicos, personalizando servidores o realizando ediciones de alta calidad, MCStellar Production está aquí para llevar tus proyectos a un nivel profesional.</p>
           <p>¡Únete a nosotros y forma parte de la experiencia! Nuestra misión es crear contenidos innovadores que hagan que cada evento o video sea inolvidable. Estamos comprometidos con la calidad y la diversión, brindando un servicio único en su tipo.</p>
         </div>
       </div>
@@ -229,6 +229,28 @@
   </footer>
 
   <script>
+    // Función para aplicar estilos a los textos que usan los delimitadores
+    function applyTextStyles() {
+      let elements = document.querySelectorAll("#description"); // Aplica solo a los textos con este id
+
+      elements.forEach(element => {
+        let html = element.innerHTML;
+
+        // Reemplazar **{texto}** por negrita
+        html = html.replace(/\*\*{(.*?)\}\*/g, '<b>$1</b>');
+
+        // Reemplazar '{texto}' por cursiva
+        html = html.replace(/{(.*?)}/g, '<i>$1</i>');
+
+        element.innerHTML = html;
+      });
+    }
+
+    // Llamar la función al cargar la página
+    window.onload = function() {
+      applyTextStyles();
+    };
+
     function redirectToPage(event, url) {
       event.preventDefault(); 
       const button = event.currentTarget;
