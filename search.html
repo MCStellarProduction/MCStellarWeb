@@ -356,11 +356,11 @@
   </div>
 
   <script>
-    setTimeout(function() {
+        setTimeout(function() {
       document.getElementById("loading-screen").style.display = 'none';
       applyTextStyles();
     }, 4000); // 4 segundos
-    
+
     function loadLanguage() {
       const lang = localStorage.getItem('language') || 'en'; // Si no se encuentra un idioma guardado, usamos 'en' por defecto
       setLanguage(lang);
@@ -426,8 +426,28 @@
 
     // Cargar el idioma preferido al cargar la página
     loadLanguage();
-    
-    // Función para redirigir con animación
+
+    // Función para aplicar los estilos de texto
+    function applyTextStyles() {
+      let elements = document.querySelectorAll("#description");
+      elements.forEach(element => {
+        let html = element.innerHTML;
+        html = html.replace(/\*\*{(.*?)\}\*/g, '<b>$1</b>');
+        html = html.replace(/{(.*?)}/g, '<i>$1</i>');
+        html = html.replace(/#{(.*?)#}/g, '<span class="gradient-text">$1</span>'); // Gradiente Naranja a Morado
+        element.innerHTML = html;
+      });
+    }
+
+    // Cuando la página se carga, elimina la pantalla de carga después de 3 segundos y aplica los estilo
+    window.onload = function() {
+      applyTextStyles();
+      setTimeout(function() {
+        document.getElementById("loading-screen").style.display = 'none';
+      }, 1000);  // 1 segundo
+    };
+
+    // Redirigir a otra página después de un clic
     function redirectToPage(event, url) {
       event.preventDefault(); 
       const button = event.currentTarget;
@@ -435,33 +455,6 @@
       setTimeout(() => {
         window.location.href = url;
       }, 1000);
-    }
-
-    // Función para ocultar la pantalla de carga
-    window.onload = function() {
-      setTimeout(function() {
-        document.querySelector('.loading-screen').style.display = 'none';
-      }, 3000);
-    }
-
-    // Función para aplicar los estilos de texto
-    function applyTextStyles() {
-      let elements = document.querySelectorAll(".description");
-      elements.forEach(element => {
-        let html = element.innerHTML;
-        html = html.replace(/\*\*{(.*?)\}\*/g, '<b>$1</b>');  // **{texto}** → texto en negrita
-        html = html.replace(/{(.*?)}/g, '<i>$1</i>');  // {texto} → texto en cursiva
-        html = html.replace(/#{(.*?)#}/g, '<span class="gradient-text">$1</span>');  // #{texto}# → texto con gradiente
-        element.innerHTML = html;
-      });
-    }
-
-    // Llamar a la función de estilos cuando la página cargue
-    window.onload = function() {
-      setTimeout(function() {
-        document.querySelector('.loading-screen').style.display = 'none';
-      }, 3000);
-      applyTextStyles(); // Aplicar estilos de texto
     }
 
     // Prevenir el menú contextual (como el clic derecho) en dispositivos móviles
