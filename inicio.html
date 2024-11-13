@@ -61,12 +61,35 @@
       color: #555;
     }
 
+    .card-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+    }
+
+    .banner-container {
+      position: relative;
+      width: 100%;
+      height: 50%; /* 50% para que el GIF cubra la mitad superior */
+      overflow: hidden;
+      border-radius: 15px;
+    }
+
     .banner {
       width: 100%;
-      height: 400px;
+      height: 100%;
       object-fit: cover;
-      border-radius: 15px;
-      margin-bottom: 20px;
+      position: absolute;
+      top: 0;
+    }
+
+    .content {
+      padding: 20px;
+      height: 50%; /* La otra mitad para el texto */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
 
     footer {
@@ -173,40 +196,45 @@
   <section>
     <div class="section-title">MCStellar Production</div>
     <div class="card">
-      <!-- GIF de presentación -->
-      <img src="https://via.placeholder.com/1200x400?text=GIF+de+Presentación" alt="GIF de Presentación" class="banner">
-      <h2>Bienvenidos a MCStellar Production</h2>
-      <p>Somos una compañía especializada en la **edición de videos** y la **creación de eventos** dentro del universo Minecraft. Nuestro objetivo es ofrecer experiencias únicas y memorables para nuestra comunidad de jugadores y creadores de contenido. Ya sea creando eventos épicos, personalizando servidores o realizando ediciones de alta calidad, MCStellar Production está aquí para llevar tus proyectos a un nivel profesional.</p>
-      <p>¡Únete a nosotros y forma parte de la experiencia! Nuestra misión es crear contenidos innovadores que hagan que cada evento o video sea inolvidable. Estamos comprometidos con la calidad y la diversión, brindando un servicio único en su tipo.</p>
+      <div class="card-content">
+        <!-- GIF de presentación en la mitad superior -->
+        <div class="banner-container">
+          <img src="https://via.placeholder.com/1200x600?text=GIF+de+Presentación" alt="GIF de Presentación" class="banner">
+        </div>
+        <!-- Texto de presentación en la mitad inferior -->
+        <div class="content">
+          <h2>Bienvenidos a MCStellar Production</h2>
+          <p>Somos una compañía especializada en la **edición de videos** y la **creación de eventos** dentro del universo Minecraft. Nuestro objetivo es ofrecer experiencias únicas y memorables para nuestra comunidad de jugadores y creadores de contenido. Ya sea creando eventos épicos, personalizando servidores o realizando ediciones de alta calidad, MCStellar Production está aquí para llevar tus proyectos a un nivel profesional.</p>
+          <p>¡Únete a nosotros y forma parte de la experiencia! Nuestra misión es crear contenidos innovadores que hagan que cada evento o video sea inolvidable. Estamos comprometidos con la calidad y la diversión, brindando un servicio único en su tipo.</p>
+        </div>
+      </div>
     </div>
   </section>
 
   <footer>
     <div class="button-container">
       <a href="https://www.mcstellar.lat/inicio" class="button" id="homeButton" onclick="redirectToPage(event, 'https://www.mcstellar.lat/inicio')">
-        <i class="fas fa-home icon"></i> <!-- Icono de Casa -->
+        <i class="fas fa-home icon"></i>
       </a>
       <a href="https://www.ejemplo2.com" class="button" id="searchButton" onclick="redirectToPage(event, 'https://www.ejemplo2.com')">
-        <i class="fas fa-search icon"></i> <!-- Icono de Lupa -->
+        <i class="fas fa-search icon"></i>
       </a>
       <a href="https://www.ejemplo3.com" class="button" id="starButton" onclick="redirectToPage(event, 'https://www.ejemplo3.com')">
-        <i class="fas fa-star icon"></i> <!-- Icono de Estrella -->
+        <i class="fas fa-star icon"></i>
       </a>
       <a href="https://www.ejemplo4.com" class="button" id="moreButton" onclick="redirectToPage(event, 'https://www.ejemplo4.com')">
-        <i class="fas fa-ellipsis-h icon"></i> <!-- Icono de Tres Puntos -->
+        <i class="fas fa-ellipsis-h icon"></i>
       </a>
     </div>
   </footer>
 
   <script>
     function redirectToPage(event, url) {
-      event.preventDefault(); // Evita la acción por defecto del enlace
+      event.preventDefault(); 
       const button = event.currentTarget;
-
-      // Añadir clase de animación antes de redirigir
-      button.style.pointerEvents = 'none'; // Desactiva los clics durante la animación
+      button.style.pointerEvents = 'none';
       setTimeout(() => {
-        window.location.href = url; // Redirige después de 1 segundo (duración de la animación)
+        window.location.href = url;
       }, 1000);
     }
   </script>
