@@ -210,6 +210,13 @@
       font-size: 20px;
     }
 
+    /* Gradiente en el texto */
+    .gradient-text {
+      background: linear-gradient(45deg, #ee8000, #9b4d96);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
     @media (max-width: 768px) {
       .button-container {
         width: 250px;
@@ -298,6 +305,7 @@
         let html = element.innerHTML;
         html = html.replace(/\*\*{(.*?)\}\*/g, '<b>$1</b>');
         html = html.replace(/{(.*?)}/g, '<i>$1</i>');
+        html = html.replace(/#{(.*?)#}/g, '<span class="gradient-text">$1</span>'); // Gradiente Naranja a Morado
         element.innerHTML = html;
       });
     }
