@@ -118,6 +118,7 @@
     /* Pantalla de carga */
     .loading-screen {
       position: fixed;
+      display: none;
       top: 0;
       left: 0;
       width: 100%;
@@ -356,10 +357,6 @@
   </div>
 
   <script>
-    setTimeout(function() {
-      document.getElementById("loading-screen").style.display = 'none';
-      applyTextStyles();
-    }, 4000); // 4 segundos
     
     // Función para aplicar los estilos de texto
     function applyTextStyles() {
