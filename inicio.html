@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <title>MCStellar Production</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
   <style>
     body {
       font-family: 'Arial', sans-serif;
@@ -90,7 +91,7 @@
       position: fixed;
       bottom: 0;
       width: 100%;
-      padding: 5px 0; /* Reducido para hacer la barra más delgada */
+      padding: 5px 0;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -100,10 +101,9 @@
 
     .button-container {
       display: flex;
-      width: 200px; /* Reducido el ancho */
-      height: 45px; /* Reducida la altura */
-      align-items: center;
-      justify-content: space-around;
+      width: 250px;
+      height: 50px;
+      justify-content: space-between;
       border-radius: 10px;
       box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px, rgba(245, 73, 144, 0.5) 5px 10px 15px;
       background-color: #ee8000;
@@ -112,24 +112,31 @@
     .button {
       outline: 0 !important;
       border: 0 !important;
-      width: 30px; /* Reducido el tamaño de los botones */
-      height: 30px; /* Reducido el tamaño de los botones */
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
       background-color: transparent;
       display: flex;
       align-items: center;
       justify-content: center;
       color: #fff;
-      transition: all ease-in-out 0.3s;
+      font-size: 20px;
+      transition: all 0.3s ease-in-out;
       cursor: pointer;
     }
 
     .button:hover {
-      transform: translateY(-3px);
+      transform: scale(1.2) rotate(10deg); /* Animación de escala y rotación */
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.6), 0 0 20px rgba(255, 150, 0, 0.8); /* Efecto de sombra cuando se toca */
+    }
+
+    .button:active {
+      transform: scale(0.95) rotate(-5deg); /* Cuando se hace clic: reduce el tamaño y cambia la rotación */
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.6); /* Sombra más suave cuando se hace clic */
     }
 
     .icon {
-      font-size: 18px; /* Reducido el tamaño del icono */
+      font-size: 20px;
     }
 
     @media (max-width: 768px) {
@@ -139,12 +146,12 @@
       }
 
       .button {
-        width: 35px;
-        height: 35px;
+        width: 45px;
+        height: 45px;
       }
 
       .icon {
-        font-size: 20px;
+        font-size: 22px;
       }
     }
 
@@ -155,33 +162,13 @@
       }
 
       .button {
-        width: 40px;
-        height: 40px;
+        width: 50px;
+        height: 50px;
       }
 
       .icon {
-        font-size: 22px;
+        font-size: 24px;
       }
-    }
-
-    .banner {
-      position: relative;
-      width: 100%;
-      padding-top: 50%;
-      background-size: cover;
-      background-position: center;
-      border-radius: 15px;
-      margin-bottom: 20px;
-    }
-
-    .banner img {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 15px;
     }
   </style>
 </head>
@@ -194,59 +181,24 @@
   <section>
     <div class="section-title">Novedades</div>
     <div class="card">
-      <div class="banner" style="background-image: url('https://via.placeholder.com/1200x600');">
-        <img src="https://via.placeholder.com/1200x600" alt="Imagen de Novedades">
-      </div>
       <h2>¡Nuevo Proyecto de Minecraft!</h2>
       <p>Descubre nuestro nuevo proyecto en el mundo de Minecraft, donde estamos creando un mapa épico con nuevos desafíos y mucho más. ¡No te lo puedes perder!</p>
     </div>
   </section>
 
-  <section>
-    <div class="section-title">Videos Recientes</div>
-    <div class="video-container">
-      <div class="video-card">
-        <img src="https://via.placeholder.com/300x170" alt="Video Thumbnail">
-        <div class="video-title">Título del Video 1</div>
-      </div>
-      <div class="video-card">
-        <img src="https://via.placeholder.com/300x170" alt="Video Thumbnail">
-        <div class="video-title">Título del Video 2</div>
-      </div>
-      <div class="video-card">
-        <img src="https://via.placeholder.com/300x170" alt="Video Thumbnail">
-        <div class="video-title">Título del Video 3</div>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <div class="section-title">Eventos Minecraft</div>
-    <div class="card">
-      <div class="banner" style="background-image: url('https://via.placeholder.com/1200x600');">
-        <img src="https://via.placeholder.com/1200x600" alt="Imagen de Evento">
-      </div>
-      <h2>Próximo Evento: Competencia de PvP</h2>
-      <p>Únete a nosotros en la próxima competencia de PvP. ¡Lucharás por increíbles premios y mucha diversión! Inscripciones abiertas ahora mismo.</p>
-    </div>
-  </section>
-
   <footer>
     <div class="button-container">
-      <a href="https://www.mcstellar.lat/inicio" class="button">
-        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 1024 1024" stroke-width="0" fill="currentColor" stroke="currentColor" class="icon">
-          <path d="M946.5 505L560.1 118.8l-25.9-25.9a31.5 31.5 0 0 0-44.4 0L77.5 505a63.9 63.9 0 0 0-18.8 46c.4 35.2 29.7 63.3 64.9 63.3h42.5V940h691.8V614.3h43.4c17.1 0 33.2-6.7 45.3-18.8a63.6 63.6 0 0 0 18.7-45.3c0-17-6.7-33.1-18.8-45.2zM568 868H456V664h112v204zm217.9-325.7V868H632V640c0-22.1-17.9-40-40-40H432c-22.1 0-40 17.9-40 40v228H238.1V542.3h-96l370-369.7 23.1 23.1L882 542.3h-96.1z"></path>
-        </svg>
+      <a href="https://www.mcstellar.lat/inicio" class="button" title="Inicio">
+        <i class="fas fa-home icon"></i> <!-- Icono de Casa -->
       </a>
-      <a href="https://www.ejemplo2.com" class="button">
-        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" aria-hidden="true" viewBox="0 0 24 24" stroke-width="2" fill="none" stroke="currentColor" class="icon">
-          <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-linejoin="round" stroke-linecap="round"></path>
-        </svg>
+      <a href="https://www.ejemplo2.com" class="button" title="Buscar">
+        <i class="fas fa-search icon"></i> <!-- Icono de Lupa -->
       </a>
-      <a href="https://www.ejemplo3.com" class="button">
-        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" stroke-linejoin="round" stroke-linecap="round" viewBox="0 0 24 24" stroke-width="0" fill="currentColor" stroke="currentColor" class="icon">
-          <path d="M12 2.5a5.5 5.5 0 0 1 3.096 10.047 9.005 9.005 0 0 1 5.9 8.181.75.75 0 1 1-1.499.044 7.5 7.5 0 0 0-14.993 0 .75.75 0 0 1-1.5-.045 9.005 9.005 0 0 1 5.9-8.18A5.5 5.5 0 0 1 12 2.5ZM8 8a4 4 0 1 0 8 0 4 4 0 0 0-8 0Z"></path>
-        </svg>
+      <a href="https://www.ejemplo3.com" class="button" title="Favoritos">
+        <i class="fas fa-star icon"></i> <!-- Icono de Estrella -->
+      </a>
+      <a href="https://www.ejemplo4.com" class="button" title="Más Opciones">
+        <i class="fas fa-ellipsis-h icon"></i> <!-- Icono de Tres Puntos -->
       </a>
     </div>
   </footer>
