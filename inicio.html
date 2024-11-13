@@ -90,7 +90,7 @@
       position: fixed;
       bottom: 0;
       width: 100%;
-      padding: 10px 0;
+      padding: 5px 0; /* Reducido para hacer la barra más delgada */
       display: flex;
       justify-content: center;
       align-items: center;
@@ -100,8 +100,8 @@
 
     .button-container {
       display: flex;
-      width: 250px;
-      height: 60px;
+      width: 200px; /* Reducido el ancho */
+      height: 45px; /* Reducida la altura */
       align-items: center;
       justify-content: space-around;
       border-radius: 10px;
@@ -112,8 +112,8 @@
     .button {
       outline: 0 !important;
       border: 0 !important;
-      width: 40px;
-      height: 40px;
+      width: 30px; /* Reducido el tamaño de los botones */
+      height: 30px; /* Reducido el tamaño de los botones */
       border-radius: 50%;
       background-color: transparent;
       display: flex;
@@ -129,45 +129,45 @@
     }
 
     .icon {
-      font-size: 20px;
+      font-size: 18px; /* Reducido el tamaño del icono */
     }
 
     @media (max-width: 768px) {
       .button-container {
-        width: 300px;
-        height: 70px;
+        width: 250px;
+        height: 50px;
       }
 
       .button {
-        width: 60px;
-        height: 60px;
+        width: 35px;
+        height: 35px;
       }
 
       .icon {
-        font-size: 25px;
+        font-size: 20px;
       }
     }
 
     @media (max-width: 480px) {
       .button-container {
-        width: 350px;
-        height: 80px;
+        width: 300px;
+        height: 60px;
       }
 
       .button {
-        width: 70px;
-        height: 70px;
+        width: 40px;
+        height: 40px;
       }
 
       .icon {
-        font-size: 30px;
+        font-size: 22px;
       }
     }
 
     .banner {
       position: relative;
       width: 100%;
-      padding-top: 50%; /* Esto crea la relación de aspecto 2:1 (ancho:alto) */
+      padding-top: 50%;
       background-size: cover;
       background-position: center;
       border-radius: 15px;
@@ -180,7 +180,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      object-fit: cover; /* Asegura que la imagen cubra todo el espacio sin distorsionarse */
+      object-fit: cover;
       border-radius: 15px;
     }
   </style>
