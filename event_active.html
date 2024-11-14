@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REDSURVIVAL</title>
+    <style>
+        /* Estilo por defecto para escritorio */
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background-image: url('https://via.placeholder.com/1920x1080'); /* Reemplaza con tu imagen de fondo */
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Contenedor principal para centrar el cuadro */
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Cuadro en el centro */
+        .content-box {
+            background-color: rgba(128, 128, 128, 0.6); /* Gris con 60% de opacidad */
+            padding: 20px;
+            width: 60%;
+            display: flex;
+            justify-content: space-between;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Estilo para el título */
+        .title {
+            font-size: 4em;
+            font-weight: bold;
+            color: white;
+            text-align: left;
+            margin: 0;
+        }
+
+        /* Contenedor para la descripción y otros detalles */
+        .details {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            color: white;
+            font-size: 1.2em;
+        }
+
+        /* Estilo para la fecha del evento */
+        .date {
+            margin-bottom: 10px;
+        }
+
+        /* Estilo para el estado del servidor (pequeño) */
+        .status {
+            font-size: 0.8em;
+            margin-bottom: 10px;
+        }
+
+        /* Estilo para la imagen del evento */
+        .event-icon {
+            width: 50px;
+            height: 50px;
+            margin-top: 10px;
+        }
+
+        /* Estilo para dispositivos móviles (pantallas pequeñas) */
+        @media (max-width: 768px) {
+            /* Cuando sea un móvil o pantalla pequeña, todo el fondo será blanco */
+            body {
+                background-color: white;
+                background-image: none;
+            }
+
+            /* Hacer que el contenedor de notificación ocupe toda la pantalla */
+            .container {
+                width: 100%;
+                height: 100vh;
+                justify-content: center;
+                align-items: center;
+                display: flex;
+            }
+
+            .notifications-container {
+                width: 320px;
+                height: auto;
+                font-size: 0.875rem;
+                line-height: 1.25rem;
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .flex {
+                display: flex;
+            }
+
+            .flex-shrink-0 {
+                flex-shrink: 0;
+            }
+
+            .error-alert {
+                border-radius: 0.375rem;
+                padding: 1rem;
+                background-color: rgb(254, 242, 242);
+            }
+
+            .error-svg {
+                color: #F87171;
+                width: 1.25rem;
+                height: 1.25rem;
+            }
+
+            .error-prompt-heading {
+                color: #991B1B;
+                font-size: 0.875rem;
+                line-height: 1.25rem;
+                font-weight: bold;
+            }
+
+            .error-prompt-container {
+                display: flex;
+                flex-direction: column;
+                margin-left: 1.25rem;
+            }
+
+            .error-prompt-wrap {
+                margin-top: 0.5rem;
+                color: #B91C1C;
+                font-size: 0.875rem;
+                line-height: 1.25rem;
+            }
+
+            .error-prompt-list {
+                padding-left: 1.25rem;
+                margin-top: 0.25rem;
+                list-style-type: disc;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Contenedor principal con el cuadro -->
+    <div class="container">
+        <div class="content-box">
+            <!-- Título y Descripción -->
+            <div class="text-content">
+                <h1 class="title">Gran Evento 2024</h1>
+            </div>
+
+            <!-- Detalles a la derecha -->
+            <div class="details">
+                <div class="date">Fecha del Evento: 25 Diciembre 2024</div>
+                <div class="status">Estado del servidor: <span style="color: green;">Operativo</span></div>
+                <img src="https://via.placeholder.com/50" alt="Icono del Evento" class="event-icon">
+            </div>
+        </div>
+    </div>
+
+    <!-- Notificaciones de error para móvil -->
+    <div class="notifications-container">
+        <div class="error-alert">
+            <div class="flex">
+                <div class="flex-shrink-0">
+                    <svg aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" class="error-svg">
+                        <path clip-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" fill-rule="evenodd"></path>
+                    </svg>
+                </div>
+                <div class="error-prompt-container">
+                    <p class="error-prompt-heading">Error Server</p>
+                    <div class="error-prompt-wrap">
+                        <ul class="error-prompt-list" role="list">
+                            <li>Connection error due to:</li>
+                            <li>Mobile Mode: You can't log into a Stellar Client instance on a mobile device</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
