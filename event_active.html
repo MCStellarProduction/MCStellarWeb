@@ -39,54 +39,54 @@
 
                 /* From Uiverse.io by Gaurav-WebDev */ 
         .button {
-          height: 50px;
-          width: 150px;
-          border: none;
-          border-radius: 10px;
-          cursor: pointer;
-          position: relative;
-          overflow: hidden;
-          transition: all 0.5s ease-in-out;
+            height: 50px;
+            width: 150px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s ease-in-out;
         }
 
         .button:hover {
-        box-shadow: .5px .5px 150px #252525;
+            box-shadow: .5px .5px 150px #252525;
         }
 
         .type1::after {
-         content: "INSTALLING...";
-         height: 50px;
-         width: 150px;
-         background-color: #008080;
-         color: #fff;
-         position: absolute;
-         top: 0%;
-         left: 0%;
-         transform: translateY(50px);
-         font-size: 1.2rem;
-         font-weight: 600;
-         display: flex;
-         align-items: center;
-         justify-content: center;
-         transition: all 0.5s ease-in-out;
+            content: "INSTALLING...";
+            height: 50px;
+            width: 150px;
+            background-color: #008080;
+            color: #fff;
+            position: absolute;
+            top: 0%;
+            left: 0%;
+            transform: translateY(50px);
+            font-size: 1.2rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.5s ease-in-out;
         }
 
        .type1::before {
-        content: "INSTALL STELLAR LAUNCHER";
-        height: 50px;
-        width: 150px;
-        background-color: #fff;
-        color: #008080;
-        position: absolute;
-        top: 0%;
-        left: 0%;
-        transform: translateY(0px) scale(1.2);
-        font-size: 1.2rem;
-        font-weight: 600;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: all 0.5s ease-in-out;
+           content: "INSTALL STELLAR LAUNCHER";
+           height: 50px;
+           width: 200px;
+           background-color: #fff;
+           color: #008080;
+           position: absolute;
+           top: 0%;
+           left: 0%;
+           transform: translateY(0px) scale(1.2);
+           font-size: 1.2rem;
+           font-weight: 600;
+           display: flex;
+           align-items: center;
+           justify-content: center;
+           transition: all 0.5s ease-in-out;
        }
 
        .type1:hover::after {
@@ -224,6 +224,8 @@
             </div>
         </div>
     </div>
+    <button class="button type1">
+    </button>
 
     <!-- Notificaciones de error para móvil, solo visible en móviles -->
     <div class="notifications-container" style="display: none;">
@@ -246,9 +248,6 @@
             </div>
         </div>
     </div>
-
-   <button class="button type1">
-   </button>
 
     <script>
         // Mostrar el mensaje de error solo en móviles
