@@ -50,11 +50,13 @@
         /* Contenedor para la descripción y otros detalles */
         .details {
             display: flex;
+            text-align: right;
             flex-direction: column;
             justify-content: flex-start;
             align-items: flex-start;
             color: white;
-            font-size: 1.2em;
+            font-weight: bold;
+            font-size: 1em;
         }
 
         /* Estilo para la fecha del evento */
@@ -69,8 +71,8 @@
 
         /* Estilo para la imagen del evento */
         .event-icon {
-            width: 160px;
-            height: 60px;
+            width: 320px;
+            height: 120px;
             margin-top: 10px;
         }
 
@@ -158,7 +160,7 @@
             <!-- Detalles a la derecha -->
             <div class="details">
                 <div class="date">Date: ?/?/??</div>
-                <div class="status">Server Status: <span style="color: grey;">N/T</span></div>
+                <div class="status">Server: <span style="color: grey;">N/T</span></div>
             </div>
         </div>
     </div>
