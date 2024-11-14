@@ -106,18 +106,20 @@
     }
 
     footer {
-      position: absolute;
-      top: 0;
+      position: fixed;
+      bottom: 0;
       width: 100%;
+      padding: 5px 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
       background-color: transparent;
-      color: white;
-      padding: 10px;
-      text-align: center;
     }
 
     .button-container {
       display: flex;
-      width: 100%;
+      width: 250px;
       height: 50px;
       justify-content: space-between;
       border-radius: 10px;
@@ -173,20 +175,9 @@
     }
 
     @media (max-width: 768px) {
-      footer {
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-      }
-      
       .button-container {
-        position: absolute;
-        top: 0;
-        padding: 10px;
-        text-align: center;
         width: 250px;
-        height: 100px;
+        height: 50px;
       }
 
       .button {
@@ -200,15 +191,8 @@
     }
 
     @media (max-width: 480px) {
-      footer {
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                width: 100%;
-      }
-      
       .button-container {
-        width: 340px;
+        width: 300px;
         height: 60px;
       }
 
