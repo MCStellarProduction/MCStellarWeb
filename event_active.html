@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página de Evento</title>
+    <title>RedSurvival • Stellar Client</title>
     <style>
         /* Estilo por defecto para escritorio */
         body {
@@ -36,6 +36,66 @@
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
         }
+
+                /* From Uiverse.io by Gaurav-WebDev */ 
+        .button {
+          height: 50px;
+          width: 150px;
+          border: none;
+          border-radius: 10px;
+          cursor: pointer;
+          position: relative;
+          overflow: hidden;
+          transition: all 0.5s ease-in-out;
+        }
+
+        .button:hover {
+        box-shadow: .5px .5px 150px #252525;
+        }
+
+        .type1::after {
+         content: "INSTALLING...";
+         height: 50px;
+         width: 150px;
+         background-color: #008080;
+         color: #fff;
+         position: absolute;
+         top: 0%;
+         left: 0%;
+         transform: translateY(50px);
+         font-size: 1.2rem;
+         font-weight: 600;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         transition: all 0.5s ease-in-out;
+        }
+
+       .type1::before {
+        content: "INSTALL STELLAR LAUNCHER";
+        height: 50px;
+        width: 150px;
+        background-color: #fff;
+        color: #008080;
+        position: absolute;
+        top: 0%;
+        left: 0%;
+        transform: translateY(0px) scale(1.2);
+        font-size: 1.2rem;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.5s ease-in-out;
+       }
+
+       .type1:hover::after {
+        transform: translateY(0) scale(1.2);
+       }
+
+       .type1:hover::before {
+        transform: translateY(-50px) scale(0) rotate(120deg);
+       }
 
         /* Estilo para el título */
         .title {
@@ -186,6 +246,9 @@
             </div>
         </div>
     </div>
+
+   <button class="button type1">
+   </button>
 
     <script>
         // Mostrar el mensaje de error solo en móviles
