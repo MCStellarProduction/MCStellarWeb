@@ -97,9 +97,9 @@
     }
 
     .signin {
-      width: 200px;
-      height: 50px;
-      background-color: #4CAF50;
+      width: 100px;
+      height: 20px;
+      background-color: #ee8000;
       border-radius: 15px; 
       padding: 20px;
       color: white;
@@ -107,6 +107,8 @@
       display: flex;
       justify-content: center;
       align-items: center;
+    }
+    .signin:hover {
       animation: signinanimation 3s ease-in-out forwards;
     }
     
@@ -187,7 +189,7 @@
         background: linear-gradient(45deg, #ee8000, #9b4d96);
       }
       100% {
-        transform: scale(1.2);
+        transform: scale(1);
         background: linear-gradient(45deg, #ee8000, #9b4d96);
       }
     }
@@ -252,7 +254,7 @@
 
   <section>
     <div class="section-title">MCStellar Production</div>
-    <div class="signin">Log In / Sign In</div>
+    <div class="signin" onclick="redirectToPage(event, 'https://www.mcstellar.lat')">Log In / Sign In</div>
     <div class="card">
       <div class="card-content">
         <div class="banner-container">
