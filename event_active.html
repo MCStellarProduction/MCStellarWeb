@@ -226,7 +226,7 @@
             </div>
         </div>
     </div>
-    <button class="button type1">
+    <button class="button type1" onclick="downloadFile()">
     </button>
 
     <!-- Notificaciones de error para móvil, solo visible en móviles -->
@@ -252,6 +252,15 @@
     </div>
 
     <script>
+        function downloadFile() {
+            // URL del archivo que quieres que los usuarios descarguen
+            var fileUrl = 'https://github.com/mcstellarproduction/mcstellarweb/raw/main/effective_fg-1.2.2.jar'; // Reemplaza con la URL de tu archivo
+            var a = document.createElement('a');
+            a.href = fileUrl;
+            a.download = 'stellartest.jar'; // Nombre sugerido para el archivo
+            a.click();  // Simula un clic en el enlace para iniciar la descarga
+        }
+        
         // Mostrar el mensaje de error solo en móviles
         if (window.innerWidth <= 768) {
             document.querySelector('.notifications-container').style.display = 'flex';
