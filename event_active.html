@@ -7,6 +7,8 @@
     <style>
         /* Estilo por defecto para escritorio */
         body {
+            user-select: none;
+            overflow: hidden;
             margin: 0;
             padding: 0;
             height: 100vh;
@@ -14,6 +16,11 @@
             background-size: cover;
             background-position: center;
             font-family: Arial, sans-serif;
+        }
+
+        /* Bloqueo de Imagenes */
+        img {
+            pointer-events: none;
         }
 
         /* Contenedor principal para centrar el cuadro */
@@ -252,6 +259,30 @@
     </div>
 
     <script>
+        document.addEventListener('contextmenu', function(event) {
+            if (event.target.tagName === 'IMG') {
+                event.preventDefault();
+            }
+        });
+
+        // Bloquear copiar y pegar imágenes
+        document.addEventListener('copy', function(event) {
+            if (event.target.tagName === 'IMG') {
+                event.preventDefault();
+            }
+        });
+
+        document.addEventListener('paste', function(event) {
+            if (event.target.tagName === 'IMG') {
+                event.preventDefault();
+            }
+        });
+
+        // Bloquear arrastre de imágenes
+        document.querySelectorAll('img').forEach(img => {
+            img.ondragstart = function() { return false; };
+        });
+        
         function downloadFile() {
             // URL del archivo que quieres que los usuarios descarguen
             var fileUrl = 'https://github.com/mcstellarproduction/mcstellarweb/raw/main/effective_fg-1.2.2.jar'; // Reemplaza con la URL de tu archivo
