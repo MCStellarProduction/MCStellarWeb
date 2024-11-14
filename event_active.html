@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>REDSURVIVAL</title>
+    <title>Página de Evento</title>
     <style>
         /* Estilo por defecto para escritorio */
         body {
@@ -74,24 +74,19 @@
 
         /* Estilo para dispositivos móviles (pantallas pequeñas) */
         @media (max-width: 768px) {
-            /* Cuando sea un móvil o pantalla pequeña, todo el fondo será blanco */
-            body {
-                background-color: white;
-                background-image: none;
+            /* En móviles, ocultamos el contenido principal */
+            .container {
+                display: none;
             }
 
-            /* Hacer que el contenedor de notificación ocupe toda la pantalla */
-            .container {
-                width: 100%;
-                height: 100vh;
+            /* Se hace visible el contenedor de notificación de error */
+            .notifications-container {
+                display: flex;
                 justify-content: center;
                 align-items: center;
-                display: flex;
-            }
-
-            .notifications-container {
-                width: 320px;
-                height: auto;
+                width: 100%;
+                height: 100vh;
+                background-color: white;
                 font-size: 0.875rem;
                 line-height: 1.25rem;
                 display: flex;
@@ -149,7 +144,7 @@
 </head>
 <body>
 
-    <!-- Contenedor principal con el cuadro -->
+    <!-- Contenedor principal con el cuadro, solo visible en pantallas grandes -->
     <div class="container">
         <div class="content-box">
             <!-- Título y Descripción -->
@@ -166,8 +161,8 @@
         </div>
     </div>
 
-    <!-- Notificaciones de error para móvil -->
-    <div class="notifications-container">
+    <!-- Notificaciones de error para móvil, solo visible en móviles -->
+    <div class="notifications-container" style="display: none;">
         <div class="error-alert">
             <div class="flex">
                 <div class="flex-shrink-0">
@@ -188,5 +183,26 @@
         </div>
     </div>
 
+    <script>
+        // Mostrar el mensaje de error solo en móviles
+        if (window.innerWidth <= 768) {
+            document.querySelector('.notifications-container').style.display = 'flex';
+            document.querySelector('.container').style.display = 'none';
+        } else {
+            document.querySelector('.notifications-container').style.display = 'none';
+            document.querySelector('.container').style.display = 'flex';
+        }
+
+        // También ajustar en el redimensionamiento
+        window.addEventListener('resize', function() {
+            if (window.innerWidth <= 768) {
+                document.querySelector('.notifications-container').style.display = 'flex';
+                document.querySelector('.container').style.display = 'none';
+            } else {
+                document.querySelector('.notifications-container').style.display = 'none';
+                document.querySelector('.container').style.display = 'flex';
+            }
+        });
+    </script>
 </body>
 </html>
