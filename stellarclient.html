@@ -31,7 +31,6 @@
     /* Barra de navegación */
     nav {
       width: 100%;
-      height: 8%;
       background-color: #333;
       padding: 20px 0;
       text-align: center;
@@ -42,23 +41,20 @@
     }
 
     nav ul {
-      position: fixed;
       list-style-type: none;
       margin: 0;
       padding: 0;
     }
 
     nav ul li {
-      position: fixed;
       display: inline;
       margin: 0 20px;
     }
 
     nav ul li a {
-      position: fixed;
       color: #fff;
       text-decoration: none;
-      font-size: 4em;
+      font-size: 1.5em;
       font-weight: bold;
     }
 
@@ -241,22 +237,22 @@
   <!-- Barra de navegación -->
   <nav>
     <ul>
-      <h1><b><span class="gradient-text">STELLAR CLIENT</span></b></h1>
+      <li><span class="gradient-text">STELLAR CLIENT</span></li>
     </ul>
   </nav>
 
-  <!-- Sección de Novedades -->
+  <!-- Instancias -->
   <section id="novedades">
-    <h1>• INSTACIAS DISPONIBLES •</h1>
+    <h1>Available Instances</h1>
     <div class="section-card">
-      <img src="presentationgif.gif" alt="Imagen de Novedad" id="protectedImage">
+      <img src="presentationgif.gif" alt="Instance Video" id="protectedImage">
       <div class="content">
         <h3 class="gradient-text">REDSURVIVAL • NOT AVAILABLE</h3>
-        <p class="description" id="description">Descripccion</p>
+        <p class="description" id="description">Coming Soon...</p>
       </div>
     </div>
   </section>
-  
+
   <!-- Footer con los botones animados -->
   <footer>
     <div class="button-container">
@@ -286,44 +282,38 @@
     
     // Función para aplicar los estilos de texto
     function applyTextStyles() {
-     let elements = document.querySelectorAll(".description");
-     elements.forEach(element => {
-      let html = element.innerHTML;
-      html = html.replace(/\*\*{(.*?)\}\*/g, '<b>$1</b>');  // **{texto}** → texto en negrita
-      html = html.replace(/{(.*?)}/g, '<i>$1</i>');  // {texto} → texto en cursiva
-      html = html.replace(/#{(.*?)#}/g, '<span class="gradient-text">$1</span>');  // #{texto}# → texto con gradiente
-      element.innerHTML = html;
-     });
+      let elements = document.querySelectorAll("#description");
+      elements.forEach(element => {
+        let html = element.innerHTML;
+        html = html.replace(/\*\*{(.*?)\}\*/g, '<b>$1</b>');
+        html = html.replace(/{(.*?)}/g, '<i>$1</i>');
+        html = html.replace(/#{(.*?)#}/g, '<span class="gradient-text">$1</span>'); // Gradiente Naranja a Morado
+        element.innerHTML = html;
+      });
+    }
 
-      // Llamar a la función de estilos cuando la página cargue
-     window.onload = function() {
-       setTimeout(function() {
-       document.querySelector('.loading-screen').style.display = 'none';
-       }, 3000);
-       applyTextStyles(); // Aplicar estilos de texto
-     }
+    // Redirigir a otra página después de un clic
+    function redirectToPage(event, url) {
+      event.preventDefault(); 
+      const button = event.currentTarget;
+      button.style.pointerEvents = 'none';
+      setTimeout(() => {
+        window.location.href = url;
+      }, 1000);
+    }
 
-     function redirectToPage(event, url) {
-     event.preventDefault(); 
-     const button = event.currentTarget;
-     button.style.pointerEvents = 'none';
-     setTimeout(() => {
-       window.location.href = url;
-     }, 1000);
-     }
+    // Prevenir el menú contextual (como el clic derecho) en dispositivos móviles
+    const img = document.getElementById('protectedImage');
 
-     // Prevenir el menú contextual (como el clic derecho) en dispositivos móviles
-     const img = document.getElementById('protectedImage');
+    // Prevenir el menú contextual en desktop y móvil
+    img.addEventListener('contextmenu', function(event) {
+      event.preventDefault(); // Previene el menú contextual
+    });
 
-     // Prevenir el menú contextual en desktop y móvil
-     img.addEventListener('contextmenu', function(event) {
-       event.preventDefault(); // Previene el menú contextual
-     });
-
-     // Prevenir el toque largo en móviles (típico de dispositivos táctiles)
-     img.addEventListener('touchstart', function(event) {
-       event.preventDefault(); // Previene las acciones por defecto en móviles (como mantener presionado)
-     });
+    // Prevenir el toque largo en móviles (típico de dispositivos táctiles)
+    img.addEventListener('touchstart', function(event) {
+      event.preventDefault(); // Previene las acciones por defecto en móviles (como mantener presionado)
+    });
   </script>
 
 </body>
