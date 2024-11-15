@@ -13,8 +13,9 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            height: 100vh; /* Ocupa toda la altura de la ventana */
             background-color: #f0f0f0;
+            overflow: hidden; /* Para asegurarnos de que los cuadros no se desborden fuera de la pantalla */
         }
 
         /* Contenedor que mantiene todos los cuadros alineados en fila */
@@ -22,7 +23,8 @@
             position: relative;
             width: 600px; /* El contenedor tiene un ancho fijo */
             height: 100px;
-            overflow: hidden; /* Oculta los cuadros cuando se desbordan */
+            display: flex;
+            justify-content: space-between; /* Espaciado entre los cuadros */
         }
 
         /* Estilo común para los cuadros */
