@@ -313,27 +313,9 @@
         <input type="password" id="password" class="form__field" placeholder="Password" required>
         <label for="password" class="form__label">Password</label>
     </div>
-    <button id="login-btn">Login</button>
+    <button id="login-btn" class="button">Login</button>
 
-    <script src="app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
-
-  <script>
-  // Configuración de tu proyecto Firebase
-  const firebaseConfig = {
-    apiKey: "AIzaSyByN0cTXuvfrigbnjVFBCIbHjVGcQCN4nE",
-    authDomain: "mcstellarlogging.firebaseapp.com",
-    projectId: "mcstellarlogging",
-    storageBucket: "mcstellarlogging.firebasestorage.app",
-    messagingSenderId: "980751050158",
-    appId: "1:980751050158:web:92bb19853e92ed5315943f"
-  };
-
-  // Inicializar Firebase
-  const app = firebase.initializeApp(firebaseConfig);
-  const auth = firebase.auth();
-  </script>
+    
 
   <footer>
     <div class="button-container">
@@ -352,6 +334,25 @@
     </div>
   </footer>
 
+  <script src="app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
+
+  <script>
+  // Configuración de tu proyecto Firebase
+  const firebaseConfig = {
+    apiKey: "AIzaSyByN0cTXuvfrigbnjVFBCIbHjVGcQCN4nE",
+    authDomain: "mcstellarlogging.firebaseapp.com",
+    projectId: "mcstellarlogging",
+    storageBucket: "mcstellarlogging.firebasestorage.app",
+    messagingSenderId: "980751050158",
+    appId: "1:980751050158:web:92bb19853e92ed5315943f"
+  };
+
+  // Inicializar Firebase
+  const app = firebase.initializeApp(firebaseConfig);
+  const auth = firebase.auth();
+  </script>
   <script>
     // Función para aplicar los estilos de texto
     function applyTextStyles() {
