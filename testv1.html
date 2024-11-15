@@ -20,45 +20,88 @@
             align-items: center;
             height: 100vh;
             overflow: hidden;
+            margin: 0;
         }
 
         .carousel-container {
             width: 100%;
-            max-width: 1000px;
-            margin: 0 auto;
-            padding-top: 20px;
-            text-align: center;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
         }
 
         h2 {
             font-size: 24px;
             margin-bottom: 10px;
+            text-align: center;
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
         }
 
         .carousel {
             display: flex;
             overflow: hidden;
             width: 100%;
+            height: 100%;
             transition: transform 1s ease;
         }
 
         .carousel-item {
-            flex: 0 0 auto;
-            width: 300px;  /* Ancho de cada carta */
-            margin-right: 20px;  /* Espacio entre cartas */
-            border-radius: 10px;
+            flex: 0 0 100%;  /* Cada elemento ocupa el 100% del ancho */
+            height: 100%;    /* Los cuadros deben cubrir el 100% de la altura */
+            display: flex;
+            justify-content: center;
+            align-items: center;
             position: relative;
+            background-color: white;  /* Fondo blanco */
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);  /* Sombra */
+            flex-direction: column;   /* Para apilar el título y descripción debajo de la imagen */
+            text-align: center;
+            padding: 10px;
+            overflow: hidden;
         }
 
         .carousel-item img {
-            width: 100%;
+            width: 100%;  /* Ocupa el 100% del ancho del contenedor */
             height: auto;
-            border-radius: 10px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra ligera */
+            transition: transform 0.3s ease;  /* Efecto de hover */
         }
 
+        .carousel-item img:hover {
+            transform: scale(1.05);  /* Efecto de hover */
+        }
+
+        .carousel-item .content {
+            margin-top: 15px;
+        }
+
+        .carousel-item h3 {
+            font-size: 20px;
+            margin: 10px 0;
+            color: #333;
+        }
+
+        .carousel-item p {
+            font-size: 14px;
+            color: #555;
+        }
+
+        /* Media query para pantallas más pequeñas */
         @media (max-width: 768px) {
-            .carousel-item {
-                width: 200px;
+            h2 {
+                font-size: 18px;
+            }
+            .carousel-item h3 {
+                font-size: 18px;
+            }
+            .carousel-item p {
+                font-size: 12px;
             }
         }
     </style>
@@ -67,20 +110,59 @@
     <div class="carousel-container">
         <h2>Recomendados para ti</h2>
         <div class="carousel">
+            <!-- Primer ítem -->
             <div class="carousel-item">
-                <img src="https://via.placeholder.com/300x450?text=Película+1" alt="Película 1">
+                <a href="https://www.tupagina1.com" target="_blank">
+                    <img src="https://via.placeholder.com/1000x600?text=Película+1" alt="Película 1">
+                    <div class="content">
+                        <h3>Título de la Película 1</h3>
+                        <p>Descripción breve de la película 1. Un emocionante viaje por el espacio.</p>
+                    </div>
+                </a>
             </div>
+            
+            <!-- Segundo ítem -->
             <div class="carousel-item">
-                <img src="https://via.placeholder.com/300x450?text=Película+2" alt="Película 2">
+                <a href="https://www.tupagina2.com" target="_blank">
+                    <img src="https://via.placeholder.com/1000x600?text=Película+2" alt="Película 2">
+                    <div class="content">
+                        <h3>Título de la Película 2</h3>
+                        <p>Una historia épica de aventuras y fantasía.</p>
+                    </div>
+                </a>
             </div>
+            
+            <!-- Tercer ítem -->
             <div class="carousel-item">
-                <img src="https://via.placeholder.com/300x450?text=Película+3" alt="Película 3">
+                <a href="https://www.tupagina3.com" target="_blank">
+                    <img src="https://via.placeholder.com/1000x600?text=Película+3" alt="Película 3">
+                    <div class="content">
+                        <h3>Título de la Película 3</h3>
+                        <p>Un thriller lleno de misterio y suspenso.</p>
+                    </div>
+                </a>
             </div>
+
+            <!-- Cuarto ítem -->
             <div class="carousel-item">
-                <img src="https://via.placeholder.com/300x450?text=Película+4" alt="Película 4">
+                <a href="https://www.tupagina4.com" target="_blank">
+                    <img src="https://via.placeholder.com/1000x600?text=Película+4" alt="Película 4">
+                    <div class="content">
+                        <h3>Título de la Película 4</h3>
+                        <p>Comedia romántica sobre el amor en tiempos modernos.</p>
+                    </div>
+                </a>
             </div>
+
+            <!-- Quinto ítem -->
             <div class="carousel-item">
-                <img src="https://via.placeholder.com/300x450?text=Película+5" alt="Película 5">
+                <a href="https://www.tupagina5.com" target="_blank">
+                    <img src="https://via.placeholder.com/1000x600?text=Película+5" alt="Película 5">
+                    <div class="content">
+                        <h3>Título de la Película 5</h3>
+                        <p>Una historia conmovedora sobre la amistad y la superación.</p>
+                    </div>
+                </a>
             </div>
         </div>
     </div>
@@ -89,7 +171,7 @@
         // Función para mover el carrusel automáticamente
         const carousel = document.querySelector('.carousel');
         let offset = 0;
-        const itemWidth = 320;  // Ancho de cada carta, incluyendo el margen
+        const itemWidth = window.innerWidth;  // El ancho de cada carta es el ancho de la pantalla
 
         function moveCarousel() {
             if (offset >= carousel.scrollWidth - carousel.clientWidth) {
