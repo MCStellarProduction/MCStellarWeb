@@ -3,90 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cuadros en Movimiento Infinito</title>
+    <title>Carrusel de Películas</title>
     <style>
-        /* Estilo básico para la página */
-        body {
-            font-family: Arial, sans-serif;
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #111;
+            color: white;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh; /* Ocupa toda la altura de la ventana */
-            background-color: #f0f0f0;
-            overflow: hidden; /* Evita que los cuadros se desborden fuera de la pantalla */
+            height: 100vh;
+            overflow: hidden;
         }
 
-        /* Contenedor que mantiene todos los cuadros alineados en fila */
-        #contenedor {
-            position: relative;
-            width: 600px; /* El contenedor tiene un ancho fijo */
-            height: 100px;
-            display: flex;
-            justify-content: center; /* Alineamos los cuadros al centro */
-            align-items: center;
-        }
-
-        /* Estilo común para los cuadros */
-        .cuadro {
-            position: absolute;
-            width: 200px; /* Cuadros anchos */
-            height: 100px;
-            background-color: #4CAF50;
-            color: white;
+        .carousel-container {
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding-top: 20px;
             text-align: center;
-            line-height: 100px;
-            font-size: 18px;
-            opacity: 0; /* Los cuadros son invisibles inicialmente */
-            transform: translateX(100%); /* Colocamos los cuadros fuera de la pantalla */
-            transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+        }
+
+        h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .carousel {
+            display: flex;
+            overflow: hidden;
+            width: 100%;
+            transition: transform 1s ease;
+        }
+
+        .carousel-item {
+            flex: 0 0 auto;
+            width: 300px;  /* Ancho de cada carta */
+            margin-right: 20px;  /* Espacio entre cartas */
+            border-radius: 10px;
+            position: relative;
+        }
+
+        .carousel-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .carousel-item {
+                width: 200px;
+            }
         }
     </style>
 </head>
 <body>
-    <div id="contenedor">
-        <div class="cuadro" id="cuadro1">Cuadro 1</div>
-        <div class="cuadro" id="cuadro2">Cuadro 2</div>
-        <div class="cuadro" id="cuadro3">Cuadro 3</div>
-        <div class="cuadro" id="cuadro4">Cuadro 4</div>
-        <div class="cuadro" id="cuadro5">Cuadro 5</div>
+    <div class="carousel-container">
+        <h2>Recomendados para ti</h2>
+        <div class="carousel">
+            <div class="carousel-item">
+                <img src="https://via.placeholder.com/300x450?text=Película+1" alt="Película 1">
+            </div>
+            <div class="carousel-item">
+                <img src="https://via.placeholder.com/300x450?text=Película+2" alt="Película 2">
+            </div>
+            <div class="carousel-item">
+                <img src="https://via.placeholder.com/300x450?text=Película+3" alt="Película 3">
+            </div>
+            <div class="carousel-item">
+                <img src="https://via.placeholder.com/300x450?text=Película+4" alt="Película 4">
+            </div>
+            <div class="carousel-item">
+                <img src="https://via.placeholder.com/300x450?text=Película+5" alt="Película 5">
+            </div>
+        </div>
     </div>
 
     <script>
-        window.onload = function() {
-            const cuadros = document.querySelectorAll('.cuadro');
-            let delay = 0; // Tiempo de espera para cada cuadro
-            const numCuadros = cuadros.length;
-            let cuadroIndex = 0; // Para llevar el control del cuadro actual que estamos mostrando
+        // Función para mover el carrusel automáticamente
+        const carousel = document.querySelector('.carousel');
+        let offset = 0;
+        const itemWidth = 320;  // Ancho de cada carta, incluyendo el margen
 
-            // Función para mover los cuadros
-            function moverCuadro() {
-                // Mostrar el cuadro actual
-                cuadros[cuadroIndex].style.opacity = 1;
-                cuadros[cuadroIndex].style.transform = 'translateX(0)';
-                
-                // Mover el cuadro actual hacia la izquierda después de 5 segundos
-                setTimeout(() => {
-                    cuadros[cuadroIndex].style.transform = 'translateX(-100%)'; // Mueve el cuadro hacia la izquierda
-                }, 5000);
-                
-                // Avanzamos al siguiente cuadro
-                cuadroIndex = (cuadroIndex + 1) % numCuadros; // Aseguramos que el índice vuelva a 0 después del último cuadro
-
-                // Hacemos que el siguiente cuadro venga de la derecha
-                setTimeout(() => {
-                    cuadros[cuadroIndex].style.opacity = 1;
-                    cuadros[cuadroIndex].style.transform = 'translateX(0)';
-                }, 5000);
-
-                // Llamamos a esta función repetidamente para crear el ciclo infinito
-                setTimeout(moverCuadro, 10000); // Repita el ciclo cada 10 segundos (5 segundos de espera y 5 segundos de movimiento)
+        function moveCarousel() {
+            if (offset >= carousel.scrollWidth - carousel.clientWidth) {
+                offset = 0;  // Si llega al final, vuelve al inicio
+            } else {
+                offset += itemWidth;  // Avanza una carta
             }
-
-            // Inicializamos el primer cuadro
-            moverCuadro();
+            carousel.style.transform = `translateX(-${offset}px)`;
         }
+
+        // Mover el carrusel cada 3 segundos
+        setInterval(moveCarousel, 3000);
     </script>
 </body>
 </html>
