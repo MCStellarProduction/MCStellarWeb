@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cuadros en Movimiento</title>
+    <title>Cuadros en Movimiento Infinito</title>
     <style>
         /* Estilo básico para la página */
         body {
@@ -15,7 +15,7 @@
             align-items: center;
             height: 100vh; /* Ocupa toda la altura de la ventana */
             background-color: #f0f0f0;
-            overflow: hidden; /* Para asegurarnos de que los cuadros no se desborden fuera de la pantalla */
+            overflow: hidden; /* Evita que los cuadros se desborden fuera de la pantalla */
         }
 
         /* Contenedor que mantiene todos los cuadros alineados en fila */
@@ -24,7 +24,8 @@
             width: 600px; /* El contenedor tiene un ancho fijo */
             height: 100px;
             display: flex;
-            justify-content: space-between; /* Espaciado entre los cuadros */
+            justify-content: center; /* Alineamos los cuadros al centro */
+            align-items: center;
         }
 
         /* Estilo común para los cuadros */
@@ -56,33 +57,35 @@
         window.onload = function() {
             const cuadros = document.querySelectorAll('.cuadro');
             let delay = 0; // Tiempo de espera para cada cuadro
-            
+            const numCuadros = cuadros.length;
+            let cuadroIndex = 0; // Para llevar el control del cuadro actual que estamos mostrando
+
             // Función para mover los cuadros
-            function moverCuadro(cuadro, index) {
-                setTimeout(() => {
-                    cuadro.style.opacity = 1; // Hacer visible el cuadro
-                    cuadro.style.transform = 'translateX(0)'; // Moverlo a su posición original
-                }, delay);
+            function moverCuadro() {
+                // Mostrar el cuadro actual
+                cuadros[cuadroIndex].style.opacity = 1;
+                cuadros[cuadroIndex].style.transform = 'translateX(0)';
                 
-                // Cuando el cuadro se mueve, hacer que se desplace hacia la izquierda después de 5 segundos
+                // Mover el cuadro actual hacia la izquierda después de 5 segundos
                 setTimeout(() => {
-                    cuadro.style.transform = 'translateX(-100%)'; // Mueve el cuadro hacia la izquierda
-                }, delay + 5000);
+                    cuadros[cuadroIndex].style.transform = 'translateX(-100%)'; // Mueve el cuadro hacia la izquierda
+                }, 5000);
                 
-                // Hacer que el siguiente cuadro venga de la derecha
+                // Avanzamos al siguiente cuadro
+                cuadroIndex = (cuadroIndex + 1) % numCuadros; // Aseguramos que el índice vuelva a 0 después del último cuadro
+
+                // Hacemos que el siguiente cuadro venga de la derecha
                 setTimeout(() => {
-                    if (index < cuadros.length - 1) {
-                        cuadros[index + 1].style.opacity = 1;
-                        cuadros[index + 1].style.transform = 'translateX(0)';
-                    }
-                }, delay + 5000);
+                    cuadros[cuadroIndex].style.opacity = 1;
+                    cuadros[cuadroIndex].style.transform = 'translateX(0)';
+                }, 5000);
+
+                // Llamamos a esta función repetidamente para crear el ciclo infinito
+                setTimeout(moverCuadro, 10000); // Repita el ciclo cada 10 segundos (5 segundos de espera y 5 segundos de movimiento)
             }
 
-            // Iteramos sobre todos los cuadros y los movemos uno a uno
-            cuadros.forEach((cuadro, index) => {
-                moverCuadro(cuadro, index);
-                delay += 5000; // Aumentamos el retraso para el siguiente cuadro
-            });
+            // Inicializamos el primer cuadro
+            moverCuadro();
         }
     </script>
 </body>
