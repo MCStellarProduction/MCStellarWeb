@@ -50,14 +50,14 @@
         }
 
         .carousel-item {
-            flex: 0 0 100%;  /* Cada elemento ocupa el 100% del ancho */
-            height: 100%;    /* Los cuadros deben cubrir el 100% de la altura */
+            flex: 0 0 25%;  /* Cada elemento ocupa el 25% del ancho (miniatura tipo YouTube) */
+            height: 300px;  /* Altura fija para las miniaturas */
             display: flex;
             justify-content: center;
             align-items: center;
             position: relative;
             background-color: white;  /* Fondo blanco */
-            border-radius: 15px;
+            border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);  /* Sombra */
             flex-direction: column;   /* Para apilar el título y descripción debajo de la imagen */
             text-align: center;
@@ -68,7 +68,7 @@
         .carousel-item img {
             width: 100%;  /* Ocupa el 100% del ancho del contenedor */
             height: auto;
-            border-radius: 15px;
+            border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra ligera */
             transition: transform 0.3s ease;  /* Efecto de hover */
         }
@@ -78,18 +78,26 @@
         }
 
         .carousel-item .content {
-            margin-top: 15px;
+            margin-top: 10px;
         }
 
         .carousel-item h3 {
-            font-size: 20px;
-            margin: 10px 0;
+            font-size: 16px;
+            margin: 5px 0;
             color: #333;
+            max-width: 90%;
+            overflow: hidden;
+            text-overflow: ellipsis;  /* Si el texto es largo, cortarlo con puntos suspensivos */
+            white-space: nowrap;  /* Para evitar que el título ocupe más de una línea */
         }
 
         .carousel-item p {
-            font-size: 14px;
+            font-size: 12px;
             color: #555;
+            max-width: 90%;
+            overflow: hidden;
+            text-overflow: ellipsis;  /* Cortar descripción larga */
+            white-space: nowrap;  /* Para evitar que el texto se extienda demasiado */
         }
 
         /* Media query para pantallas más pequeñas */
@@ -97,11 +105,33 @@
             h2 {
                 font-size: 18px;
             }
-            .carousel-item h3 {
-                font-size: 18px;
+
+            .carousel-item {
+                flex: 0 0 45%;  /* En pantallas más pequeñas, cada miniatura ocupa el 45% del ancho */
+                height: 250px;  /* Reducir la altura */
             }
+
+            .carousel-item h3 {
+                font-size: 14px;
+            }
+
             .carousel-item p {
+                font-size: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .carousel-item {
+                flex: 0 0 80%;  /* En pantallas muy pequeñas, cada miniatura ocupa el 80% */
+                height: 200px;  /* Reducir aún más la altura */
+            }
+
+            .carousel-item h3 {
                 font-size: 12px;
+            }
+
+            .carousel-item p {
+                font-size: 10px;
             }
         }
     </style>
@@ -113,7 +143,7 @@
             <!-- Primer ítem -->
             <div class="carousel-item">
                 <a href="https://www.tupagina1.com" target="_blank">
-                    <img src="https://via.placeholder.com/1000x600?text=Película+1" alt="Película 1">
+                    <img src="https://via.placeholder.com/320x180?text=Película+1" alt="Película 1">
                     <div class="content">
                         <h3>Título de la Película 1</h3>
                         <p>Descripción breve de la película 1. Un emocionante viaje por el espacio.</p>
@@ -124,7 +154,7 @@
             <!-- Segundo ítem -->
             <div class="carousel-item">
                 <a href="https://www.tupagina2.com" target="_blank">
-                    <img src="https://via.placeholder.com/1000x600?text=Película+2" alt="Película 2">
+                    <img src="https://via.placeholder.com/320x180?text=Película+2" alt="Película 2">
                     <div class="content">
                         <h3>Título de la Película 2</h3>
                         <p>Una historia épica de aventuras y fantasía.</p>
@@ -135,7 +165,7 @@
             <!-- Tercer ítem -->
             <div class="carousel-item">
                 <a href="https://www.tupagina3.com" target="_blank">
-                    <img src="https://via.placeholder.com/1000x600?text=Película+3" alt="Película 3">
+                    <img src="https://via.placeholder.com/320x180?text=Película+3" alt="Película 3">
                     <div class="content">
                         <h3>Título de la Película 3</h3>
                         <p>Un thriller lleno de misterio y suspenso.</p>
@@ -146,7 +176,7 @@
             <!-- Cuarto ítem -->
             <div class="carousel-item">
                 <a href="https://www.tupagina4.com" target="_blank">
-                    <img src="https://via.placeholder.com/1000x600?text=Película+4" alt="Película 4">
+                    <img src="https://via.placeholder.com/320x180?text=Película+4" alt="Película 4">
                     <div class="content">
                         <h3>Título de la Película 4</h3>
                         <p>Comedia romántica sobre el amor en tiempos modernos.</p>
@@ -157,7 +187,7 @@
             <!-- Quinto ítem -->
             <div class="carousel-item">
                 <a href="https://www.tupagina5.com" target="_blank">
-                    <img src="https://via.placeholder.com/1000x600?text=Película+5" alt="Película 5">
+                    <img src="https://via.placeholder.com/320x180?text=Película+5" alt="Película 5">
                     <div class="content">
                         <h3>Título de la Película 5</h3>
                         <p>Una historia conmovedora sobre la amistad y la superación.</p>
@@ -171,7 +201,7 @@
         // Función para mover el carrusel automáticamente
         const carousel = document.querySelector('.carousel');
         let offset = 0;
-        const itemWidth = window.innerWidth;  // El ancho de cada carta es el ancho de la pantalla
+        const itemWidth = window.innerWidth * 0.25;  // El ancho de cada carta es el 25% del ancho de la pantalla
 
         function moveCarousel() {
             if (offset >= carousel.scrollWidth - carousel.clientWidth) {
