@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movimiento de Cuadros</title>
+    <style>
+        /* Estilos básicos del body y contenedor */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        #contenedor {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .cuadro {
+            width: 100px;
+            height: 100px;
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            line-height: 100px;
+            margin-right: 10px;
+            opacity: 0; /* Inicialmente los cuadros son invisibles */
+            transition: all 1s ease-in-out;
+        }
+
+        /* Clase para hacer que los cuadros se deslicen hacia la izquierda */
+        .deslizar {
+            opacity: 1;
+            transform: translateX(-120px); /* Mueve el cuadro hacia la izquierda */
+        }
+    </style>
+</head>
+<body>
+    <div id="contenedor">
+        <div class="cuadro" id="cuadro1">Cuadro 1</div>
+        <div class="cuadro" id="cuadro2">Cuadro 2</div>
+        <div class="cuadro" id="cuadro3">Cuadro 3</div>
+        <div class="cuadro" id="cuadro4">Cuadro 4</div>
+        <div class="cuadro" id="cuadro5">Cuadro 5</div>
+    </div>
+
+    <script>
+        // Cuando el contenido de la página esté listo, ejecutamos el código
+        window.onload = function() {
+            let cuadros = document.querySelectorAll('.cuadro');
+            let delay = 0; // Inicializamos el tiempo de espera para cada cuadro
+            
+            // Para cada cuadro, le agregamos la clase "deslizar" después de un tiempo
+            cuadros.forEach((cuadro, index) => {
+                setTimeout(() => {
+                    cuadro.classList.add('deslizar');
+                }, delay);
+                
+                // Aumentamos el tiempo de espera para el siguiente cuadro
+                delay += 5000; // 5000 milisegundos = 5 segundos
+            });
+        }
+    </script>
+</body>
+</html>
