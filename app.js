@@ -20,7 +20,7 @@ function login() {
   firebase.auth().signInWithEmailAndPassword(email, password)
     .then((userCredential) => {
       // Si el login es exitoso, redirige a la página custom
-      window.location.href = "pagina-custom.html"; // Cambia la URL a la página que quieras
+      window.location.href = "account_settings.html"; // Cambia la URL a la página que quieras
     })
     .catch((error) => {
       // Manejo de errores
