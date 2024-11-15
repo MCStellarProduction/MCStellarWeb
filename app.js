@@ -20,7 +20,7 @@ function login() {
   firebase.auth().signInWithEmailAndPassword(email, password)
     .then((userCredential) => {
       // Si el login es exitoso, redirige a la página custom
-      window.location.href = "account_settings.html"; // Cambia la URL a la página que quieras
+      window.location.href = "https://www.mcstellar.lat/account_settings"; // Cambia la URL a la página que quieras
     })
     .catch((error) => {
       // Manejo de errores
