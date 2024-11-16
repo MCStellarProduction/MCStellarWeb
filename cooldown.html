@@ -156,21 +156,12 @@
 
             // Verificar si ya se ha mostrado la notificación
             if (!localStorage.getItem("notificationShown")) {
-                // Si no se ha mostrado antes, mostrarla
-                document.getElementById("notifyBtn").addEventListener("click", function() {
-                    // Solicitar permiso solo si no se ha concedido ya
-                    if (Notification.permission === "default") {
-                        Notification.requestPermission().then(function(permission) {
-                            if (permission === "granted") {
-                                showNotification();
-                            } else {
-                                alert("El permiso para notificaciones fue denegado.");
-                            }
-                        });
-                    } else if (Notification.permission === "granted") {
+                // Si no se ha mostrado antes, solicitar permiso y luego mostrar la notificación
+                Notification.requestPermission().then(function(permission) {
+                    if (permission === "granted") {
                         showNotification();
                     } else {
-                        alert("El permiso para notificaciones ha sido denegado.");
+                        console.log("El permiso para mostrar notificaciones fue denegado.");
                     }
                 });
             } else {
