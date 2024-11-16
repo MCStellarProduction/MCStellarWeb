@@ -112,46 +112,6 @@
     </div>
 
     <script>
-        // Comprobar si el navegador soporta la API de notificaciones
-        if ("Notification" in window) {
-            console.log("Este navegador soporta notificaciones");
-
-            // Solicitar permiso al usuario
-            document.getElementById("notifyBtn").addEventListener("click", function() {
-                // Si el permiso no ha sido concedido previamente
-                if (Notification.permission === "default") {
-                    Notification.requestPermission().then(function(permission) {
-                        if (permission === "granted") {
-                            showNotification();
-                        } else {
-                            alert("El permiso para notificaciones fue denegado.");
-                        }
-                    });
-                } else if (Notification.permission === "granted") {
-                    // Si el permiso ya ha sido concedido
-                    showNotification();
-                } else {
-                    alert("El permiso para notificaciones ha sido denegado.");
-                }
-            });
-        } else {
-            console.log("Este navegador no soporta notificaciones.");
-        }
-
-        // Función para mostrar la notificación
-        function showNotification() {
-            const notification = new Notification("Notification Test", {
-                body: "Tienes una nueva notificación de prueba.",
-                icon: "mcstellarpageicon.png",  // Ruta a una imagen de ícono (opcional)
-                tag: "notificacion-prueba"  // Etiqueta para identificar la notificación (opcional)
-            });
-
-            // Agregar un evento para manejar el clic en la notificación
-            notification.onclick = function(event) {
-                event.preventDefault();
-                window.open("https://www.example.com", "_blank"); // Redirige al hacer clic
-            };
-        }
         
         // Configuración de la fecha y hora de finalización
         const endDate = new Date("December 10, 2024 12:00:00").getTime();
@@ -190,6 +150,47 @@
                 window.location.href = "https://www.mcstellar.lat/";
             }
         }, 1000);
+        // Comprobar si el navegador soporta la API de notificaciones
+        if ("Notification" in window) {
+                console.log("Este navegador soporta notificaciones");
+
+            // Solicitar permiso al usuario
+            document.getElementById("notifyBtn").addEventListener("click", function() {
+                // Si el permiso no ha sido concedido previamente
+                if (Notification.permission === "default") {
+                    Notification.requestPermission().then(function(permission) {
+                        if (permission === "granted") {
+                            showNotification();
+                        } else {
+                            alert("El permiso para notificaciones fue denegado.");
+                        }
+                    });
+                } else if (Notification.permission === "granted") {
+                    // Si el permiso ya ha sido concedido
+                    showNotification();
+                } else {
+                    alert("El permiso para notificaciones ha sido denegado.");
+                }
+            });
+        } else {
+            console.log("Este navegador no soporta notificaciones.");
+        }
+
+        // Función para mostrar la notificación
+        function showNotification() {
+            const notification = new Notification("Notification Test", {
+                body: "Tienes una nueva notificación de prueba.",
+                icon: "mcstellarpageicon.png",  // Ruta a una imagen de ícono (opcional)
+                tag: "notificacion-prueba"  // Etiqueta para identificar la notificación (opcional)
+            });
+
+            // Agregar un evento para manejar el clic en la notificación
+            notification.onclick = function(event) {
+                event.preventDefault();
+                window.open("https://www.example.com", "_blank"); // Redirige al hacer clic
+            };
+        }
+        
     </script>
 </body>
 </html>
