@@ -152,37 +152,44 @@
         }, 1000);
         // Comprobar si el navegador soporta la API de notificaciones
         if ("Notification" in window) {
-                console.log("Este navegador soporta notificaciones");
+            console.log("Este navegador soporta notificaciones");
 
-            // Solicitar permiso al usuario
-            document.getElementById("notifyBtn").addEventListener("click", function() {
-                // Si el permiso no ha sido concedido previamente
-                if (Notification.permission === "default") {
-                    Notification.requestPermission().then(function(permission) {
-                        if (permission === "granted") {
-                            showNotification();
-                        } else {
-                            alert("El permiso para notificaciones fue denegado.");
-                        }
-                    });
-                } else if (Notification.permission === "granted") {
-                    // Si el permiso ya ha sido concedido
-                    showNotification();
-                } else {
-                    alert("El permiso para notificaciones ha sido denegado.");
-                }
-            });
+            // Verificar si ya se ha mostrado la notificación
+            if (!localStorage.getItem("notificationShown")) {
+                // Si no se ha mostrado antes, mostrarla
+                document.getElementById("notifyBtn").addEventListener("click", function() {
+                    // Solicitar permiso solo si no se ha concedido ya
+                    if (Notification.permission === "default") {
+                        Notification.requestPermission().then(function(permission) {
+                            if (permission === "granted") {
+                                showNotification();
+                            } else {
+                                alert("El permiso para notificaciones fue denegado.");
+                            }
+                        });
+                    } else if (Notification.permission === "granted") {
+                        showNotification();
+                    } else {
+                        alert("El permiso para notificaciones ha sido denegado.");
+                    }
+                });
+            } else {
+                console.log("La notificación ya fue mostrada anteriormente.");
+            }
         } else {
             console.log("Este navegador no soporta notificaciones.");
         }
 
         // Función para mostrar la notificación
         function showNotification() {
-            const notification = new Notification("Notification Test", {
+            const notification = new Notification("¡Nuevo mensaje!", {
                 body: "Tienes una nueva notificación de prueba.",
-                icon: "mcstellarpageicon.png",  // Ruta a una imagen de ícono (opcional)
+                icon: "https://www.example.com/icon.png",  // Ruta a una imagen de ícono (opcional)
                 tag: "notificacion-prueba"  // Etiqueta para identificar la notificación (opcional)
             });
+
+            // Marcar la notificación como mostrada en localStorage
+            localStorage.setItem("notificationShown", "true");
 
             // Agregar un evento para manejar el clic en la notificación
             notification.onclick = function(event) {
@@ -190,7 +197,6 @@
                 window.open("https://www.example.com", "_blank"); // Redirige al hacer clic
             };
         }
-        
     </script>
 </body>
 </html>
