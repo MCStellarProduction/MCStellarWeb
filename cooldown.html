@@ -10,7 +10,8 @@
             background-color: #f0f8ff;
             color: #333;
             display: flex;
-            background: url('bg_yellow.jpg');
+            background: url('bg_yellow.jpg') no-repeat center center fixed;
+            background-size: cover;
             justify-content: center;
             align-items: center;
             height: 100vh;
@@ -22,50 +23,116 @@
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-            width: 300px;
+            width: 350px;
         }
         h1 {
             font-size: 24px;
             margin-bottom: 20px;
         }
         .timer {
-            font-size: 36px;
+            font-size: 48px;
             color: #d9534f;
             font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .time-unit {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .time-value {
+            font-size: 36px;
+            animation: fadeIn 0.5s ease-in-out;
         }
         .footer {
             margin-top: 20px;
             font-size: 14px;
             color: #777;
         }
+        /* Animación de entrada */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        /* Animación para el cambio de número */
+        @keyframes numberChange {
+            0% {
+                transform: scale(1);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.5);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        .time-value.changed {
+            animation: numberChange 0.5s ease-in-out;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Time left until the premiere:</h1>
-        <div id="countdown" class="timer">00:00:00</div>
+        <div id="countdown" class="timer">
+            <div class="time-unit">
+                <div id="days" class="time-value">00</div>
+            </div>
+            <div class="time-unit">
+                <div id="hours" class="time-value">00</div>
+            </div>
+            <div class="time-unit">
+                <div id="minutes" class="time-value">00</div>
+            </div>
+            <div class="time-unit">
+                <div id="seconds" class="time-value">00</div>
+            </div>
+        </div>
         <div class="footer">The Official MCStellar Production Page is coming out soon!!</div>
     </div>
 
     <script>
         // Configuración de la fecha y hora de finalización
-        const endDate = new Date("Dicember 10, 2024 12:00:00").getTime();
+        const endDate = new Date("December 10, 2024 12:00:00").getTime();
 
         // Actualización del temporizador cada segundo
         const x = setInterval(function() {
             const now = new Date().getTime();
             const distance = endDate - now;
 
-            // Cálculo del tiempo restante en horas, minutos y segundos
+            // Cálculo del tiempo restante en días, horas, minutos y segundos
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            // Mostrar el temporizador
-            document.getElementById("countdown").innerHTML = 
-                (hours < 10 ? "0" : "") + hours + ":" + 
-                (minutes < 10 ? "0" : "") + minutes + ":" + 
-                (seconds < 10 ? "0" : "") + seconds;
+            // Función para actualizar el temporizador con animación
+            function updateTimerElement(id, value) {
+                const element = document.getElementById(id);
+                if (element.innerHTML !== value) {
+                    element.classList.add('changed');
+                    element.innerHTML = value;
+                    setTimeout(() => element.classList.remove('changed'), 500); // Remove animation class after animation
+                }
+            }
+
+            // Actualización del temporizador con animación
+            updateTimerElement("days", (days < 10 ? "0" : "") + days);
+            updateTimerElement("hours", (hours < 10 ? "0" : "") + hours);
+            updateTimerElement("minutes", (minutes < 10 ? "0" : "") + minutes);
+            updateTimerElement("seconds", (seconds < 10 ? "0" : "") + seconds);
 
             // Si el tiempo ha terminado, redirigir a un enlace personalizado
             if (distance < 0) {
