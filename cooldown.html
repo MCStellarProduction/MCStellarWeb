@@ -150,44 +150,6 @@
                 window.location.href = "https://www.mcstellar.lat/";
             }
         }, 1000);
-        // Comprobar si el navegador soporta la API de notificaciones
-        if ("Notification" in window) {
-            console.log("Este navegador soporta notificaciones");
-
-            // Verificar si ya se ha mostrado la notificación
-            if (!localStorage.getItem("notificationShown")) {
-                // Si no se ha mostrado antes, solicitar permiso y luego mostrar la notificación
-                Notification.requestPermission().then(function(permission) {
-                    if (permission === "granted") {
-                        showNotification();
-                    } else {
-                        console.log("El permiso para mostrar notificaciones fue denegado.");
-                    }
-                });
-            } else {
-                console.log("La notificación ya fue mostrada anteriormente.");
-            }
-        } else {
-            console.log("Este navegador no soporta notificaciones.");
-        }
-
-        // Función para mostrar la notificación
-        function showNotification() {
-            const notification = new Notification("¡Nuevo mensaje!", {
-                body: "Tienes una nueva notificación de prueba.",
-                icon: "https://www.example.com/icon.png",  // Ruta a una imagen de ícono (opcional)
-                tag: "notificacion-prueba"  // Etiqueta para identificar la notificación (opcional)
-            });
-
-            // Marcar la notificación como mostrada en localStorage
-            localStorage.setItem("notificationShown", "true");
-
-            // Agregar un evento para manejar el clic en la notificación
-            notification.onclick = function(event) {
-                event.preventDefault();
-                window.open("https://www.example.com", "_blank"); // Redirige al hacer clic
-            };
-        }
     </script>
 </body>
 </html>
