@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coming Soon</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            color: #333;
+            display: flex;
+            background: url('bg_yellow.jpg');
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .timer {
+            font-size: 36px;
+            color: #d9534f;
+            font-weight: bold;
+        }
+        .footer {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Time left until the premiere:</h1>
+        <div id="countdown" class="timer">00:00:00</div>
+        <div class="footer">The Official MCStellar Production Page is coming out soon!!</div>
+    </div>
+
+    <script>
+        // Configuración de la fecha y hora de finalización
+        const endDate = new Date("Dicember 10, 2024 12:00:00").getTime();
+
+        // Actualización del temporizador cada segundo
+        const x = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = endDate - now;
+
+            // Cálculo del tiempo restante en horas, minutos y segundos
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Mostrar el temporizador
+            document.getElementById("countdown").innerHTML = 
+                (hours < 10 ? "0" : "") + hours + ":" + 
+                (minutes < 10 ? "0" : "") + minutes + ":" + 
+                (seconds < 10 ? "0" : "") + seconds;
+
+            // Si el tiempo ha terminado, redirigir a un enlace personalizado
+            if (distance < 0) {
+                clearInterval(x);
+                // Cambia el siguiente enlace al que desees redirigir
+                window.location.href = "https://www.mcstellar.lat/";
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
