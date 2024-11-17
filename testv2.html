@@ -30,6 +30,7 @@
       border-radius: 15px;
       background-color: #fff;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: transform 1.5s ease; /* Transición más suave */
     }
 
     .feed-item {
@@ -37,32 +38,37 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background-color: #3498db;
+      background-size: cover;
+      background-position: center;
       color: white;
       font-size: 24px;
       font-weight: bold;
       border-radius: 15px;
-      transition: transform 1s ease;
-      padding: 20px;
-      text-align: center;
       height: 100%;
+      text-align: center;
+      padding: 20px;
+      transition: opacity 1s ease; /* Transición más suave para los cuadros */
     }
 
-    @keyframes slideLeft {
-      0% {
-        transform: translateX(0);
-      }
-      100% {
-        transform: translateX(-100%);
-      }
+    /* Ajustar a una imagen personalizada para cada cuadro */
+    .feed-item:nth-child(1) {
+      background-image: url('https://via.placeholder.com/800x450/3498db/ffffff?text=Novedad+1');
     }
 
-    .feed-container .feed-item:nth-child(odd) {
-      background-color: #2ecc71;
+    .feed-item:nth-child(2) {
+      background-image: url('https://via.placeholder.com/800x450/2ecc71/ffffff?text=Novedad+2');
     }
 
-    .feed-container .feed-item:nth-child(even) {
-      background-color: #e74c3c;
+    .feed-item:nth-child(3) {
+      background-image: url('https://via.placeholder.com/800x450/e74c3c/ffffff?text=Novedad+3');
+    }
+
+    .feed-item:nth-child(4) {
+      background-image: url('https://via.placeholder.com/800x450/f39c12/ffffff?text=Novedad+4');
+    }
+
+    .feed-item:nth-child(5) {
+      background-image: url('https://via.placeholder.com/800x450/9b59b6/ffffff?text=Novedad+5');
     }
 
   </style>
@@ -83,30 +89,29 @@
     const feedItems = document.querySelectorAll('.feed-item');
 
     function changeSlide() {
-      // Aplicamos la animación para que el cuadro se desplace a la izquierda
-      feedContainer.style.transition = 'transform 1s ease';
+      // Desplazamiento suave a la izquierda con transición
       feedContainer.style.transform = `translateX(-${(currentSlide + 1) * 100}%)`;
 
-      // Esperamos a que termine la animación (1 segundo)
+      // Esperamos a que termine la transición (1.5 segundos)
       setTimeout(() => {
-        // Al finalizar la animación, movemos el primer elemento al final
+        // Mover el primer elemento al final sin transición
         feedContainer.style.transition = 'none'; // Deshabilitamos la transición temporalmente
         feedContainer.appendChild(feedItems[currentSlide]);
 
-        // Reiniciamos la posición para la siguiente animación
+        // Reiniciar el desplazamiento a la posición inicial
         feedContainer.style.transform = `translateX(0%)`;
 
         // Actualizamos el índice del slide actual
         currentSlide = (currentSlide + 1) % feedItems.length;
 
-        // Volvemos a habilitar la transición
+        // Volver a habilitar la transición
         setTimeout(() => {
-          feedContainer.style.transition = 'transform 1s ease';
+          feedContainer.style.transition = 'transform 1.5s ease';
         }, 50);
-      }, 1000); // El tiempo de espera coincide con la duración de la animación
+      }, 1500); // El tiempo de espera coincide con la duración de la transición
     }
 
-    // Iniciamos el cambio automático de las novedades cada 5 segundos
+    // Iniciar el cambio automático de novedades cada 5 segundos
     setInterval(changeSlide, 5000); // Cambio automático cada 5 segundos
   </script>
 
