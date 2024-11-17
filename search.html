@@ -123,6 +123,68 @@
       color: transparent;
     }
 
+    .card {
+  font-family: sans;
+  position: relative;
+  width: 300px;
+  height: 200px;
+  background: linear-gradient(-45deg, #f89b29 0%, #ff0f7b 100%);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.card svg {
+  width: 48px;
+  fill: #333;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.card:hover {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card__content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: #fff;
+  opacity: 0;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.card:hover .card__content {
+  transform: translate(-50%, -50%) rotate(0deg);
+  opacity: 1;
+}
+
+.card__title {
+  margin: 0;
+  font-size: 24px;
+  color: #333;
+  font-weight: 700;
+}
+
+.card__description {
+  margin: 10px 0 0;
+  font-size: 14px;
+  color: #777;
+  line-height: 1.4;
+}
+
+.card:hover svg {
+  scale: 0;
+  transform: rotate(-45deg);
+}
+
     /* Estilos del Footer */
     footer {
       position: fixed;
@@ -246,37 +308,54 @@
   <!-- Sección de Novedades -->
   <section id="novedades">
     <h1>NOVEDADES</h1>
-    <div class="section-card">
-      <img src="presentationgif.gif" alt="Imagen de Novedad" id="protectedImage">
-      <div class="content">
-        <h3 class="gradient-text">We're just getting started!!</h3>
-        <p class="description" id="description"><span class="gradient-text"><b>MCStellar Production</b></span> is just getting started and the <b>public</b> will be able to see it on our <b>social networks</b>. The <span class="gradient-text"><b>MCStellar Website</b></span> is the official social network of <span class="gradient-text"><b>MCStellar Production</b></span> so we hope you enjoy it.</p>
-      </div>
+    <div class="card">
+  <img src="test_card_v1.jpg" viewBox="0 0 24 24" widht="300" height="200">
+    <path
+      d="M20 5H4V19L13.2923 9.70649C13.6828 9.31595 14.3159 9.31591 14.7065 9.70641L20 15.0104V5ZM2 3.9934C2 3.44476 2.45531 3 2.9918 3H21.0082C21.556 3 22 3.44495 22 3.9934V20.0066C22 20.5552 21.5447 21 21.0082 21H2.9918C2.44405 21 2 20.5551 2 20.0066V3.9934ZM8 11C6.89543 11 6 10.1046 6 9C6 7.89543 6.89543 7 8 7C9.10457 7 10 7.89543 10 9C10 10.1046 9.10457 11 8 11Z"
+    ></path>
+  </svg>
+  <div class="card__content">
+    <p class="card__title">TEST CARD V1</p>
+    <p class="card__description">
+      Momazos Diego 😱😱😱☠️☠️👌👌
+    </p>
+  </div>
     </div>
   </section>
 
   <!-- Sección de Videos Recientes -->
   <section id="videos">
     <h1>VDIEOS RECIENTES</h1>
-    <div class="section-card" onclick="window.location.href='https://www.youtube.com/watch?v=vOdckl9YBPw'">
-      <img src="mcstellar_thebegginig_banner.jpg" alt="Video Reciente" id="protectedImage">
-      <div class="content">
-        <h3 class="gradient-text">The Beginning</h3>
-        <p class="description">This is the presentation video of this new company that is starting out</p>
-      </div>
+    <div class="card">
+  <img src="test_card_v1.jpg" viewBox="0 0 24 24" widht="300" height="200">
+    <path
+      d="M20 5H4V19L13.2923 9.70649C13.6828 9.31595 14.3159 9.31591 14.7065 9.70641L20 15.0104V5ZM2 3.9934C2 3.44476 2.45531 3 2.9918 3H21.0082C21.556 3 22 3.44495 22 3.9934V20.0066C22 20.5552 21.5447 21 21.0082 21H2.9918C2.44405 21 2 20.5551 2 20.0066V3.9934ZM8 11C6.89543 11 6 10.1046 6 9C6 7.89543 6.89543 7 8 7C9.10457 7 10 7.89543 10 9C10 10.1046 9.10457 11 8 11Z"
+    ></path>
+  </svg>
+  <div class="card__content">
+    <p class="card__title">TEST CARD V1</p>
+    <p class="card__description">
+      Momazos Diego 😱😱😱☠️☠️👌👌
+    </p>
+  </div>
     </div>
   </section>
 
   <!-- Sección de Eventos -->
   <section id="eventos">
     <h1>PROXIMOS EVENTOS</h1>
-    <div class="section-card">
-      <img src="redsurvivalbanner.jpg" alt="Evento Reciente" id="protectedImage">
-      <a herf="https://www.mcstellar.lat/stellarclient">
-      <div class="content">
-        <h3 class="gradient-text">RedSurvival</h3>
-        <p class="description">More information in the <span class="gradient-text">Stellar Client</span>...</p>
-      </div>
+    <div class="card">
+  <img src="test_card_v1.jpg" viewBox="0 0 24 24" widht="300" height="200">
+    <path
+      d="M20 5H4V19L13.2923 9.70649C13.6828 9.31595 14.3159 9.31591 14.7065 9.70641L20 15.0104V5ZM2 3.9934C2 3.44476 2.45531 3 2.9918 3H21.0082C21.556 3 22 3.44495 22 3.9934V20.0066C22 20.5552 21.5447 21 21.0082 21H2.9918C2.44405 21 2 20.5551 2 20.0066V3.9934ZM8 11C6.89543 11 6 10.1046 6 9C6 7.89543 6.89543 7 8 7C9.10457 7 10 7.89543 10 9C10 10.1046 9.10457 11 8 11Z"
+    ></path>
+  </svg>
+  <div class="card__content">
+    <p class="card__title">TEST CARD V1</p>
+    <p class="card__description">
+      Momazos Diego 😱😱😱☠️☠️👌👌
+    </p>
+  </div>
     </div>
   </section>
 
