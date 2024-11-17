@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Feed de Novedades</title>
+  <title>Recomendaciones de Películas Disney+</title>
   <style>
     * {
       margin: 0;
@@ -48,7 +48,7 @@
       text-align: center;
       padding: 20px;
       opacity: 0;
-      transform: translateX(100%); /* Empieza fuera de la pantalla */
+      transform: translateX(100%); /* Comienza fuera de la pantalla */
       animation: sliceIn 1s ease-out forwards; /* Animación para la entrada */
     }
 
@@ -76,36 +76,37 @@
       }
     }
 
-    /* Estilos para las imágenes personalizadas */
+    /* Estilos para las recomendaciones de películas Disney+ */
     .feed-item:nth-child(1) {
-      background-image: url('https://via.placeholder.com/800x450/3498db/ffffff?text=Novedad+1');
+      background-image: url('https://via.placeholder.com/800x450/0000FF/ffffff?text=Star+Wars+%3A+The+Mandalorian');
     }
 
     .feed-item:nth-child(2) {
-      background-image: url('https://via.placeholder.com/800x450/2ecc71/ffffff?text=Novedad+2');
+      background-image: url('https://via.placeholder.com/800x450/FF6347/ffffff?text=Frozen+II');
     }
 
     .feed-item:nth-child(3) {
-      background-image: url('https://via.placeholder.com/800x450/e74c3c/ffffff?text=Novedad+3');
+      background-image: url('https://via.placeholder.com/800x450/32CD32/ffffff?text=The+Lion+King');
     }
 
     .feed-item:nth-child(4) {
-      background-image: url('https://via.placeholder.com/800x450/f39c12/ffffff?text=Novedad+4');
+      background-image: url('https://via.placeholder.com/800x450/FF4500/ffffff?text=Toy+Story+4');
     }
 
     .feed-item:nth-child(5) {
-      background-image: url('https://via.placeholder.com/800x450/9b59b6/ffffff?text=Novedad+5');
+      background-image: url('https://via.placeholder.com/800x450/FFD700/ffffff?text=Avengers+Endgame');
     }
+
   </style>
 </head>
 <body>
 
   <div class="feed-container">
-    <div class="feed-item">Novedad 1</div>
-    <div class="feed-item">Novedad 2</div>
-    <div class="feed-item">Novedad 3</div>
-    <div class="feed-item">Novedad 4</div>
-    <div class="feed-item">Novedad 5</div>
+    <div class="feed-item">Star Wars: The Mandalorian</div>
+    <div class="feed-item">Frozen II</div>
+    <div class="feed-item">The Lion King</div>
+    <div class="feed-item">Toy Story 4</div>
+    <div class="feed-item">Avengers: Endgame</div>
   </div>
 
   <script>
