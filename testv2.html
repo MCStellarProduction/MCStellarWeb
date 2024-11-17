@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Recomendaciones de Películas Disney+</title>
+  <title>Feed de Novedades Automático</title>
   <style>
     * {
       margin: 0;
@@ -30,7 +30,6 @@
       border-radius: 15px;
       background-color: #fff;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      transition: transform 1s ease-in-out;
     }
 
     .feed-item {
@@ -49,64 +48,63 @@
       padding: 20px;
       opacity: 0;
       transform: translateX(100%); /* Comienza fuera de la pantalla */
-      animation: sliceIn 1s ease-out forwards; /* Animación para la entrada */
+      animation: slideIn 1s ease-out forwards; /* Animación de entrada */
     }
 
-    /* Animación para la entrada (slice in) */
-    @keyframes sliceIn {
+    /* Animación de entrada con deslizamiento */
+    @keyframes slideIn {
       0% {
-        transform: translateX(100%); /* Comienza fuera de la pantalla a la derecha */
+        transform: translateX(100%);
         opacity: 0;
       }
       100% {
-        transform: translateX(0); /* Llega a su posición final */
+        transform: translateX(0);
         opacity: 1;
       }
     }
 
-    /* Animación para la salida (slice out) */
-    @keyframes sliceOut {
+    /* Animación de salida con deslizamiento */
+    @keyframes slideOut {
       0% {
-        transform: translateX(0); /* Empieza en la posición visible */
+        transform: translateX(0);
         opacity: 1;
       }
       100% {
-        transform: translateX(-100%); /* Se desplaza completamente fuera de la pantalla a la izquierda */
+        transform: translateX(-100%);
         opacity: 0;
       }
     }
 
-    /* Estilos para las recomendaciones de películas Disney+ */
+    /* Estilo para las novedades */
     .feed-item:nth-child(1) {
-      background-image: url('https://via.placeholder.com/800x450/0000FF/ffffff?text=Star+Wars+%3A+The+Mandalorian');
+      background-image: url('https://via.placeholder.com/800x450/3498db/ffffff?text=Novedad+1');
     }
 
     .feed-item:nth-child(2) {
-      background-image: url('https://via.placeholder.com/800x450/FF6347/ffffff?text=Frozen+II');
+      background-image: url('https://via.placeholder.com/800x450/2ecc71/ffffff?text=Novedad+2');
     }
 
     .feed-item:nth-child(3) {
-      background-image: url('https://via.placeholder.com/800x450/32CD32/ffffff?text=The+Lion+King');
+      background-image: url('https://via.placeholder.com/800x450/e74c3c/ffffff?text=Novedad+3');
     }
 
     .feed-item:nth-child(4) {
-      background-image: url('https://via.placeholder.com/800x450/FF4500/ffffff?text=Toy+Story+4');
+      background-image: url('https://via.placeholder.com/800x450/f39c12/ffffff?text=Novedad+4');
     }
 
     .feed-item:nth-child(5) {
-      background-image: url('https://via.placeholder.com/800x450/FFD700/ffffff?text=Avengers+Endgame');
+      background-image: url('https://via.placeholder.com/800x450/9b59b6/ffffff?text=Novedad+5');
     }
-
   </style>
 </head>
 <body>
 
   <div class="feed-container">
-    <div class="feed-item">Star Wars: The Mandalorian</div>
-    <div class="feed-item">Frozen II</div>
-    <div class="feed-item">The Lion King</div>
-    <div class="feed-item">Toy Story 4</div>
-    <div class="feed-item">Avengers: Endgame</div>
+    <div class="feed-item">Novedad 1</div>
+    <div class="feed-item">Novedad 2</div>
+    <div class="feed-item">Novedad 3</div>
+    <div class="feed-item">Novedad 4</div>
+    <div class="feed-item">Novedad 5</div>
   </div>
 
   <script>
@@ -116,7 +114,7 @@
 
     function changeSlide() {
       // Aplicamos la animación para que el cuadro se deslice fuera de la pantalla
-      feedItems[currentSlide].style.animation = 'sliceOut 1s ease-in forwards';
+      feedItems[currentSlide].style.animation = 'slideOut 1s ease-in forwards';
 
       // Esperamos el tiempo de animación para que el cuadro desaparezca
       setTimeout(() => {
@@ -124,7 +122,7 @@
         feedContainer.appendChild(feedItems[currentSlide]);
 
         // Restablecer la animación de entrada para el siguiente cuadro
-        feedItems[currentSlide].style.animation = 'sliceIn 1s ease-out forwards';
+        feedItems[currentSlide].style.animation = 'slideIn 1s ease-out forwards';
 
         // Actualizamos el índice del slide actual
         currentSlide = (currentSlide + 1) % feedItems.length;
