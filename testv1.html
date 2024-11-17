@@ -84,6 +84,16 @@
       </a>
     </div>
 </footer>
+    <script>
+        function redirectToPage(event, url) {
+      event.preventDefault(); 
+      const button = event.currentTarget;
+      button.style.pointerEvents = 'none';
+      setTimeout(() => {
+        window.location.href = url;
+      }, 1000);
+        }
+    </script>
 
     
 </body>
