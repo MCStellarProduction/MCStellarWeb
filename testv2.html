@@ -1,138 +1,90 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Feed de Novedades Automático</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f0f0f0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      overflow: hidden;
-    }
-
-    .feed-container {
-      display: flex;
-      width: 80vw;
-      height: 45vw;
-      overflow: hidden;
-      position: relative;
-      border-radius: 15px;
-      background-color: #fff;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    }
-
-    .feed-item {
-      flex: 0 0 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-size: cover;
-      background-position: center;
-      color: white;
-      font-size: 24px;
-      font-weight: bold;
-      border-radius: 15px;
-      height: 100%;
-      text-align: center;
-      padding: 20px;
-      opacity: 0;
-      transform: translateX(100%); /* Comienza fuera de la pantalla */
-      animation: slideIn 1s ease-out forwards; /* Animación de entrada */
-    }
-
-    /* Animación de entrada con deslizamiento */
-    @keyframes slideIn {
-      0% {
-        transform: translateX(100%);
-        opacity: 0;
-      }
-      100% {
-        transform: translateX(0);
-        opacity: 1;
-      }
-    }
-
-    /* Animación de salida con deslizamiento */
-    @keyframes slideOut {
-      0% {
-        transform: translateX(0);
-        opacity: 1;
-      }
-      100% {
-        transform: translateX(-100%);
-        opacity: 0;
-      }
-    }
-
-    /* Estilo para las novedades */
-    .feed-item:nth-child(1) {
-      background-image: url('https://via.placeholder.com/800x450/3498db/ffffff?text=Novedad+1');
-    }
-
-    .feed-item:nth-child(2) {
-      background-image: url('https://via.placeholder.com/800x450/2ecc71/ffffff?text=Novedad+2');
-    }
-
-    .feed-item:nth-child(3) {
-      background-image: url('https://via.placeholder.com/800x450/e74c3c/ffffff?text=Novedad+3');
-    }
-
-    .feed-item:nth-child(4) {
-      background-image: url('https://via.placeholder.com/800x450/f39c12/ffffff?text=Novedad+4');
-    }
-
-    .feed-item:nth-child(5) {
-      background-image: url('https://via.placeholder.com/800x450/9b59b6/ffffff?text=Novedad+5');
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feed de Novedades</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .feed-item {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #fafafa;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .feed-item h3 {
+            margin: 0;
+            font-size: 1.2em;
+            color: #333;
+        }
+        .feed-item p {
+            font-size: 1em;
+            color: #555;
+        }
+        .feed-item time {
+            display: block;
+            font-size: 0.9em;
+            color: #888;
+            margin-top: 8px;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #007bff;
+            color: white;
+            font-size: 0.9em;
+        }
+    </style>
 </head>
 <body>
 
-  <div class="feed-container">
-    <div class="feed-item">Novedad 1</div>
-    <div class="feed-item">Novedad 2</div>
-    <div class="feed-item">Novedad 3</div>
-    <div class="feed-item">Novedad 4</div>
-    <div class="feed-item">Novedad 5</div>
-  </div>
+<header>
+    <h1>Feed de Novedades</h1>
+</header>
 
-  <script>
-    let currentSlide = 0;
-    const feedContainer = document.querySelector('.feed-container');
-    const feedItems = document.querySelectorAll('.feed-item');
+<div class="container">
+    <div class="feed-item">
+        <h3>Nuevo lanzamiento de producto</h3>
+        <p>Este mes lanzamos un nuevo producto innovador que cambiará la forma en que interactúas con la tecnología...</p>
+        <time datetime="2024-11-01">1 de Noviembre de 2024</time>
+    </div>
 
-    function changeSlide() {
-      // Aplicamos la animación para que el cuadro se deslice fuera de la pantalla
-      feedItems[currentSlide].style.animation = 'slideOut 1s ease-in forwards';
+    <div class="feed-item">
+        <h3>Actualización importante en la política de privacidad</h3>
+        <p>Hemos actualizado nuestra política de privacidad para incluir nuevos detalles sobre el uso de datos personales...</p>
+        <time datetime="2024-10-28">28 de Octubre de 2024</time>
+    </div>
 
-      // Esperamos el tiempo de animación para que el cuadro desaparezca
-      setTimeout(() => {
-        // Mover el cuadro actual al final sin animación para reiniciar el ciclo
-        feedContainer.appendChild(feedItems[currentSlide]);
+    <div class="feed-item">
+        <h3>Evento de lanzamiento en Madrid</h3>
+        <p>Acompáñanos el próximo 10 de diciembre en Madrid para un evento exclusivo sobre nuestras últimas novedades...</p>
+        <time datetime="2024-10-15">15 de Octubre de 2024</time>
+    </div>
+</div>
 
-        // Restablecer la animación de entrada para el siguiente cuadro
-        feedItems[currentSlide].style.animation = 'slideIn 1s ease-out forwards';
-
-        // Actualizamos el índice del slide actual
-        currentSlide = (currentSlide + 1) % feedItems.length;
-
-      }, 1000); // Tiempo igual a la duración de la animación (1 segundo)
-    }
-
-    // Iniciar el cambio automático de novedades cada 5 segundos
-    setInterval(changeSlide, 5000); // Cambio automático cada 5 segundos
-  </script>
+<footer>
+    <p>&copy; 2024 Tu Empresa. Todos los derechos reservados.</p>
+</footer>
 
 </body>
 </html>
