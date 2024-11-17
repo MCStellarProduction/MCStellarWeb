@@ -30,7 +30,7 @@
       border-radius: 15px;
       background-color: #fff;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      transition: transform 1.5s ease;
+      transition: transform 1s ease-in-out;
     }
 
     .feed-item {
@@ -47,23 +47,36 @@
       height: 100%;
       text-align: center;
       padding: 20px;
-      opacity: 0; /* Inicialmente invisible */
-      animation: sliceIn 1s ease forwards; /* Aplicamos la animación de entrada */
+      opacity: 0;
+      transform: translateX(100%); /* Empieza fuera de la pantalla */
+      animation: sliceIn 1s ease-out forwards; /* Animación para la entrada */
     }
 
-    /* Animación de "Slice In" */
+    /* Animación para la entrada (slice in) */
     @keyframes sliceIn {
       0% {
-        transform: translateX(100%); /* Empuja el cuadro fuera de la pantalla desde la derecha */
+        transform: translateX(100%); /* Comienza fuera de la pantalla a la derecha */
         opacity: 0;
       }
       100% {
-        transform: translateX(0); /* Llega a su posición original */
+        transform: translateX(0); /* Llega a su posición final */
         opacity: 1;
       }
     }
 
-    /* Imágenes personalizadas para cada cuadro */
+    /* Animación para la salida (slice out) */
+    @keyframes sliceOut {
+      0% {
+        transform: translateX(0); /* Empieza en la posición visible */
+        opacity: 1;
+      }
+      100% {
+        transform: translateX(-100%); /* Se desplaza completamente fuera de la pantalla a la izquierda */
+        opacity: 0;
+      }
+    }
+
+    /* Estilos para las imágenes personalizadas */
     .feed-item:nth-child(1) {
       background-image: url('https://via.placeholder.com/800x450/3498db/ffffff?text=Novedad+1');
     }
@@ -83,7 +96,6 @@
     .feed-item:nth-child(5) {
       background-image: url('https://via.placeholder.com/800x450/9b59b6/ffffff?text=Novedad+5');
     }
-
   </style>
 </head>
 <body>
@@ -102,26 +114,21 @@
     const feedItems = document.querySelectorAll('.feed-item');
 
     function changeSlide() {
-      // Desplazamiento suave a la izquierda con transición
-      feedContainer.style.transform = `translateX(-${(currentSlide + 1) * 100}%)`;
+      // Aplicamos la animación para que el cuadro se deslice fuera de la pantalla
+      feedItems[currentSlide].style.animation = 'sliceOut 1s ease-in forwards';
 
-      // Esperamos a que termine la transición (1.5 segundos)
+      // Esperamos el tiempo de animación para que el cuadro desaparezca
       setTimeout(() => {
-        // Mover el primer elemento al final sin transición
-        feedContainer.style.transition = 'none'; // Deshabilitamos la transición temporalmente
+        // Mover el cuadro actual al final sin animación para reiniciar el ciclo
         feedContainer.appendChild(feedItems[currentSlide]);
 
-        // Reiniciar el desplazamiento a la posición inicial
-        feedContainer.style.transform = `translateX(0%)`;
+        // Restablecer la animación de entrada para el siguiente cuadro
+        feedItems[currentSlide].style.animation = 'sliceIn 1s ease-out forwards';
 
         // Actualizamos el índice del slide actual
         currentSlide = (currentSlide + 1) % feedItems.length;
 
-        // Volver a habilitar la transición
-        setTimeout(() => {
-          feedContainer.style.transition = 'transform 1.5s ease';
-        }, 50);
-      }, 1500); // El tiempo de espera coincide con la duración de la transición
+      }, 1000); // Tiempo igual a la duración de la animación (1 segundo)
     }
 
     // Iniciar el cambio automático de novedades cada 5 segundos
