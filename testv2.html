@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feed de Novedades</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .feed-container {
+      display: flex;
+      width: 80vw;
+      height: 45vw;
+      overflow: hidden;
+      position: relative;
+      border-radius: 15px;
+      background-color: #fff;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .feed-item {
+      flex: 0 0 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #3498db;
+      color: white;
+      font-size: 24px;
+      font-weight: bold;
+      border-radius: 15px;
+      transition: transform 1s ease;
+      padding: 20px;
+      text-align: center;
+      height: 100%;
+    }
+
+    @keyframes slideLeft {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-100%);
+      }
+    }
+
+    .feed-container .feed-item:nth-child(odd) {
+      background-color: #2ecc71;
+    }
+
+    .feed-container .feed-item:nth-child(even) {
+      background-color: #e74c3c;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="feed-container">
+    <div class="feed-item">Novedad 1</div>
+    <div class="feed-item">Novedad 2</div>
+    <div class="feed-item">Novedad 3</div>
+    <div class="feed-item">Novedad 4</div>
+    <div class="feed-item">Novedad 5</div>
+  </div>
+
+  <script>
+    let currentSlide = 0;
+    const feedContainer = document.querySelector('.feed-container');
+    const feedItems = document.querySelectorAll('.feed-item');
+
+    function changeSlide() {
+      // Aplicamos la animación para que el cuadro se desplace a la izquierda
+      feedContainer.style.transition = 'transform 1s ease';
+      feedContainer.style.transform = `translateX(-${(currentSlide + 1) * 100}%)`;
+
+      // Esperamos a que termine la animación (1 segundo)
+      setTimeout(() => {
+        // Al finalizar la animación, movemos el primer elemento al final
+        feedContainer.style.transition = 'none'; // Deshabilitamos la transición temporalmente
+        feedContainer.appendChild(feedItems[currentSlide]);
+
+        // Reiniciamos la posición para la siguiente animación
+        feedContainer.style.transform = `translateX(0%)`;
+
+        // Actualizamos el índice del slide actual
+        currentSlide = (currentSlide + 1) % feedItems.length;
+
+        // Volvemos a habilitar la transición
+        setTimeout(() => {
+          feedContainer.style.transition = 'transform 1s ease';
+        }, 50);
+      }, 1000); // El tiempo de espera coincide con la duración de la animación
+    }
+
+    // Iniciamos el cambio automático de las novedades cada 5 segundos
+    setInterval(changeSlide, 5000); // Cambio automático cada 5 segundos
+  </script>
+
+</body>
+</html>
