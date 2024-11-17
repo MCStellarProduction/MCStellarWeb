@@ -30,7 +30,7 @@
       border-radius: 15px;
       background-color: #fff;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      transition: transform 1.5s ease; /* Transición más suave */
+      transition: transform 1.5s ease;
     }
 
     .feed-item {
@@ -47,10 +47,23 @@
       height: 100%;
       text-align: center;
       padding: 20px;
-      transition: opacity 1s ease; /* Transición más suave para los cuadros */
+      opacity: 0; /* Inicialmente invisible */
+      animation: sliceIn 1s ease forwards; /* Aplicamos la animación de entrada */
     }
 
-    /* Ajustar a una imagen personalizada para cada cuadro */
+    /* Animación de "Slice In" */
+    @keyframes sliceIn {
+      0% {
+        transform: translateX(100%); /* Empuja el cuadro fuera de la pantalla desde la derecha */
+        opacity: 0;
+      }
+      100% {
+        transform: translateX(0); /* Llega a su posición original */
+        opacity: 1;
+      }
+    }
+
+    /* Imágenes personalizadas para cada cuadro */
     .feed-item:nth-child(1) {
       background-image: url('https://via.placeholder.com/800x450/3498db/ffffff?text=Novedad+1');
     }
