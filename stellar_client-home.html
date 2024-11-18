@@ -62,14 +62,14 @@
             border-radius: 10px;
             padding: 20px;
             width: 300px;
-            box-shadow: 0 4px 8px rgba(0, 255, 0, 0.2);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Sombra básica */
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             overflow: hidden; /* Para asegurar que las imágenes no sobresalgan */
         }
 
         .instance:hover {
             transform: scale(1.05); /* Efecto al pasar el mouse */
-            box-shadow: 0 6px 12px rgba(0, 255, 0, 0.4); /* Sombra más fuerte */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4), 0 0 15px rgba(255, 87, 34, 0.5), 0 0 25px rgba(156, 39, 176, 0.5); /* Sombra gradiente */
         }
 
         /* Estilo de las imágenes dentro de las instancias */
