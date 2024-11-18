@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validación de Cupón</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f7f7f7;
+        }
+
+        .cuadro {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            font-size: 16px;
+        }
+
+        .mensaje {
+            font-size: 16px;
+            margin-top: 15px;
+        }
+
+        .error {
+            color: red;
+        }
+
+        .exito {
+            color: yellow;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="cuadro">
+        <h2>Ingresa tu cupón</h2>
+        <input type="text" id="codigo" maxlength="20" placeholder="Código de 20 dígitos" />
+        <button onclick="validarCodigo()">Validar</button>
+        <div id="mensaje" class="mensaje"></div>
+    </div>
+
+    <script>
+        const codigosValidos = [
+            "Sdo79pqtbvc10987659t",
+            "aiYdhga10p32os8hr7wo",
+            "aPejslaperuaks816539"
+        ];
+
+        function validarCodigo() {
+            const codigoIngresado = document.getElementById("codigo").value.trim();
+            const mensajeDiv = document.getElementById("mensaje");
+            
+            // Limpiar mensaje previo
+            mensajeDiv.textContent = '';
+            mensajeDiv.classList.remove('error', 'exito');
+            
+            // Verificar si el código ingresado es válido
+            if (codigosValidos.includes(codigoIngresado)) {
+                mensajeDiv.textContent = 'Validando...';
+                mensajeDiv.classList.add('exito');
+                
+                // Simular el tiempo de validación
+                setTimeout(() => {
+                    mensajeDiv.textContent = '¡Cupón Validado!!';
+                    mensajeDiv.classList.remove('exito');
+                    
+                    // Redirigir después de 1 segundo
+                    setTimeout(() => {
+                        window.location.href = "https://tupagina.com"; // Aquí puedes cambiar la URL de la página a la que deseas redirigir
+                    }, 1000);
+                }, 4000);
+            } else {
+                mensajeDiv.textContent = '¡Cupón no válido!';
+                mensajeDiv.classList.add('error');
+            }
+        }
+    </script>
+
+</body>
+</html>
