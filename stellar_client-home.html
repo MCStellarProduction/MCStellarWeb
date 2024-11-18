@@ -13,11 +13,11 @@
             margin: 0;
             padding: 0;
             display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            overflow: hidden;
+            justify-content: flex-start;
+            align-items: flex-start;
             flex-direction: column;
+            min-height: 100vh; /* Asegura que todo el contenido se ajuste */
+            overflow-y: auto; /* Permite el desplazamiento si el contenido sobrepasa la altura de la ventana */
         }
 
         /* Contenedor principal */
@@ -27,6 +27,7 @@
             width: 100%;
             max-width: 1200px;
             margin: 0 auto;
+            box-sizing: border-box;
         }
 
         /* Imagen de título personalizada */
@@ -39,7 +40,7 @@
 
         /* Título principal (Texto) */
         .title {
-            font-size: 1rem;
+            font-size: 2.5rem; /* Cambié el tamaño para que sea más visible */
             color: transparent;
             background: linear-gradient(90deg, #ff5722, #9c27b0); /* Gradiente de naranja a morado */
             -webkit-background-clip: text; /* Clip para que el fondo sea solo el texto */
@@ -71,6 +72,7 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Sombra básica */
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             overflow: hidden; /* Para asegurar que las imágenes no sobresalgan */
+            margin-bottom: 40px; /* Para un mejor espaciado */
         }
 
         .instance:hover {
@@ -137,11 +139,11 @@
             }
 
             .title {
-                font-size: 1rem;
+                font-size: 1.5rem;
             }
 
             .instance {
-                max-width: 50%;
+                max-width: 100%;
                 margin-bottom: 20px;
             }
 
@@ -152,7 +154,7 @@
 
         @media (max-width: 480px) {
             .title {
-                font-size: 2rem;
+                font-size: 1.2rem;
             }
 
             button {
