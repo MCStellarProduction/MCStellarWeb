@@ -200,6 +200,20 @@
             a.download = fileName;
             a.click();
         }
+
+        // Verificar el tiempo de la primera visita y redirigir si ha pasado 1 minuto
+        const firstVisit = localStorage.getItem('firstVisitTime');
+
+        if (!firstVisit) {
+            // Si es la primera vez que el usuario entra, guardamos la hora
+            localStorage.setItem('firstVisitTime', Date.now());
+        } else {
+            // Comparamos si han pasado 1 minuto (60,000 ms)
+            const timePassed = Date.now() - firstVisit;
+            if (timePassed > 60000) { // 1 minuto = 60,000 ms
+                window.location.href = "https://www.mcstellar.lat/quota-validation"; // Aquí pon el enlace al que quieras redirigir
+            }
+        }
     </script>
 </body>
 </html>
