@@ -28,14 +28,24 @@
             margin: 0 auto;
         }
 
-        /* Título principal */
+        /* Imagen de título personalizada */
+        .title-img {
+            width: 100%;
+            max-width: 400px;
+            margin-bottom: 40px;
+        }
+
+        /* Título principal (Texto) */
         .title {
             font-size: 3rem;
-            color: #00FF00; /* Color verde suave */
-            margin-bottom: 40px;
+            color: transparent;
+            background: linear-gradient(90deg, #ff5722, #9c27b0); /* Gradiente de naranja a morado */
+            -webkit-background-clip: text; /* Clip para que el fondo sea solo el texto */
+            background-clip: text;
             font-weight: bold;
             letter-spacing: 1px;
             text-transform: uppercase;
+            margin-bottom: 40px;
         }
 
         /* Contenedor de instancias */
@@ -74,7 +84,10 @@
         /* Títulos de las instancias */
         .instance-title {
             font-size: 1.5rem;
-            color: #00FF00;
+            color: transparent;
+            background: linear-gradient(90deg, #ff5722, #9c27b0); /* Gradiente de naranja a morado */
+            -webkit-background-clip: text;
+            background-clip: text;
             font-weight: bold;
             margin-bottom: 10px;
         }
@@ -96,7 +109,7 @@
         }
 
         button {
-            background-color: #00FF00;
+            background-color: #ff5722;
             color: #121212;
             border: none;
             padding: 12px 20px;
@@ -108,12 +121,16 @@
         }
 
         button:hover {
-            background-color: #00CC00; /* Verde más oscuro */
+            background-color: #9c27b0; /* Morado oscuro */
         }
     </style>
 </head>
 <body>
     <div class="container">
+        <!-- Imagen personalizada como título -->
+        <img src="https://via.placeholder.com/400x100/FF5722/FFFFFF?text=Stellar+Client" alt="Stellar Client" class="title-img">
+
+        <!-- Título del sitio (textual) -->
         <h1 class="title">Stellar Client</h1>
 
         <div class="instances">
