@@ -175,7 +175,7 @@
                 <h2 class="instance-title">BETA-TEST REDSURVIVAL</h2>
                 <p class="instance-desc">Beta Test del RedSurvival ( Only Testers Access )</p>
                 <div class="install-btn">
-                    <button onclick="downloadFile('launcher1.zip')">Install Launcher</button>
+                    <button onclick="redirectToCustomPage()">Install Launcher</button>
                 </div>
             </div>
             <!-- Puedes agregar más instancias aquí -->
@@ -183,6 +183,11 @@
     </div>
 
     <script>
+        // Función para redirigir a una página personalizada
+        function redirectToCustomPage() {
+            window.location.href = "https://github.com/mcstellarproduction/mcstellarweb/raw/redsurvival_assets.zip"; // Cambia esta URL a la página que desees
+        }
+
         // Detectar si el usuario está en un dispositivo móvil
         function isMobile() {
             return /Mobi|Android/i.test(navigator.userAgent); // Verifica el User-Agent del navegador
@@ -191,14 +196,6 @@
         // Redirigir a un enlace personalizado si es móvil
         if (isMobile()) {
             window.location.href = "https://www.mcstellar.lat/error-1"; // Cambia esto al enlace que desees redirigir
-        }
-
-        // Función para descargar el archivo
-        function downloadFile(redsurvival_assets) {
-            const a = document.createElement('a');
-            a.href = https://github.com/mcstellarproduction/mcstellarweb/raw/redsurvival_assets.zip; // Asegúrate de tener el archivo en la misma carpeta o proporcionar el URL completo
-            a.download = redsurvival_assets;
-            a.click();
         }
     </script>
 </body>
