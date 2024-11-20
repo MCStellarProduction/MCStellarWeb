@@ -63,6 +63,12 @@
             "aPejslaperuaks816539"
         ];
 
+        // Códigos especiales para redirección personalizada
+        const codigosEspeciales = {
+            "CreatorKey=sharingel": "https://www.pagina1.com", // URL para el código CreatorKey=sharingel
+            "CreatorKey=redaguila": "https://www.pagina2.com"  // URL para el código CreatorKey=redaguila
+        };
+
         function validarCodigo() {
             const codigoIngresado = document.getElementById("codigo").value.trim();
             const mensajeDiv = document.getElementById("mensaje");
@@ -71,8 +77,17 @@
             mensajeDiv.textContent = '';
             mensajeDiv.classList.remove('error', 'exito');
             
-            // Verificar si el código ingresado es válido
-            if (codigosValidos.includes(codigoIngresado)) {
+            // Verificar si el código ingresado está en los códigos especiales
+            if (codigosEspeciales[codigoIngresado]) {
+                mensajeDiv.textContent = '¡Cupón Especial Validado!';
+                mensajeDiv.classList.add('exito');
+                
+                // Redirigir inmediatamente a la página personalizada
+                setTimeout(() => {
+                    window.location.href = codigosEspeciales[codigoIngresado];
+                }, 1000);
+
+            } else if (codigosValidos.includes(codigoIngresado)) {
                 mensajeDiv.textContent = 'Validando...';
                 mensajeDiv.classList.add('exito');
                 
@@ -83,7 +98,7 @@
                     
                     // Redirigir después de 1 segundo
                     setTimeout(() => {
-                        window.location.href = "https://www.mcstellar.lat/client_checking"; // Aquí puedes cambiar la URL de la página a la que deseas redirigir
+                        window.location.href = "https://www.mcstellar.lat/client_checking"; // Página para los códigos normales
                     }, 1000);
                 }, 4000);
             } else {
