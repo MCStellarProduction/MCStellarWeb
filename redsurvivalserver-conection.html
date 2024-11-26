@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página con Fondo de Imagen</title>
+    <title>Página con Imágenes en 16:9</title>
     <style>
         /* Estilos generales */
         body {
@@ -33,25 +33,25 @@
             object-fit: cover; /* Mantiene la proporción de la imagen */
         }
 
-        /* Contenedor de cuadros con imágenes */
+        /* Contenedor de imágenes en columna */
         .image-grid {
             display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
+            flex-direction: column; /* Coloca los elementos en una columna */
+            gap: 20px;
             padding: 20px;
-            justify-content: center;
+            align-items: center;
             position: relative;
             z-index: 1; /* Coloca el contenido por encima del fondo */
         }
 
-        /* Estilo de cada cuadro de imagen */
+        /* Estilo de cada cuadro de imagen con proporción 16:9 */
         .image-box {
-            width: 200px;
-            height: 200px;
+            width: 80%; /* Ajusta este valor para cambiar el ancho de las imágenes */
+            aspect-ratio: 16 / 9; /* Mantiene la proporción 16:9 */
             overflow: hidden;
             border: 2px solid #ccc;
             border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
         }
 
         /* Imagen dentro del cuadro */
@@ -69,9 +69,9 @@
     <!-- Imagen de cabecera -->
     <img src="URL_DE_TU_IMAGEN.jpg" alt="Imagen de cabecera" class="header-image">
 
-    <!-- Contenedor de imágenes en cuadros -->
+    <!-- Contenedor de imágenes en columna -->
     <div class="image-grid">
-        <!-- Cuadro con imagen personalizada -->
+        <!-- Cuadro con imagen personalizada en 16:9 -->
         <div class="image-box">
             <img src="URL_DE_TU_IMAGEN_1.jpg" alt="Imagen 1">
         </div>
