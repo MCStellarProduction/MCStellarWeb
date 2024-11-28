@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro • Stellar Client</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            --s: 200px;
+            --c1: #1d1d1d;
+            --c2: #4e4f51;
+            --c3: #3c3c3c;
+
+            background: repeating-conic-gradient(
+                    from 30deg,
+                    #0000 0 120deg,
+                    var(--c3) 0 180deg
+                )
+                calc(0.5 * var(--s)) calc(0.5 * var(--s) * 0.577),
+                repeating-conic-gradient(
+                    from 30deg,
+                    var(--c1) 0 60deg,
+                    var(--c2) 0 120deg,
+                    var(--c3) 0 180deg
+                );
+            background-size: var(--s) calc(var(--s) * 0.577);
+            z-index: -1;
+        }
+
+        .cuadro {
+            background-color: #2a2a2a;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            width: 400px;
+            text-align: center;
+            z-index: 1;
+        }
+
+        input {
+            font-size: 16px;
+            border: 2px solid #e8e8e8;
+            padding: 15px;
+            border-radius: 10px;
+            background-color: #212121;
+            color: white;
+            text-align: center;
+            width: 90%;
+            margin-bottom: 15px;
+        }
+
+        .gradient {
+            font-size: 2rem;
+            font-weight: bold;
+            background: linear-gradient(90deg, #f35131, #8d2b87);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .validacion {
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: bold;
+            color: white;
+            background-color: #171717;
+            padding: 1em 2em;
+            border: none;
+            border-radius: .6rem;
+            cursor: pointer;
+        }
+
+        .mensaje {
+            font-size: 16px;
+            margin-top: 15px;
+        }
+
+        .error {
+            color: red;
+        }
+
+        .exito {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <div class="container"></div>
+    <div class="cuadro">
+        <h2 class="gradient">Registro</h2>
+        <form action="registro.php" method="POST">
+            <input type="text" name="username" maxlength="50" placeholder="Nombre de Usuario" required />
+            <input type="email" name="email" maxlength="50" placeholder="Correo Electrónico" required />
+            <input type="password" name="password" maxlength="20" placeholder="Contraseña" required />
+            <button type="submit" class="validacion">Registrar</button>
+        </form>
+        <div id="mensaje" class="mensaje"></div>
+    </div>
+</body>
+</html>
