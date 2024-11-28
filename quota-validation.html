@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Validación de Cupón</title>
+    <title>Inicio de Sesion • Stellar Client</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -51,14 +51,22 @@
 
     <div class="cuadro">
         <h2>Ingresa tu cupón</h2>
-        <input type="text" id="codigo" maxlength="20" placeholder="Código de 20 dígitos" />
+        <input type="text" id="email" maxlength="20" placeholder="Correo" />
+        <input type="text" id="password" maxlength="20" placeholder="Constraseña" />
         <button onclick="validarCodigo()">Validar</button>
         <div id="mensaje" class="mensaje"></div>
     </div>
 
     <script>
-        const codigosValidos = [
-            "Sdo79pqtbvc10987659t",
+        const emailsValidos = [
+            "test@stellar.com",
+            "aiYdhga10p32os8hr7wo",
+            "aPejslaperuaks816539",
+            "FgyKsj68hJals28usy91"
+        ];
+
+        const passwordsValidos = [
+            "12345",
             "aiYdhga10p32os8hr7wo",
             "aPejslaperuaks816539",
             "FgyKsj68hJals28usy91"
@@ -71,7 +79,8 @@
         };
 
         function validarCodigo() {
-            const codigoIngresado = document.getElementById("codigo").value.trim();
+            const emailsIngresado = document.getElementById("emails").value.trim();
+            const passwordsIngresado = document.getElementById("password").value.trim();
             const mensajeDiv = document.getElementById("mensaje");
             
             // Limpiar mensaje previo
@@ -80,21 +89,21 @@
             
             // Verificar si el código ingresado está en los códigos especiales
             if (codigosEspeciales[codigoIngresado]) {
-                mensajeDiv.textContent = '¡Cupón Especial Validado!';
+                mensajeDiv.textContent = 'Ingresando...';
                 mensajeDiv.classList.add('exito');
                 
                 // Redirigir inmediatamente a la página personalizada
                 setTimeout(() => {
-                    window.location.href = codigosEspeciales[codigoIngresado];
+                    window.location.href = emailsEspeciales[emailsIngresado];
                 }, 1000);
 
-            } else if (codigosValidos.includes(codigoIngresado)) {
-                mensajeDiv.textContent = 'Validando...';
+            } else if (emailsValidos.includes(emailsIngresado)) {
+                mensajeDiv.textContent = 'Iniciando Sesion...';
                 mensajeDiv.classList.add('exito');
                 
                 // Simular el tiempo de validación
                 setTimeout(() => {
-                    mensajeDiv.textContent = '¡Cupón Validado!!';
+                    mensajeDiv.textContent = 'Se inicio sesion correctamente';
                     mensajeDiv.classList.remove('exito');
                     
                     // Redirigir después de 1 segundo
@@ -103,7 +112,7 @@
                     }, 1000);
                 }, 4000);
             } else {
-                mensajeDiv.textContent = '¡Cupón no válido!';
+                mensajeDiv.textContent = 'Correo o Contraseña no válido';
                 mensajeDiv.classList.add('error');
             }
         }
