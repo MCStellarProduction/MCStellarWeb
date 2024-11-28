@@ -25,13 +25,25 @@
         }
 
         input {
-            width: 100%;
+            width: 80%;
             padding: 10px;
             margin: 10px 0;
-            border-radius: 5px;
-            border: 1px solid #ddd;
+            border-radius: 0px;
             background-color: #ff5722;
             font-size: 16px;
+        }
+
+        .validacion {
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: bold;
+            color: white;
+            background-color: #171717;
+            padding: 1em 2em;
+            border: none;
+            border-radius: .6rem;
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
         }
 
         .mensaje {
@@ -54,7 +66,7 @@
         <h2>Inicio de Sesión</h2>
         <input type="text" id="email" maxlength="50" placeholder="Correo" />
         <input type="password" id="password" maxlength="20" placeholder="Contraseña" />
-        <button onclick="validarCredenciales()">Validar</button>
+        <button onclick="validarCredenciales()" class="validacion">Validar</button>
         <div id="mensaje" class="mensaje"></div>
     </div>
 
