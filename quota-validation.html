@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio de Sesion • Stellar Client</title>
+    <title>Inicio de Sesión • Stellar Client</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -43,76 +43,71 @@
         }
 
         .exito {
-            color: yellow;
+            color: green;
         }
     </style>
 </head>
 <body>
 
     <div class="cuadro">
-        <h2>Ingresa tu cupón</h2>
-        <input type="text" id="email" maxlength="20" placeholder="Correo" />
-        <input type="text" id="password" maxlength="20" placeholder="Constraseña" />
-        <button onclick="validarCodigo()">Validar</button>
+        <h2>Inicio de Sesión</h2>
+        <input type="text" id="email" maxlength="50" placeholder="Correo" />
+        <input type="password" id="password" maxlength="20" placeholder="Contraseña" />
+        <button onclick="validarCredenciales()">Validar</button>
         <div id="mensaje" class="mensaje"></div>
     </div>
 
     <script>
         const emailsValidos = [
             "test@stellar.com",
-            "aiYdhga10p32os8hr7wo",
-            "aPejslaperuaks816539",
-            "FgyKsj68hJals28usy91"
+            "usuario1@ejemplo.com",
+            "usuario2@ejemplo.com"
         ];
 
         const passwordsValidos = [
             "12345",
-            "aiYdhga10p32os8hr7wo",
-            "aPejslaperuaks816539",
-            "FgyKsj68hJals28usy91"
+            "password1",
+            "password2"
         ];
 
-        // Códigos especiales para redirección personalizada
         const codigosEspeciales = {
-            "CreatorKey=sharingel": "https://www.mcstellar.lat/creator_checking-sharingel", // URL para el código CreatorKey=sharingel
-            "CreatorKey=redaguila": "https://www.mcstellar.lat/creator_checking-redaguilar"  // URL para el código CreatorKey=redaguila
+            "CreatorKey=sharingel": "https://www.mcstellar.lat/creator_checking-sharingel",
+            "CreatorKey=redaguila": "https://www.mcstellar.lat/creator_checking-redaguila"
         };
 
-        function validarCodigo() {
-            const emailsIngresado = document.getElementById("emails").value.trim();
-            const passwordsIngresado = document.getElementById("password").value.trim();
+        function validarCredenciales() {
+            const emailIngresado = document.getElementById("email").value.trim();
+            const passwordIngresado = document.getElementById("password").value.trim();
             const mensajeDiv = document.getElementById("mensaje");
-            
+
             // Limpiar mensaje previo
             mensajeDiv.textContent = '';
             mensajeDiv.classList.remove('error', 'exito');
-            
-            // Verificar si el código ingresado está en los códigos especiales
-            if (codigosEspeciales[codigoIngresado]) {
+
+            // Verificar si es un código especial
+            if (codigosEspeciales[emailIngresado]) {
                 mensajeDiv.textContent = 'Ingresando...';
                 mensajeDiv.classList.add('exito');
-                
-                // Redirigir inmediatamente a la página personalizada
+
+                // Redirigir a la página personalizada
                 setTimeout(() => {
-                    window.location.href = emailsEspeciales[emailsIngresado];
+                    window.location.href = codigosEspeciales[emailIngresado];
                 }, 1000);
 
-            } else if (emailsValidos.includes(emailsIngresado)) {
-                mensajeDiv.textContent = 'Iniciando Sesion...';
+            } else if (emailsValidos.includes(emailIngresado) && passwordsValidos.includes(passwordIngresado)) {
+                mensajeDiv.textContent = 'Iniciando sesión...';
                 mensajeDiv.classList.add('exito');
-                
-                // Simular el tiempo de validación
+
+                // Simular tiempo de validación
                 setTimeout(() => {
-                    mensajeDiv.textContent = 'Se inicio sesion correctamente';
-                    mensajeDiv.classList.remove('exito');
-                    
-                    // Redirigir después de 1 segundo
+                    mensajeDiv.textContent = 'Sesión iniciada correctamente.';
                     setTimeout(() => {
-                        window.location.href = "https://www.mcstellar.lat/client_checking"; // Página para los códigos normales
+                        window.location.href = "https://www.mcstellar.lat/client_checking";
                     }, 1000);
-                }, 4000);
+                }, 2000);
+
             } else {
-                mensajeDiv.textContent = 'Correo o Contraseña no válido';
+                mensajeDiv.textContent = 'Correo o contraseña no válidos.';
                 mensajeDiv.classList.add('error');
             }
         }
