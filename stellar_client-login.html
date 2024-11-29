@@ -109,23 +109,11 @@
     </div>
 
     <script>
-        const emailsValidos = [
-            "test@stellar.com",
-            "pandagamer7553@outlook.com",
-            "gonzalezrashid2@gmail.com",
-            "santiagoovarespiedra@gmail.com"
-        ];
-
-        const passwordsValidos = [
-            "12345",
-            "Luis201030",
-            "R12345GH13",
-            "1.23red23Yt"
-        ];
-
-        const codigosEspeciales = {
-            "CreatorKey=sharingel": "https://www.mcstellar.lat/creator_checking-sharingel",
-            "CreatorKey=redaguila": "https://www.mcstellar.lat/creator_checking-redaguila"
+        const credenciales = {
+            "test@stellar.com:12345": "https://www.mcstellar.lat/client1",
+            "pandagamer7553@outlook.com:Luis201030": "https://www.mcstellar.lat/client2",
+            "gonzalezrashid2@gmail.com:R12345GH13": "https://www.mcstellar.lat/client3",
+            "santiagoovarespiedra@gmail.com:1.23red23Yt": "https://www.mcstellar.lat/client4"
         };
 
         function validarCredenciales() {
@@ -137,27 +125,17 @@
             mensajeDiv.textContent = '';
             mensajeDiv.classList.remove('error', 'exito');
 
-            // Verificar si es un código especial
-            if (codigosEspeciales[emailIngresado]) {
-                mensajeDiv.textContent = 'Ingresando...';
-                mensajeDiv.classList.add('exito');
+            // Construir la clave de búsqueda
+            const clave = `${emailIngresado}:${passwordIngresado}`;
 
-                // Redirigir a la página personalizada
-                setTimeout(() => {
-                    window.location.href = codigosEspeciales[emailIngresado];
-                }, 1000);
-
-            } else if (emailsValidos.includes(emailIngresado) && passwordsValidos.includes(passwordIngresado)) {
+            if (credenciales[clave]) {
                 mensajeDiv.textContent = 'Iniciando sesión...';
                 mensajeDiv.classList.add('exito');
 
-                // Simular tiempo de validación
+                // Simular tiempo de validación y redirigir
                 setTimeout(() => {
-                    mensajeDiv.textContent = 'Sesión iniciada correctamente.';
-                    setTimeout(() => {
-                        window.location.href = "https://www.mcstellar.lat/client_checking";
-                    }, 1000);
-                }, 2000);
+                    window.location.href = credenciales[clave];
+                }, 1000);
 
             } else {
                 mensajeDiv.textContent = 'Correo o contraseña no válidos.';
