@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimal-ui">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>MCStellar Production</title>
   <link rel="icon" href="mcstellarpageicon.png" type="image/x-icon">
@@ -10,17 +10,11 @@
   <style>
     /* Estilos Generales */
     body {
-      user-select: none;
-      font-family: 'Arial', sans-serif;
+      font-family: Arial, sans-serif;
       background-color: #f5f5f5;
       margin: 0;
       padding: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      min-height: 100vh;
-      overflow-x: hidden;
+      overflow: hidden; /* Evita el desplazamiento durante la carga */
     }
 
     /* Pantalla de carga */
@@ -40,91 +34,106 @@
     .typing-indicator {
       width: 60px;
       height: 30px;
+      display: flex;
+      justify-content: space-between;
       position: relative;
-      z-index: 4;
     }
 
     .typing-circle {
       width: 8px;
       height: 8px;
-      position: absolute;
-      border-radius: 50%;
       background-color: #000;
-      left: 15%;
-      transform-origin: 50%;
-      animation: typing-circle7124 0.5s alternate infinite ease;
-    }
-
-    @keyframes typing-circle7124 {
-      0% {
-        top: 20px;
-        height: 5px;
-        border-radius: 50px 50px 25px 25px;
-        transform: scaleX(1.7);
-      }
-      40% {
-        height: 8px;
-        border-radius: 50%;
-        transform: scaleX(1);
-      }
-      100% {
-        top: 0%;
-      }
+      border-radius: 50%;
+      animation: typing-animation 0.5s infinite ease-in-out;
     }
 
     .typing-circle:nth-child(2) {
-      left: 45%;
       animation-delay: 0.2s;
     }
 
     .typing-circle:nth-child(3) {
-      left: auto;
-      right: 15%;
-      animation-delay: 0.3s;
+      animation-delay: 0.4s;
     }
 
-    .typing-shadow {
-      width: 5px;
-      height: 4px;
-      border-radius: 50%;
-      background-color: rgba(0, 0, 0, 0.2);
-      position: absolute;
-      top: 30px;
-      transform-origin: 50%;
-      z-index: 3;
-      left: 15%;
-      filter: blur(1px);
-      animation: typing-shadow046 0.5s alternate infinite ease;
-    }
-
-    @keyframes typing-shadow046 {
-      0% {
-        transform: scaleX(1.5);
+    @keyframes typing-animation {
+      0%, 100% {
+        transform: translateY(0);
       }
-      40% {
-        transform: scaleX(1);
-        opacity: 0.7;
-      }
-      100% {
-        transform: scaleX(0.2);
-        opacity: 0.4;
+      50% {
+        transform: translateY(-10px);
       }
     }
 
-    .typing-shadow:nth-child(4) {
-      left: 45%;
-      animation-delay: 0.2s;
-    }
-
-    .typing-shadow:nth-child(5) {
-      left: auto;
-      right: 15%;
-      animation-delay: 0.3s;
-    }
-
-    /* Contenido principal oculto inicialmente */
+    /* Contenido principal */
     .content {
-      display: none;
+      display: none; /* Ocultamos el contenido hasta que la página termine de cargar */
+    }
+
+    header {
+      width: 100%;
+      text-align: center;
+      padding: 20px;
+    }
+
+    header img {
+      width: 150px;
+      height: auto;
+    }
+
+    section {
+      width: 90%;
+      max-width: 1200px;
+      margin: 20px auto;
+      text-align: center;
+    }
+
+    .section-title {
+      font-weight: bold;
+      font-size: 1.5em;
+      margin-bottom: 20px;
+    }
+
+    .card {
+      background-color: #fff;
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: left;
+    }
+
+    .gradient-text {
+      background: linear-gradient(45deg, #ee8000, #9b4d96);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      padding: 10px;
+      background-color: #525252;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+
+    footer .button {
+      width: 50px;
+      height: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+      background: #ee8000;
+      color: white;
+      text-decoration: none;
+      font-size: 20px;
+      transition: transform 0.3s ease;
+    }
+
+    footer .button:hover {
+      transform: scale(1.2);
     }
   </style>
 </head>
@@ -135,45 +144,46 @@
       <div class="typing-circle"></div>
       <div class="typing-circle"></div>
       <div class="typing-circle"></div>
-      <div class="typing-shadow"></div>
-      <div class="typing-shadow"></div>
-      <div class="typing-shadow"></div>
     </div>
   </div>
 
   <!-- Contenido principal -->
   <div class="content" id="main-content">
     <header>
-      <img src="mcstellaricon.png" alt="MCStellar Production" id="protectedImage">
+      <img src="mcstellaricon.png" alt="MCStellar Production">
     </header>
 
     <section>
       <div class="section-title">MCStellar Production</div>
       <div class="card">
-        <div class="card-content">
-          <div class="banner-container">
-            <img src="presentationgif.gif" alt="GIF de Presentación" class="banner" id="protectedImage">
-          </div>
-          <div class="content">
-            <h2>!!<span class="gradient-text">Welcome to the MCStellar Production</span>¡¡</h2>
-            <p id="description">Welcome everyone to the official website of MCStellar Production...</p>
-          </div>
-        </div>
+        <h2>Welcome to <span class="gradient-text">MCStellar Production</span></h2>
+        <p>
+          Welcome to the official website of MCStellar Production, a company focused on Minecraft events and video editing. 
+          Explore our social media for more content:
+          <a href="https://www.youtube.com/@mcstellarofficial" target="_blank">YouTube</a>, 
+          <a href="https://discord.gg/7peCEVcsVB" target="_blank">Discord</a>, or 
+          <a href="https://x.com/mcstellar_group" target="_blank">X</a>.
+        </p>
       </div>
     </section>
+
+    <footer>
+      <a href="https://www.mcstellar.lat/inicio" class="button"><i class="fas fa-home"></i></a>
+      <a href="https://www.mcstellar.lat/search" class="button"><i class="fas fa-search"></i></a>
+      <a href="https://www.mcstellar.lat/stellarclient" class="button"><i class="fas fa-star"></i></a>
+      <a href="https://www.mcstellar.lat/social" class="button"><i class="fas fa-wifi"></i></a>
+    </footer>
   </div>
 
   <script>
-    // Simula la carga del sitio
+    // Mostrar contenido después de cargar
     window.addEventListener("load", function () {
       const loadingScreen = document.getElementById("loading-screen");
       const mainContent = document.getElementById("main-content");
 
       // Oculta la pantalla de carga y muestra el contenido
-      setTimeout(() => {
-        loadingScreen.style.display = "none";
-        mainContent.style.display = "block";
-      }, 3000); // Cambia 3000ms (3s) según el tiempo de carga deseado
+      loadingScreen.style.display = "none";
+      mainContent.style.display = "block";
     });
   </script>
 </body>
