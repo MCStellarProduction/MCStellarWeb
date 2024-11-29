@@ -132,10 +132,10 @@
                 mensajeDiv.textContent = 'Iniciando sesión...';
                 mensajeDiv.classList.add('exito');
 
-                // Simular tiempo de validación y redirigir
+                // Simular tiempo de validación
                 setTimeout(() => {
                     window.location.href = credenciales[clave];
-                }, 1000);
+                }, 4000);
 
             } else {
                 mensajeDiv.textContent = 'Correo o contraseña no válidos.';
