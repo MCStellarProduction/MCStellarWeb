@@ -2,73 +2,35 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimal-ui">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>MCStellar Production</title>
   <link rel="icon" href="mcstellarpageicon.png" type="image/x-icon">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
   <style>
-    /* Estilos Generales */
+    /* Deshabilitar el movimiento horizontal */
     body {
-      font-family: Arial, sans-serif;
+      user-select: none;
+      font-family: 'Arial', sans-serif;
       background-color: #f5f5f5;
       margin: 0;
       padding: 0;
-      overflow: hidden; /* Evita el desplazamiento durante la carga */
-    }
-
-    /* Pantalla de carga */
-    .loading-screen {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: #fff;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
-      z-index: 1000;
+      justify-content: flex-start;
+      min-height: 100vh;
+      padding-bottom: 80px;
+      overflow-x: hidden; /* Deshabilita el movimiento horizontal */
     }
 
-    .typing-indicator {
-      width: 60px;
-      height: 30px;
-      display: flex;
-      justify-content: space-between;
-      position: relative;
+    img {
+      -webkit-user-drag: none;
+      user-drag: none;
+      user-select: none;
     }
 
-    .typing-circle {
-      width: 8px;
-      height: 8px;
-      background-color: #000;
-      border-radius: 50%;
-      animation: typing-animation 0.5s infinite ease-in-out;
-    }
-
-    .typing-circle:nth-child(2) {
-      animation-delay: 0.2s;
-    }
-
-    .typing-circle:nth-child(3) {
-      animation-delay: 0.4s;
-    }
-
-    @keyframes typing-animation {
-      0%, 100% {
-        transform: translateY(0);
-      }
-      50% {
-        transform: translateY(-10px);
-      }
-    }
-
-    /* Contenido principal */
-    .content {
-      display: none; /* Ocultamos el contenido hasta que la página termine de cargar */
-    }
-
+    /* Estilos Generales */
     header {
       width: 100%;
       text-align: center;
@@ -76,21 +38,21 @@
     }
 
     header img {
-      width: 150px;
+      width: 100%;
       height: auto;
     }
 
     section {
       width: 90%;
       max-width: 1200px;
-      margin: 20px auto;
-      text-align: center;
+      margin: 40px 0;
     }
 
     .section-title {
       font-weight: bold;
       font-size: 1.5em;
       margin-bottom: 20px;
+      text-align: center;
     }
 
     .card {
@@ -98,93 +60,295 @@
       border-radius: 15px;
       padding: 20px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      text-align: left;
+      margin-bottom: 20px;
     }
 
+    .card h2 {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      font-size: 1em;
+      color: #555;
+    }
+
+    .card-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+    }
+
+    .banner-container {
+      position: relative;
+      width: 100%;
+      height: 50%;
+      overflow: hidden;
+      border-radius: 15px;
+    }
+
+    .banner {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+    }
+
+    .signin {
+      width: 200px;
+      height: 20px;
+      background-color: #ee8000;
+      border-radius: 15px; 
+      padding: 20px;
+      color: white;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .signin:hover {
+      animation: signinanimation 1s ease-in-out forwards;
+    }
+    
+    @keyframes signinanimation {
+      0% {
+        transform: scale(1);
+        background: #ee8000;
+      }
+      50% {
+        transform: scale(1.3);
+        background: linear-gradient(45deg, #ee8000, #9b4d96);
+      }
+      100% {
+        transform: scale(1);
+        background: linear-gradient(45deg, #ee8000, #9b4d96);
+      }
+    }
+
+    .content {
+      color: #f6efec;
+      padding: 20px;
+      height: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    footer {
+            position: fixed;
+            width: 100%;
+            padding: 5px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            background-color: transparent;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            height: 50px;
+            border-radius: 10px;
+            box-shadow: #383837;
+            background-color: #525252;
+        }
+
+        .button {
+            outline: 0 !important;
+            border: 0 !important;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: transparent;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 20px;
+            transition: all 0.3s ease-in-out;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .button:hover {
+            animation: growAndChangeColor 1s forwards;
+        }
+
+        @keyframes growAndChangeColor {
+            0% {
+                transform: scale(1);
+                background: #ee8000;
+            }
+            50% {
+                transform: scale(1.3);
+                background: linear-gradient(45deg, #ee8000, #9b4d96);
+            }
+            100% {
+                transform: scale(1.2);
+                background: linear-gradient(45deg, #ee8000, #9b4d96);
+            }
+        }
+
+        .icon {
+            font-size: 20px;
+        }
+    
+            .button {
+                width: 50px;
+                height: 50px;
+                font-size: 25px;
+            }
+
+            .button:hover {
+                animation: growAndChangeColor 0.5s forwards;
+            }
+        }
+
+    .icon {
+      font-size: 20px;
+    }
+
+    /* Gradiente en el texto */
     .gradient-text {
       background: linear-gradient(45deg, #ee8000, #9b4d96);
       -webkit-background-clip: text;
       color: transparent;
     }
 
-    footer {
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      padding: 10px;
-      background-color: #525252;
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-    }
+    @media (max-width: 768px) {
+            footer {
+                bottom: 0;
+            }
 
-    footer .button {
-      width: 50px;
-      height: 50px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border-radius: 50%;
-      background: #ee8000;
-      color: white;
-      text-decoration: none;
-      font-size: 20px;
-      transition: transform 0.3s ease;
-    }
+            .button-container {
+                width: 100%;
+                height: 60px;
+                justify-content: space-evenly;
+                border-radius: 20px;
+                background-color: #525252;
+                box-shadow: #383837;
+            }
 
-    footer .button:hover {
-      transform: scale(1.2);
-    }
+            .button {
+                width: 50px;
+                height: 50px;
+                font-size: 25px;
+            }
+
+            .button:hover {
+                animation: growAndChangeColor 0.5s forwards;
+            }
+        }
+
+        /* Estilos para escritorio (PC) */
+        @media (min-width: 769px) {
+            footer {
+                top: 0;
+                bottom: unset;
+            }
+
+            .button-container {
+                width: 90%;
+                max-width: 1200px;
+                height: 50px;
+                justify-content: space-evenly;
+            }
+
+            .button {
+                width: 40px;
+                height: 40px;
+                font-size: 18px;
+            }
+        }
   </style>
 </head>
 <body>
+
   <!-- Pantalla de Carga -->
   <div class="loading-screen" id="loading-screen">
-    <div class="typing-indicator">
-      <div class="typing-circle"></div>
-      <div class="typing-circle"></div>
-      <div class="typing-circle"></div>
-    </div>
+    <svg viewBox="25 25 50 50" class="container">
+      <circle cx="50" cy="50" r="20" class="loader"></circle>
+    </svg>
   </div>
 
-  <!-- Contenido principal -->
-  <div class="content" id="main-content">
-    <header>
-      <img src="mcstellaricon.png" alt="MCStellar Production">
-    </header>
+  <!-- Presentación de la Compañía -->
+  <header>
+    <img src="mcstellaricon.png" alt="MCStellar Production" id="protectedImage">
+  </header>
 
-    <section>
-      <div class="section-title">MCStellar Production</div>
-      <div class="card">
-        <h2>Welcome to <span class="gradient-text">MCStellar Production</span></h2>
-        <p>
-          Welcome to the official website of MCStellar Production, a company focused on Minecraft events and video editing. 
-          Explore our social media for more content:
-          <a href="https://www.youtube.com/@mcstellarofficial" target="_blank">YouTube</a>, 
-          <a href="https://discord.gg/7peCEVcsVB" target="_blank">Discord</a>, or 
-          <a href="https://x.com/mcstellar_group" target="_blank">X</a>.
-        </p>
+  <section>
+    <div class="section-title">MCStellar Production</div>
+    <div class="card">
+      <div class="card-content">
+        <div class="banner-container">
+          <img src="presentationgif.gif" alt="GIF de Presentación" class="banner" id="protectedImage">
+        </div>
+        <div class="content">
+          <h2>!!<span class="gradient-text">Welcome to the MCStellar Production</span>¡¡</h2>
+          <p id="description">Welcome everyone to the official website of MCStellar Production. This great company of minecraft events creation and video editing. On this website you can find everything that is related to our company. We hope you like it while you explore this great company created by RedAguilarDEV and Sharingel.</p>
+          <p>Come and enjoy our content that can be found on our social networks such as: <a href="https://www.youtube.com/@mcstellarofficial" target="Youtube">Youtube, <a href="https://discord.gg/7peCEVcsVB" target="Discord">Discord <a target="_blank">or <a href="https://x.com/mcstellar_group" target="X">X. <a target="_blank"><span class="gradient-text">Your support lets us know that we should keep going!!</span></p>
+        </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <footer>
-      <a href="https://www.mcstellar.lat/inicio" class="button"><i class="fas fa-home"></i></a>
-      <a href="https://www.mcstellar.lat/search" class="button"><i class="fas fa-search"></i></a>
-      <a href="https://www.mcstellar.lat/stellarclient" class="button"><i class="fas fa-star"></i></a>
-      <a href="https://www.mcstellar.lat/social" class="button"><i class="fas fa-wifi"></i></a>
-    </footer>
-  </div>
+  <footer>
+    <div class="button-container">
+      <a href="https://www.mcstellar.lat/inicio" class="button" id="homeButton" onclick="redirectToPage(event, 'https://www.mcstellar.lat/inicio')">
+        <i class="fas fa-home icon"></i>
+      </a>
+      <a href="https://www.mcstellar.lat/search" class="button" id="searchButton" onclick="redirectToPage(event, 'https://www.mcstellar.lat/search')">
+        <i class="fas fa-search icon"></i>
+      </a>
+      <a href="https://www.mcstellar.lat/stellarclient" class="button" id="starButton" onclick="redirectToPage(event, 'https://www.mcstellar.lat/stellarclient')">
+        <i class="fas fa-star icon"></i>
+      </a>
+      <a href="https://www.mcstellar.lat/social" class="button" id="moreButton" onclick="redirectToPage(event, 'https://www.mcstellar.lat/social')">
+        <i class="fas fa-wifi icon"></i>
+      </a>
+    </div>
+  </footer>
 
   <script>
-    // Mostrar contenido después de cargar
-    window.addEventListener("load", function () {
-      const loadingScreen = document.getElementById("loading-screen");
-      const mainContent = document.getElementById("main-content");
+    // Función para aplicar los estilos de texto
+    function applyTextStyles() {
+      let elements = document.querySelectorAll("#description");
+      elements.forEach(element => {
+        let html = element.innerHTML;
+        html = html.replace(/\*\*{(.*?)\}\*/g, '<b>$1</b>');
+        html = html.replace(/{(.*?)}/g, '<i>$1</i>');
+        html = html.replace(/#{(.*?)#}/g, '<span class="gradient-text">$1</span>'); // Gradiente Naranja a Morado
+        element.innerHTML = html;
+      });
+    }
 
-      // Oculta la pantalla de carga y muestra el contenido
-      loadingScreen.style.display = "none";
-      mainContent.style.display = "block";
+    // Redirigir a otra página después de un clic
+    function redirectToPage(event, url) {
+      event.preventDefault(); 
+      const button = event.currentTarget;
+      button.style.pointerEvents = 'none';
+      setTimeout(() => {
+        window.location.href = url;
+      }, 1000);
+    }
+
+    // Prevenir el menú contextual (como el clic derecho) en dispositivos móviles
+    const img = document.getElementById('protectedImage');
+
+    // Prevenir el menú contextual en desktop y móvil
+    img.addEventListener('contextmenu', function(event) {
+      event.preventDefault(); // Previene el menú contextual
+    });
+
+    // Prevenir el toque largo en móviles (típico de dispositivos táctiles)
+    img.addEventListener('touchstart', function(event) {
+      event.preventDefault(); // Previene las acciones por defecto en móviles (como mantener presionado)
     });
   </script>
+
 </body>
-</html>
+          </html>
