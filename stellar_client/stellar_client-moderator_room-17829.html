@@ -23,27 +23,7 @@
         .container {
             width: 100%;
             min-height: 100vh; /* Asegura que el fondo cubra toda la ventana */
-            --s: 200px; /* Tamaño del patrón */
-            --c1: #1d1d1d;
-            --c2: #4e4f51;
-            --c3: #3c3c3c;
-
-            background: repeating-conic-gradient(
-                    from 30deg,
-                    #0000 0 120deg,
-                    var(--c3) 0 180deg
-                )
-                calc(0.5 * var(--s)) calc(0.5 * var(--s) * 0.577),
-                repeating-conic-gradient(
-                    from 30deg,
-                    var(--c1) 0 60deg,
-                    var(--c2) 0 120deg,
-                    var(--c3) 0 180deg
-                );
-            background-size: var(--s) calc(var(--s) * 0.577);
-            text-align: center;
-            padding: 40px;
-            box-sizing: border-box;
+            background-image: url("../client_gradient.png")
         }
 
         /* Imagen de título personalizada */
