@@ -23,13 +23,31 @@
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
             width: 350px;
         }
+
+        .white {
+            font-size: 2rem;
+            background: white;
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .gradient {
+            font-size: 2rem;
+            font-weight: bold;
+            background: linear-gradient(90deg, #f35131, #8d2b87);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        
         h1 {
             font-size: 24px;
             margin-bottom: 20px;
         }
         .timer {
             font-size: 48px;
-            color: #1c133c;
+            color: linear-gradient(90deg, #f35131, #8d2b87);
             font-weight: bold;
             display: flex;
             justify-content: center;
@@ -75,7 +93,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>Time left until the MCStellar Web:</h1>
+        <h1 class="white">Time left until the MCStellar Web:</h1>
         <div id="countdown" class="timer">
             <div class="time-unit">
                 <div id="days" class="time-value">00</div>
@@ -93,7 +111,7 @@
                 <div id="seconds" class="time-value">00</div>
             </div>
         </div>
-        <div class="footer">The Official MCStellar Production Page is coming out soon!!</div>
+        <div class="white">The Official MCStellar Production Page is coming out soon!!</div>
     </div>
 
     <script>
