@@ -57,10 +57,6 @@
     }
 
     .section-title {
-      background: white;
-      background-clip: text;
-      -webkit-background-clip: text;
-      color: transparent;
       font-weight: bold;
       font-size: 1.5em;
       margin-bottom: 20px;
@@ -68,8 +64,6 @@
     }
 
     .card {
-      width: 350px;
-      height: 200px;
       background-color: transparent;
       border-radius: 0px;
       padding: 20px;
@@ -279,206 +273,51 @@
                 font-size: 18px;
             }
         }
-
-    .description {
-      font-size: 1.2em;
-    }
-
-    /* Sección de Novedades, Videos y Eventos */
-    section {
-      width: 100%;
-      padding: 80px 0 40px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-      flex-direction: column;
-    }
-
-    .seccion_title {
-      font-size: 2em;
-      font-weight: bold;
-      color: white;
-      margin-bottom: 20px;
-      text-align: center;
-    }
-
-    .section-card {
-      -webkit-user-drag: none;
-      user-drag: none;
-      user-select: none;
-      width: 90%;
-      max-width: 400px;
-      background-color: #333;
-      color: white;
-      margin: 20px;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      cursor: pointer;
-      overflow: hidden;
-      transition: transform 0.3s ease;
-    }
-
-    .section-card:hover {
-      transform: scale(1.05);
-    }
-
-    .section-card img {
-      -webkit-user-drag: none;
-      user-drag: none;
-      user-select: none;
-      width: 100%;
-      height: 100%;
-      object-fit: all;
-    }
-
-    .section-card .content {
-      padding: 15px;
-      text-align: center;
-    }
-
-    .section-card .content h3 {
-      font-size: 1.8em;
-      margin: 10px 0;
-    }
-
-    .section-card .content p {
-      font-size: 1.2em;
-      margin: 10px 0;
-    }
-
-    /* Gradientes de texto */
-    .gradient-text {
-      background: linear-gradient(45deg, #ee8000, #9b4d96);
-      -webkit-background-clip: text;
-      color: transparent;
-    }
-
-    .card {
-      font-family: sans;
-      position: relative;
-      width: 350px;
-      height: 200px;
-      background: linear-gradient(-45deg, #f89b29 0%, #ff0f7b 100%);
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-    }
-
-    .card svg {
-      width: 48px;
-      fill: #333;
-      transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-    }
-
-    .card:hover {
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-    }
-
-    .card__content {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%) rotate(-45deg);
-      width: 100%;
-      height: 100%;
-      padding: 20px;
-      box-sizing: border-box;
-      background-color: #fff;
-      opacity: 0;
-      transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-    }
-
-    .card:hover .card__content {
-      transform: translate(-50%, -50%) rotate(0deg);
-      opacity: 1;
-    }
-
-    .card__title {
-      font-family: sans;
-      margin: 0;
-      font-size: 24px;
-      color: #333;
-      font-weight: 700;
-    }
-
-    .card__description {
-      font-family: sans;
-      margin: 10px 0 0;
-      font-size: 14px;
-      color: #777;
-      line-height: 1.4;
-    }
-
-    .card:hover svg {
-      scale: 0;
-      transform: rotate(-45deg);
-    }
   </style>
 </head>
 <body>
 
-<!-- Sección de Novedades -->
-  <section id="news">
-    <div class="seccion_title">NEWS</div>
-    <div class="card">
-      <img src="images/mcstellar_new_card_3.png" viewBox="0 0 24 24" width="350" height="200">
-      <path
-        d="M20 5H4V19L13.2923 9.70649C13.6828 9.31595 14.3159 9.31591 14.7065 9.70641L20 15.0104V5ZM2 3.9934C2 3.44476 2.45531 3 2.9918 3H21.0082C21.556 3 22 3.44495 22 3.9934V20.0066C22 20.5552 21.5447 21 21.0082 21H2.9918C2.44405 21 2 20.5551 2 20.0066V3.9934ZM8 11C6.89543 11 6 10.1046 6 9C6 7.89543 6.89543 7 8 7C9.10457 7 10 7.89543 10 9C10 10.1046 9.10457 11 8 11Z"
-      ></path>
-      </svg>
-      <div class="card__content">
-        <p class="card__title">It's Starter!!</p>
-        <p class="card__description">
-          The MCStellar Production is just getting started and the public will be able to watch it on their social networks. The MCStellar Production has a lot ahead of it so you can't miss it!!
-        </p>
-      </div>
-    </div>
-    <div class="card">
-      <img src="images/mcstellar_new_card_2.png" viewBox="0 0 24 24" width="350" height="200">
-      <path
-        d="M20 5H4V19L13.2923 9.70649C13.6828 9.31595 14.3159 9.31591 14.7065 9.70641L20 15.0104V5ZM2 3.9934C2 3.44476 2.45531 3 2.9918 3H21.0082C21.556 3 22 3.44495 22 3.9934V20.0066C22 20.5552 21.5447 21 21.0082 21H2.9918C2.44405 21 2 20.5551 2 20.0066V3.9934ZM8 11C6.89543 11 6 10.1046 6 9C6 7.89543 6.89543 7 8 7C9.10457 7 10 7.89543 10 9C10 10.1046 9.10457 11 8 11Z"
-      ></path>
-      </svg>
-      <div class="card__content">
-        <p class="card__title">MCStellar Social Media</p>
-        <p class="card__description">
-          MCStellar Production has a variety of social media accounts so you can visit them right now. Don't forget to support us from all our social media accounts.
-        </p>
-      </div>
-    </div>
-    <div class="card">
-      <img src="images/mcstellar_new_card_1.png" viewBox="0 0 24 24" width="350" height="200">
-      <path
-        d="M20 5H4V19L13.2923 9.70649C13.6828 9.31595 14.3159 9.31591 14.7065 9.70641L20 15.0104V5ZM2 3.9934C2 3.44476 2.45531 3 2.9918 3H21.0082C21.556 3 22 3.44495 22 3.9934V20.0066C22 20.5552 21.5447 21 21.0082 21H2.9918C2.44405 21 2 20.5551 2 20.0066V3.9934ZM8 11C6.89543 11 6 10.1046 6 9C6 7.89543 6.89543 7 8 7C9.10457 7 10 7.89543 10 9C10 10.1046 9.10457 11 8 11Z"
-      ></path>
-      </svg>
-      <div class="card__content">
-        <p class="card__title">RedAguilarDEV and Sharingel Message</p>
-        <p class="card__description">
-          ElRedAguilar and Sharingel would be very grateful for your support in the beginning, as they have worked hard to give the best to this company with all their might and to make sure that both the public and the creators and moderators have a lot of fun in their public projects.
-        </p>
-      </div>
-    </div>
-  </section>
+  <!-- Pantalla de Carga -->
+  <div class="loading-screen" id="loading-screen">
+    <svg viewBox="25 25 50 50" class="container">
+      <circle cx="50" cy="50" r="20" class="loader"></circle>
+    </svg>
+  </div>
 
-  <!-- Sección de Videos Recientes -->
-  <section id="last_video">
-    <div class="seccion_title">LAST VIDEO</div>
+  <!-- Presentación de la Compañía -->
+  <header>
+    <img src="stellar_icon_web_2.png" alt="MCStellar Production" id="protectedImage">
+  </header>
+
+  <section>
+    <div class="section-title">MCStellar Production</div>
     <div class="card">
-      <img src="mcstellar_thebegginig_banner.jpg" viewBox="0 0 24 24" width="350" height="200">
-      <path
-        d="M20 5H4V19L13.2923 9.70649C13.6828 9.31595 14.3159 9.31591 14.7065 9.70641L20 15.0104V5ZM2 3.9934C2 3.44476 2.45531 3 2.9918 3H21.0082C21.556 3 22 3.44495 22 3.9934V20.0066C22 20.5552 21.5447 21 21.0082 21H2.9918C2.44405 21 2 20.5551 2 20.0066V3.9934ZM8 11C6.89543 11 6 10.1046 6 9C6 7.89543 6.89543 7 8 7C9.10457 7 10 7.89543 10 9C10 10.1046 9.10457 11 8 11Z"
-      ></path>
-      </svg>
-      <div class="card__content">
-        <p class="card__title">The Bigginig • New Video</p>
-        <p class="card__description">
-          This is the official presentation video of MCStellar Production
-        </p>
+      <div class="card-content">
+        <div class="content">
+          <span class="gradient-text">¡ Social Media !</span>
+          <p id="description">Here you can find all the social networks of MCStellar Production</p>
+        </div>
+      </div>
+      <img src="social-img/discord_icon.png" alt="social discord" id="protectedImage" width="50" height="50">
+      <div class="card-content">
+        <div class="content">
+          <h2><span class="gradient-text"> DISCORD</span></h2>
+          <p id="description">This is our link of <a href="https://discord.gg/7peCEVcsVB" target="_blank">Discord</p>
+        </div>
+      </div>
+      <img src="social-img/youtube_icon.png" alt="social youtube" id="protectedImage" width="50" height="50">
+      <div class="card-content">
+        <div class="content">
+          <a target="none"><h2><span class="gradient-text"> YOUTUBE</span></h2>
+          <p id="description">This is our link of <a href="https://www.youtube.com/@mcstellarofficial" target="_blank">Youtube</p>
+        </div>
+      </div>
+      <img src="social-img/x_icon.png" alt="social x" id="protectedImage" width="50" height="50">
+      <div class="card-content">
+        <div class="content">
+          <a target="none"><h2><span class="gradient-text"> X</span></h2>
+          <p id="description">This is our link of <a href="https://x.com/mcstellar_group" target="_blank">X</p>
+        </div>
       </div>
     </div>
   </section>
@@ -538,4 +377,4 @@
   </script>
 
 </body>
-</html>
+          </html>
