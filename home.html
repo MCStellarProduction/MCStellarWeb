@@ -12,7 +12,7 @@
     body {
       user-select: none;
       font-family: 'Arial', sans-serif;
-      background-color: #f5f5f5;
+      background-image: url("client_gradient.png");
       margin: 0;
       padding: 0;
       display: flex;
@@ -22,6 +22,14 @@
       min-height: 100vh;
       padding-bottom: 80px;
       overflow-x: hidden; /* Deshabilita el movimiento horizontal */
+    }
+
+    .white_text {
+      font-size: 0.5rem;
+      background: white;
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
     }
 
     img {
@@ -56,8 +64,8 @@
     }
 
     .card {
-      background-color: #fff;
-      border-radius: 15px;
+      background-color: transparent;
+      border-radius: 0px;
       padding: 20px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       margin-bottom: 20px;
@@ -128,7 +136,7 @@
     }
 
     .content {
-      color: #f6efec;
+      color: #212121;
       padding: 20px;
       height: 50%;
       display: flex;
@@ -153,8 +161,8 @@
             width: 100%;
             height: 50px;
             border-radius: 10px;
-            box-shadow: #383837;
-            background-color: #525252;
+            box-shadow: #100c1a;
+            background-color: #19102b;
         }
 
         .button {
@@ -214,6 +222,7 @@
 
     /* Gradiente en el texto */
     .gradient-text {
+      font-size: 2rem;
       background: linear-gradient(45deg, #ee8000, #9b4d96);
       -webkit-background-clip: text;
       color: transparent;
@@ -229,8 +238,8 @@
                 height: 60px;
                 justify-content: space-evenly;
                 border-radius: 20px;
-                background-color: #525252;
-                box-shadow: #383837;
+                background-color: #19102b;
+                box-shadow: #100c1a;
             }
 
             .button {
@@ -277,23 +286,15 @@
 
   <!-- Presentación de la Compañía -->
   <header>
-    <img src="mcstellaricon.png" alt="MCStellar Production" id="protectedImage">
+    <img src="stellar_icon_web_2.png" alt="MCStellar Production" id="protectedImage">
   </header>
 
   <section>
-    <div class="section-title">MCStellar Production</div>
-    <div class="card">
-      <div class="card-content">
-        <div class="banner-container">
-          <img src="presentationgif.gif" alt="GIF de Presentación" class="banner" id="protectedImage">
-        </div>
         <div class="content">
-          <h2>!!<span class="gradient-text">Welcome to the MCStellar Production</span>¡¡</h2>
-          <p id="description">Welcome everyone to the official website of MCStellar Production. This great company of minecraft events creation and video editing. On this website you can find everything that is related to our company. We hope you like it while you explore this great company created by RedAguilarDEV and Sharingel.</p>
-          <p>Come and enjoy our content that can be found on our social networks such as: <a href="https://www.youtube.com/@mcstellarofficial" target="Youtube">Youtube, <a href="https://discord.gg/7peCEVcsVB" target="Discord">Discord <a target="_blank">or <a href="https://x.com/mcstellar_group" target="X">X. <a target="_blank"><span class="gradient-text">Your support lets us know that we should keep going!!</span></p>
+          <h1 class="gradient-text">! Welcome to the MCStellar Production ¡</h1>
+          <h3 class="white_text">Welcome everyone to the official website of MCStellar Production. This great company of minecraft events creation and video editing. On this website you can find everything that is related to our company. We hope you like it while you explore this great company created by RedAguilarDEV and Sharingel.</h3>
+          <h3 class="white_text">Come and enjoy our content that can be found on our social networks such as: <a href="https://www.youtube.com/@mcstellarofficial" target="Youtube">Youtube, <a href="https://discord.gg/7peCEVcsVB" target="Discord">Discord <a target="_blank">or <a href="https://x.com/mcstellar_group" target="X">X. <a target="_blank">Your support lets us know that we should keep going!!</h3>
         </div>
-      </div>
-    </div>
   </section>
 
   <footer>
