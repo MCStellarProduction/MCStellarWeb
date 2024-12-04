@@ -18,6 +18,23 @@
             overflow-y: auto;
         }
 
+        .white_desc {
+            font-size: 1rem;
+            background: white;
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .white_bold {
+            font-size: 4rem;
+            font-weight: bold;
+            background: white;
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
         .container {
             width: 100%;
             min-height: 100vh;
@@ -167,8 +184,8 @@
     <div class="container">
         <img src="../stellar_client_icon.png" alt="Stellar Client" class="title-img">
 
-        <h1>UNAUTHORIZED</h1>
-        <h3>You cannot access the client at this time because you have not been authorized to use the page. Contact a moderator if something is not correct.</h3>
+        <h1 class="white_bold">UNAUTHORIZED</h1>
+        <h3 class="white_desc">You cannot access the client at this time because you have not been authorized to use the page. Contact a moderator if something is not correct.</h3>
     </div>
 
     <script>
