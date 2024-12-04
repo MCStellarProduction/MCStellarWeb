@@ -81,40 +81,56 @@
 
         .instance-content {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.7); /* Fondo semi-transparente en la parte inferior */
+            padding: 10px 15px;
             color: #fff;
-            background: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente */
-            padding: 10px;
-            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
         }
 
         .instance-title {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             font-weight: bold;
-            margin-bottom: 5px;
+            margin: 0;
         }
 
         .instance-desc {
-            font-size: 1rem;
+            font-size: 0.9rem;
+            margin: 5px 0 10px;
         }
 
-        button {
+        .install-btn {
+            position: absolute;
+            bottom: -50px; /* Fuera del cuadro inicialmente */
+            left: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            text-align: center;
+            transition: bottom 0.3s ease-in-out;
+        }
+
+        .install-btn button {
             background-color: #ff5722;
             color: #121212;
             border: none;
             padding: 12px 20px;
             font-size: 1rem;
             cursor: pointer;
-            border-radius: 8px;
+            border-radius: 0;
+            width: 100%;
             transition: background-color 0.3s ease;
-            margin-top: 10px;
         }
 
-        button:hover {
+        .install-btn button:hover {
             background-color: #9c27b0;
+        }
+
+        .instance:hover .install-btn {
+            bottom: 0; /* Aparece al pasar el mouse */
         }
 
         @media (max-width: 768px) {
@@ -140,7 +156,7 @@
                 font-size: 1.2rem;
             }
 
-            button {
+            .install-btn button {
                 font-size: 0.9rem;
                 padding: 10px 15px;
             }
@@ -157,6 +173,8 @@
                 <div class="instance-content">
                     <h2 class="instance-title">REDSURVIVAL</h2>
                     <p class="instance-desc">RedSurvival Official</p>
+                </div>
+                <div class="install-btn">
                     <button onclick="redirectToCustomPage()">Install Client</button>
                 </div>
             </div>
