@@ -6,7 +6,6 @@
     <title>Stellar Client</title>
     <link rel="icon" href="../stellar_client-icon-page.png" type="image/x-icon">
     <style>
-        /* Estilo general del cuerpo */
         body {
             font-family: 'Arial', sans-serif;
             margin: 0;
@@ -19,27 +18,24 @@
             overflow-y: auto;
         }
 
-        /* Contenedor principal */
         .container {
             width: 100%;
-            min-height: 100vh; /* Asegura que el fondo cubra toda la ventana */
-            background-image: url("../client_gradient.png")
+            min-height: 100vh;
+            background-image: url("../client_gradient.png");
         }
 
-        /* Imagen de título personalizada */
         .title-img {
             width: 100%;
-            max-width: 350px;  /* Limita el tamaño máximo */
+            max-width: 350px;
             height: auto;
             margin-bottom: 40px;
         }
 
-        /* Título principal (Texto) */
         .title {
-            font-size: 2.5rem; /* Cambié el tamaño para que sea más visible */
+            font-size: 2.5rem;
             color: transparent;
-            background: linear-gradient(90deg, #ff5722, #9c27b0); /* Gradiente de naranja a morado */
-            -webkit-background-clip: text; /* Clip para que el fondo sea solo el texto */
+            background: linear-gradient(90deg, #ff5722, #9c27b0);
+            -webkit-background-clip: text;
             background-clip: text;
             font-weight: bold;
             letter-spacing: 1px;
@@ -47,7 +43,6 @@
             margin-bottom: 40px;
         }
 
-        /* Contenedor de instancias */
         .instances {
             display: flex;
             justify-content: space-evenly;
@@ -58,77 +53,86 @@
             box-sizing: border-box;
         }
 
-        /* Estilo de cada instancia */
         .instance {
-            background-color: #2a2a2a; /* Fondo más oscuro para los cuadros */
-            border-radius: 10px;
-            padding: 20px;
+            position: relative;
             width: 100%;
-            max-width: 350px; /* Ajusta el tamaño máximo de las instancias */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Sombra básica */
+            max-width: 350px;
+            aspect-ratio: 16 / 9; /* Proporción 16:9 */
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            overflow: hidden; /* Para asegurar que las imágenes no sobresalgan */
-            margin-bottom: 40px; /* Para un mejor espaciado */
+            margin-bottom: 40px;
         }
 
         .instance:hover {
-            transform: scale(1.05); /* Efecto al pasar el mouse */
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4), 0 0 15px rgba(255, 87, 34, 0.5), 0 0 25px rgba(156, 39, 176, 0.5); /* Sombra gradiente */
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4), 0 0 15px rgba(255, 87, 34, 0.5), 0 0 25px rgba(156, 39, 176, 0.5);
         }
 
-        /* Estilo de las imágenes dentro de las instancias */
         .instance img {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            height: auto;
-            object-fit: cover;
-            border-radius: 8px;
-            margin-bottom: 15px;
+            height: 100%;
+            object-fit: cover; /* La imagen cubre todo el cuadro */
         }
 
-        /* Títulos de las instancias */
+        .instance-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.7); /* Fondo semi-transparente en la parte inferior */
+            padding: 10px 15px;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
         .instance-title {
-            font-size: 1.5rem;
-            color: transparent;
-            background: linear-gradient(90deg, #ff5722, #9c27b0); /* Gradiente de naranja a morado */
-            -webkit-background-clip: text;
-            background-clip: text;
+            font-size: 1.2rem;
             font-weight: bold;
-            margin-bottom: 10px;
+            margin: 0;
         }
 
-        /* Descripción de las instancias */
         .instance-desc {
-            font-size: 1rem;
-            color: #bbb; /* Gris más suave para la descripción */
-            margin-bottom: 20px;
+            font-size: 0.9rem;
+            margin: 5px 0 10px;
         }
 
-        /* Estilo del botón de instalación */
         .install-btn {
-            display: none;
+            position: absolute;
+            bottom: -50px; /* Fuera del cuadro inicialmente */
+            left: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            text-align: center;
+            transition: bottom 0.3s ease-in-out;
         }
 
-        .instance:hover .install-btn {
-            display: block;
-        }
-
-        button {
+        .install-btn button {
             background-color: #ff5722;
             color: #121212;
             border: none;
             padding: 12px 20px;
             font-size: 1rem;
             cursor: pointer;
-            border-radius: 8px;
-            transition: background-color 0.3s ease;
+            border-radius: 0;
             width: 100%;
+            transition: background-color 0.3s ease;
         }
 
-        button:hover {
-            background-color: #9c27b0; /* Morado oscuro */
+        .install-btn button:hover {
+            background-color: #9c27b0;
         }
 
-        /* Responsividad para pantallas más pequeñas */
+        .instance:hover .install-btn {
+            bottom: 0; /* Aparece al pasar el mouse */
+        }
+
         @media (max-width: 768px) {
             .container {
                 padding: 20px;
@@ -140,7 +144,6 @@
 
             .instance {
                 max-width: 100%;
-                margin-bottom: 20px;
             }
 
             .title-img {
@@ -153,7 +156,7 @@
                 font-size: 1.2rem;
             }
 
-            button {
+            .install-btn button {
                 font-size: 0.9rem;
                 padding: 10px 15px;
             }
@@ -162,26 +165,21 @@
 </head>
 <body>
     <div class="container">
-        <!-- Imagen personalizada como título -->
         <img src="../stellar_client_icon.png" alt="Stellar Client" class="title-img">
 
-        <h1 class="instance-title">No hay instancias en este momento</h1>
-            <!-- Puedes agregar más instancias aquí -->
-        </div>
+        <h1>UNAUTHORIZED</h1>
+        <h3>You cannot access the client at this time because you have not been authorized to use the page. Contact a moderator if something is not correct.</h3>
     </div>
 
     <script>
-        // Función para redirigir a una página personalizada
         function redirectToCustomPage() {
             window.location.href = "https://github.com/mcstellarproduction/mcstellarweb/raw/main/redsurvival_beta-test_v3.zip";
         }
 
-        // Detectar si el usuario está en un dispositivo móvil
         function isMobile() {
             return /Mobi|Android/i.test(navigator.userAgent);
         }
 
-        // Redirigir a un enlace personalizado si es móvil
         if (isMobile()) {
             window.location.href = "https://www.mcstellar.lat/error-1";
         }
