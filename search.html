@@ -5,13 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimal-ui">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>MCStellar Production</title>
-  <link rel="icon" href="main/mcstellarpageicon.png" type="image/x-icon">
+  <link rel="icon" href="mcstellarpageicon.png" type="image/x-icon">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
   <style>
-    /* Estilos Generales */
+    /* Deshabilitar el movimiento horizontal */
     body {
       user-select: none;
       font-family: 'Arial', sans-serif;
+      background-image: url("client_gradient.png");
       margin: 0;
       padding: 0;
       display: flex;
@@ -19,13 +20,268 @@
       align-items: center;
       justify-content: flex-start;
       min-height: 100vh;
-      background-color: #f5f5f5;
+      padding-bottom: 80px;
+      overflow-x: hidden; /* Deshabilita el movimiento horizontal */
+    }
+
+    .white_text {
+      font-size: 0.5rem;
+      background: white;
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
     }
 
     img {
       -webkit-user-drag: none;
       user-drag: none;
       user-select: none;
+    }
+
+    /* Estilos Generales */
+    header {
+      width: 100%;
+      text-align: center;
+      padding: 20px;
+    }
+
+    header img {
+      width: 100%;
+      height: auto;
+    }
+
+    section {
+      width: 90%;
+      max-width: 1200px;
+      margin: 40px 0;
+    }
+
+    .section-title {
+      background: white;
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      font-weight: bold;
+      font-size: 1.5em;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .card {
+      width: 350px;
+      height: 200px;
+      background-color: transparent;
+      border-radius: 0px;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+    }
+
+    .card h2 {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      font-size: 1em;
+      color: #555;
+    }
+
+    .card-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+    }
+
+    .banner-container {
+      position: relative;
+      width: 100%;
+      height: 50%;
+      overflow: hidden;
+      border-radius: 15px;
+    }
+
+    .banner {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+    }
+
+    .signin {
+      width: 200px;
+      height: 20px;
+      background-color: #ee8000;
+      border-radius: 15px; 
+      padding: 20px;
+      color: white;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .signin:hover {
+      animation: signinanimation 1s ease-in-out forwards;
+    }
+    
+    @keyframes signinanimation {
+      0% {
+        transform: scale(1);
+        background: #ee8000;
+      }
+      50% {
+        transform: scale(1.3);
+        background: linear-gradient(45deg, #ee8000, #9b4d96);
+      }
+      100% {
+        transform: scale(1);
+        background: linear-gradient(45deg, #ee8000, #9b4d96);
+      }
+    }
+
+    .content {
+      color: #212121;
+      padding: 20px;
+      height: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    footer {
+            position: fixed;
+            width: 100%;
+            padding: 5px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            background-color: transparent;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            height: 50px;
+            border-radius: 10px;
+            box-shadow: #100c1a;
+            background-color: #19102b;
+        }
+
+        .button {
+            outline: 0 !important;
+            border: 0 !important;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: transparent;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 20px;
+            transition: all 0.3s ease-in-out;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .button:hover {
+            animation: growAndChangeColor 1s forwards;
+        }
+
+        @keyframes growAndChangeColor {
+            0% {
+                transform: scale(1);
+                background: #ee8000;
+            }
+            50% {
+                transform: scale(1.3);
+                background: linear-gradient(45deg, #ee8000, #9b4d96);
+            }
+            100% {
+                transform: scale(1.2);
+                background: linear-gradient(45deg, #ee8000, #9b4d96);
+            }
+        }
+
+        .icon {
+            font-size: 20px;
+        }
+    
+            .button {
+                width: 50px;
+                height: 50px;
+                font-size: 25px;
+            }
+
+            .button:hover {
+                animation: growAndChangeColor 0.5s forwards;
+            }
+        }
+
+    .icon {
+      font-size: 20px;
+    }
+
+    /* Gradiente en el texto */
+    .gradient-text {
+      font-size: 2rem;
+      background: linear-gradient(45deg, #ee8000, #9b4d96);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    @media (max-width: 768px) {
+            footer {
+                bottom: 0;
+            }
+
+            .button-container {
+                width: 100%;
+                height: 60px;
+                justify-content: space-evenly;
+                border-radius: 20px;
+                background-color: #19102b;
+                box-shadow: #100c1a;
+            }
+
+            .button {
+                width: 50px;
+                height: 50px;
+                font-size: 25px;
+            }
+
+            .button:hover {
+                animation: growAndChangeColor 0.5s forwards;
+            }
+        }
+
+        /* Estilos para escritorio (PC) */
+        @media (min-width: 769px) {
+            footer {
+                top: 0;
+                bottom: unset;
+            }
+
+            .button-container {
+                width: 90%;
+                max-width: 1200px;
+                height: 50px;
+                justify-content: space-evenly;
+            }
+
+            .button {
+                width: 40px;
+                height: 40px;
+                font-size: 18px;
+            }
+        }
+
+    .description {
+      font-size: 1.2em;
     }
 
     /* Sección de Novedades, Videos y Eventos */
@@ -42,7 +298,7 @@
     .seccion_title {
       font-size: 2em;
       font-weight: bold;
-      color: #333;
+      color: white;
       margin-bottom: 20px;
       text-align: center;
     }
@@ -72,8 +328,8 @@
       user-drag: none;
       user-select: none;
       width: 100%;
-      height: 150px;
-      object-fit: cover;
+      height: 100%;
+      object-fit: all;
     }
 
     .section-card .content {
@@ -161,131 +417,11 @@
       scale: 0;
       transform: rotate(-45deg);
     }
-
-    /* Estilos del Footer */
-    footer {
-      position: fixed;
-      width: 100%;
-      padding: 5px 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
-      background-color: transparent;
-    }
-
-    .button-container {
-      display: flex;
-      justify-content: space-between;
-      width: 100%;
-      height: 50px;
-      border-radius: 10px;
-      box-shadow: #383837;
-      background-color: #525252;
-    }
-
-    .button {
-      outline: 0 !important;
-      border: 0 !important;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background-color: transparent;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-      font-size: 20px;
-      transition: all 0.3s ease-in-out;
-      cursor: pointer;
-      position: relative;
-    }
-
-    .button:hover {
-      animation: growAndChangeColor 1s forwards;
-    }
-
-    @keyframes growAndChangeColor {
-      0% {
-        transform: scale(1);
-        background: #ee8000;
-      }
-      50% {
-        transform: scale(1.3);
-        background: linear-gradient(45deg, #ee8000, #9b4d96);
-      }
-      100% {
-        transform: scale(1.2);
-        background: linear-gradient(45deg, #ee8000, #9b4d96);
-      }
-    }
-
-    .icon {
-      font-size: 20px;
-    }
-
-    /* Gradiente en el texto */
-    .gradient-text {
-      background: linear-gradient(45deg, #ee8000, #9b4d96);
-      -webkit-background-clip: text;
-      color: transparent;
-    }
-
-    @media (max-width: 768px) {
-      footer {
-        bottom: 0;
-      }
-
-      .button-container {
-        width: 100%;
-        height: 60px;
-        justify-content: space-evenly;
-        border-radius: 20px;
-        background-color: #525252;
-        box-shadow: #383837;
-      }
-
-      .button {
-        width: 50px;
-        height: 50px;
-        font-size: 25px;
-      }
-
-      .button:hover {
-        animation: growAndChangeColor 0.5s forwards;
-      }
-    }
-
-    /* Estilos para escritorio (PC) */
-    @media (min-width: 769px) {
-      footer {
-        top: 0;
-        bottom: unset;
-      }
-
-      .button-container {
-        width: 90%;
-        max-width: 1200px;
-        height: 50px;
-        justify-content: space-evenly;
-      }
-
-      .button {
-        width: 40px;
-        height: 40px;
-        font-size: 18px;
-      }
-    }
-
-    /* Estilos para aplicar el formato de texto personalizado */
-    .description {
-      font-size: 1.2em;
-    }
   </style>
 </head>
 <body>
-  
-  <!-- Sección de Novedades -->
+
+<!-- Sección de Novedades -->
   <section id="news">
     <div class="seccion_title">NEWS</div>
     <div class="card">
@@ -347,34 +483,15 @@
     </div>
   </section>
 
-  <!-- Sección de Eventos -->
-  <section id="events">
-    <div class="seccion_title">MINECRAFT EVENT</div>
-    <div class="card">
-      <img src="images/redsurvival_card_event_1.jpg" viewBox="0 0 24 24" width="350" height="200">
-      <path
-        d="M20 5H4V19L13.2923 9.70649C13.6828 9.31595 14.3159 9.31591 14.7065 9.70641L20 15.0104V5ZM2 3.9934C2 3.44476 2.45531 3 2.9918 3H21.0082C21.556 3 22 3.44495 22 3.9934V20.0066C22 20.5552 21.5447 21 21.0082 21H2.9918C2.44405 21 2 20.5551 2 20.0066V3.9934ZM8 11C6.89543 11 6 10.1046 6 9C6 7.89543 6.89543 7 8 7C9.10457 7 10 7.89543 10 9C10 10.1046 9.10457 11 8 11Z"
-      ></path>
-      </svg>
-      <div class="card__content">
-        <p class="card__title">REDSURVIVAL</p>
-        <p class="card__description">
-          MCStellar Production is doing its first Minecraft event, RedSurvival, which will be open to the public, but it will only have 50 participation spots, so only 50 people will be able to participate. Ask for your participation coupon on the MCStellar Discord Server.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer con los botones animados -->
   <footer>
     <div class="button-container">
-      <a href="https://www.mcstellar.lat/inicio" class="button" id="homeButton" onclick="redirectToPage(event, 'https://www.mcstellar.lat/inicio')">
+      <a href="https://www.mcstellar.lat/inicio" class="button" id="homeButton" onclick="redirectToPage(event, 'https://www.mcstellar.lat/home')">
         <i class="fas fa-home icon"></i>
       </a>
       <a href="https://www.mcstellar.lat/search" class="button" id="searchButton" onclick="redirectToPage(event, 'https://www.mcstellar.lat/search')">
         <i class="fas fa-search icon"></i>
       </a>
-      <a href="https://www.mcstellar.lat/stellarclient" class="button" id="starButton" onclick="redirectToPage(event, 'https://www.mcstellar.lat/stellarclient')">
+      <a href="https://www.mcstellar.lat/stellarclient" class="button" id="starButton" onclick="redirectToPage(event, 'https://www.mcstellar.lat/stellar_client-login')">
         <i class="fas fa-star icon"></i>
       </a>
       <a href="https://www.mcstellar.lat/social" class="button" id="moreButton" onclick="redirectToPage(event, 'https://www.mcstellar.lat/social')">
@@ -383,15 +500,20 @@
     </div>
   </footer>
 
-  <!-- Pantalla de carga -->
-  <div class="loading-screen">
-    <svg class="container" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
-      <circle class="loader" cx="25" cy="25" r="20" />
-    </svg>
-  </div>
-
   <script>
-    // Función para redirigir
+    // Función para aplicar los estilos de texto
+    function applyTextStyles() {
+      let elements = document.querySelectorAll("#description");
+      elements.forEach(element => {
+        let html = element.innerHTML;
+        html = html.replace(/\*\*{(.*?)\}\*/g, '<b>$1</b>');
+        html = html.replace(/{(.*?)}/g, '<i>$1</i>');
+        html = html.replace(/#{(.*?)#}/g, '<span class="gradient-text">$1</span>'); // Gradiente Naranja a Morado
+        element.innerHTML = html;
+      });
+    }
+
+    // Redirigir a otra página después de un clic
     function redirectToPage(event, url) {
       event.preventDefault(); 
       const button = event.currentTarget;
@@ -400,6 +522,19 @@
         window.location.href = url;
       }, 1000);
     }
+
+    // Prevenir el menú contextual (como el clic derecho) en dispositivos móviles
+    const img = document.getElementById('protectedImage');
+
+    // Prevenir el menú contextual en desktop y móvil
+    img.addEventListener('contextmenu', function(event) {
+      event.preventDefault(); // Previene el menú contextual
+    });
+
+    // Prevenir el toque largo en móviles (típico de dispositivos táctiles)
+    img.addEventListener('touchstart', function(event) {
+      event.preventDefault(); // Previene las acciones por defecto en móviles (como mantener presionado)
+    });
   </script>
 
 </body>
