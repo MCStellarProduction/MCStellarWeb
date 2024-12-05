@@ -22,27 +22,33 @@
 
         .blur-container {
             width: 600px;
-            height: 350px; /* Altura del contenedor al 50% */
+            height: 350px;
             backdrop-filter: blur(20px);
             background: transparent;
             border-radius: 15px;
             display: flex;
             flex-direction: column;
+            justify-content: space-between; /* Espacia los elementos */
             align-items: center;
-            justify-content: center;
             text-align: center;
             padding: 20px;
         }
 
-        .blur-container h1 {
-            top: 100%;
+        .header {
+            align-self: flex-start; /* Alinea al inicio */
+            text-align: left; /* Texto alineado a la izquierda */
+            width: 100%;
+            margin-bottom: auto; /* Empuja hacia arriba */
+        }
+
+        .header h1 {
             font-size: 2rem;
             color: white;
             font-weight: bold;
-            margin: 10px 0;
+            margin: 0; /* Quita márgenes */
         }
 
-        .blur-container p {
+        .header p {
             font-size: 1rem;
             color: white;
             margin: 10px 0 20px;
@@ -60,7 +66,7 @@
         }
 
         .install-btn:hover {
-            background-color: #dd27f4;
+            background-color: #b127c4;
         }
 
         .progress-container {
@@ -84,7 +90,7 @@
             background: linear-gradient(90deg, #b27cf1, #750cf8);
             width: 0;
             border-radius: 10px; /* Bordes redondeados */
-            transition: width 0.1s ease;
+            transition: width 0.5s ease; /* Efecto suave */
         }
 
         .progress-timer {
@@ -138,8 +144,10 @@
 </head>
 <body>
     <div class="blur-container">
-        <h1>BETA-TEST OFFICIAL</h1>
-        <p>This is a official beta-test instance. ( Only Tester Access )</p>
+        <div class="header">
+            <h1>BETA-TEST OFFICIAL</h1>
+            <p>This is an official beta-test instance. (Only Tester Access)</p>
+        </div>
         <button class="install-btn" onclick="startInstallation()">Install Client</button>
         <div class="progress-container">
             <div class="progress-bar">
