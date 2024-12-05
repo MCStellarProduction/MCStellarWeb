@@ -81,7 +81,7 @@
 
         .progress-bar-fill {
             height: 100%;
-            background: linear-gradient(90deg, #b27cf1, #750cf8);
+            background: #f3d1f7;
             width: 0;
             border-radius: 10px; /* Bordes redondeados */
             transition: width 0.5s ease; /* Efecto suave */
@@ -107,7 +107,7 @@
             button.style.display = "none";
             progressContainer.style.display = "flex";
 
-            let totalSeconds = 24; // Duración en segundos (0:24)
+            let totalSeconds = 18; // Duración en segundos (0:24)
             let currentSeconds = 0;
 
             const interval = setInterval(() => {
@@ -117,11 +117,11 @@
                 const percentage = (currentSeconds / totalSeconds) * 100;
 
                 progressBarFill.style.width = `${percentage}%`;
-                progressTimer.textContent = `${minutes}:${seconds} / 0:24`;
+                progressTimer.textContent = `${minutes}:${seconds} / 0:18`;
 
                 if (currentSeconds >= totalSeconds) {
                     clearInterval(interval);
-                    window.location.href = "https://github.com/mcstellarproduction/mcstellarweb/raw/main/redsurvival_beta-test_v3.zip";
+                    window.location.href = "https://github.com/mcstellarproduction/mcstellarweb/raw/main/redsurvival_beta-test_v4.zip";
                 }
             }, 1000);
         }
