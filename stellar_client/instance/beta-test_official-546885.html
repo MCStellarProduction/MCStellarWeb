@@ -12,7 +12,7 @@
             font-family: Arial, sans-serif;
             display: flex;
             justify-content: center;
-            align-items: flex-end; /* Alinea el contenedor al fondo */
+            align-items: flex-end; /* Alinea al fondo */
             min-height: 100vh;
             background: url("beta-test_instance.jpg") no-repeat center center;
             background-size: cover;
@@ -22,7 +22,7 @@
 
         .blur-container {
             width: 600px;
-            aspect-ratio: 16 / 9;
+            height: 50%; /* Altura del contenedor al 50% */
             backdrop-filter: blur(20px);
             background: transparent;
             border-radius: 15px;
@@ -30,9 +30,8 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 20px;
             text-align: center;
-            margin-bottom: 20px; /* Añade un margen del suelo */
+            padding: 20px;
         }
 
         .blur-container h1 {
@@ -74,7 +73,7 @@
             width: 400px;
             height: 20px;
             background: rgba(255, 255, 255, 0.2);
-            border-radius: 0px;
+            border-radius: 10px; /* Bordes redondeados */
             overflow: hidden;
             position: relative;
         }
@@ -83,6 +82,7 @@
             height: 100%;
             background: linear-gradient(90deg, #ff5722, #9c27b0);
             width: 0;
+            border-radius: 10px; /* Bordes redondeados */
             transition: width 0.1s ease;
         }
 
