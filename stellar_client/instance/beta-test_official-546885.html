@@ -11,45 +11,47 @@
             padding: 0;
             font-family: Arial, sans-serif;
             display: flex;
-            flex-direction: column;
             justify-content: center;
-            align-items: center; /* Centra horizontalmente */
+            align-items: flex-end; /* Alinea al fondo */
             min-height: 100vh;
             background: url("beta-test_instance.jpg") no-repeat center center;
             background-size: cover;
             overflow: hidden; /* Previene el desplazamiento */
             user-select: none; /* Deshabilita la selección de texto */
-            text-align: center; /* Centra el texto */
-        }
-
-        .header {
-            margin-bottom: 20px; /* Espacio debajo del header */
-        }
-
-        .header h1 {
-            font-size: 2.5rem;
-            color: white;
-            font-weight: 900; /* Bold más marcado */
-            margin: 0;
-        }
-
-        .header p {
-            font-size: 1.2rem;
-            color: white;
-            margin: 10px 0 20px; /* Espaciado entre el título y el botón */
         }
 
         .blur-container {
             width: 600px;
-            height: 150px;
+            height: 350px;
             backdrop-filter: blur(20px);
-            background: rgba(0, 0, 0, 0.4); /* Fondo oscuro semitransparente */
+            background: transparent;
             border-radius: 15px;
             display: flex;
             flex-direction: column;
-            justify-content: center; /* Centra verticalmente */
-            align-items: center; /* Centra horizontalmente */
+            justify-content: space-between; /* Espacia los elementos */
+            align-items: center;
+            text-align: center;
             padding: 20px;
+        }
+
+        .header {
+            align-self: flex-start; /* Alinea al inicio */
+            text-align: left; /* Texto alineado a la izquierda */
+            width: 100%;
+            margin-bottom: auto; /* Empuja hacia arriba */
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            color: white;
+            font-weight: bold;
+            margin: 0; /* Quita márgenes */
+        }
+
+        .header p {
+            font-size: 1rem;
+            color: white;
+            margin: 10px 0 20px;
         }
 
         .install-btn {
@@ -61,7 +63,6 @@
             cursor: pointer;
             border-radius: 5px;
             transition: background-color 0.3s ease;
-            margin-top: 10px;
         }
 
         .install-btn:hover {
@@ -79,7 +80,7 @@
             width: 400px;
             height: 20px;
             background: rgba(255, 255, 255, 0.2);
-            border-radius: 10px;
+            border-radius: 10px; /* Bordes redondeados */
             overflow: hidden;
             position: relative;
         }
@@ -88,7 +89,7 @@
             height: 100%;
             background: linear-gradient(90deg, #b27cf1, #750cf8);
             width: 0;
-            border-radius: 10px;
+            border-radius: 10px; /* Bordes redondeados */
             transition: width 0.5s ease; /* Efecto suave */
         }
 
@@ -142,11 +143,11 @@
     </script>
 </head>
 <body>
-    <div class="header">
-        <h1>BETA-TEST OFFICIAL</h1>
-        <p>This is an official beta-test instance. (Only Tester Access)</p>
-    </div>
     <div class="blur-container">
+        <div class="header">
+            <h1>BETA-TEST OFFICIAL</h1>
+            <p>This is an official beta-test instance. (Only Tester Access)</p>
+        </div>
         <button class="install-btn" onclick="startInstallation()">Install Client</button>
         <div class="progress-container">
             <div class="progress-bar">
