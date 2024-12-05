@@ -93,6 +93,14 @@
             font-size: 1rem;
         }
 
+        .completion-message {
+            display: none;
+            margin-top: 20px;
+            color: #f3d1f7;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
         img, h1, p {
             pointer-events: none; /* Deshabilita la interacción con imágenes y texto */
         }
@@ -103,11 +111,15 @@
             const progressContainer = document.querySelector(".progress-container");
             const progressBarFill = document.querySelector(".progress-bar-fill");
             const progressTimer = document.querySelector(".progress-timer");
-            
+            const completionMessage = document.createElement("div"); // Crear mensaje
+            completionMessage.className = "completion-message";
+            completionMessage.textContent = "Download Complete...";
+            progressContainer.parentNode.appendChild(completionMessage);
+
             button.style.display = "none";
             progressContainer.style.display = "flex";
 
-            let totalSeconds = 18; // Duración en segundos (0:24)
+            let totalSeconds = 18; // Duración en segundos
             let currentSeconds = 0;
 
             const interval = setInterval(() => {
@@ -121,7 +133,11 @@
 
                 if (currentSeconds >= totalSeconds) {
                     clearInterval(interval);
-                    window.location.href = "https://github.com/mcstellarproduction/mcstellarweb/raw/main/redsurvival_beta-test_v4.zip";
+                    progressContainer.style.display = "none"; // Oculta el progreso
+                    completionMessage.style.display = "block"; // Muestra el mensaje
+                    setTimeout(() => {
+                        window.location.href = "https://github.com/mcstellarproduction/mcstellarweb/raw/main/redsurvival_beta-test_v4.zip";
+                    }, 2000); // Redirección tras 2 segundos
                 }
             }, 1000);
         }
@@ -147,7 +163,7 @@
             <div class="progress-bar">
                 <div class="progress-bar-fill"></div>
             </div>
-            <div class="progress-timer">00:00 / 0:24</div>
+            <div class="progress-timer">00:00 / 0:18</div>
         </div>
     </div>
 </body>
