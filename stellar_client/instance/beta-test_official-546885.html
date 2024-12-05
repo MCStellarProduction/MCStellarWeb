@@ -14,7 +14,7 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background: url("../../client_gradient.png") no-repeat center center;
+            background: url("beta-test_instance.jpg") no-repeat center center;
             background-size: cover;
         }
 
@@ -101,7 +101,7 @@
             button.style.display = "none";
             progressContainer.style.display = "flex";
 
-            let totalSeconds = 84; // 1:24 in seconds
+            let totalSeconds = 24; // 1:24 in seconds
             let currentSeconds = 0;
 
             const interval = setInterval(() => {
@@ -111,7 +111,7 @@
                 const percentage = (currentSeconds / totalSeconds) * 100;
 
                 progressBarFill.style.width = `${percentage}%`;
-                progressTimer.textContent = `${minutes}:${seconds} / 1:24`;
+                progressTimer.textContent = `${minutes}:${seconds} / 0:24`;
 
                 if (currentSeconds >= totalSeconds) {
                     clearInterval(interval);
