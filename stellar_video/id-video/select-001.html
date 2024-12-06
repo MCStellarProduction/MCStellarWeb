@@ -6,6 +6,12 @@
     <title>Reproductor de Video Estilo Netflix 2024</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             margin: 0;
             font-family: Arial, sans-serif;
@@ -19,13 +25,12 @@
 
         .player-container {
             position: relative;
-            width: 100%;
+            width: 100vw;
             height: 100vh;
             background-color: #000;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            justify-content: flex-end;
         }
 
         video {
@@ -36,12 +41,14 @@
 
         .controls {
             position: absolute;
-            bottom: 20px;
+            bottom: 0;
             width: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
             z-index: 10;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px 0;
         }
 
         .progress-bar-container {
@@ -119,14 +126,19 @@
             cursor: pointer;
         }
 
-        /* Añadido para mejorar la visibilidad */
-        .controls, .settings-container {
-            transition: opacity 0.3s ease;
-            opacity: 0;
-        }
+        /* Media Queries */
+        @media (max-width: 768px) {
+            .controls {
+                bottom: 10px;
+            }
 
-        .player-container:hover .controls, .player-container:hover .settings-container {
-            opacity: 1;
+            .progress-bar-container {
+                width: 95%;
+            }
+
+            .fullscreen-btn {
+                right: 10px;
+            }
         }
     </style>
 </head>
@@ -147,10 +159,8 @@
             <div class="time-info">
                 <span id="current-time">0:00</span> / <span id="duration">0:00</span>
             </div>
-        </div>
 
-        <!-- Botones de control -->
-        <div class="controls">
+            <!-- Botones de control -->
             <div class="buttons">
                 <button class="button" id="rewind" onclick="rewindVideo()"><i class="fas fa-backward"></i></button>
                 <button class="button" id="play-pause" onclick="togglePlayPause()"><i class="fas fa-play"></i></button>
