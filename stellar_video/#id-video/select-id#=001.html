@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reproductor de Video</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .player-container {
+            width: 80%;
+            max-width: 800px;
+            background-color: #222;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.6);
+        }
+        video {
+            width: 100%;
+            border-radius: 10px;
+            background-color: #000;
+        }
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+        }
+        .progress-container {
+            width: 100%;
+            height: 5px;
+            background-color: #555;
+            border-radius: 10px;
+            position: relative;
+        }
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background-color: #f1c40f;
+            border-radius: 10px;
+            transition: width 0.2s ease;
+        }
+        .time-info {
+            color: #fff;
+            font-size: 14px;
+            margin-left: 10px;
+        }
+        .buttons {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+        .button {
+            background: none;
+            border: none;
+            color: #f1c40f;
+            font-size: 20px;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        .button:hover {
+            color: #fff;
+        }
+        .settings {
+            display: flex;
+            gap: 20px;
+            margin-left: auto;
+        }
+        .setting-button {
+            background: none;
+            border: none;
+            color: #f1c40f;
+            font-size: 20px;
+            cursor: pointer;
+        }
+        .setting-button:hover {
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="player-container">
+        <video id="video" width="100%" controls>
+            <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+            Tu navegador no soporta el elemento de video.
+        </video>
+        
+        <!-- Barra de progreso -->
+        <div class="controls">
+            <div class="progress-container">
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
+            <div class="time-info">
+                <span id="current-time">0:00</span> / <span id="duration">0:00</span>
+            </div>
+        </div>
+        
+        <!-- Botones de control -->
+        <div class="controls">
+            <div class="buttons">
+                <button class="button" id="rewind" onclick="rewindVideo()"><i class="fas fa-backward"></i></button>
+                <button class="button" id="play-pause" onclick="togglePlayPause()"><i class="fas fa-play"></i></button>
+                <button class="button" id="fast-forward" onclick="fastForwardVideo()"><i class="fas fa-forward"></i></button>
+            </div>
+            
+            <!-- Botones de configuración -->
+            <div class="settings">
+                <button class="setting-button" onclick="toggleSubtitles()"><i class="fas fa-cogs"></i> Subtítulos</button>
+                <button class="setting-button" onclick="toggleAudio()"><i class="fas fa-volume-up"></i> Audio</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const video = document.getElementById("video");
+        const progressBar = document.getElementById("progress-bar");
+        const currentTimeDisplay = document.getElementById("current-time");
+        const durationDisplay = document.getElementById("duration");
+        const playPauseButton = document.getElementById("play-pause");
+
+        video.addEventListener("loadedmetadata", function() {
+            durationDisplay.textContent = formatTime(video.duration);
+        });
+
+        video.addEventListener("timeupdate", function() {
+            const progress = (video.currentTime / video.duration) * 100;
+            progressBar.style.width = progress + "%";
+            currentTimeDisplay.textContent = formatTime(video.currentTime);
+        });
+
+        function formatTime(seconds) {
+            const minutes = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${minutes}:${secs < 10 ? "0" + secs : secs}`;
+        }
+
+        function togglePlayPause() {
+            if (video.paused) {
+                video.play();
+                playPauseButton.innerHTML = '<i class="fas fa-pause"></i>';
+            } else {
+                video.pause();
+                playPauseButton.innerHTML = '<i class="fas fa-play"></i>';
+            }
+        }
+
+        function rewindVideo() {
+            video.currentTime -= 5;
+        }
+
+        function fastForwardVideo() {
+            video.currentTime += 5;
+        }
+
+        function toggleSubtitles() {
+            const tracks = video.textTracks;
+            for (let i = 0; i < tracks.length; i++) {
+                tracks[i].mode = (tracks[i].mode === "showing" ? "hidden" : "showing");
+            }
+        }
+
+        function toggleAudio() {
+            const currentTrack = video.audioTracks;
+            // Lógica para cambiar el track de audio si tienes varias pistas.
+        }
+    </script>
+    
+</body>
+</html>
