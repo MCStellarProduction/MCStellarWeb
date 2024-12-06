@@ -15,7 +15,7 @@
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            background-color: #000;
+            background: linear-gradient(135deg, #FF7F50, #9B59B6); /* Gradiente de naranja a morado */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -27,7 +27,6 @@
             position: relative;
             width: 100vw;
             height: 100vh;
-            background-color: #000;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -46,10 +45,11 @@
             width: 100%;
             display: flex;
             flex-direction: column;
-            background: none; /* No hay fondo en el footer */
+            background: rgba(0, 0, 0, 0.6); /* Fondo oscuro para el footer */
             z-index: 10;
             padding: 10px 0;
             align-items: center;
+            border-radius: 10px 10px 0 0;
         }
 
         .progress-bar-container {
@@ -148,20 +148,35 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            width: 300px;
+        }
+
+        .modal-content h2 {
+            margin-bottom: 20px;
         }
 
         .modal-content button {
             margin: 10px;
             padding: 10px 20px;
-            background: #e50914;
+            background: linear-gradient(135deg, #FF7F50, #9B59B6);
             color: #fff;
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            display: flex;
+            align-items: center;
         }
 
         .modal-content button:hover {
-            background: #f40612;
+            background: #e50914;
+        }
+
+        .modal-content button.checked {
+            background: #27ae60; /* Fondo verde para el idioma seleccionado */
+        }
+
+        .modal-content button i {
+            margin-left: 10px;
         }
     </style>
 </head>
@@ -206,9 +221,9 @@
     <div class="modal" id="subtitlesModal">
         <div class="modal-content">
             <h2>Selecciona Subtítulos</h2>
-            <button onclick="setSubtitles('off')">Off</button>
-            <button onclick="setSubtitles('es')">Español</button>
-            <button onclick="setSubtitles('en')">Inglés</button>
+            <button id="sub-off" onclick="setSubtitles('off')">Off <i class="fas fa-check"></i></button>
+            <button id="sub-es" onclick="setSubtitles('es')">Español <i class="fas fa-check"></i></button>
+            <button id="sub-en" onclick="setSubtitles('en')">Inglés <i class="fas fa-check"></i></button>
             <button onclick="closeModal('subtitlesModal')">Cerrar</button>
         </div>
     </div>
@@ -217,9 +232,9 @@
     <div class="modal" id="audioModal">
         <div class="modal-content">
             <h2>Selecciona Audio</h2>
-            <button onclick="setAudio('es')">Español</button>
-            <button onclick="setAudio('en')">English Original</button>
-            <button onclick="setAudio('fr')">Français</button>
+            <button id="audio-es" onclick="setAudio('es')">Español <i class="fas fa-check"></i></button>
+            <button id="audio-en" onclick="setAudio('en')">English Original <i class="fas fa-check"></i></button>
+            <button id="audio-fr" onclick="setAudio('fr')">Français <i class="fas fa-check"></i></button>
             <button onclick="closeModal('audioModal')">Cerrar</button>
         </div>
     </div>
@@ -306,6 +321,11 @@
         }
 
         function setSubtitles(language) {
+            // Desmarcar todos los botones de subtítulos
+            document.querySelectorAll('#subtitlesModal button').forEach(button => {
+                button.classList.remove('checked');
+            });
+
             if (subtitleTrack) {
                 subtitleTrack.mode = "hidden"; // Ocultar los subtítulos
             }
@@ -317,9 +337,17 @@
             subtitleTrack = video.addTextTrack("subtitles", language, language === "es" ? "Español" : "Inglés");
             subtitleTrack.mode = "showing"; // Mostrar los subtítulos
             subtitleTrack.src = `subtitles-${language}.sbv`; // Cargar el archivo de subtítulos .sbv
+
+            // Marcar el idioma seleccionado
+            document.getElementById(`sub-${language}`).classList.add('checked');
         }
 
         function setAudio(language) {
+            // Desmarcar todos los botones de audio
+            document.querySelectorAll('#audioModal button').forEach(button => {
+                button.classList.remove('checked');
+            });
+
             let audioSrc = "";
 
             switch(language) {
@@ -339,6 +367,9 @@
                 audioTrack.src = audioSrc;
                 video.load(); // Recargar el video para aplicar el cambio de audio
             }
+
+            // Marcar el idioma seleccionado
+            document.getElementById(`audio-${language}`).classList.add('checked');
         }
     </script>
 
