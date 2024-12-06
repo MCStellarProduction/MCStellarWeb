@@ -121,7 +121,7 @@
         <div class="title">Películas Recomendadas</div>
         <div class="movie-slider">
             <!-- Película 1 -->
-            <div class="movie">
+            <div class="movie" data-link="https://example.com/movie1">
                 <img src="https://via.placeholder.com/320x180?text=Película+1" alt="Película 1">
                 <div class="movie-content">
                     <div class="movie-title">Película 1</div>
@@ -138,7 +138,7 @@
                 </div>
             </div>
             <!-- Película 2 -->
-            <div class="movie">
+            <div class="movie" data-link="https://example.com/movie2">
                 <img src="https://via.placeholder.com/320x180?text=Película+2" alt="Película 2">
                 <div class="movie-content">
                     <div class="movie-title">Película 2</div>
@@ -157,5 +157,25 @@
             <!-- Añade más películas aquí -->
         </div>
     </div>
+
+    <script>
+        document.querySelectorAll('.movie').forEach(movie => {
+            let clickCount = 0;
+
+            movie.addEventListener('click', () => {
+                clickCount++;
+
+                // Resetea el contador después de 300ms si no se realiza un segundo clic
+                setTimeout(() => clickCount = 0, 300);
+
+                if (clickCount === 2) {
+                    const link = movie.dataset.link;
+                    if (link) {
+                        window.location.href = link; // Redirige al enlace
+                    }
+                }
+            });
+        });
+    </script>
 </body>
 </html>
