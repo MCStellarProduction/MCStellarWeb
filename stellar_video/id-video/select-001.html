@@ -19,18 +19,19 @@
 
         .player-container {
             position: relative;
-            width: 80%;
-            max-width: 800px;
+            width: 100%;
+            height: 100vh;
             background-color: #000;
-            border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
-            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         video {
             width: 100%;
-            height: auto;
-            display: block;
+            height: 100%;
+            object-fit: cover;
         }
 
         .controls {
@@ -69,6 +70,7 @@
         .buttons {
             display: flex;
             gap: 15px;
+            align-items: center;
         }
 
         .button {
@@ -105,6 +107,17 @@
         .setting-button:hover {
             color: #e50914;
         }
+
+        .fullscreen-btn {
+            position: absolute;
+            right: 20px;
+            bottom: 20px;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 24px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -140,6 +153,9 @@
             <button class="setting-button" onclick="toggleSubtitles()"><i class="fas fa-cogs"></i> Subtítulos</button>
             <button class="setting-button" onclick="toggleAudio()"><i class="fas fa-volume-up"></i> Audio</button>
         </div>
+
+        <!-- Botón de pantalla completa -->
+        <button class="fullscreen-btn" onclick="toggleFullscreen()"><i class="fas fa-expand"></i></button>
     </div>
 
     <script>
@@ -201,6 +217,15 @@
             // Cambiar la pista de audio si se tiene más de una.
             const audioTracks = video.audioTracks;
             // Aquí agregaría la lógica para cambiar las pistas de audio si están disponibles.
+        }
+
+        // Función para poner el video en pantalla completa
+        function toggleFullscreen() {
+            if (document.fullscreenElement) {
+                document.exitFullscreen();
+            } else {
+                document.documentElement.requestFullscreen();
+            }
         }
     </script>
 
