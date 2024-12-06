@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú de Película</title>
+    <!-- Enlace a Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: url('https://via.placeholder.com/1920x1080?text=Fondo+de+Película') no-repeat center center/cover;
+            color: #fff;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: start;
+            overflow: hidden;
+        }
+        .content {
+            position: relative;
+            max-width: 600px;
+            margin-left: 100px;
+            background-color: rgba(0, 0, 0, 0.6); /* Fondo oscuro semi-transparente */
+            padding: 20px;
+            border-radius: 15px;
+        }
+        .title {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .description {
+            font-size: 16px;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+        .details {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .details div {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+        }
+        .details i {
+            color: #f1c40f;
+        }
+        .buttons {
+            display: flex;
+            gap: 15px;
+        }
+        .button {
+            background-color: #fff;
+            color: #333;
+            font-size: 16px;
+            font-weight: bold;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .button:hover {
+            background-color: #ccc;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <div class="title">Título de la Película</div>
+        <div class="description">
+            Una breve descripción de la película, destacando su trama principal. Atrévete a sumergirte en esta experiencia cinematográfica.
+        </div>
+        <div class="details">
+            <div><i class="fas fa-exclamation-triangle"></i> +18</div>
+            <div><i class="fas fa-globe"></i> Español, Inglés</div>
+            <div><i class="fas fa-tags"></i> Acción, Aventura</div>
+            <div><i class="fas fa-calendar-alt"></i> 2024</div>
+        </div>
+        <div class="buttons">
+            <button class="button">Play</button>
+            <button class="button">Ver Detalles</button>
+        </div>
+    </div>
+</body>
+</html>
