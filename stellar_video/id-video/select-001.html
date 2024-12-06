@@ -39,18 +39,17 @@
             object-fit: cover;
         }
 
-        /* Controles: 100px abajo de la mitad de la pantalla */
-        .controls {
-            position: absolute;
-            top: 50%;
-            transform: translateY(50px); /* Mueve los controles 100px hacia abajo desde la mitad */
+        /* Controles movidos al footer */
+        .footer {
+            position: fixed;
+            bottom: 0;
             width: 100%;
             display: flex;
-            justify-content: center;
-            align-items: center;
+            flex-direction: column;
+            background: none; /* No hay fondo en el footer */
             z-index: 10;
-            background: rgba(0, 0, 0, 0.7);
             padding: 10px 0;
+            align-items: center;
         }
 
         .progress-bar-container {
@@ -95,22 +94,12 @@
             color: #e50914;
         }
 
-        /* Footer */
-        .footer {
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            background: rgba(0, 0, 0, 0.9);
-            padding: 10px 0;
-            z-index: 10;
-        }
-
+        /* Controles de Subtítulos y Audio */
         .footer-buttons {
             display: flex;
             gap: 20px;
             align-items: center;
+            margin-top: 10px;
         }
 
         .footer-button {
@@ -126,6 +115,7 @@
             color: #e50914;
         }
 
+        /* Botón de pantalla completa */
         .fullscreen-btn {
             position: absolute;
             right: 20px;
@@ -139,11 +129,6 @@
 
         /* Media Queries */
         @media (max-width: 768px) {
-            .controls {
-                top: 50%;
-                transform: translateY(50px); /* Mueve los controles 100px hacia abajo desde la mitad */
-            }
-
             .progress-bar-container {
                 width: 95%;
             }
@@ -163,8 +148,9 @@
             Tu navegador no soporta el elemento de video.
         </video>
 
-        <!-- Barra de progreso -->
-        <div class="controls">
+        <!-- Footer con controles -->
+        <div class="footer">
+            <!-- Barra de progreso -->
             <div class="progress-bar-container" onclick="seekVideo(event)">
                 <div class="progress-bar" id="progress-bar"></div>
             </div>
@@ -178,18 +164,16 @@
                 <button class="button" id="play-pause" onclick="togglePlayPause()"><i class="fas fa-play"></i></button>
                 <button class="button" id="fast-forward" onclick="fastForwardVideo()"><i class="fas fa-forward"></i></button>
             </div>
+
+            <!-- Controles de Subtítulos y Audio -->
+            <div class="footer-buttons">
+                <button class="footer-button" onclick="toggleSubtitles()"><i class="fas fa-cogs"></i> Subtítulos</button>
+                <button class="footer-button" onclick="toggleAudio()"><i class="fas fa-volume-up"></i> Audio</button>
+            </div>
         </div>
 
         <!-- Botón de pantalla completa -->
         <button class="fullscreen-btn" onclick="toggleFullscreen()"><i class="fas fa-expand"></i></button>
-    </div>
-
-    <!-- Footer con controles de subtítulos y audio -->
-    <div class="footer">
-        <div class="footer-buttons">
-            <button class="footer-button" onclick="toggleSubtitles()"><i class="fas fa-cogs"></i> Subtítulos</button>
-            <button class="footer-button" onclick="toggleAudio()"><i class="fas fa-volume-up"></i> Audio</button>
-        </div>
     </div>
 
     <script>
