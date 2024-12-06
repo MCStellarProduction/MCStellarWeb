@@ -37,7 +37,8 @@
         .movie img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: cover; /* Asegura que la imagen se ajuste sin deformarse */
+            object-position: center; /* Centra la imagen */
             transition: all 0.4s ease;
         }
         .movie:hover {
@@ -45,7 +46,7 @@
             aspect-ratio: 16 / 9;
         }
         .movie:hover img {
-            object-fit: cover;
+            object-position: center; /* Mantiene la imagen centrada en cualquier cambio */
         }
         .movie-content {
             text-align: center;
