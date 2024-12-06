@@ -30,7 +30,7 @@
             background-color: #000;
             display: flex;
             flex-direction: column;
-            justify-content: flex-end;
+            justify-content: center;
         }
 
         video {
@@ -39,9 +39,11 @@
             object-fit: cover;
         }
 
+        /* Controles: 100px abajo de la mitad de la pantalla */
         .controls {
             position: absolute;
-            bottom: 0;
+            top: 50%;
+            transform: translateY(50px); /* Mueve los controles 100px hacia abajo desde la mitad */
             width: 100%;
             display: flex;
             justify-content: center;
@@ -129,7 +131,8 @@
         /* Media Queries */
         @media (max-width: 768px) {
             .controls {
-                bottom: 10px;
+                top: 50%;
+                transform: translateY(50px); /* Mueve los controles 100px hacia abajo desde la mitad */
             }
 
             .progress-bar-container {
