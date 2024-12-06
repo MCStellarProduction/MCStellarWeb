@@ -132,7 +132,7 @@
 </head>
 <body>
 
-    <div class="player-container">
+    <div class="player-container" id="player-container">
         <!-- Video -->
         <video id="video" controls>
             <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
@@ -231,10 +231,20 @@
 
         // Función para poner el video en pantalla completa
         function toggleFullscreen() {
+            const playerContainer = document.getElementById("player-container");
+
             if (document.fullscreenElement) {
                 document.exitFullscreen();
             } else {
-                document.documentElement.requestFullscreen();
+                if (playerContainer.requestFullscreen) {
+                    playerContainer.requestFullscreen();
+                } else if (playerContainer.mozRequestFullScreen) { // Firefox
+                    playerContainer.mozRequestFullScreen();
+                } else if (playerContainer.webkitRequestFullscreen) { // Chrome, Safari, Opera
+                    playerContainer.webkitRequestFullscreen();
+                } else if (playerContainer.msRequestFullscreen) { // IE/Edge
+                    playerContainer.msRequestFullscreen();
+                }
             }
         }
     </script>
