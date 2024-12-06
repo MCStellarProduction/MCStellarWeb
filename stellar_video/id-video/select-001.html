@@ -95,16 +95,25 @@
             color: #e50914;
         }
 
-        .settings-container {
-            position: absolute;
-            bottom: 60px;
-            left: 20px;
+        /* Footer */
+        .footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
             display: flex;
-            gap: 20px;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.9);
+            padding: 10px 0;
             z-index: 10;
         }
 
-        .setting-button {
+        .footer-buttons {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .footer-button {
             background: none;
             border: none;
             color: #fff;
@@ -113,7 +122,7 @@
             transition: color 0.3s ease;
         }
 
-        .setting-button:hover {
+        .footer-button:hover {
             color: #e50914;
         }
 
@@ -171,14 +180,16 @@
             </div>
         </div>
 
-        <!-- Botones de configuración -->
-        <div class="settings-container">
-            <button class="setting-button" onclick="toggleSubtitles()"><i class="fas fa-cogs"></i> Subtítulos</button>
-            <button class="setting-button" onclick="toggleAudio()"><i class="fas fa-volume-up"></i> Audio</button>
-        </div>
-
         <!-- Botón de pantalla completa -->
         <button class="fullscreen-btn" onclick="toggleFullscreen()"><i class="fas fa-expand"></i></button>
+    </div>
+
+    <!-- Footer con controles de subtítulos y audio -->
+    <div class="footer">
+        <div class="footer-buttons">
+            <button class="footer-button" onclick="toggleSubtitles()"><i class="fas fa-cogs"></i> Subtítulos</button>
+            <button class="footer-button" onclick="toggleAudio()"><i class="fas fa-volume-up"></i> Audio</button>
+        </div>
     </div>
 
     <script>
