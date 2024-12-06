@@ -127,15 +127,41 @@
             cursor: pointer;
         }
 
-        /* Media Queries */
-        @media (max-width: 768px) {
-            .progress-bar-container {
-                width: 95%;
-            }
+        /* Modal para mostrar opciones */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 20;
+        }
 
-            .fullscreen-btn {
-                right: 10px;
-            }
+        .modal-content {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .modal-content button {
+            margin: 10px;
+            padding: 10px 20px;
+            background: #e50914;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .modal-content button:hover {
+            background: #f40612;
         }
     </style>
 </head>
@@ -167,13 +193,35 @@
 
             <!-- Controles de Subtítulos y Audio -->
             <div class="footer-buttons">
-                <button class="footer-button" onclick="toggleSubtitles()"><i class="fas fa-cogs"></i> Subtítulos</button>
-                <button class="footer-button" onclick="toggleAudio()"><i class="fas fa-volume-up"></i> Audio</button>
+                <button class="footer-button" onclick="showSubtitlesMenu()">Subtítulos</button>
+                <button class="footer-button" onclick="showAudioMenu()">Audio</button>
             </div>
         </div>
 
         <!-- Botón de pantalla completa -->
         <button class="fullscreen-btn" onclick="toggleFullscreen()"><i class="fas fa-expand"></i></button>
+    </div>
+
+    <!-- Modal para Subtítulos -->
+    <div class="modal" id="subtitlesModal">
+        <div class="modal-content">
+            <h2>Selecciona Subtítulos</h2>
+            <button onclick="setSubtitles('off')">Off</button>
+            <button onclick="setSubtitles('es')">Español</button>
+            <button onclick="setSubtitles('en')">Inglés</button>
+            <button onclick="closeModal('subtitlesModal')">Cerrar</button>
+        </div>
+    </div>
+
+    <!-- Modal para Audio -->
+    <div class="modal" id="audioModal">
+        <div class="modal-content">
+            <h2>Selecciona Audio</h2>
+            <button onclick="setAudio('es')">Español</button>
+            <button onclick="setAudio('en')">English Original</button>
+            <button onclick="setAudio('fr')">Français</button>
+            <button onclick="closeModal('audioModal')">Cerrar</button>
+        </div>
     </div>
 
     <script>
@@ -182,6 +230,9 @@
         const currentTimeDisplay = document.getElementById("current-time");
         const durationDisplay = document.getElementById("duration");
         const playPauseButton = document.getElementById("play-pause");
+
+        let subtitleTrack = null;
+        let audioTrack = null;
 
         video.addEventListener("loadedmetadata", function() {
             durationDisplay.textContent = formatTime(video.duration);
@@ -224,20 +275,6 @@
             video.currentTime = newTime;
         }
 
-        function toggleSubtitles() {
-            const tracks = video.textTracks;
-            for (let i = 0; i < tracks.length; i++) {
-                tracks[i].mode = (tracks[i].mode === "showing" ? "hidden" : "showing");
-            }
-        }
-
-        function toggleAudio() {
-            // Cambiar la pista de audio si se tiene más de una.
-            const audioTracks = video.audioTracks;
-            // Aquí agregaría la lógica para cambiar las pistas de audio si están disponibles.
-        }
-
-        // Función para poner el video en pantalla completa
         function toggleFullscreen() {
             const playerContainer = document.getElementById("player-container");
 
@@ -253,6 +290,54 @@
                 } else if (playerContainer.msRequestFullscreen) { // IE/Edge
                     playerContainer.msRequestFullscreen();
                 }
+            }
+        }
+
+        function showSubtitlesMenu() {
+            document.getElementById("subtitlesModal").style.display = "flex";
+        }
+
+        function showAudioMenu() {
+            document.getElementById("audioModal").style.display = "flex";
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = "none";
+        }
+
+        function setSubtitles(language) {
+            if (subtitleTrack) {
+                subtitleTrack.mode = "hidden"; // Ocultar los subtítulos
+            }
+
+            if (language === "off") {
+                return;
+            }
+
+            subtitleTrack = video.addTextTrack("subtitles", language, language === "es" ? "Español" : "Inglés");
+            subtitleTrack.mode = "showing"; // Mostrar los subtítulos
+            subtitleTrack.src = `subtitles-${language}.sbv`; // Cargar el archivo de subtítulos .sbv
+        }
+
+        function setAudio(language) {
+            let audioSrc = "";
+
+            switch(language) {
+                case "es":
+                    audioSrc = "audio-es.mp3";
+                    break;
+                case "en":
+                    audioSrc = "audio-en.mp3";
+                    break;
+                case "fr":
+                    audioSrc = "audio-fr.mp3";
+                    break;
+            }
+
+            const audioTrack = video.querySelector("audio");
+            if (audioTrack) {
+                audioTrack.src = audioSrc;
+                video.load(); // Recargar el video para aplicar el cambio de audio
             }
         }
     </script>
