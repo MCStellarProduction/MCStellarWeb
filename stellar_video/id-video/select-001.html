@@ -221,9 +221,9 @@
     <div class="modal" id="subtitlesModal">
         <div class="modal-content">
             <h2>Selecciona Subtítulos</h2>
-            <button id="sub-off" onclick="setSubtitles('off')">Off <i class="fas fa-check"></i></button>
-            <button id="sub-es" onclick="setSubtitles('es')">Español <i class="fas fa-check"></i></button>
-            <button id="sub-en" onclick="setSubtitles('en')">Inglés <i class="fas fa-check"></i></button>
+            <button id="sub-off" onclick="setSubtitles('off')">Off <i class="fas fa-check" id="check-sub-off" style="display:none;"></i></button>
+            <button id="sub-es" onclick="setSubtitles('es')">Español <i class="fas fa-check" id="check-sub-es" style="display:none;"></i></button>
+            <button id="sub-en" onclick="setSubtitles('en')">Inglés <i class="fas fa-check" id="check-sub-en" style="display:none;"></i></button>
             <button onclick="closeModal('subtitlesModal')">Cerrar</button>
         </div>
     </div>
@@ -232,9 +232,9 @@
     <div class="modal" id="audioModal">
         <div class="modal-content">
             <h2>Selecciona Audio</h2>
-            <button id="audio-es" onclick="setAudio('es')">Español <i class="fas fa-check"></i></button>
-            <button id="audio-en" onclick="setAudio('en')">English Original <i class="fas fa-check"></i></button>
-            <button id="audio-fr" onclick="setAudio('fr')">Français <i class="fas fa-check"></i></button>
+            <button id="audio-es" onclick="setAudio('es')">Español <i class="fas fa-check" id="check-audio-es" style="display:none;"></i></button>
+            <button id="audio-en" onclick="setAudio('en')">English Original <i class="fas fa-check" id="check-audio-en" style="display:none;"></i></button>
+            <button id="audio-fr" onclick="setAudio('fr')">Français <i class="fas fa-check" id="check-audio-fr" style="display:none;"></i></button>
             <button onclick="closeModal('audioModal')">Cerrar</button>
         </div>
     </div>
@@ -254,15 +254,15 @@
         });
 
         video.addEventListener("timeupdate", function() {
-            const progress = (video.currentTime / video.duration) * 100;
-            progressBar.style.width = progress + "%";
-            currentTimeDisplay.textContent = formatTime(video.currentTime);
+            const currentTime = video.currentTime;
+            progressBar.style.width = (currentTime / video.duration) * 100 + "%";
+            currentTimeDisplay.textContent = formatTime(currentTime);
         });
 
         function formatTime(seconds) {
             const minutes = Math.floor(seconds / 60);
-            const secs = Math.floor(seconds % 60);
-            return `${minutes}:${secs < 10 ? "0" + secs : secs}`;
+            const remainingSeconds = Math.floor(seconds % 60);
+            return `${minutes}:${remainingSeconds < 10 ? "0" : ""}${remainingSeconds}`;
         }
 
         function togglePlayPause() {
@@ -324,6 +324,8 @@
             // Desmarcar todos los botones de subtítulos
             document.querySelectorAll('#subtitlesModal button').forEach(button => {
                 button.classList.remove('checked');
+                const checkIcon = button.querySelector('i');
+                if (checkIcon) checkIcon.style.display = 'none';
             });
 
             if (subtitleTrack) {
@@ -340,12 +342,15 @@
 
             // Marcar el idioma seleccionado
             document.getElementById(`sub-${language}`).classList.add('checked');
+            document.getElementById(`check-sub-${language}`).style.display = 'inline-block';
         }
 
         function setAudio(language) {
             // Desmarcar todos los botones de audio
             document.querySelectorAll('#audioModal button').forEach(button => {
                 button.classList.remove('checked');
+                const checkIcon = button.querySelector('i');
+                if (checkIcon) checkIcon.style.display = 'none';
             });
 
             let audioSrc = "";
@@ -370,7 +375,12 @@
 
             // Marcar el idioma seleccionado
             document.getElementById(`audio-${language}`).classList.add('checked');
+            document.getElementById(`check-audio-${language}`).style.display = 'inline-block';
         }
+
+        // Predeterminados
+        setSubtitles("off");
+        setAudio("en");
     </script>
 
 </body>
