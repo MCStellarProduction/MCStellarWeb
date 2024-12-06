@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menú Estilo Netflix</title>
+    <!-- Enlace a Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
     <style>
         body {
             margin: 0;
@@ -26,7 +28,7 @@
         }
         .movie {
             width: 180px;
-            aspect-ratio: 9 / 16;
+            height: 320px; /* Establece la altura inicial como 16:9 */
             position: relative;
             overflow: hidden;
             border-radius: 15px;
@@ -37,16 +39,17 @@
         .movie img {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Asegura que la imagen se ajuste sin deformarse */
-            object-position: center; /* Centra la imagen */
+            object-fit: cover;
+            object-position: center;
             transition: all 0.4s ease;
         }
         .movie:hover {
             width: 320px;
-            aspect-ratio: 16 / 9;
+            height: 180px; /* Cambia a 16:9 horizontal */
         }
         .movie:hover img {
-            object-position: center; /* Mantiene la imagen centrada en cualquier cambio */
+            object-fit: cover;
+            object-position: center;
         }
         .movie-content {
             text-align: center;
@@ -100,10 +103,10 @@
                     <div class="movie-description">Una descripción breve de la película 1.</div>
                 </div>
                 <div class="movie-info">
-                    <div><i>⏱️</i><span>120 min</span></div>
-                    <div><i>📅</i><span>2024</span></div>
-                    <div><i>🔞</i><span>+18</span></div>
-                    <div><i>🌍</i><span>Español</span></div>
+                    <div><i class="fas fa-clock"></i><span>120 min</span></div>
+                    <div><i class="fas fa-calendar-alt"></i><span>2024</span></div>
+                    <div><i class="fas fa-exclamation-triangle"></i><span>+18</span></div>
+                    <div><i class="fas fa-globe"></i><span>Español</span></div>
                 </div>
             </div>
             <!-- Película 2 -->
@@ -114,10 +117,10 @@
                     <div class="movie-description">Una descripción breve de la película 2.</div>
                 </div>
                 <div class="movie-info">
-                    <div><i>⏱️</i><span>98 min</span></div>
-                    <div><i>📅</i><span>2023</span></div>
-                    <div><i>🔞</i><span>+13</span></div>
-                    <div><i>🌍</i><span>Inglés</span></div>
+                    <div><i class="fas fa-clock"></i><span>98 min</span></div>
+                    <div><i class="fas fa-calendar-alt"></i><span>2023</span></div>
+                    <div><i class="fas fa-exclamation-circle"></i><span>+13</span></div>
+                    <div><i class="fas fa-globe"></i><span>Inglés</span></div>
                 </div>
             </div>
             <!-- Añade más películas aquí -->
