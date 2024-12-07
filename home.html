@@ -323,13 +323,21 @@
 
     // Redirigir a otra página después de un clic
     function redirectToPage(event, url) {
-      event.preventDefault(); 
-      const button = event.currentTarget;
-      button.style.pointerEvents = 'none';
-      setTimeout(() => {
-        window.location.href = url;
-      }, 1000);
-    }
+            event.preventDefault(); 
+            const button = event.currentTarget;
+            button.style.pointerEvents = 'none';
+            setTimeout(() => {
+                window.location.href = url;
+            }, 1000);
+        }
+
+        // Esperar 1 segundo después de la carga de la página para mostrar la barra con animación
+        window.onload = function() {
+            setTimeout(() => {
+                const footer = document.getElementById('footer');
+                footer.style.opacity = 1; // Hacer visible la barra
+            }, 1000); // Espera de 1 segundo antes de mostrar la barra
+        };
 
     // Prevenir el menú contextual (como el clic derecho) en dispositivos móviles
     const img = document.getElementById('protectedImage');
