@@ -153,7 +153,7 @@
             align-items: center;
             z-index: 1000;
             background-color: transparent;
-            opacity: 0; /* Inicialmente oculta */
+            opacity: 1; /* Inicialmente oculta */
             transition: opacity 1s ease-in-out; /* Transición suave de opacidad */
         }
 
@@ -330,14 +330,6 @@
                 window.location.href = url;
             }, 1000);
         }
-
-        // Esperar 1 segundo después de la carga de la página para mostrar la barra con animación
-        window.onload = function() {
-            setTimeout(() => {
-                const footer = document.getElementById('footer');
-                footer.style.opacity = 1; // Hacer visible la barra
-            }, 1000); // Espera de 1 segundo antes de mostrar la barra
-        };
 
     // Prevenir el menú contextual (como el clic derecho) en dispositivos móviles
     const img = document.getElementById('protectedImage');
