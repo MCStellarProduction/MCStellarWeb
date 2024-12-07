@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video</title>
+    <!-- Enlace a Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            backdrop-filter: blur(20px);
+            font-family: Arial, sans-serif;
+            background: url('img/the_begginig.jpg') no-repeat center center/cover;
+            color: #fff;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: start;
+            overflow: hidden;
+        }
+        .content {
+            position: relative;
+            max-width: 600px;
+            margin-left: 100px;
+            background: transparent; /* Fondo oscuro semi-transparente */
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: none; /* Invisible sin bordes */
+        }
+        .title {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .description {
+            font-size: 16px;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+        .details {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .details div {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+        }
+        .details i {
+            color: #5e5e5e;
+        }
+        .buttons {
+            display: flex;
+            gap: 15px;
+        }
+        .button {
+            background-color: #fff;
+            color: #333;
+            font-size: 16px;
+            font-weight: bold;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .button:hover {
+            background-color: #ccc;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <div class="title">What I Forgot</div>
+        <div class="description">
+            This its a Promotion Video of the MCStellar Production of the proyects they do in the time they don't upload videos
+        </div>
+        <div class="details">
+            <div><i class="fas fa-exclamation-triangle"></i> all</div>
+            <div><i class="fas fa-globe"></i> No Audible</div>
+            <div><i class="fas fa-tags"></i> Promotion</div>
+            <div><i class="fas fa-calendar-alt"></i> 2024</div>
+        </div>
+        <div class="buttons">
+            <!-- Botones con redirección -->
+            <button class="button" onclick="window.location.href='https://www.youtube.com/watch?v=fl-7FKecQ6Y'">Watch</button>
+            <button class="button" onclick="window.location.href='https://www.mcstellar.lat/stellar_video/home'">Back</button>
+        </div>
+    </div>
+</body>
+</html>
