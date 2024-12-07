@@ -120,6 +120,7 @@
                 background: linear-gradient(45deg, #2d195e, #440d52, #0e0a1f);
                 box-shadow: transparent;
                 opacity: 1;
+                pointer-events: auto; /* Para habilitar interacciones cuando el menú esté expandido */
             }
 
             .button {
@@ -133,6 +134,7 @@
                 justify-content: center;
                 transition: all 0.5s ease;
                 opacity: 0;
+                pointer-events: none; /* Deshabilita la interacción cuando está oculto */
             }
 
             .toggle-button.open {
