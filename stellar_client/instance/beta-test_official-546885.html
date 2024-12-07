@@ -119,7 +119,7 @@
             button.style.display = "none";
             progressContainer.style.display = "flex";
 
-            let totalSeconds = 18; // Duración en segundos
+            let totalSeconds = 8; // Duración en segundos
             let currentSeconds = 0;
 
             const interval = setInterval(() => {
@@ -129,7 +129,7 @@
                 const percentage = (currentSeconds / totalSeconds) * 100;
 
                 progressBarFill.style.width = `${percentage}%`;
-                progressTimer.textContent = `${minutes}:${seconds} / 0:18`;
+                progressTimer.textContent = `${minutes}:${seconds} / 0:08`;
 
                 if (currentSeconds >= totalSeconds) {
                     clearInterval(interval);
