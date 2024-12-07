@@ -15,20 +15,21 @@
             align-items: center;
             z-index: 1000;
             background-color: transparent;
-            transition: background-color 0.3s ease; /* Animación suave de fondo */
+            transition: background-color 0.3s ease;
         }
 
         .button-container {
             display: flex;
-            justify-content: space-evenly; /* Asegura que los botones estén distribuidos de forma equitativa */
+            justify-content: space-evenly;
             align-items: center;
-            width: 80%; /* Ajustamos para centrar el contenedor */
+            width: 80%;
             max-width: 1200px;
             height: 50px;
             border-radius: 50px;
             box-shadow: #100c1a;
             background: linear-gradient(45deg, #2d195e, #440d52, #0e0a1f);
-            transition: all 0.3s ease; /* Suavizamos la animación de la barra */
+            transition: all 0.3s ease;
+            padding: 0 10px; /* Padding adicional */
         }
 
         .button {
@@ -43,13 +44,13 @@
             justify-content: center;
             color: #fff;
             font-size: 25px;
-            transition: transform 0.3s ease, background-color 0.3s ease; /* Animación suave en el hover */
+            transition: transform 0.3s ease, background-color 0.3s ease;
             cursor: pointer;
         }
 
         .button:hover {
             animation: growAndChangeColor 0.5s forwards;
-            transform: scale(1.1); /* Aumentamos el tamaño en hover */
+            transform: scale(1.1);
         }
 
         @keyframes growAndChangeColor {
@@ -65,6 +66,31 @@
                 transform: scale(1.2);
                 background: linear-gradient(45deg, #ee8000, #9b4d96);
             }
+        }
+
+        /* Estilos para el botón de "X" y hamburguesa */
+        .toggle-button {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: transparent;
+            border: 2px solid #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 25px;
+            cursor: pointer;
+            z-index: 1010; /* Para que esté encima de los botones */
+            transition: transform 0.3s ease;
+        }
+
+        .toggle-button.open {
+            transform: rotate(45deg); /* Rota el "X" cuando está abierto */
         }
 
         /* Eliminar subrayado en los enlaces */
@@ -87,7 +113,7 @@
             }
 
             .button-container {
-                width: 90%; /* Ajuste del tamaño en dispositivos móviles */
+                width: 90%;
                 height: 60px;
                 justify-content: space-evenly;
                 border-radius: 50px;
@@ -101,8 +127,25 @@
                 font-size: 25px;
             }
 
-            .button:hover {
-                animation: growAndChangeColor 0.5s forwards;
+            .button-container.collapsed {
+                width: 50px; /* Contrae el menú a un círculo */
+                justify-content: center;
+                transition: all 0.5s ease;
+            }
+
+            .toggle-button.open {
+                transform: rotate(45deg);
+            }
+
+            .toggle-button.open .icon {
+                display: none; /* Oculta las 3 rayas cuando está en "X" */
+            }
+
+            .toggle-button.open::before {
+                content: "\f00d"; /* Código unicode para "X" */
+                font-family: "Font Awesome 5 Free";
+                font-weight: 900;
+                font-size: 25px;
             }
         }
 
@@ -119,7 +162,7 @@
                 max-width: 1200px;
                 height: 50px;
                 justify-content: space-evenly;
-                padding: 0 10px; /* Ajustamos para dar espacio a los botones */
+                padding: 0 10px;
             }
 
             .button {
@@ -132,6 +175,9 @@
 </head>
 <body>
     <footer>
+        <div class="toggle-button">
+            <i class="fas fa-bars icon"></i> <!-- Icono de hamburguesa -->
+        </div>
         <div class="button-container">
             <a href="https://www.mcstellar.lat/inicio" class="button" id="homeButton" onclick="redirectToPage(event, 'https://www.mcstellar.lat/home')">
                 <i class="fas fa-bars icon"></i>
@@ -149,6 +195,15 @@
     </footer>
 
     <script>
+        // Cambiar entre abrir y cerrar el menú
+        const toggleButton = document.querySelector('.toggle-button');
+        const buttonContainer = document.querySelector('.button-container');
+
+        toggleButton.addEventListener('click', () => {
+            buttonContainer.classList.toggle('collapsed');  // Contraer/expandir el menú
+            toggleButton.classList.toggle('open');  // Cambiar el ícono de la X
+        });
+
         function redirectToPage(event, url) {
             event.preventDefault(); 
             const button = event.currentTarget;
