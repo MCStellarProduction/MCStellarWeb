@@ -16,20 +16,23 @@
             z-index: 1000;
             background-color: transparent;
             opacity: 0; /* Inicialmente oculta */
-            transition: opacity 1s ease-in-out; /* Transición suave de opacidad */
+            width: 0; /* Inicialmente sin ancho */
+            transition: opacity 1s ease-in-out, width 0.5s ease-in-out; /* Transiciones para la opacidad y ancho */
         }
 
         .button-container {
             display: flex;
             justify-content: space-evenly; /* Asegura que los botones estén distribuidos de forma equitativa */
             align-items: center;
-            width: 80%; /* Ajustamos para centrar el contenedor */
+            width: 100%; /* Los botones ocuparán todo el ancho disponible */
             max-width: 1200px;
             height: 50px;
             border-radius: 50px;
             box-shadow: #100c1a;
             background: linear-gradient(45deg, #2d195e, #440d52, #0e0a1f);
-            transition: all 0.3s ease; /* Suavizamos la animación de la barra */
+            opacity: 0; /* Inicialmente oculta */
+            transform: translateY(20px); /* Inicialmente desplazada hacia abajo */
+            transition: opacity 1s ease, transform 1s ease; /* Animaciones de opacidad y desplazamiento */
         }
 
         .button {
@@ -66,19 +69,6 @@
                 transform: scale(1.2);
                 background: linear-gradient(45deg, #ee8000, #9b4d96);
             }
-        }
-
-        /* Eliminar subrayado en los enlaces */
-        a {
-            text-decoration: none;
-        }
-
-        /* Gradiente en el texto */
-        .gradient-text {
-            font-size: 2rem;
-            background: linear-gradient(45deg, #ee8000, #9b4d96);
-            -webkit-background-clip: text;
-            color: transparent;
         }
 
         @media (max-width: 768px) {
@@ -160,12 +150,21 @@
             }, 1000);
         }
 
-        // Esperar 1 segundo después de la carga de la página para mostrar la barra con animación
+        // Espera 1 segundo después de la carga de la página para mostrar la barra y los botones
         window.onload = function() {
             setTimeout(() => {
+                // Expandir la barra
                 const footer = document.getElementById('footer');
-                footer.style.opacity = 1; // Hacer visible la barra
-            }, 1000); // Espera de 1 segundo antes de mostrar la barra
+                footer.style.width = '80%';  // Expandir la barra
+                footer.style.opacity = 1;    // Hacer la barra visible
+
+                // Mostrar los botones con animación
+                const buttonContainer = document.querySelector('.button-container');
+                setTimeout(() => {
+                    buttonContainer.style.opacity = 1;  // Aparecen los botones
+                    buttonContainer.style.transform = 'translateY(0)';  // Se desplazan hacia arriba
+                }, 500);  // Esperar 0.5 segundos antes de mostrar los botones
+            }, 1000); // Espera 1 segundo antes de que comience la animación
         };
     </script>
 </body>
