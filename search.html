@@ -154,43 +154,48 @@
     footer {
             position: fixed;
             width: 100%;
-            padding: 5px 0;
+            padding: 10px 0;
             display: flex;
             justify-content: center;
             align-items: center;
             z-index: 1000;
             background-color: transparent;
+            opacity: 1; /* Inicialmente oculta */
+            transition: opacity 1s ease-in-out; /* Transición suave de opacidad */
         }
 
         .button-container {
             display: flex;
-            justify-content: space-between;
-            width: 100%;
+            justify-content: space-evenly; /* Asegura que los botones estén distribuidos de forma equitativa */
+            align-items: center;
+            width: 80%; /* Ajustamos para centrar el contenedor */
+            max-width: 1200px;
             height: 50px;
-            border-radius: 10px;
+            border-radius: 50px;
             box-shadow: #100c1a;
-            background-color: #19102b;
+            background: linear-gradient(45deg, #2d195e, #440d52, #0e0a1f);
+            transition: all 0.3s ease; /* Suavizamos la animación de la barra */
         }
 
         .button {
             outline: 0 !important;
             border: 0 !important;
-            width: 40px;
-            height: 40px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             background-color: transparent;
             display: flex;
             align-items: center;
             justify-content: center;
             color: #fff;
-            font-size: 20px;
-            transition: all 0.3s ease-in-out;
+            font-size: 25px;
+            transition: transform 0.3s ease, background-color 0.3s ease; /* Animación suave en el hover */
             cursor: pointer;
-            position: relative;
         }
 
         .button:hover {
-            animation: growAndChangeColor 1s forwards;
+            animation: growAndChangeColor 0.5s forwards;
+            transform: scale(1.1); /* Aumentamos el tamaño en hover */
         }
 
         @keyframes growAndChangeColor {
@@ -208,45 +213,32 @@
             }
         }
 
-        .icon {
-            font-size: 20px;
-        }
-    
-            .button {
-                width: 50px;
-                height: 50px;
-                font-size: 25px;
-            }
-
-            .button:hover {
-                animation: growAndChangeColor 0.5s forwards;
-            }
+        /* Eliminar subrayado en los enlaces */
+        a {
+            text-decoration: none;
         }
 
-    .icon {
-      font-size: 20px;
-    }
+        /* Gradiente en el texto */
+        .gradient-text {
+            font-size: 2rem;
+            background: linear-gradient(45deg, #ee8000, #9b4d96);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
 
-    /* Gradiente en el texto */
-    .gradient-text {
-      font-size: 2rem;
-      background: linear-gradient(45deg, #ee8000, #9b4d96);
-      -webkit-background-clip: text;
-      color: transparent;
-    }
-
-    @media (max-width: 768px) {
+        @media (max-width: 768px) {
             footer {
                 bottom: 0;
+                padding: 5px 0;
             }
 
             .button-container {
-                width: 100%;
+                width: 90%; /* Ajuste del tamaño en dispositivos móviles */
                 height: 60px;
                 justify-content: space-evenly;
-                border-radius: 20px;
-                background-color: #19102b;
-                box-shadow: #100c1a;
+                border-radius: 50px;
+                background: linear-gradient(45deg, #2d195e, #440d52, #0e0a1f);
+                box-shadow: transparent;
             }
 
             .button {
@@ -265,19 +257,21 @@
             footer {
                 top: 0;
                 bottom: unset;
+                padding: 10px 0;
             }
 
             .button-container {
-                width: 90%;
+                width: 80%;
                 max-width: 1200px;
                 height: 50px;
                 justify-content: space-evenly;
+                padding: 0 10px; /* Ajustamos para dar espacio a los botones */
             }
 
             .button {
-                width: 40px;
-                height: 40px;
-                font-size: 18px;
+                width: 50px;
+                height: 50px;
+                font-size: 25px;
             }
         }
 
@@ -484,21 +478,21 @@
     </div>
   </section>
 
-  <footer>
-    <div class="button-container">
-      <a href="https://www.mcstellar.lat/inicio" class="button" id="homeButton" onclick="redirectToPage(event, 'https://www.mcstellar.lat/home')">
-        <i class="fas fa-home icon"></i>
-      </a>
-      <a href="https://www.mcstellar.lat/search" class="button" id="searchButton" onclick="redirectToPage(event, 'https://www.mcstellar.lat/search')">
-        <i class="fas fa-search icon"></i>
-      </a>
-      <a href="https://www.mcstellar.lat/stellarclient" class="button" id="starButton" onclick="redirectToPage(event, 'https://www.mcstellar.lat/stellar_client-login')">
-        <i class="fas fa-star icon"></i>
-      </a>
-      <a href="https://www.mcstellar.lat/stellar_video/home" class="button" id="moreButton" onclick="redirectToPage(event, 'https://www.mcstellar.lat/stellar_video/home')">
-        <i class="fas fa-camera icon"></i>
-      </a>
-    </div>
+  <footer id="footer">
+        <div class="button-container">
+            <a href="https://www.mcstellar.lat/inicio" class="button" id="homeButton" onclick="redirectToPage(event, 'https://www.mcstellar.lat/home')">
+                <i class="fas fa-bars icon"></i>
+            </a>
+            <a href="https://www.mcstellar.lat/search" class="button" id="searchButton" onclick="redirectToPage(event, 'https://www.mcstellar.lat/search')">
+                <i class="fas fa-bell icon"></i>
+            </a>
+            <a href="https://www.mcstellar.lat/stellarclient" class="button" id="starButton" onclick="redirectToPage(event, 'https://www.mcstellar.lat/stellar_client-login')">
+                <i class="fas fa-desktop icon"></i>
+            </a>
+            <a href="https://www.mcstellar.lat/stellar_video/home" class="button" id="moreButton" onclick="redirectToPage(event, 'https://www.mcstellar.lat/stellar_video/home')">
+                <i class="fas fa-camera icon"></i>
+            </a>
+        </div>
   </footer>
 
   <script>
