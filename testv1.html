@@ -15,7 +15,8 @@
             align-items: center;
             z-index: 1000;
             background-color: transparent;
-            transition: background-color 0.3s ease; /* Animación suave de fondo */
+            opacity: 0; /* Inicialmente oculta */
+            transition: opacity 1s ease-in-out; /* Transición suave de opacidad */
         }
 
         .button-container {
@@ -131,7 +132,7 @@
     </style>
 </head>
 <body>
-    <footer>
+    <footer id="footer">
         <div class="button-container">
             <a href="https://www.mcstellar.lat/inicio" class="button" id="homeButton" onclick="redirectToPage(event, 'https://www.mcstellar.lat/home')">
                 <i class="fas fa-bars icon"></i>
@@ -149,6 +150,7 @@
     </footer>
 
     <script>
+        // Función para redirigir a la página después de un breve retraso
         function redirectToPage(event, url) {
             event.preventDefault(); 
             const button = event.currentTarget;
@@ -157,6 +159,14 @@
                 window.location.href = url;
             }, 1000);
         }
+
+        // Esperar 1 segundo después de la carga de la página para mostrar la barra con animación
+        window.onload = function() {
+            setTimeout(() => {
+                const footer = document.getElementById('footer');
+                footer.style.opacity = 1; // Hacer visible la barra
+            }, 1000); // Espera de 1 segundo antes de mostrar la barra
+        };
     </script>
 </body>
 </html>
