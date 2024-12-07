@@ -66,31 +66,31 @@
         .icon {
             font-size: 20px;
         }
-    
-            .button {
-                width: 50px;
-                height: 50px;
-                font-size: 25px;
-            }
 
-            .button:hover {
-                animation: growAndChangeColor 0.5s forwards;
-            }
+        .button {
+            width: 50px;
+            height: 50px;
+            font-size: 25px;
         }
 
-    .icon {
-      font-size: 20px;
-    }
+        .button:hover {
+            animation: growAndChangeColor 0.5s forwards;
+        }
 
-    /* Gradiente en el texto */
-    .gradient-text {
-      font-size: 2rem;
-      background: linear-gradient(45deg, #ee8000, #9b4d96);
-      -webkit-background-clip: text;
-      color: transparent;
-    }
+        /* Eliminar subrayado en los enlaces */
+        a {
+            text-decoration: none;
+        }
 
-    @media (max-width: 768px) {
+        /* Gradiente en el texto */
+        .gradient-text {
+            font-size: 2rem;
+            background: linear-gradient(45deg, #ee8000, #9b4d96);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        @media (max-width: 768px) {
             footer {
                 bottom: 0;
             }
@@ -135,36 +135,35 @@
                 font-size: 18px;
             }
         }
-        </style>
-        <body>
-        <footer>
-    <div class="button-container">
-      <a href="https://www.mcstellar.lat/inicio" class="button" id="homeButton" onclick="redirectToPage(event, 'https://www.mcstellar.lat/home')">
-        <i class="fas fa-bars icon"></i>
-      </a>
-      <a href="https://www.mcstellar.lat/search" class="button" id="searchButton" onclick="redirectToPage(event, 'https://www.mcstellar.lat/search')">
-        <i class="fas fa-bell icon"></i>
-      </a>
-      <a href="https://www.mcstellar.lat/stellarclient" class="button" id="starButton" onclick="redirectToPage(event, 'https://www.mcstellar.lat/stellar_client-login')">
-        <i class="fas fa-desktop icon"></i>
-      </a>
-      <a href="https://www.mcstellar.lat/stellar_video/home" class="button" id="moreButton" onclick="redirectToPage(event, 'https://www.mcstellar.lat/stellar_video/home')">
-        <i class="fas fa-camera icon"></i>
-      </a>
-    </div>
-  </footer>
-        <script>
-    function redirectToPage(event, url) {
-      event.preventDefault(); 
-      const button = event.currentTarget;
-      button.style.pointerEvents = 'none';
-      setTimeout(() => {
-        window.location.href = url;
-      }, 1000);
-          }
-          </script>
-        </body>
+    </style>
 </head>
-</html>
+<body>
+    <footer>
+        <div class="button-container">
+            <a href="https://www.mcstellar.lat/inicio" class="button" id="homeButton" onclick="redirectToPage(event, 'https://www.mcstellar.lat/home')">
+                <i class="fas fa-bars icon"></i>
+            </a>
+            <a href="https://www.mcstellar.lat/search" class="button" id="searchButton" onclick="redirectToPage(event, 'https://www.mcstellar.lat/search')">
+                <i class="fas fa-bell icon"></i>
+            </a>
+            <a href="https://www.mcstellar.lat/stellarclient" class="button" id="starButton" onclick="redirectToPage(event, 'https://www.mcstellar.lat/stellar_client-login')">
+                <i class="fas fa-desktop icon"></i>
+            </a>
+            <a href="https://www.mcstellar.lat/stellar_video/home" class="button" id="moreButton" onclick="redirectToPage(event, 'https://www.mcstellar.lat/stellar_video/home')">
+                <i class="fas fa-camera icon"></i>
+            </a>
+        </div>
+    </footer>
 
-       
+    <script>
+        function redirectToPage(event, url) {
+            event.preventDefault(); 
+            const button = event.currentTarget;
+            button.style.pointerEvents = 'none';
+            setTimeout(() => {
+                window.location.href = url;
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
