@@ -100,14 +100,10 @@
             gap: 5px;
         }
 
-        /* Estilos cuando la película es tocada */
-        .movie.toggled {
+        /* Efecto hover */
+        .movie:hover {
             width: 320px; /* Cambia el tamaño a 16:9 */
             height: 180px;
-        }
-
-        .movie.toggled img {
-            filter: brightness(80%); /* Oscurece la imagen un 20% */
         }
 
         .movie:hover img {
@@ -116,33 +112,49 @@
             object-position: center;
         }
 
-        .movie-content {
-            position: absolute;
-            bottom: 10px;
+        .movie:hover .movie-content {
+            bottom: auto;
+            top: 10px;
             left: 10px;
-            right: 10px;
-            text-align: center;
-            transition: all 0.4s ease;
+            right: auto;
+            text-align: left;
+            width: 50%;
         }
 
-        .movie-title {
-            font-weight: bold;
-            font-size: 16px;
-            margin-bottom: 5px;
+        .movie:hover .movie-title {
+            font-size: 18px;
         }
 
-        .movie-info-inline {
-            font-size: 12px;
-            color: #bbb;
+        .movie:hover .movie-description {
+            display: block;
+            font-size: 14px;
+            margin-top: 5px;
+            color: #ccc;
+        }
+
+        .movie-description {
+            display: none; /* Oculta la descripción en 9:16 */
+        }
+
+        .movie-info {
+            display: none; /* Oculta la lista en 9:16 */
+        }
+
+        .movie:hover .movie-info {
             display: flex;
-            justify-content: center;
-            gap: 15px;
+            flex-direction: column;
+            gap: 10px;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            text-align: right;
         }
 
-        .movie-info-inline div {
+        .movie-info div {
             display: flex;
             align-items: center;
             gap: 5px;
+            font-size: 14px;
         }
     </style>
 </head>
@@ -152,7 +164,7 @@
         <div class="category">Latest News</div>
         <div class="movie-slider">
             <!-- Video 1 -->
-            <div class="movie" onclick="toggleMovie(this)">
+            <div class="movie">
                 <img class="new" src="images/mcstellar_new_card_1.png" alt="Video">
                 <div class="movie-content">
                     <div class="movie-title">RedAguilar And Sharingel Talk</div>
@@ -164,7 +176,7 @@
                 </div>
             </div>
             <!-- Video 2 -->
-            <div class="movie" onclick="toggleMovie(this)">
+            <div class="movie">
                 <img class="new" src="images/mcstellar_new_card_2.png" alt="Video">
                 <div class="movie-content">
                     <div class="movie-title">Now you can support us :D</div>
@@ -178,12 +190,5 @@
             <!-- Añade más películas aquí -->
         </div>
     </div>
-
-    <script>
-        function toggleMovie(movieElement) {
-            // Alterna la clase 'toggled' que hace el efecto 16:9 y oscurece la imagen
-            movieElement.classList.toggle('toggled');
-        }
-    </script>
 </body>
 </html>
