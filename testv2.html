@@ -33,70 +33,99 @@
         
         .feed {
             display: flex;
-            flex-direction: column;
-            gap: 15px;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: space-between;
         }
         
         .feed-item {
-            background-color: #333;
-            padding: 20px;
+            width: calc(50% - 20px);
+            height: 180px; /* 16:3 aspect ratio for the initial state */
+            background-size: cover;
+            background-position: center;
             border-radius: 8px;
-            display: flex;
-            align-items: center;
+            position: relative;
+            overflow: hidden;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            background-image: url('https://via.placeholder.com/640x360'); /* Placeholder image */
+        }
+
+        .feed-item:hover,
+        .feed-item:focus {
+            height: 340px; /* 16:9 aspect ratio for the hover/click effect */
+        }
+
+        .feed-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1;
+            transition: all 0.3s ease;
+        }
+
+        .feed-item:hover::before,
+        .feed-item:focus::before {
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        .feed-item-content {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            z-index: 2;
+            color: white;
+            font-size: 1.2em;
+            width: 100%;
+            text-align: left;
             opacity: 0;
-            transform: translateX(-100%);
-            animation: slideIn 0.6s forwards;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
         }
 
-        .feed-item img {
-            width: 80px;
-            height: 80px;
-            object-fit: cover;
-            border-radius: 50%;
-            margin-right: 20px;
-        }
-
-        .feed-item i {
-            font-size: 30px;
-            margin-right: 20px;
-            color: #E50914;
+        .feed-item:hover .feed-item-content,
+        .feed-item:focus .feed-item-content {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .feed-item h3 {
-            font-size: 1.5em;
+            font-size: 1.4em;
             margin: 0;
+            display: flex;
+            align-items: center;
         }
 
         .feed-item p {
             font-size: 1em;
-            margin: 5px 0 0;
+            margin: 5px 0;
         }
 
-        /* Animación de deslizamiento */
-        @keyframes slideIn {
-            0% {
-                opacity: 0;
-                transform: translateX(-100%);
-            }
-            100% {
-                opacity: 1;
-                transform: translateX(0);
-            }
+        .feed-item-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9em;
+            margin-top: 10px;
         }
 
-        /* Animación para cada item con un retraso */
-        .feed-item:nth-child(1) {
-            animation-delay: 0.3s;
+        .feed-item-footer i {
+            margin-right: 5px;
+            color: #E50914;
         }
-        .feed-item:nth-child(2) {
-            animation-delay: 0.6s;
+
+        .feed-item-footer span {
+            color: #ccc;
         }
-        .feed-item:nth-child(3) {
-            animation-delay: 0.9s;
-        }
-        .feed-item:nth-child(4) {
-            animation-delay: 1.2s;
+
+        /* Animación para el efecto de blur */
+        .feed-item:hover {
+            filter: blur(3px);
         }
 
         /* Responsividad */
@@ -105,21 +134,17 @@
                 width: 90%;
             }
 
-            h1 {
-                font-size: 2em;
+            .feed-item {
+                width: 100%;
+                height: 200px;
             }
 
-            .feed-item i {
-                font-size: 25px;
+            .feed-item:hover {
+                height: 380px;
             }
 
-            .feed-item h3 {
-                font-size: 1.2em;
-            }
-
-            .feed-item img {
-                width: 60px;
-                height: 60px;
+            .feed-item-content {
+                font-size: 1em;
             }
         }
     </style>
@@ -131,31 +156,43 @@
         
         <div class="feed">
             <div class="feed-item">
-                <img src="https://via.placeholder.com/80" alt="Imagen de la película">
-                <div>
-                    <h3>Nuevo Estreno: "El Viaje"</h3>
+                <div class="feed-item-content">
+                    <h3><i class="fas fa-film"></i> Nuevo Estreno: "El Viaje"</h3>
                     <p>La nueva película de ciencia ficción llega a la plataforma.</p>
+                    <div class="feed-item-footer">
+                        <div><i class="fas fa-calendar-alt"></i><span>12 Dic, 2024</span></div>
+                        <div><i class="fas fa-tag"></i><span>Ciencia Ficción</span></div>
+                    </div>
                 </div>
             </div>
             <div class="feed-item">
-                <img src="https://via.placeholder.com/80" alt="Imagen de la serie">
-                <div>
-                    <h3>Serie Recomendada: "Futuro Oscuro"</h3>
+                <div class="feed-item-content">
+                    <h3><i class="fas fa-tv"></i> Serie Recomendada: "Futuro Oscuro"</h3>
                     <p>Una historia impactante sobre los límites del futuro.</p>
+                    <div class="feed-item-footer">
+                        <div><i class="fas fa-calendar-alt"></i><span>15 Dic, 2024</span></div>
+                        <div><i class="fas fa-tag"></i><span>Drama</span></div>
+                    </div>
                 </div>
             </div>
             <div class="feed-item">
-                <img src="https://via.placeholder.com/80" alt="Imagen del álbum">
-                <div>
-                    <h3>Nuevo Álbum: "Sonidos del Espacio"</h3>
+                <div class="feed-item-content">
+                    <h3><i class="fas fa-music"></i> Nuevo Álbum: "Sonidos del Espacio"</h3>
                     <p>La banda sonora de la nueva serie de Netflix.</p>
+                    <div class="feed-item-footer">
+                        <div><i class="fas fa-calendar-alt"></i><span>18 Dic, 2024</span></div>
+                        <div><i class="fas fa-tag"></i><span>Soundtrack</span></div>
+                    </div>
                 </div>
             </div>
             <div class="feed-item">
-                <img src="https://via.placeholder.com/80" alt="Imagen del juego">
-                <div>
-                    <h3>Nuevo Juego: "Escape Virtual"</h3>
+                <div class="feed-item-content">
+                    <h3><i class="fas fa-gamepad"></i> Nuevo Juego: "Escape Virtual"</h3>
                     <p>Explora mundos virtuales en este nuevo juego interactivo.</p>
+                    <div class="feed-item-footer">
+                        <div><i class="fas fa-calendar-alt"></i><span>20 Dic, 2024</span></div>
+                        <div><i class="fas fa-tag"></i><span>Aventura</span></div>
+                    </div>
                 </div>
             </div>
         </div>
