@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feed de Novedades - Estilo Netflix</title>
+    
+    <!-- FontAwesome para los iconos -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    
+    <!-- Estilos CSS -->
+    <style>
+        body {
+            background-color: #141414;
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        h1 {
+            text-align: center;
+            font-size: 3em;
+            margin-bottom: 20px;
+            color: #E50914;
+        }
+        
+        .feed {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .feed-item {
+            background-color: #333;
+            padding: 20px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transform: translateX(-100%);
+            animation: slideIn 0.6s forwards;
+        }
+
+        .feed-item img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-right: 20px;
+        }
+
+        .feed-item i {
+            font-size: 30px;
+            margin-right: 20px;
+            color: #E50914;
+        }
+
+        .feed-item h3 {
+            font-size: 1.5em;
+            margin: 0;
+        }
+
+        .feed-item p {
+            font-size: 1em;
+            margin: 5px 0 0;
+        }
+
+        /* Animación de deslizamiento */
+        @keyframes slideIn {
+            0% {
+                opacity: 0;
+                transform: translateX(-100%);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Animación para cada item con un retraso */
+        .feed-item:nth-child(1) {
+            animation-delay: 0.3s;
+        }
+        .feed-item:nth-child(2) {
+            animation-delay: 0.6s;
+        }
+        .feed-item:nth-child(3) {
+            animation-delay: 0.9s;
+        }
+        .feed-item:nth-child(4) {
+            animation-delay: 1.2s;
+        }
+
+        /* Responsividad */
+        @media (max-width: 768px) {
+            .container {
+                width: 90%;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            .feed-item i {
+                font-size: 25px;
+            }
+
+            .feed-item h3 {
+                font-size: 1.2em;
+            }
+
+            .feed-item img {
+                width: 60px;
+                height: 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Feed de Novedades</h1>
+        
+        <div class="feed">
+            <div class="feed-item">
+                <img src="https://via.placeholder.com/80" alt="Imagen de la película">
+                <div>
+                    <h3>Nuevo Estreno: "El Viaje"</h3>
+                    <p>La nueva película de ciencia ficción llega a la plataforma.</p>
+                </div>
+            </div>
+            <div class="feed-item">
+                <img src="https://via.placeholder.com/80" alt="Imagen de la serie">
+                <div>
+                    <h3>Serie Recomendada: "Futuro Oscuro"</h3>
+                    <p>Una historia impactante sobre los límites del futuro.</p>
+                </div>
+            </div>
+            <div class="feed-item">
+                <img src="https://via.placeholder.com/80" alt="Imagen del álbum">
+                <div>
+                    <h3>Nuevo Álbum: "Sonidos del Espacio"</h3>
+                    <p>La banda sonora de la nueva serie de Netflix.</p>
+                </div>
+            </div>
+            <div class="feed-item">
+                <img src="https://via.placeholder.com/80" alt="Imagen del juego">
+                <div>
+                    <h3>Nuevo Juego: "Escape Virtual"</h3>
+                    <p>Explora mundos virtuales en este nuevo juego interactivo.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
