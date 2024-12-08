@@ -150,7 +150,7 @@
         <div class="title">NEWS</div>
         <div class="movie-slider">
             <!-- Video 1 -->
-            <div class="movie" data-link="https://www.mcstellar.lat/stellar_video/254679-video">
+            <div class="movie">
                 <img src="img/the_begginig.jpg" alt="Video">
                 <div class="movie-content">
                     <div class="movie-title">New 1</div>
@@ -164,25 +164,5 @@
              <!-- Añade más películas aquí -->
         </div>
     </div>
-
-    <script>
-        document.querySelectorAll('.movie').forEach(movie => {
-            let clickCount = 0;
-
-            movie.addEventListener('click', () => {
-                clickCount++;
-
-                // Resetea el contador después de 300ms si no se realiza un segundo clic
-                setTimeout(() => clickCount = 0, 300);
-
-                if (clickCount === 2) {
-                    const link = movie.dataset.link;
-                    if (link) {
-                        window.location.href = link; // Redirige al enlace
-                    }
-                }
-            });
-        });
-    </script>
 </body>
 </html>
