@@ -8,22 +8,27 @@
   <style>
     body {
       background: black;
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
     
-.loader {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  border: 3px solid rgb(255,255,255,.2);
-  border-top-color: transparent;
-  animation: rot1 1.2s linear infinite;
-}
+    .loader {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 3px solid rgb(255,255,255,.2);
+      border-top-color: transparent;
+      animation: rot1 1.2s linear infinite;
+    }
 
-@keyframes rot1 {
-  to {
-    transform: rotate(360deg);
-  }
-}
+    @keyframes rot1 {
+      to {
+        transform: rotate(360deg);
+      }
+    }
 
     /* Estilos de la notificación de error */
     .notifications-container {
@@ -91,7 +96,8 @@
   </style>
 </head>
 <body>
-<div class="loader"></div>
+  <!-- Loader de carga centrado -->
+  <div class="loader"></div>
   
   <!-- Notificación de error (inicialmente oculta) -->
   <div class="notifications-container" id="errorNotification">
@@ -116,14 +122,14 @@
   </div>
 
   <script>
-    // Redirige después de 5 segundos a la URL personalizada
+    // Redirige después de 4 segundos a la URL personalizada
     setTimeout(function() {
-      window.location.href = "";  // Cambia este link por el que quieras
-    }, 99999999);
+      window.location.href = "https://www.mcstellar.lat/home";  // Cambia este link por el que quieras
+    }, 4000);
 
     // Mostrar la notificación de error después de 10 segundos si no se carga correctamente
     setTimeout(function() {
-      const loader = document.querySelector('.container'); // Cargar el loader
+      const loader = document.querySelector('.loader'); // Cargar el loader
       const errorNotification = document.getElementById('errorNotification');
       
       // Verificamos si la redirección no ocurrió en 10 segundos (como un ejemplo de error)
