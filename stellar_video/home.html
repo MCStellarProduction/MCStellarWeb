@@ -20,19 +20,38 @@
             width: 400px;
         }
 
+        .new {
+            backdrop-filter: blur(20px);
+        }
+
         .container {
             padding: 20px;
         }
+        
         .title {
-            font-size: 24px;
-            margin-bottom: 10px;
+            font-size: 40px;
+            font-weight: bold;
+            background: linear-gradient(to right, orange, purple);
+            -webkit-background-clip: text;
+            color: transparent;
+            text-align: center;
+            margin-bottom: 20px;
         }
+
+        .category {
+            font-size: 20px;
+            color: white;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
         .movie-slider {
             display: flex;
             gap: 20px;
             flex-wrap: wrap;
             justify-content: center;
         }
+
         .movie {
             width: 180px;
             height: 320px; /* Proporción 9:16 */
@@ -43,6 +62,7 @@
             cursor: pointer;
             background-color: #333;
         }
+
         .movie img {
             width: 100%;
             height: 100%;
@@ -50,6 +70,7 @@
             object-position: center;
             transition: all 0.4s ease;
         }
+
         .movie-content {
             position: absolute;
             bottom: 10px;
@@ -58,11 +79,17 @@
             text-align: center;
             transition: all 0.4s ease;
         }
+
         .movie-title {
+            font-weight: bold;
+            background: linear-gradient(to right, orange, purple);
+            -webkit-background-clip: text;
+            color: transparent;
             font-weight: bold;
             font-size: 16px;
             margin-bottom: 5px;
         }
+
         .movie-info-inline {
             font-size: 12px;
             color: #bbb;
@@ -70,19 +97,25 @@
             justify-content: center;
             gap: 15px;
         }
+
         .movie-info-inline div {
             display: flex;
             align-items: center;
             gap: 5px;
         }
+
+        /* Efecto hover */
         .movie:hover {
-            width: 320px;
-            height: 180px; /* Cambia a 16:9 */
+            width: 320px; /* Cambia el tamaño a 16:9 */
+            height: 180px;
         }
+
         .movie:hover img {
+            backdrop-filter: blur(20px); /* Aplica el blur al pasar el mouse */
             object-fit: cover;
             object-position: center;
         }
+
         .movie:hover .movie-content {
             bottom: auto;
             top: 10px;
@@ -91,21 +124,26 @@
             text-align: left;
             width: 50%;
         }
+
         .movie:hover .movie-title {
             font-size: 18px;
         }
+
         .movie:hover .movie-description {
             display: block;
             font-size: 14px;
             margin-top: 5px;
             color: #ccc;
         }
+
         .movie-description {
             display: none; /* Oculta la descripción en 9:16 */
         }
+
         .movie-info {
             display: none; /* Oculta la lista en 9:16 */
         }
+
         .movie:hover .movie-info {
             display: flex;
             flex-direction: column;
@@ -115,6 +153,7 @@
             right: 10px;
             text-align: right;
         }
+
         .movie-info div {
             display: flex;
             align-items: center;
@@ -124,70 +163,36 @@
     </style>
 </head>
 <body>
-    <img class="img" src="img/stellar_video_letter.png">
     <div class="container">
-        <div class="title">Videos Recientes</div>
+        <div class="title">NEWS</div>
+        <div class="category">Latest News</div>
         <div class="movie-slider">
             <!-- Video 1 -->
-            <div class="movie" data-link="https://www.mcstellar.lat/stellar_video/254679-video">
-                <img src="img/the_begginig.jpg" alt="Video">
+            <div class="movie">
+                <img class="new" src="images/mcstellar_new_card_1.png" alt="Video">
                 <div class="movie-content">
-                    <div class="movie-title">The beginning</div>
-                    <div class="movie-description">Its the presentation of the MCStellar Production</div>
+                    <div class="movie-title">RedAguilar And Sharingel Talk</div>
+                    <div class="movie-description">ElRedAguilar and Sharingel would be very grateful for your support in the beginning, as they have worked hard to give the best to this company with all their might and to make sure that both the public and the creators and moderators have a lot of fun in their public projects.</div>
                 </div>
                 <div class="movie-info">
-                    <div><i class="fas fa-globe"></i><span>No Audible</span></div>
-                    <div><i class="fas fa-exclamation-triangle"></i><span>All</span></div>
-                    <div><i class="fas fa-calendar-alt"></i><span>2024</span></div>
+                    <div><i class="fas fa-th"></i><span>Creator</span></div>
+                    <div><i class="fas fa-calendar-alt"></i><span>7/12/24</span></div>
                 </div>
             </div>
             <!-- Video 2 -->
-            <div class="movie" data-link="https://www.mcstellar.lat/stellar_video/685379-video">
-                <img src="img/what_i_forgot.jpg" alt="Video">
+            <div class="movie">
+                <img class="new" src="images/mcstellar_new_card_2.png" alt="Video">
                 <div class="movie-content">
-                    <div class="movie-title">What I Forgot</div>
-                    <div class="movie-description">Its a promotion of the most things we made the time not upload videos</div>
+                    <div class="movie-title">Now you can support us :D</div>
+                    <div class="movie-description">MCStellar Production has a variety of social media accounts so you can visit them right now. Don't forget to support us from all our social media accounts.</div>
                 </div>
                 <div class="movie-info">
-                    <div><i class="fas fa-globe"></i><span>No Audible</span></div>
-                    <div><i class="fas fa-exclamation-triangle"></i><span>All</span></div>
-                    <div><i class="fas fa-calendar-alt"></i><span>2024</span></div>
-                </div>
-            </div>
-            <div class="movie" data-link="https://www.mcstellar.lat/stellar_video/386974-video">
-                <img src="img/its_close.jpg" alt="Video">
-                <div class="movie-content">
-                    <div class="movie-title">Its Close</div>
-                    <div class="movie-description">Its the Promotion of the MCStellar Website Official!!</div>
-                </div>
-                <div class="movie-info">
-                    <div><i class="fas fa-globe"></i><span>No Audible</span></div>
-                    <div><i class="fas fa-exclamation-triangle"></i><span>All</span></div>
-                    <div><i class="fas fa-calendar-alt"></i><span>2024</span></div>
+                    <div><i class="fas fa-th"></i><span>Social Media</span></div>
+                    <div><i class="fas fa-calendar-alt"></i><span>7/12/24</span></div>
                 </div>
             </div>
             <!-- Añade más películas aquí -->
         </div>
     </div>
-
-    <script>
-        document.querySelectorAll('.movie').forEach(movie => {
-            let clickCount = 0;
-
-            movie.addEventListener('click', () => {
-                clickCount++;
-
-                // Resetea el contador después de 300ms si no se realiza un segundo clic
-                setTimeout(() => clickCount = 0, 300);
-
-                if (clickCount === 2) {
-                    const link = movie.dataset.link;
-                    if (link) {
-                        window.location.href = link; // Redirige al enlace
-                    }
-                }
-            });
-        });
-    </script>
 </body>
 </html>
