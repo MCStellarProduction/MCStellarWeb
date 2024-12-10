@@ -18,7 +18,7 @@
         }
         .container {
             text-align: center;
-            background-color: #10081f;
+            background-color: rgba(0, 0, 0, 0.6); /* Fondo transparente con opacidad */
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
@@ -47,7 +47,7 @@
             margin-bottom: 20px;
         }
         .timer {
-            font-size: 48px;
+            font-size: 72px; /* Aumento el tamaño de la fuente para que se vea más grande */
             background: linear-gradient(90deg, #f35131, #8d2b87);
             background-clip: text;
             -webkit-background-clip: text;
@@ -65,15 +65,35 @@
             align-items: center;
         }
         .time-value {
-            font-size: 36px;
+            font-size: 72px; /* Aumento el tamaño de la fuente para los números */
         }
         .separator {
-            font-size: 36px;
+            font-size: 48px; /* Reduzco el tamaño de los dos puntos */
         }
         .footer {
             margin-top: 20px;
             font-size: 14px;
             color: #777;
+        }
+
+        /* Animación de cambio de números */
+        .changed {
+            animation: changeNumber 0.5s ease-in-out;
+        }
+
+        @keyframes changeNumber {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.2);
+                opacity: 0.5;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
         }
     </style>
 </head>
@@ -81,14 +101,6 @@
     <div class="container">
         <h1 class="white">Time left until the MCStellar Web:</h1>
         <div id="countdown" class="timer">
-            <div class="time-unit">
-                <div id="days" class="time-value">00</div>
-            </div>
-            <div class="separator">:</div>
-            <div class="time-unit">
-                <div id="hours" class="time-value">00</div>
-            </div>
-            <div class="separator">:</div>
             <div class="time-unit">
                 <div id="minutes" class="time-value">00</div>
             </div>
@@ -109,9 +121,7 @@
             const now = new Date().getTime();
             const distance = endDate - now;
 
-            // Cálculo del tiempo restante en días, horas, minutos y segundos
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            // Cálculo del tiempo restante en minutos y segundos
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
@@ -127,8 +137,6 @@
             }
 
             // Actualización del temporizador con animación
-            updateTimerElement("days", (days < 10 ? "0" : "") + days);
-            updateTimerElement("hours", (hours < 10 ? "0" : "") + hours);
             updateTimerElement("minutes", (minutes < 10 ? "0" : "") + minutes);
             updateTimerElement("seconds", (seconds < 10 ? "0" : "") + seconds);
 
